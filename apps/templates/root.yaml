@@ -4,7 +4,7 @@ metadata:
   name: root
 spec:
   destination:
-    server: https://kubernetes.defaults.svc
+    server: https://kubernetes.default.svc
     namespace: default
   project: default
   source:
