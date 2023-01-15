@@ -2,8 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: root
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: http://kubernetes.defaults.svc
