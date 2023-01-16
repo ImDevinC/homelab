@@ -31,7 +31,7 @@ spec:
               persistentVolumeClaim:
                 claimName: media
     repoURL: https://imdevinc.github.io/k8s-mediaserver-operator
-    targetRevision: 0.7.1
+    targetRevision: 0.7.2
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
