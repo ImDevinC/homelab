@@ -11,10 +11,10 @@ spec:
     namespace: nginx
   project: default
   source:
-    chart: nginx-stable
+    chart: nginx-ingress
     helm:
     repoURL: https://helm.nginx.com/stable
-    targetRevision: 4.4.2
+    targetRevision: 0.16.0
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
