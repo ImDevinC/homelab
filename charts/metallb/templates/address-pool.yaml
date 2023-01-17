@@ -4,7 +4,7 @@ kind: IPAddressPool
 metadata:
   name: default-pool
 spec:
-  addresses: -|
+  addresses:
     {{- range .Values.addressPool.addresses }}
       - {{ . | quote }}
     {{- end }}
