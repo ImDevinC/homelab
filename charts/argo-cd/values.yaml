@@ -2,6 +2,8 @@ argo-cd:
   dex:
     enabled: false
   server:
+    service:
+      type: LoadBalancer
     extraArgs:
       - --insecure
     config:
@@ -9,6 +11,3 @@ argo-cd:
         - type: helm
           name: argo-cd
           url: https://argoproj.github.io/argo-helm
-  server:
-    service:
-      type: LoadBalancer
