@@ -2,9 +2,9 @@ mediaserver:
   general:
     storage:
       customVolume: true
-      pvcName: mediaserver-pvc
+      # pvcName: mediaserver-pvc
       size: 10Gi
-      pvcStorageClass: manual
+      # pvcStorageClass: manual
       subPaths:
         tv: media/tv
         movies: media/movies
