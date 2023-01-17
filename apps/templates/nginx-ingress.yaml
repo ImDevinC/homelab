@@ -15,7 +15,6 @@ spec:
     helm:
       values: |
         controller:
-          config:
             disableIPv6: true
     repoURL: https://helm.nginx.com/stable
     targetRevision: 0.16.0
