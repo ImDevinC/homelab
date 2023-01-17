@@ -4,8 +4,11 @@ argo-cd:
   server:
     service:
       type: LoadBalancer
-      annotations:
-        # external-dns.alpha.kubernetes.io/hostname: argo.collins.home
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts: 
+        - argo.collins.home
     extraArgs:
       - --insecure
     config:
