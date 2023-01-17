@@ -63,6 +63,8 @@ spec:
     directory:
       include: 'pihole.yaml'
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
