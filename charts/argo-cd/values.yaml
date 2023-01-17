@@ -2,8 +2,6 @@ argo-cd:
   dex:
     enabled: false
   server:
-    service:
-      type: LoadBalancer
     ingress:
       enabled: true
       ingressClassName: nginx
