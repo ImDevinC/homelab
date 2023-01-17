@@ -13,8 +13,9 @@ spec:
   source:
     chart: nginx-ingress
     helm:
-      controller:
-        disableIPV6: true
+      parameters:
+        - name: controller.disableIPV6
+          key: true
     repoURL: https://helm.nginx.com/stable
     targetRevision: 0.16.0
   syncPolicy:
