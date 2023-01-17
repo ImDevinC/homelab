@@ -1,0 +1,16 @@
+{{- if .Values.addressPool.create -}}
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: default-pool
+spec:
+  addresses: -|
+    {{- range .Values.addressPool.addresses }}
+      - {{ . | quote }}
+    {{- end }}
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: default-advertisement
+{{- end -}}

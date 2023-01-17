@@ -1,0 +1,21 @@
+mediaserver:
+  general:
+    storage:
+      customVolume: true
+      pvcName: mediaserver-pvc
+      size: 10Gi
+      pvcStorageClass: manual
+      subPaths:
+        tv: media/tv
+        movies: media/movies
+        downloads: downloads
+        transmission: transmission
+        sabnzbd: sabnzbd
+        config: config
+      volumes:
+        persistentVolumeClaim:
+          claimName: media
+
+mount:
+  hostPath: /mnt/media
+  storageSize: 10Gi

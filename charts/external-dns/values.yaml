@@ -1,0 +1,2 @@
+pihole:
+  server: http://pi.hole

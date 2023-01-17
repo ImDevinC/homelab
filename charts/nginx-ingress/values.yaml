@@ -1,0 +1,3 @@
+nginx-ingress:
+  controller:
+    disableIPV6: true

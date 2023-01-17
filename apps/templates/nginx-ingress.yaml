@@ -11,13 +11,9 @@ spec:
     namespace: nginx
   project: default
   source:
-    chart: nginx-ingress
-    helm:
-      values: |
-        controller:
-          disableIPV6: true
-    repoURL: https://helm.nginx.com/stable
-    targetRevision: 0.16.0
+    path: charts/nginx-ingress
+    repoURL: https://github.com/imdevinc/homelab.git
+    targetRevision: HEAD
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

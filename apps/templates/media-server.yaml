@@ -11,50 +11,9 @@ spec:
     namespace: mediaserver
   project: default
   source:
-    chart: k8s-mediaserver
-    helm:
-      values: |
-        plex:
-          service:
-            type: LoadBalancer
-        sonarr:
-          service:
-            type: LoadBalancer
-        radarr:
-          service:
-            type: LoadBalancer
-        jackett:
-          service:
-            type: LoadBalancer
-        prowlarr:
-          service:
-            type: LoadBalancer
-        transmission:
-          service:
-            utp:
-              type: LoadBalancer
-        sabnzbd:
-          service:
-            http:
-              type: LoadBalancer
-        general:
-          storage:
-            customVolume: true
-            pvcName: mediaserver-pvc
-            size: 10Gi
-            pvcStorageClass: manual
-            subPaths:
-              tv: media/tv
-              movies: media/movies
-              downloads: downloads
-              transmission: transmission
-              sabnzbd: sabnzbd
-              config: config
-            volumes:
-              persistentVolumeClaim:
-                claimName: media
-    repoURL: https://imdevinc.github.io/k8s-mediaserver-operator
-    targetRevision: 0.7.2
+    path: charts/mediaserver
+    repoURL: https://github.com/imdevinc/homelab.git
+    targetRevision: HEAD
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

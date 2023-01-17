@@ -8,12 +8,12 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: metallb
+    namespace: metallb-system
   project: default
   source:
-    chart: metallb
-    repoURL: https://metallb.github.io/metallb
-    targetRevision: 0.13.7
+    path: charts/metallb
+    repoURL: https://github.com/imdevinc/homelab.git
+    targetRevision: HEAD
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
