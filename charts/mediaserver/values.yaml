@@ -5,9 +5,7 @@ k8s-mediaserver:
     ingress_host: media.collins.home
     storage:
       customVolume: true
-      # pvcName: mediaserver-pvc
       size: 10Gi
-      # pvcStorageClass: manual
       subPaths:
         tv: media/tv
         movies: media/movies
@@ -18,6 +16,27 @@ k8s-mediaserver:
       volumes:
         persistentVolumeClaim:
           claimName: media
+  jackett:
+    ingress:
+      enabled: false
+  plex:
+    ingress:
+      enabled: false
+  prowlarr:
+    ingress:
+      enabled: false
+  radarr:
+    ingress:
+      enabled: false
+  sabnzbd:
+    ingress:
+      enabled: false
+  sonarr:
+    ingress:
+      enabled: false
+  transmission:
+    ingress:
+      enabled: false
 
 mount:
   hostPath: /mnt/media
