@@ -14,7 +14,7 @@ k8s-mediaserver:
         sabnzbd: sabnzbd
         config: config
       volumes:
-        local:
+        - hostPath:
           path: /mnt/media
   jackett:
     ingress:
