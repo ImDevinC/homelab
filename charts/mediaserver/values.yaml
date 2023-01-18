@@ -14,8 +14,8 @@ k8s-mediaserver:
         sabnzbd: sabnzbd
         config: config
       volumes:
-        persistentVolumeClaim:
-          claimName: media
+        local:
+          path: /mnt/media
   jackett:
     ingress:
       enabled: false
