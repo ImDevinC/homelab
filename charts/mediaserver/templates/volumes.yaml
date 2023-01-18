@@ -8,7 +8,7 @@ spec:
     storage: {{ .Values.mount.storageSize }}
   accessModes:
     - ReadWriteOnce
-  hostPath:
+  local:
     path: {{ .Values.mount.hostPath }}
 ---
 apiVersion: v1
