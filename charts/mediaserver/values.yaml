@@ -1,4 +1,4 @@
-mediaserver:
+k8s-mediaserver:
   general:
     storage:
       customVolume: true
