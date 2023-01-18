@@ -43,3 +43,10 @@ spec:
                 name: transmission
                 port:
                   number: 9091
+          - path: /plex
+            pathType: Prefix
+            backend:
+              service:
+                name: plex
+                port:
+                  number: 32400
