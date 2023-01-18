@@ -1,8 +1,5 @@
 k8s-mediaserver:
   general:
-    ingress:
-      ingressClassName: nginx
-    ingress_host: media.collins.home
     storage:
       customVolume: true
       size: 10Gi
@@ -41,3 +38,6 @@ k8s-mediaserver:
 mount:
   hostPath: /mnt/media
   storageSize: 10Gi
+
+
+ingress_host: media.collins.home
