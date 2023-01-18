@@ -1,6 +1,6 @@
 dependencies:
 - name: k8s-mediaserver
   repository: https://imdevinc.github.io/k8s-mediaserver-operator
-  version: 0.7.3
-digest: sha256:68fc01ad30271d3fdba63682d8308d6811bf16162cde6e433ce135e8686f5caa
-generated: "2023-01-17T16:05:19.278654009-08:00"
+  version: 0.7.4
+digest: sha256:d206f642ca29abef0a84145ec4fc72f8d01985cd718583fdd23168a8491d8e6b
+generated: "2023-01-17T23:24:02.330918199-08:00"
