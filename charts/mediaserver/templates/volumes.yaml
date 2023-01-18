@@ -26,3 +26,10 @@ spec:
   selector:
     matchLabels:
       app: mediaserver
+---
+apiVersion: v1
+kind: StorageClass
+metadata:
+  name: manual
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
