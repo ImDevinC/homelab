@@ -8,10 +8,10 @@ spec:
     - host: {{ .Values.ingress_host }}
       http:
         paths:
-          - path: /jackett
+          - path: /prowlarr
             pathType: Prefix
             backend:
               service:
-                name: jackett
+                name: prowlarr
                 port:
-                  number: 9117
+                  number: 9696

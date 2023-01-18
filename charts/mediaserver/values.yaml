@@ -14,8 +14,7 @@ k8s-mediaserver:
         hostPath:
           path: /mnt/media
   jackett:
-    ingress:
-      enabled: false
+    enabled: false
   plex:
     ingress:
       enabled: false
