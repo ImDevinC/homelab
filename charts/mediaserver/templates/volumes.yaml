@@ -7,7 +7,7 @@ spec:
   capacity:
     storage: {{ .Values.mount.storageSize }}
   accessModes:
-    - ReadWriteOne
+    - ReadWriteOnce
   hostPath:
     path: {{ .Values.mount.hostPath }}
 ---
@@ -17,7 +17,7 @@ metadata:
   name: media
 spec:
   accessModes:
-    - ReadWriteOne
+    - ReadWriteOnce
   volumeMode: Filesystem
   resources:
     requests:
