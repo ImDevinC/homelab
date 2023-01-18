@@ -4,6 +4,8 @@ metadata:
   name: media
 spec:
   storageClassName: manual
+  capacity:
+    storage: {{ .Values.mount.storageSize }}
   accessModes:
     - ReadWriteMany
   hostPath:
@@ -17,6 +19,9 @@ spec:
   accessModes:
     - ReadWriteMany
   volumeMode: Filesystem
+  resources:
+    requests:
+      storage: {{ .Values.mount.storageSize }}
   storageClassName: manual
   selector:
     matchLabels:
