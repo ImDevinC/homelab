@@ -15,3 +15,31 @@ spec:
                 name: prowlarr
                 port:
                   number: 9696
+          - path: /radarr
+            pathType: Prefix
+            backend:
+              service:
+                name: radarr
+                port:
+                  number: 7878
+          - path: /sabnzbd
+            pathType: Prefix
+            backend:
+              service:
+                name: sabnzbd
+                port:
+                  number: 8080
+          - path: /sonarr
+            pathType: Prefix
+            backend:
+              service:
+                name: sonarr
+                port:
+                  number: 8989
+          - path: /transmission
+            pathType: Prefix
+            backend:
+              service:
+                name: transmission
+                port:
+                  number: 9091
