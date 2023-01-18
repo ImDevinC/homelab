@@ -10,6 +10,14 @@ spec:
     - ReadWriteOnce
   local:
     path: {{ .Values.mount.hostPath }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+              - k8s
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
