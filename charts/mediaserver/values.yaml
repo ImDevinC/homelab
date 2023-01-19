@@ -6,6 +6,7 @@ k8s-mediaserver:
       size: 10Gi
       subPaths:
         tv: media/tv
+        anime: media/anime
         movies: media/movies
         downloads: downloads
         transmission: transmission
