@@ -42,3 +42,4 @@ mount:
 
 
 ingress_host: media.collins.home
+plex_ingress_host: plex.collins.home

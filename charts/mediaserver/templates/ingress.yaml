@@ -43,7 +43,18 @@ spec:
                 name: transmission
                 port:
                   number: 9091
-          - path: /plex
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: media
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: {{ .Values.plex_ingress_host }}
+      http:
+        paths:
+          - path: /
             pathType: Prefix
             backend:
               service:
