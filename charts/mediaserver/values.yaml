@@ -17,6 +17,7 @@ k8s-mediaserver:
   jackett:
     enabled: false
   plex:
+    claim: claim-s4H5aSxbCoi8s7_R_q_X
     ingress:
       enabled: false
   prowlarr:
