@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: pmm-missing
+spec:
+  schedule: "0 1 * * *" # Every day at 1am
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          imagePullSecrets:
+            - name: dockerauth
+          containers:
+            - name: pmm
+              image: ghcr.io/imdevinc/pmm:latest
+              imagePullPolicy: Always
+              envFrom:
+                - configMapRef:
+                    name: pmm
+                - secretRef:
+                    name: pmm-credentials
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pmm
+data:
+  GITHUB_REPO: plex-meta-manager-configs
+  GITHUB_OWNER: ImDevinC
