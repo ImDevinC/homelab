@@ -39,11 +39,13 @@ k8s-mediaserver:
   transmission:
     ingress:
       enabled: false
+  tautulli:
+    ingress:
+      enabled: false
 
 mount:
   hostPath: /mnt/media
   storageSize: 10Gi
-
 
 ingress_host: media.collins.home
 plex_ingress_host: plex.collins.home

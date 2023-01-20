@@ -50,4 +50,10 @@ spec:
                 name: plex
                 port:
                   number: 32400
-                  
+          - path: /tautulli
+            pathType: Prefix
+            backend:
+              service:
+                name: tautulli
+                port:
+                  number: 8181
