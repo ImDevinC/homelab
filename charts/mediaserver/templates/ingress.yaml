@@ -57,3 +57,10 @@ spec:
                 name: tautulli
                 port:
                   number: 8181
+          - path: /requestrr
+            pathType: Prefix
+            backend:
+              service:
+                name: requestrr
+                port:
+                  number: 4545

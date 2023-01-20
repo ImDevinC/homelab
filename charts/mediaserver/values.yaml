@@ -42,6 +42,9 @@ k8s-mediaserver:
   tautulli:
     ingress:
       enabled: false
+  requestrr:
+    ingress:
+      enabled: false
 
 mount:
   hostPath: /mnt/media
