@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k8tz
+  namespace: argo-cd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: k8tz
+  project: default
+  source:
+    chart: k8tz
+    repoURL: https://k8tz.github.io/k8tz
+    targetRevision: 0.11.0
+    helm:
+      values: |
+        timezone: US/Pacific
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
