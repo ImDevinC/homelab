@@ -18,13 +18,13 @@ argo-cd:
         - type: helm
           name: argo-cd
           url: https://argoproj.github.io/argo-helm
-      rbac:
-        policy.default: role:''
-        policy.csv: |
-          p, role:org-admin, applications, *, */*, allow
-          p, role:org-admin, clusters, get, *, allow
-          p, role:org-admin, repositories, get, *, allow
-          p, role:org-admin, repositories, create, *, allow
-          p, role:org-admin, repositories, update, *, allow
-          p, role:org-admin, repositories, delete, *, allow
-          g, imdevinc, role:org-admin
+    rbacConfig:
+      policy.default: role:''
+      policy.csv: |
+        p, role:org-admin, applications, *, */*, allow
+        p, role:org-admin, clusters, get, *, allow
+        p, role:org-admin, repositories, get, *, allow
+        p, role:org-admin, repositories, create, *, allow
+        p, role:org-admin, repositories, update, *, allow
+        p, role:org-admin, repositories, delete, *, allow
+        g, imdevinc, role:org-admin
