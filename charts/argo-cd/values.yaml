@@ -12,7 +12,7 @@ argo-cd:
     extraArgs:
       - --insecure
     config:
-      admin.enabled: "false"
+      admin.enabled: "true"
       accounts.imdevinc: apiKey, login
       repositories: |
         - type: helm
