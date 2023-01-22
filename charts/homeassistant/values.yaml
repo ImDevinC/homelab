@@ -1,0 +1,49 @@
+home-assistant:
+  image:
+    tag: 2023.1.5
+  persistence:
+    config:
+      enabled: true
+      type: hostPath
+      mountPath: /config
+      hostPath: /mnt/media/config/homeassistant
+  ingress:
+    main:
+      enabled: true
+      annotations:
+        external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
+        cert-manager.io/issuer: letsencrypt
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+        nginx.org/websocket-services: homeassistant-home-assistant
+      ingressClassName: nginx
+      tls:
+        - hosts:
+          - homeassistant.imdevinc.com
+          secretName: homeassistant-tls
+      hosts:
+        - host: homeassistant.imdevinc.com
+          paths:
+            - path: /
+              service:
+                name: homeassistant-home-assistant
+                port: 8123
+
+zwavejsui:
+  enabled: true
+  ports:
+    http: 8091
+    websocket: 3000
+  zwaveDevicePath: /dev/serial/by-id/usb-0658_0200-if00
+  configPath: /mnt/media/config/zwavejsui
+  puid: 1000
+  pgid: 1000
+  service:
+    type: ClusterIP
+    port:
+      http: 8091
+      websocket: 3000
+  container:
+    port:
+      http: 8091
+      websocket: 3000

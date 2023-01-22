@@ -1,5 +1,5 @@
 apiVersion: v2
-name: metallb
+name: nginx-ingress
 version: 1.0.0
 dependencies:
   - name: nginx-ingress

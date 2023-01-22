@@ -1,0 +1,70 @@
+{{ if .Values.zwavejsui.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zwavejsui
+  labels:
+    {{- include "homeassistant.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "homeassistant.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "homeassistant.selectorLabels" . | nindent 8 }}
+        app: zwavejsui
+    spec:
+      containers:
+        - name: zwavejsui
+          image: docker.io/zwavejs/zwave-js-ui:latest
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            failureThreshold: 3
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: {{ .Values.zwavejsui.ports.http }}
+            timeoutSeconds: 1
+          ports:
+            - name: http
+              containerPort: {{ .Values.zwavejsui.ports.http }}
+              protocol: TCP
+            - name: websocket
+              containerPort: {{ .Values.zwavejsui.ports.websocket }}
+          volumeMounts:
+            - mountPath: /usr/src/app/store
+              name: config
+            - mountPath: /dev/zwave
+              name: usb
+          securityContext:
+            privileged: true
+      volumes:
+        - hostPath:
+            path: {{ .Values.zwavejsui.configPath }}
+          name: config
+        - hostPath:
+            path: {{ .Values.zwavejsui.zwaveDevicePath }}
+          name: usb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zwavejsui
+  labels:
+    {{- include "homeassistant.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.zwavejsui.service.type }}
+  ports:
+    - port: {{ .Values.zwavejsui.service.port.http }}
+      targetPort: {{ .Values.zwavejsui.container.port.http }}
+      protocol: TCP
+      name: http
+    - port: {{ .Values.zwavejsui.service.port.websocket }}
+      targetPort: {{ .Values.zwavejsui.container.port.websocket }}
+      protocol: TCP
+      name: websocket
+  selector:
+    app: zwavejsui
+{{ end }}
