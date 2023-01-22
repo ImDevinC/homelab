@@ -1,0 +1,14 @@
+mongodb:
+  auth:
+    existingSecret: database-creds
+    usernames:
+      - stream-notifier
+    databases:
+      - stream-notifier
+  persistence:
+    existingClaim: mongodb
+    subPath: config/mongodb
+  volumePermissions:
+    enabled: true
+  image:
+    tag: 4.2
