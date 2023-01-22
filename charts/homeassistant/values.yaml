@@ -17,6 +17,7 @@ home-assistant:
         nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
         nginx.org/websocket-services: homeassistant-home-assistant
         acme.cert-manager.io/http01-edit-in-place: "true"
+        cert-manager.io/issue-temporary-certificate: "true"
       ingressClassName: nginx
       tls:
         - hosts:
