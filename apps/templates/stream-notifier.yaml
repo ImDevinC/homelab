@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: infra
-    repoURL: https://github.com/imdevinc/stream-notifier.git
+    repoURL: git@github.com:ImDevinC/stream-notifier.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
@@ -37,3 +37,4 @@ spec:
     metadata:
       name: argo-ssh-key
       namespace: argo-cd
+      selfHeal: true
