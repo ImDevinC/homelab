@@ -12,7 +12,7 @@ home-assistant:
       enabled: true
       annotations:
         external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
-        cert-manager.io/issuer: letsencrypt
+        cert-manager.io/cluster-issuer: letsencrypt
         nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
         nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
         nginx.org/websocket-services: homeassistant-home-assistant
