@@ -29,6 +29,10 @@ home-assistant:
               service:
                 name: homeassistant-home-assistant
                 port: 8123
+            - path: /.well-known/acme-challenge/RzSXjBlif7eHCIW1ZJs2qJ6x9t06EXncJdDCcTp3WkU
+              service:
+                name: cm-acme-http-solver-f6p8r
+                port: 8089
 
 zwavejsui:
   enabled: true
