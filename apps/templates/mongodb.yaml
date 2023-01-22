@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: database
+    namespace: mongodb
   project: default
   source:
     path: charts/mongodb
