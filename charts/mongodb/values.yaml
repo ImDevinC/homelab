@@ -1,5 +1,6 @@
 mongodb:
   auth:
+    enabled: true
     existingSecret: database-creds
     usernames:
       - stream-notifier
