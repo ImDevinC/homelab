@@ -1,22 +1,22 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: stream-notifier
-#   namespace: argo-cd
-#   finalizers:
-#   - resources-finalizer.argocd.argoproj.io
-# spec:
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: stream-notifier
-#   project: default
-#   source:
-#     path: infra
-#     repoURL: git@github.com:ImDevinC/stream-notifier.git
-#     targetRevision: HEAD
-#   syncPolicy:
-#     syncOptions:
-#       - CreateNamespace=true
-#     automated:
-#       prune: true
-#       selfHeal: true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stream-notifier
+  namespace: argo-cd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: stream-notifier
+  project: default
+  source:
+    path: infra
+    repoURL: git@github.com:ImDevinC/stream-notifier.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
