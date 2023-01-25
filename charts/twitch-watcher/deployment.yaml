@@ -25,5 +25,5 @@ spec:
             - sea of thieves
             - -title
             - capstan
-            - timeout
+            - -timeout
             - 10m
