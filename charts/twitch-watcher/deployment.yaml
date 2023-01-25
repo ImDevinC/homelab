@@ -12,6 +12,8 @@ spec:
       labels:
         app: twitch-watcher
     spec:
+      imagePullSecrets:
+        - name: dockerauth
       containers:
         - name: twitch-watcher
           image: ghcr.io/imdevinc/twitch-watcher:latest
