@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twitch-watcher
+spec:
+  replicas: 1
+  selector:
+    matchlabels:
+      app: twitch-watcher
+  template:
+    metadata:
+      labels:
+        app: twitch-watcher
+    spec:
+      containers:
+        - name: twitch-watcher
+          image: ghcr.io/imdevinc/twitch-watcher:latest
+          envFrom:
+            - secretRef:
+                name: twitch-watcher-credentials
+          args:
+            - -query
+            - sea of thieves
+            - -title
+            - capstan
+            - timeout
+            - 10m
