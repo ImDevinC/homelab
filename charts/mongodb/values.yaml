@@ -13,3 +13,7 @@ mongodb:
     enabled: true
   image:
     tag: 4.2
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
