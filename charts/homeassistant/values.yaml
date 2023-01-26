@@ -1,6 +1,8 @@
 home-assistant:
   image:
     tag: 2023.1.5
+  metrics:
+    enabled: true
   persistence:
     config:
       enabled: true
