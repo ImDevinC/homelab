@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: nvidia-device-plugin
+    namespace: kube-system
   project: default
   source:
     chart: nvidia-device-plugin
