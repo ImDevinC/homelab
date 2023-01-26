@@ -20,7 +20,8 @@ spec:
         grafana:
           ingress:
             enabled: true
-            hosts: grafana.collins.home
+            hosts:
+              - grafana.collins.home
             ingressClassName: nginx
   syncPolicy:
     syncOptions:
