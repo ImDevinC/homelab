@@ -24,6 +24,9 @@ k8s-mediaserver:
     hostNetwork: true
     ingress:
       enabled: false
+    resources:
+      limits:
+         nvidia.com/gpu: 1
   prowlarr:
     ingress:
       enabled: false
