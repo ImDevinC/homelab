@@ -16,3 +16,7 @@ argo-cd:
         - type: helm
           name: argo-cd
           url: https://argoproj.github.io/argo-helm
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
