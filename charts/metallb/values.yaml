@@ -2,3 +2,8 @@ addressPool:
   create: true
   addresses:
     - 192.168.1.64/26
+
+metallb:
+  prometheus:
+    serviceMonitor:
+      enabled: true
