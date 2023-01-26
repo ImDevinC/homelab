@@ -1,0 +1,8 @@
+kube-prometheus-stack:
+  grafana:
+    ingress:
+      enabled: true
+      hosts:
+        - grafana.collins.home
+      ingressClassName: nginx
+    admin.existingSecret: grafana-creds

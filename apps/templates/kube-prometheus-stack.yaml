@@ -11,18 +11,11 @@ spec:
     namespace: monitoring
   project: default
   source:
-    chart: kube-prometheus-stack
-    repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 44.3.0
+    path: charts/kube-prometheus-stack
+    repoURL: https://github.com/imdevinc/homelab.git
+    targetRevision: HEAD
     helm:
       skipCrds: true
-      values: |
-        grafana:
-          ingress:
-            enabled: true
-            hosts:
-              - grafana.collins.home
-            ingressClassName: nginx
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
