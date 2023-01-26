@@ -5,4 +5,5 @@ kube-prometheus-stack:
       hosts:
         - grafana.collins.home
       ingressClassName: nginx
-    admin.existingSecret: grafana-creds
+    admin:
+      existingSecret: grafana-creds
