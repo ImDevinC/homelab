@@ -1,3 +1,6 @@
 cert-manager:
   installCRDs: true
-  prometheus.enabled: false
+  prometheus:
+    enabled: true
+    servicemonitor:
+      enabled: true
