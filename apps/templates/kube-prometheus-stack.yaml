@@ -16,6 +16,12 @@ spec:
     targetRevision: 44.3.0
     helm:
       skipCrds: true
+      values: |
+        grafana:
+          ingress:
+            enabled: true
+            hosts: grafana.collins.home
+            ingressClassName: nginx
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
