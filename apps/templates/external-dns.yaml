@@ -9,7 +9,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: external-dns
-  project: plugins
+  project: default
   source:
     path: charts/external-dns
     repoURL: https://github.com/imdevinc/homelab.git
