@@ -6,9 +6,6 @@ k8s-mediaserver:
       size: 10Gi
       subPaths:
         tv: media/tv
-        anime:
-          enabled: true
-          path: media/anime
         movies: media/movies
         downloads: downloads
         transmission: transmission
@@ -27,6 +24,10 @@ k8s-mediaserver:
     resources:
       limits:
          nvidia.com/gpu: 1
+    extraVolumeMounts:
+      - name: mediaserver-volume
+        mountPath: /anime
+        subPath: media/anime
   prowlarr:
     ingress:
       enabled: false
@@ -37,6 +38,10 @@ k8s-mediaserver:
     ingress:
       enabled: false
   sonarr:
+    extraVolumeMounts:
+      - name: mediaserver-volume
+        mountPath: /anime
+        subPath: media/anime
     ingress:
       enabled: false
   transmission:

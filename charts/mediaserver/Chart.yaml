@@ -3,5 +3,5 @@ name: mediaserver
 version: 1.0.0
 dependencies:
   - name: k8s-mediaserver
-    version: 0.7.16
-    repository: https://imdevinc.github.io/k8s-mediaserver-operator
+    version: 0.7.0
+    repository: https://imdevinc.github.io/k8s-mediaserver-helm
