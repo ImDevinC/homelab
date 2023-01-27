@@ -27,7 +27,7 @@ argo-cd:
     
     subscriptions:
       - recipients:
-          - pushover:""
+          - pushover:ue34qmoBG3HDvYJ55LjdUSyZFBeufG
         triggers:
           - on-sync-status-unknown
           - on-sync-failed
