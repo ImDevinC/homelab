@@ -27,8 +27,7 @@ argo-cd:
         enabled: true
     notifiers:
       service.pushover: |
-        token: $pushover-token
-    
+        token: pushover-token
     subscriptions:
       - recipients:
           - pushover:ue34qmoBG3HDvYJ55LjdUSyZFBeufG
