@@ -30,3 +30,16 @@ spec:
       namespace: argo-cd
       labels:
         argocd.argoproj.io/secret-type: repository
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: argocd_notifications-secret
+  namespace: argo-cd
+spec:
+  encryptedData:
+    pushover-token: AgDOey2eQXJEeU6XhQ02zA9tAUqVnRV2gZr1xtBELSasMH295MsE+QPIeMetWeqFud8KIdi0M3lXx30jUwbJQWOKO+3gUPYt4s0cszK/M6VlaqH+APzjun/o5j5nedc/BAA9x663EOhamnooYPom7XIPDHDQ+rZSiI4FUdjEeiFsNf39vIY+KdNjeWtO5S5Pdcws4UcfQWV7Sft7WPaN4qwnOCzm8fuE/LRZZFGY+etovmtGrO0G4sF0yYng6HBbwWAC9DuRus9W4A62A1DGcn6WQXzqiNPZrngOXgJWMU7u3AsQAu69P8Z5auUu6109Wm/eMB/LwuPT/1RVg/eL5qSKnLnCNyamXNKYQM1WL1tFZA2icyAmWF/+LxcMHsLQstuV5aAjHsUEXqYp8zaxJnnpnnU3P3MRfDi1ROVEhKWjoc8wSbtudIfRZ2X+l+QpyFYIKSX/OV3NwOoLK7qseFqNHE78H5oAv2hsuX2bZQTQefgc3/L5CqJ4CDUQLkYRb1tKVEW1WjeRHXAWgjxi8muw1GXfUUUoe+kKjsDJfa3W0A9w6WHxeWaBOJePls5PR4r3xIikakrDjY/wk6qtgHKOOCVJ2wJfLevP8ichcNoRxyH3o4H+VLBz7oH48WpXx9KWygb73f8XHAnTnMPjG8aGXkh1Y/uoMKwadKyuPBu+liTY610rLUeaTvpnPHpZUJYV/wT+W6fUBiRfJRrl6t6POFDawQ9k97cd+Yrp6Dw=
+  template:
+    metadata:
+      name: argocd_notifications-secret
+      namespace: argo-cd

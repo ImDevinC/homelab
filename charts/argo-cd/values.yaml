@@ -20,3 +20,15 @@ argo-cd:
       enabled: true
       serviceMonitor:
         enabled: true
+  notifications:
+    notifiers:
+      service.pushover: |
+        token: $pushover-token
+    
+    subscriptions:
+      - recipients:
+          - pushover:""
+        triggers:
+          - on-sync-status-unknown
+          - on-sync-failed
+          - on-sync-succeeded
