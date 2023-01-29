@@ -54,9 +54,29 @@ k8s-mediaserver:
     ingress:
       enabled: false
 
-mount:
-  hostPath: /mnt/media
-  storageSize: 10Gi
-
-ingress_host: media.collins.home
-plex_ingress_host: plex.collins.home
+ingress:
+  enabled: true
+  className: nginx
+  host: media.collins.home
+  paths:
+    - path: /prowlarr
+      serviceName: prowlarr
+      servicePort: 9696
+    - path: /radarr
+      serviceName: radarr
+      servicePort: 7878
+    - path: /sabnzbd
+      serviceName: sabnzbd
+      servicePort: 8080
+    - path: /sonarr
+      serviceName: sonarr
+      servicePort: 8989
+    - path: /transmission
+      serviceName: transmission
+      servicePort: 9091
+    - path: /tautulli
+      serviceName: tautulli
+      servicePort: 8181
+    - path: /requestrr
+      serviceName: requestrr
+      servicePort: 4545

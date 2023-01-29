@@ -1,66 +1,21 @@
+{{ if .Values.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: media
+  name: {{ .Values.ingress.name | default "media" }}
 spec:
-  ingressClassName: nginx
+  ingressClassName:  {{ .Values.ingress.className }}
   rules:
-    - host: {{ .Values.ingress_host }}
-      http:
-        paths:
-          - path: /prowlarr
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+        {{- range $k, $v := .Values.ingress.paths }}
+          - path: {{ $v.path }}
             pathType: Prefix
             backend:
               service:
-                name: prowlarr
+                name: {{ $v.serviceName }}
                 port:
-                  number: 9696
-          - path: /radarr
-            pathType: Prefix
-            backend:
-              service:
-                name: radarr
-                port:
-                  number: 7878
-          - path: /sabnzbd
-            pathType: Prefix
-            backend:
-              service:
-                name: sabnzbd
-                port:
-                  number: 8080
-          - path: /sonarr
-            pathType: Prefix
-            backend:
-              service:
-                name: sonarr
-                port:
-                  number: 8989
-          - path: /transmission
-            pathType: Prefix
-            backend:
-              service:
-                name: transmission
-                port:
-                  number: 9091
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: plex
-                port:
-                  number: 32400
-          - path: /tautulli
-            pathType: Prefix
-            backend:
-              service:
-                name: tautulli
-                port:
-                  number: 8181
-          - path: /requestrr
-            pathType: Prefix
-            backend:
-              service:
-                name: requestrr
-                port:
-                  number: 4545
+                  number: {{ $v.servicePort }}
+        {{- end }}
+{{ end }}
