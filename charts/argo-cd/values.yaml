@@ -32,7 +32,7 @@ argo-cd:
       - recipients:
           - pushover:ue34qmoBG3HDvYJ55LjdUSyZFBeufG
         triggers:
-          - on-deployed
+          # - on-deployed
           - on-health-degraded
           - on-sync-failed
           - on-sync-status-unknown
