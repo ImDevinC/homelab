@@ -34,9 +34,18 @@ argo-cd:
       - recipients:
           - pushover:ue34qmoBG3HDvYJ55LjdUSyZFBeufG
         triggers:
-          - on-sync-status-unknown
-          - on-sync-failed
-          - on-sync-succeeded
+          - on-sync-running
+    triggers:
+      trigger.on-sync-running: |
+        - description: Application is being synced
+          send:
+          - app-sync-running
+          when: app.status.operationState.phase in ['Running']
+    templates:
+      template.app-sync-running: |
+        message: |
+          The sync operation of application {{.app.metadata.name}} has started at {{.app.status.operationState.startedAt}}.
+          Sync operation details are available at: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true .
     secret:
       create: false
   repoServer:
