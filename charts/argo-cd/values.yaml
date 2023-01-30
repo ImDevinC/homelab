@@ -35,3 +35,5 @@ argo-cd:
           - on-sync-status-unknown
           - on-sync-failed
           - on-sync-succeeded
+    secret:
+      create: false
