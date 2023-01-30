@@ -39,3 +39,10 @@ argo-cd:
           - on-sync-succeeded
     secret:
       create: false
+  repoServer:
+    env:
+      - name: ARGOCD_GPG_ENABLED
+        value: 'false'
+    containerSecurityContext:
+      seccompProfile:
+        type: Unconfined
