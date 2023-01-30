@@ -39,7 +39,7 @@ argo-cd:
           - on-sync-succeeded
     secret:
       create: false
-  # repoServer:
-  #   containerSecurityContext:
-  #     seccompProfile:
-  #       type: RuntimeDefault
+  repoServer:
+    containerSecurityContext:
+      seccompProfile:
+        type: {}
