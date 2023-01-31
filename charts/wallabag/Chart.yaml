@@ -1,0 +1,7 @@
+apiVersion: v2
+name: wallabag
+version: 1.0.0
+dependencies:
+  - name: wallabag
+    version: 0.1.0
+    repository: https://imdevinc.github.io/wallabag-helm
