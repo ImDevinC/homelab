@@ -14,6 +14,10 @@ wallabag:
         paths:
           - path: /
             pathType: Prefix
+    tls:
+      - hosts:
+        - wallabag.imdevinc.com
+        secretName: wallabag-tls
 
   storage:
     data:
