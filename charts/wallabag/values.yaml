@@ -1,5 +1,5 @@
 wallabag:
-  domainName: http://wallabag.imdevinc.com
+  domainName: https://wallabag.imdevinc.com
   userRegistration: false
 
   ingress:
