@@ -1,29 +1,30 @@
-domainName: http://wallabag.imdevinc.com
-userRegistration: false
+wallabag:
+  domainName: http://wallabag.imdevinc.com
+  userRegistration: false
 
-ingress:
-  enabled: true
-  className: "nginx"
-  annotations:
-    external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
-    acme.cert-manager.io/http01-edit-in-place: "true"
-    cert-manager.io/cluster-issuer: letsencrypt
-  hosts:
-    - host: wallabag.imdevinc.com
-      paths:
-        - path: /
-          pathType: Prefix
+  ingress:
+    enabled: true
+    className: "nginx"
+    annotations:
+      external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
+      acme.cert-manager.io/http01-edit-in-place: "true"
+      cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+      - host: wallabag.imdevinc.com
+        paths:
+          - path: /
+            pathType: Prefix
 
-storage:
-  data:
-    customVolume: true
-    subPath: wallabag/data
-    volumes:
-      hostPath:
-        path: /mnt/media
-  images:
-    customVolume: true
-    subPath: wallabag/images
-    volumes:
-      hostPath:
-        path: /mnt/media
+  storage:
+    data:
+      customVolume: true
+      subPath: wallabag/data
+      volumes:
+        hostPath:
+          path: /mnt/media
+    images:
+      customVolume: true
+      subPath: wallabag/images
+      volumes:
+        hostPath:
+          path: /mnt/media
