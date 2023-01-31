@@ -1,5 +1,7 @@
 cert-manager:
   installCRDs: true
+  global:
+    logLevel: 5
   prometheus:
     enabled: true
     servicemonitor:
