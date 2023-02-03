@@ -31,9 +31,17 @@ k8s-mediaserver:
   prowlarr:
     ingress:
       enabled: false
+    exportarr:
+      enabled: true
+      serviceMonitor: true
+      apiSecret: prowlarr-token
   radarr:
     ingress:
       enabled: false
+    exportarr:
+      enabled: true
+      serviceMonitor: true
+      apiSecret: radarr-token
   sabnzbd:
     ingress:
       enabled: false
@@ -44,6 +52,10 @@ k8s-mediaserver:
         subPath: media/anime
     ingress:
       enabled: false
+    exportarr:
+      enabled: true
+      serviceMonitor: true
+      apiSecret: sonarr-token
   transmission:
     ingress:
       enabled: false

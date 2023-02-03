@@ -1,6 +1,6 @@
 dependencies:
 - name: k8s-mediaserver
   repository: https://imdevinc.github.io/k8s-mediaserver-helm
-  version: 0.8.0
-digest: sha256:b83fad59b1c11fbf8208554c0cff5b34d5277e32355dc278234b06931c181d07
-generated: "2023-01-27T00:19:06.124068644-08:00"
+  version: 0.9.1
+digest: sha256:d46a1fb647e51c3cc892010115a0a5ce4d4747fdc9519351227166a8c42ae74c
+generated: "2023-02-03T01:48:39.699435688-08:00"
