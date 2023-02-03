@@ -2996,4 +2996,5 @@ kube-prometheus-stack:
                 max_over_time(radarr_system_status[5m]) < 1
               "for": "5m"
               "labels":
+                "app": "radarr"
                 "severity": "warning"

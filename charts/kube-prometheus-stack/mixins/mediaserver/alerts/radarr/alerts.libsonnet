@@ -11,6 +11,7 @@
           'for': '5m',
           labels: {
             severity: 'warning',
+            app: 'radarr'
           },
           annotations: {
             summary: 'Radarr is currently offline',
