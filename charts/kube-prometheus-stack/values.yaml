@@ -2985,3 +2985,15 @@ kube-prometheus-stack:
                 sum by (reason, namespace) (rate(sealed_secrets_controller_unseal_errors_total{}[5m])) > 0
               "labels":
                 "severity": "warning"
+        - "name": "radarr"
+          "rules":
+            - "alert": "RadarrStatusOffline"
+              "annotations":
+                "description": "Radarr system status is reporting as offline"
+                "runbook_url": "https://github.com/imdevinc/homelab"
+                "summary": "Radarr is currently offline"
+              "expr": |
+                max_over_time(radarr_system_status[5m]) < 1
+              "for": "5m"
+              "labels":
+                "severity": "warning"
