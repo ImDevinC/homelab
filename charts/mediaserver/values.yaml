@@ -31,10 +31,6 @@ k8s-mediaserver:
   prowlarr:
     ingress:
       enabled: false
-    exportarr:
-      enabled: false
-      serviceMonitor: false
-      apiSecret: prowlarr-token
   radarr:
     ingress:
       enabled: false
@@ -42,7 +38,7 @@ k8s-mediaserver:
       enabled: true
       serviceMonitor: true
       apiSecret: radarr-token
-      url: http://localhost:7878/radarr
+      urlBase: /radarr
   sabnzbd:
     ingress:
       enabled: false
@@ -57,7 +53,7 @@ k8s-mediaserver:
       enabled: true
       serviceMonitor: true
       apiSecret: sonarr-token
-      url: http://localhost:8989/sonarr
+      urlBase: /sonarr
   transmission:
     ingress:
       enabled: false
