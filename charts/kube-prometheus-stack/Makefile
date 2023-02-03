@@ -14,3 +14,5 @@ combine:
 		export baseFile=`basename $$file`; \
 		yq -i '.kube-prometheus-stack.grafana.dashboards.default.[strenv(baseFile)].json = strenv(val)' values.yaml ;\
 	done
+
+all: alerts dashboards combine
