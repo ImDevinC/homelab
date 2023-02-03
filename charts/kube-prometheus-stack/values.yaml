@@ -1,4 +1,16 @@
 kube-prometheus-stack:
+  alertManager:
+    secrets:
+      - alertmanager-receiver-pushover-token
+    config:
+      route:
+        group_by: ['app']
+        group_wait: 30s
+        group_interval: 5m
+        repeat_interval: 12h
+        receiver: pushover
+      templates:
+        - '/etc/alertmanager/secrets/pushover.yaml'
   grafana:
     ingress:
       enabled: true
