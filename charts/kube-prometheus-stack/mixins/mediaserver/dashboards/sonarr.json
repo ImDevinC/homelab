@@ -720,7 +720,10 @@
     ],
     "schemaVersion": 37,
     "style": "dark",
-    "tags": [],
+    "tags": [
+        "mediaserver",
+        "sonarr"
+      ],
     "templating": {
       "list": [
         {
