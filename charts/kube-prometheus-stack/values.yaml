@@ -7,6 +7,18 @@ kube-prometheus-stack:
       ingressClassName: nginx
     admin:
       existingSecret: grafana-creds
+    dashboardProviders:
+      dashboardProviders.yaml:
+        apiVersion: 1
+        providers:
+        - name: default
+          type: file
+          disableDeletion: true
+          updateIntervalSeconds: 300
+          allowUiUpdates: false
+          options:
+            path: /var/lib/grafana/dashboards
+            foldersFromFilesStructure: true
     dashboards:
       default:
         cert-manager:
