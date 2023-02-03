@@ -18,7 +18,7 @@ kube-prometheus-stack:
           allowUiUpdates: false
           options:
             path: /var/lib/grafana/dashboards
-            foldersFromFilesStructure: true
+            foldersFromFilesStructure: false
     dashboards:
       default:
         cert-manager:
