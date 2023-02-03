@@ -1,7 +1,8 @@
 kube-prometheus-stack:
   alertManager:
-    secrets:
-      - alertmanager-receiver-pushover-token
+    alertManagerSpec:
+      secrets:
+        - alertmanager-receiver-pushover-token
     config:
       route:
         group_by: ['app']
