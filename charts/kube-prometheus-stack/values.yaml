@@ -1,6 +1,6 @@
 kube-prometheus-stack:
-  alertManager:
-    alertManagerSpec:
+  alertmanager:
+    alertmanagerSpec:
       secrets:
         - alertmanager-receiver-pushover-token
     config:
