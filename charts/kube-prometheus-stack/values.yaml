@@ -2998,3 +2998,27 @@ kube-prometheus-stack:
               "labels":
                 "app": "radarr"
                 "severity": "warning"
+        - "name": "sonarr"
+          "rules":
+            - "alert": "SonarrStatusOffline"
+              "annotations":
+                "description": "Sonarr system status is reporting as offline"
+                "runbook_url": "https://github.com/imdevinc/homelab"
+                "summary": "Sonarr is currently offline"
+              "expr": |
+                max_over_time(sonarr_system_status[5m]) < 1
+              "for": "5m"
+              "labels":
+                "app": "sonarr"
+                "severity": "warning"
+            - "alert": "SonarrDownloadWarning"
+              "annotations":
+                "description": "There is a warning with one of the downloads in Sonarr"
+                "runbook_url": "https://github.com/imdevinc/homelab"
+                "summary": "Sonarr is having an issue downloading"
+              "expr": |
+                max_over_time(sonarr_queue_total{download_status="warning"}[5m])
+              "for": "5m"
+              "labels":
+                "app": "sonarr"
+                "severity": "warning"
