@@ -2156,6 +2156,763 @@ kube-prometheus-stack:
                "version": 5,
                "weekStart": ""
             }
+        sonarr.json:
+          json: |-
+            {
+               "annotations": {
+                  "list": [
+                     {
+                        "builtIn": 1,
+                        "datasource": {
+                           "type": "grafana"
+                        },
+                        "enable": true,
+                        "hide": true,
+                        "iconColor": "rgba(0, 211, 255, 1)",
+                        "name": "Annotations & Alerts",
+                        "target": {
+                           "limit": 100,
+                           "matchAny": false,
+                           "tags": [ ],
+                           "type": "dashboard"
+                        },
+                        "type": "dashboard"
+                     }
+                  ]
+               },
+               "description": "Sonarr Dashboard",
+               "editable": true,
+               "fiscalYearStartMonth": 0,
+               "graphTooltip": 0,
+               "id": 30,
+               "links": [ ],
+               "liveNow": false,
+               "panels": [
+                  {
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                     },
+                     "description": "Status of Radarr",
+                     "fieldConfig": {
+                        "defaults": {
+                           "color": {
+                              "fixedColor": "#ffc230",
+                              "mode": "thresholds"
+                           },
+                           "mappings": [
+                              {
+                                 "options": {
+                                    "0": {
+                                       "color": "red",
+                                       "index": 1,
+                                       "text": "Offline"
+                                    },
+                                    "1": {
+                                       "color": "#2193b5",
+                                       "index": 0,
+                                       "text": "Online"
+                                    }
+                                 },
+                                 "type": "value"
+                              },
+                              {
+                                 "options": {
+                                    "match": "null",
+                                    "result": {
+                                       "color": "red",
+                                       "index": 2,
+                                       "text": "Offline"
+                                    }
+                                 },
+                                 "type": "special"
+                              }
+                           ],
+                           "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                 {
+                                    "color": "green",
+                                    "value": null
+                                 }
+                              ]
+                           }
+                        },
+                        "overrides": [ ]
+                     },
+                     "gridPos": {
+                        "h": 5,
+                        "w": 7,
+                        "x": 0,
+                        "y": 0
+                     },
+                     "id": 2,
+                     "options": {
+                        "colorMode": "value",
+                        "graphMode": "area",
+                        "justifyMode": "auto",
+                        "orientation": "auto",
+                        "reduceOptions": {
+                           "calcs": [
+                              "lastNotNull"
+                           ],
+                           "fields": "",
+                           "values": false
+                        },
+                        "textMode": "auto"
+                     },
+                     "pluginVersion": "9.3.1",
+                     "targets": [
+                        {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                           },
+                           "editorMode": "builder",
+                           "exemplar": false,
+                           "expr": "sonarr_system_status",
+                           "instant": true,
+                           "legendFormat": "__auto",
+                           "range": false,
+                           "refId": "A"
+                        }
+                     ],
+                     "title": "Status",
+                     "type": "stat"
+                  },
+                  {
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                     },
+                     "description": "Number of total episodes available on Sonarr",
+                     "fieldConfig": {
+                        "defaults": {
+                           "color": {
+                              "fixedColor": "#2193b5",
+                              "mode": "fixed"
+                           },
+                           "mappings": [ ],
+                           "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                 {
+                                    "color": "green",
+                                    "value": null
+                                 }
+                              ]
+                           }
+                        },
+                        "overrides": [ ]
+                     },
+                     "gridPos": {
+                        "h": 5,
+                        "w": 7,
+                        "x": 7,
+                        "y": 0
+                     },
+                     "id": 4,
+                     "options": {
+                        "colorMode": "value",
+                        "graphMode": "area",
+                        "justifyMode": "auto",
+                        "orientation": "auto",
+                        "reduceOptions": {
+                           "calcs": [
+                              "lastNotNull"
+                           ],
+                           "fields": "",
+                           "values": false
+                        },
+                        "textMode": "auto"
+                     },
+                     "pluginVersion": "9.3.1",
+                     "targets": [
+                        {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                           },
+                           "editorMode": "builder",
+                           "exemplar": false,
+                           "expr": "sonarr_episode_downloaded_total",
+                           "instant": true,
+                           "legendFormat": "__auto",
+                           "range": false,
+                           "refId": "A"
+                        }
+                     ],
+                     "title": "Downloaded Episodes",
+                     "type": "stat"
+                  },
+                  {
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                     },
+                     "description": "Number of episodes released, but not yet downloaded",
+                     "fieldConfig": {
+                        "defaults": {
+                           "color": {
+                              "fixedColor": "#ffc230",
+                              "mode": "thresholds"
+                           },
+                           "mappings": [ ],
+                           "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                 {
+                                    "color": "#2193b5",
+                                    "value": null
+                                 },
+                                 {
+                                    "color": "red",
+                                    "value": 1
+                                 }
+                              ]
+                           }
+                        },
+                        "overrides": [ ]
+                     },
+                     "gridPos": {
+                        "h": 5,
+                        "w": 3,
+                        "x": 14,
+                        "y": 0
+                     },
+                     "id": 6,
+                     "options": {
+                        "colorMode": "value",
+                        "graphMode": "area",
+                        "justifyMode": "auto",
+                        "orientation": "auto",
+                        "reduceOptions": {
+                           "calcs": [
+                              "lastNotNull"
+                           ],
+                           "fields": "",
+                           "values": false
+                        },
+                        "textMode": "auto"
+                     },
+                     "pluginVersion": "9.3.1",
+                     "targets": [
+                        {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                           },
+                           "editorMode": "builder",
+                           "exemplar": false,
+                           "expr": "sonarr_episode_missing_total",
+                           "instant": true,
+                           "legendFormat": "__auto",
+                           "range": false,
+                           "refId": "A"
+                        }
+                     ],
+                     "title": "Missing Episodes",
+                     "type": "stat"
+                  },
+                  {
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                     },
+                     "description": "Number of episodes in the queue",
+                     "fieldConfig": {
+                        "defaults": {
+                           "color": {
+                              "fixedColor": "#ffc230",
+                              "mode": "thresholds"
+                           },
+                           "mappings": [ ],
+                           "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                 {
+                                    "color": "#2193b5",
+                                    "value": null
+                                 }
+                              ]
+                           }
+                        },
+                        "overrides": [ ]
+                     },
+                     "gridPos": {
+                        "h": 5,
+                        "w": 3,
+                        "x": 17,
+                        "y": 0
+                     },
+                     "id": 11,
+                     "options": {
+                        "colorMode": "value",
+                        "graphMode": "area",
+                        "justifyMode": "auto",
+                        "orientation": "auto",
+                        "reduceOptions": {
+                           "calcs": [
+                              "lastNotNull"
+                           ],
+                           "fields": "",
+                           "values": false
+                        },
+                        "textMode": "auto"
+                     },
+                     "pluginVersion": "9.3.1",
+                     "targets": [
+                        {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                           },
+                           "editorMode": "builder",
+                           "exemplar": false,
+                           "expr": "sonarr_queue_total",
+                           "instant": true,
+                           "legendFormat": "__auto",
+                           "range": false,
+                           "refId": "A"
+                        }
+                     ],
+                     "title": "Queue",
+                     "type": "stat"
+                  },
+                  {
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                     },
+                     "description": "Number of episodes that have an issue",
+                     "fieldConfig": {
+                        "defaults": {
+                           "color": {
+                              "fixedColor": "#ffc230",
+                              "mode": "thresholds"
+                           },
+                           "mappings": [ ],
+                           "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                 {
+                                    "color": "#2193b5",
+                                    "value": null
+                                 },
+                                 {
+                                    "color": "red",
+                                    "value": 1
+                                 }
+                              ]
+                           }
+                        },
+                        "overrides": [ ]
+                     },
+                     "gridPos": {
+                        "h": 5,
+                        "w": 3,
+                        "x": 20,
+                        "y": 0
+                     },
+                     "id": 15,
+                     "options": {
+                        "colorMode": "value",
+                        "graphMode": "area",
+                        "justifyMode": "auto",
+                        "orientation": "auto",
+                        "reduceOptions": {
+                           "calcs": [
+                              "lastNotNull"
+                           ],
+                           "fields": "",
+                           "values": false
+                        },
+                        "textMode": "auto"
+                     },
+                     "pluginVersion": "9.3.1",
+                     "targets": [
+                        {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                           },
+                           "editorMode": "builder",
+                           "exemplar": false,
+                           "expr": "sonarr_queue_total{download_status=\"warning\"}",
+                           "instant": true,
+                           "legendFormat": "__auto",
+                           "range": false,
+                           "refId": "A"
+                        }
+                     ],
+                     "title": "Issues",
+                     "type": "stat"
+                  },
+                  {
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                     },
+                     "description": "Number of series' being watched",
+                     "fieldConfig": {
+                        "defaults": {
+                           "color": {
+                              "fixedColor": "#ffc230",
+                              "mode": "thresholds"
+                           },
+                           "mappings": [ ],
+                           "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                 {
+                                    "color": "#2193b5",
+                                    "value": null
+                                 }
+                              ]
+                           }
+                        },
+                        "overrides": [ ]
+                     },
+                     "gridPos": {
+                        "h": 5,
+                        "w": 3,
+                        "x": 0,
+                        "y": 5
+                     },
+                     "id": 16,
+                     "options": {
+                        "colorMode": "value",
+                        "graphMode": "area",
+                        "justifyMode": "auto",
+                        "orientation": "auto",
+                        "reduceOptions": {
+                           "calcs": [
+                              "lastNotNull"
+                           ],
+                           "fields": "",
+                           "values": false
+                        },
+                        "textMode": "auto"
+                     },
+                     "pluginVersion": "9.3.1",
+                     "targets": [
+                        {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                           },
+                           "editorMode": "builder",
+                           "exemplar": false,
+                           "expr": "sonarr_series_monitored_total",
+                           "instant": true,
+                           "legendFormat": "__auto",
+                           "range": false,
+                           "refId": "A"
+                        }
+                     ],
+                     "title": "Watched Series",
+                     "type": "stat"
+                  },
+                  {
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                     },
+                     "description": "Number of episodes downloaded in the past week",
+                     "fieldConfig": {
+                        "defaults": {
+                           "color": {
+                              "fixedColor": "#2193b5",
+                              "mode": "fixed"
+                           },
+                           "mappings": [ ],
+                           "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                 {
+                                    "color": "green",
+                                    "value": null
+                                 }
+                              ]
+                           },
+                           "unit": "none"
+                        },
+                        "overrides": [ ]
+                     },
+                     "gridPos": {
+                        "h": 5,
+                        "w": 3,
+                        "x": 3,
+                        "y": 5
+                     },
+                     "id": 13,
+                     "options": {
+                        "colorMode": "value",
+                        "graphMode": "area",
+                        "justifyMode": "auto",
+                        "orientation": "auto",
+                        "reduceOptions": {
+                           "calcs": [
+                              "lastNotNull"
+                           ],
+                           "fields": "",
+                           "values": false
+                        },
+                        "textMode": "auto"
+                     },
+                     "pluginVersion": "9.3.1",
+                     "targets": [
+                        {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                           },
+                           "editorMode": "code",
+                           "exemplar": false,
+                           "expr": "sum(increase(sonarr_episode_downloaded_total[7d]))",
+                           "instant": true,
+                           "legendFormat": "__auto",
+                           "range": false,
+                           "refId": "A"
+                        }
+                     ],
+                     "title": "D/L Past Week",
+                     "type": "stat"
+                  },
+                  {
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                     },
+                     "description": "Number of episodes downloaded in the past month",
+                     "fieldConfig": {
+                        "defaults": {
+                           "color": {
+                              "fixedColor": "#2193b5",
+                              "mode": "fixed"
+                           },
+                           "mappings": [ ],
+                           "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                 {
+                                    "color": "green",
+                                    "value": null
+                                 }
+                              ]
+                           },
+                           "unit": "none"
+                        },
+                        "overrides": [ ]
+                     },
+                     "gridPos": {
+                        "h": 5,
+                        "w": 3,
+                        "x": 6,
+                        "y": 5
+                     },
+                     "id": 14,
+                     "options": {
+                        "colorMode": "value",
+                        "graphMode": "area",
+                        "justifyMode": "auto",
+                        "orientation": "auto",
+                        "reduceOptions": {
+                           "calcs": [
+                              "lastNotNull"
+                           ],
+                           "fields": "",
+                           "values": false
+                        },
+                        "textMode": "auto"
+                     },
+                     "pluginVersion": "9.3.1",
+                     "targets": [
+                        {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                           },
+                           "editorMode": "code",
+                           "exemplar": false,
+                           "expr": "sum(increase(sonarr_episode_downloaded_total[30d]))",
+                           "instant": true,
+                           "legendFormat": "__auto",
+                           "range": false,
+                           "refId": "A"
+                        }
+                     ],
+                     "title": "D/L Past Month",
+                     "type": "stat"
+                  },
+                  {
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                     },
+                     "description": "Free space remaining in the download directory",
+                     "fieldConfig": {
+                        "defaults": {
+                           "color": {
+                              "fixedColor": "#2193b5",
+                              "mode": "fixed"
+                           },
+                           "mappings": [ ],
+                           "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                 {
+                                    "color": "green",
+                                    "value": null
+                                 }
+                              ]
+                           },
+                           "unit": "decbytes"
+                        },
+                        "overrides": [ ]
+                     },
+                     "gridPos": {
+                        "h": 5,
+                        "w": 7,
+                        "x": 9,
+                        "y": 5
+                     },
+                     "id": 10,
+                     "options": {
+                        "colorMode": "value",
+                        "graphMode": "area",
+                        "justifyMode": "center",
+                        "orientation": "auto",
+                        "reduceOptions": {
+                           "calcs": [
+                              "lastNotNull"
+                           ],
+                           "fields": "",
+                           "values": false
+                        },
+                        "textMode": "auto"
+                     },
+                     "pluginVersion": "9.3.1",
+                     "targets": [
+                        {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                           },
+                           "editorMode": "builder",
+                           "exemplar": false,
+                           "expr": "sum by(path) (sonarr_rootfolder_freespace_bytes)",
+                           "instant": true,
+                           "legendFormat": "__auto",
+                           "range": false,
+                           "refId": "A"
+                        }
+                     ],
+                     "title": "Free space",
+                     "type": "stat"
+                  },
+                  {
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                     },
+                     "description": "Total filesize of all series",
+                     "fieldConfig": {
+                        "defaults": {
+                           "color": {
+                              "fixedColor": "#2193b5",
+                              "mode": "fixed"
+                           },
+                           "mappings": [ ],
+                           "thresholds": {
+                              "mode": "absolute",
+                              "steps": [
+                                 {
+                                    "color": "green",
+                                    "value": null
+                                 }
+                              ]
+                           },
+                           "unit": "decbytes"
+                        },
+                        "overrides": [ ]
+                     },
+                     "gridPos": {
+                        "h": 5,
+                        "w": 7,
+                        "x": 16,
+                        "y": 5
+                     },
+                     "id": 8,
+                     "options": {
+                        "colorMode": "value",
+                        "graphMode": "area",
+                        "justifyMode": "auto",
+                        "orientation": "auto",
+                        "reduceOptions": {
+                           "calcs": [
+                              "lastNotNull"
+                           ],
+                           "fields": "",
+                           "values": false
+                        },
+                        "textMode": "auto"
+                     },
+                     "pluginVersion": "9.3.1",
+                     "targets": [
+                        {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "${datasource}"
+                           },
+                           "editorMode": "builder",
+                           "exemplar": false,
+                           "expr": "sonarr_series_filesize_bytes",
+                           "instant": true,
+                           "legendFormat": "__auto",
+                           "range": false,
+                           "refId": "A"
+                        }
+                     ],
+                     "title": "Size",
+                     "type": "stat"
+                  }
+               ],
+               "schemaVersion": 37,
+               "style": "dark",
+               "tags": [ ],
+               "templating": {
+                  "list": [
+                     {
+                        "current": {
+                           "selected": false,
+                           "text": "Prometheus",
+                           "value": "Prometheus"
+                        },
+                        "hide": 0,
+                        "includeAll": false,
+                        "multi": false,
+                        "name": "datasource",
+                        "options": [ ],
+                        "query": "prometheus",
+                        "refresh": 1,
+                        "regex": "",
+                        "skipUrlSync": false,
+                        "type": "datasource"
+                     }
+                  ]
+               },
+               "time": {
+                  "from": "now-6h",
+                  "to": "now"
+               },
+               "timepicker": { },
+               "timezone": "",
+               "title": "Sonarr",
+               "uid": "ddAGlhA4k",
+               "version": 2,
+               "weekStart": ""
+            }
   prometheus:
     prometheusSpec:
       serviceMonitorSelectorNilUsesHelmValues: false
