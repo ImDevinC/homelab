@@ -1,3 +1,2 @@
-(import 'cert-manager/alerts/alerts.libsonnet') +
-(import 'cert-manager/dashboards/dashboards.libsonnet') +
-(import 'config.libsonnet')
+(import 'cert-manager/mixin.libsonnet') +
+(import 'sealed-secrets/mixin.libsonnet')

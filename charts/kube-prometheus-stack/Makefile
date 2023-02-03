@@ -1,10 +1,10 @@
-alerts: mixins/mixin.libsonnet mixins/alerts/*.libsonnet
+alerts: mixins/mixin.libsonnet
 	@mkdir -p manifests
 	jsonnet -S mixins/alerts.jsonnet > manifests/$@.yaml
 
-dashboards: mixins/mixin.libsonnet mixins/dashboards/*.libsonnet
+dashboards: mixins/mixin.libsonnet
 	@mkdir -p manifests
-	jsonnet -m mixins/dashboards.jsonnet
+	jsonnet -m manifests mixins/dashboards.jsonnet
 
 combine:
 	yq -i eval-all 'select(fileIndex==0).kube-prometheus-stack.additionalPrometheusRulesMap.alerts = select(fileIndex==1) | select(fileIndex==0)' ./values.yaml manifests/alerts.yaml
