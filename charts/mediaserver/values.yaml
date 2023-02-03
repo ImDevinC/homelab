@@ -32,8 +32,8 @@ k8s-mediaserver:
     ingress:
       enabled: false
     exportarr:
-      enabled: true
-      serviceMonitor: true
+      enabled: false
+      serviceMonitor: false
       apiSecret: prowlarr-token
   radarr:
     ingress:
