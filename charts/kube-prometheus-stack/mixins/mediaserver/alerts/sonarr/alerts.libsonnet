@@ -22,7 +22,7 @@
         {
           alert: 'SonarrDownloadWarning',
           expr: |||
-            max_over_time(sonarr_queue_total{download_status="warning"}[5m])
+            max_over_time(sonarr_queue_total{download_status="warning"}[5m]) > 0
           ||| % $._config,
           'for': '5m',
           labels: {

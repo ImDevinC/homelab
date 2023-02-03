@@ -3017,7 +3017,7 @@ kube-prometheus-stack:
                 "runbook_url": "https://github.com/imdevinc/homelab"
                 "summary": "Sonarr is having an issue downloading"
               "expr": |
-                max_over_time(sonarr_queue_total{download_status="warning"}[5m])
+                max_over_time(sonarr_queue_total{download_status="warning"}[5m]) > 0
               "for": "5m"
               "labels":
                 "app": "sonarr"
