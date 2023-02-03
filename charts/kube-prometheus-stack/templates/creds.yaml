@@ -11,3 +11,16 @@ spec:
     metadata:
       name: grafana-creds
       namespace: monitoring
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: alertmanager-receiver-pushover-token
+  namespace: monitoring
+spec:
+  encryptedData:
+    pushover.yml: AgBHbANh1epAKg7pFil4OYCmJd9Qi/TsEUWCe4PKSNTayCHfTTqqKW6qJsdj+K46wvxIs72yHSnpEFq6nV17iLUeuIsAC40Eq+fQLmIrawsZpEORLAFaWug1UnlUHNrqsgpOGBqxUpODLNPaYy72++KErN18vHYphf4g0XCyiNkui/kL+8oUx7SSljGxrO7owhFJDn3WxADgHMcD9uNoa+OaNBoW6UYdXzeIFIHiQHUYnm4kaQnE/nKw4yWmQE7XDQIW4rYwrnsnzbkNCqkHI3CnCBkbZVigHEu/H12wkdAv49vsEVt7QprQFfz8hLouq7gxxT2jzYXRALpg34bpppwa7mdG/XaYTA/flRoxWCgD0yFTPqHyuPQJrgu/Yz+3iryjPAkPRj/iU5/DIfDwG8S9dKZp/wRh2kGwhTx37dIyjnQ7O3+hBmrKiL+10Ns73T1ILJOgxxDIFdmkpMZoZxv+rRG90plLEC9PQ99wLWeI6Lb788SMsxMCicD6A5fSaaazU19NmZyW79gGxZMMvSDV41nUmoBgymXqw5X5dFSxRfG36gpAPo4/lltMH/2S0VTFhAMgVMcEvJehkuJ1iQI1jZlmL4rA/lIlyQa7wxYtE+VpyGCVSdpx4Huoteq3Ooi1ioyJIYPyuz/KCMMkb+jknkhyxv7xwcVVZx4v9vAeAf3H5puwm5MBfkLkEzQzLgYe1jUniGgkIIOulC6FrvB6g7hSx1dQIlIkULy/PIEn2G5oHqNpRO7OLEfig7ofEMR6BS06IdCjE+lzgEgjIQlXTMwchCi7iNgLG21EO+YCRRiqsnPPz/yNfC4ohoqcOkYny8a/ooJXVtIcq5rm3HVnjaWCp1D9pm4BQdvtm6PW18MhwvvEDbhP+5CK9sYIvp50ry5Yvoplmqa1pjvgaBU=
+  template:
+    metadata:
+      name: alertmanager-receiver-pushover-token
+      namespace: monitoring
