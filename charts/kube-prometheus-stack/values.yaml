@@ -1,8 +1,8 @@
 kube-prometheus-stack:
-  alertmanager:
-    alertmanagerSpec:
-      useExistingSecret: true
-      configSecret: alertmanager-new-config
+#   alertmanager:
+#     alertmanagerSpec:
+#       useExistingSecret: true
+#       configSecret: alertmanager-new-config
   grafana:
     ingress:
       enabled: true
