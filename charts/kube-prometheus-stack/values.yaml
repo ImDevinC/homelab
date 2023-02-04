@@ -1,5 +1,14 @@
 kube-prometheus-stack:
   alertmanager:
+    config:
+      route:
+        group_by: ['app']
+        group_wait: 30m
+        group_interval: 5m
+        repeat_interval: 12h
+        receiver: pushover
+      templates:
+        - '/etc/alertmanager/secrets/alertmanager-receiver-pushover/pushover.yaml'
     alertmanagerSpec:
       secrets:
          - alertmanager-receiver-pushover
