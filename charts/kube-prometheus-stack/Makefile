@@ -16,3 +16,11 @@ combine:
 	done
 
 all: alerts dashboards combine
+
+get-config:
+	kubectl get secret -n monitoring alertmanager-new-config -o jsonpath='{.data.alertmanager\.yaml}' | base64 -d > old-config.yaml
+
+seal-config:
+	kubectl create secret generic alertmanager-new-config --from-file=alertmanager.yaml=old-config.yaml --dry-run=client -o yaml -n monitoring > new-config.yaml
+	kubeseal -o yaml < new-config.yaml > templates/config.yaml
+	rm new-config.yaml old-config.yaml
