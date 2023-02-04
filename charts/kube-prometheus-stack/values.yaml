@@ -2,7 +2,7 @@ kube-prometheus-stack:
   alertmanager:
     alertmanagerSpec:
       secrets:
-         - alertmanager-receiver-pushover-token
+         - alertmanager-receiver-pushover
   grafana:
     ingress:
       enabled: true
