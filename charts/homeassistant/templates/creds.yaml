@@ -1,0 +1,15 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: homeassistant-metrics-token
+  namespace: homeassistant
+spec:
+  encryptedData:
+    token: AgBSCWeDV20tZ/GUwJLRBcXKJOFs095vTFHuLP9gSdLhUlBFv7QeI82HrmSbDa8vPiE+Sm61TNqPPyCWXxzaH102AVgGRbwM+oMLVyPEs4zw9K86qhyAtscZYr3z9J5AQuRhMBt7VKL/1uhzl/pve8h3wmdiqVIQOoOzR8WEN5k37D4VPAtndYGVyQFIxXSbZM82jAYQDPVADIsoQFoaFFzmAM/wMjBz83HioMe6jX9cEuBWfx65mDPHHXFmq6/R5NgLnKhMlEb5OvxoD0F+tN6WqNEaiM5lwRN1IqIUO1Id3SWHfyfbW9mzTDFdv0CRVdqFdoiLJh5ewQ8SzQPLEwIR+KT4l+ULg4ku9DdQ1AAbej7dO0KcitMvWIzeNcoC/nSP28K6R7uHki+AobVry2ozao911br/wAdRgGgAUlat2JlMCKyUaZZqhI9UuzpCR3EyhVrkcqcRiPPdQK0JHDShZhDPw29/AXEsQafIqjuQYAvnkq4JyEo6398wpbtmKSQsA3xPlrQIkoqhEPuvbzjI5eNmAXL7ILsqnYLdC2ZHBEvj5UGwOtt2cxYsdt09IpPh1jUGP+fliYynUmovQVKtmqQYUeeMqXRkbsvBfx2G/wGUKob1aylp0iZDNa63NdsF14rkXOiNATX249pWkr/0c8flrL4kz5HlIXahjjq/iK5Muiz1+EZt6lv/SDZriML2y53HZrcFa2bHQ/djFdw6XSh7DclmQ3WvPFAWxRVUxPBOjUsrPlimykG45WLWazYIZpbpjOWDNtT7pi/XtlZ4XOGgzasRXuM1maiKweQiZ1U6xgkNxomhWFQ2hxHUvhrT1kJFi9WQr3aks9qaysFc3SYyKYvZ22HjvW4cayDdBWOaPj49+YBQbf4sDlzyiYzgZFWEiuXXHQrfwvwX3flJX89RcKe4Q/9XOkpaV3UdR87kvmj2eU4=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: homeassistant-metrics-token
+      namespace: homeassistant
+

@@ -3,6 +3,10 @@ home-assistant:
     tag: 2023.1.5
   metrics:
     enabled: true
+    serviceMonitor:
+      bearerTokenSecret:
+        name: homeassistant-metrics-token
+        key: token
   persistence:
     config:
       enabled: true
