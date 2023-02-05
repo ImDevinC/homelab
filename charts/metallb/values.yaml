@@ -5,6 +5,7 @@ addressPool:
 
 metallb:
   prometheus:
+    namespace: metallb-system
     serviceAccount: default
     serviceMonitor:
       enabled: true
