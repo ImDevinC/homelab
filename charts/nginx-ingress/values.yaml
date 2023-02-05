@@ -1,5 +1,13 @@
 nginx-ingress:
   controller:
+    service:
+      customPorts:
+        - name: metrics
+          port: 9913
+          protocol: TCP
+          targetPort: prometheus
     serviceMonitor:
       create: true
+      selectorMatchLabels:
+        app.kubernetes.io/instance: nginx-ingress
     disableIPV6: true
