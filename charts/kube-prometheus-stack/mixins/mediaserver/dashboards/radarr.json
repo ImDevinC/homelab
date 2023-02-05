@@ -244,7 +244,7 @@
             },
             "editorMode": "builder",
             "exemplar": false,
-            "expr": "radarr_movie_missing_total",
+            "expr": "radarr_movie_wanted_total",
             "instant": true,
             "legendFormat": "__auto",
             "range": false,
