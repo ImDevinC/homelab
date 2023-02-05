@@ -1,5 +1,5 @@
 nginx-ingress:
   controller:
     serviceMonitor:
-      enabled: true
+      create: true
     disableIPV6: true
