@@ -1,6 +1,7 @@
 kube-prometheus-stack:
   alertmanager:
     alertmanagerSpec:
+      externalUrl: http://grafana.collins.home
       useExistingSecret: False
       configSecret: alertmanager-new-config
   grafana:
