@@ -8,6 +8,9 @@ nginx-ingress:
           targetPort: prometheus
     serviceMonitor:
       create: true
+      endpoints:
+        - path: /metrics
+          port: metrics
       selectorMatchLabels:
         app.kubernetes.io/instance: nginx-ingress
     disableIPV6: true
