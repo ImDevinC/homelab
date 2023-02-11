@@ -5,16 +5,6 @@ kube-prometheus-stack:
       useExistingSecret: False
       configSecret: alertmanager-new-config
   grafana:
-    plugins:
-      - camptocamp-prometheus-alertmanager-datasource
-    datasources:
-      datasources.yaml:
-        apiVersion: 1
-        datasources:
-          - name: Alertmanager API
-            type: camptocamp-prometheus-alertmanager-datasource
-            url: http://kube-prometheus-stack-alertmanager:9093
-            access: proxy
     ingress:
       enabled: true
       hosts:
