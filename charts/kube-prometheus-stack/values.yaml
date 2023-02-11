@@ -5,6 +5,8 @@ kube-prometheus-stack:
       useExistingSecret: False
       configSecret: alertmanager-new-config
   grafana:
+    plugins:
+      - camptocamp-prometheus-alertmanager-datasource
     ingress:
       enabled: true
       hosts:
