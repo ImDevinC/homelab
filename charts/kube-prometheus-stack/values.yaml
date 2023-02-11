@@ -17,7 +17,7 @@ kube-prometheus-stack:
             access: proxy
             isDefault: true
           - name: Alertmanager API
-            type: prometheus:
+            type: prometheus
             url: http://kube-prometheus-stack-alertmanager:9093
             access: proxy
     ingress:
