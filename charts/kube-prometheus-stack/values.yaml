@@ -7,6 +7,19 @@ kube-prometheus-stack:
   grafana:
     plugins:
       - camptocamp-prometheus-alertmanager-datasource
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            url: http://kube-prometheus-stack-prometheus.monitoring:9090
+            access: proxy
+            isDefault: true
+          - name: Alertmanager API
+            type: prometheus:
+            url: http://kube-prometheus-stack-alertmanager:9093
+            access: proxy
     ingress:
       enabled: true
       hosts:
