@@ -12,7 +12,7 @@ kube-prometheus-stack:
         apiVersion: 1
         datasources:
           - name: Alertmanager API
-            type: prometheus
+            type: camptocamp-prometheus-alertmanager-datasource
             url: http://kube-prometheus-stack-alertmanager:9093
             access: proxy
     ingress:
