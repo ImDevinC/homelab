@@ -1,0 +1,4 @@
+nfs-subdir-external-provisioner:
+  nfs:
+    server: k8s
+    path: /mnt/media
