@@ -2,3 +2,7 @@ nfs-subdir-external-provisioner:
   nfs:
     server: k8s
     path: /mnt/media
+  storageClass:
+    archiveOnDelete: false
+    reclaimPolicy: Retain
+    pathPattern: ${.PVC.annotations.nfs.io/storage-path}
