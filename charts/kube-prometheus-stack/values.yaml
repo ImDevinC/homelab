@@ -7,7 +7,6 @@ kube-prometheus-stack:
   grafana:
     plugins:
       - camptocamp-prometheus-alertmanager-datasource
-      - grafana-mongodb-datasource
     datasources:
       datasources.yaml:
         apiVersion: 1
