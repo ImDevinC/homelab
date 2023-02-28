@@ -18,6 +18,8 @@ k8s-mediaserver:
     enabled: false
   plex:
     claim: claim-s4H5aSxbCoi8s7_R_q_X
+    container:
+      tag: 1.31.1
     hostNetwork: true
     ingress:
       enabled: false
