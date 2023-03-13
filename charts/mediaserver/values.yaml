@@ -34,6 +34,9 @@ k8s-mediaserver:
     ingress:
       enabled: false
   radarr:
+    resources:
+      limits:
+        memory: "1Gi"
     ingress:
       enabled: false
     exportarr:
@@ -45,6 +48,9 @@ k8s-mediaserver:
     ingress:
       enabled: false
   sonarr:
+    resources:
+      limits:
+        memory: "1Gi"
     extraVolumeMounts:
       - name: mediaserver-volume
         mountPath: /anime
