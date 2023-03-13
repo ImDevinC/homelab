@@ -5,4 +5,4 @@ nfs-subdir-external-provisioner:
   storageClass:
     archiveOnDelete: false
     reclaimPolicy: Retain
-    pathPattern: ${.PVC.annotations.nfs.io/storage-path}
+    pathPattern: ${.PVC.namespace}/${.PVC.annotations.nfs.io/storage-path}
