@@ -71,7 +71,7 @@ k8s-mediaserver:
   requestrr:
     ingress:
       enabled: false
-  overseer:
+  overseerr:
     ingress:
       enabled: false
 
