@@ -25,7 +25,7 @@ k8s-mediaserver:
       enabled: false
     resources:
       limits:
-         nvidia.com/gpu: 1
+        nvidia.com/gpu: 1
     extraVolumeMounts:
       - name: mediaserver-volume
         mountPath: /anime
@@ -71,6 +71,9 @@ k8s-mediaserver:
   requestrr:
     ingress:
       enabled: false
+  overseer:
+    ingress:
+      enabled: false
 
 ingress:
   enabled: true
@@ -98,3 +101,6 @@ ingress:
     - path: /requestrr
       serviceName: requestrr
       servicePort: 4545
+    - path: /overseerr
+      serviceName: overseerr
+      servicePort: 5055
