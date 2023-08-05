@@ -19,8 +19,8 @@ home-assistant:
       annotations:
         external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
         cert-manager.io/cluster-issuer: letsencrypt
-        nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-        nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+        nginx.org/proxy-read-timeout: "3600"
+        nginx.org/proxy-send-timeout: "3600"
         nginx.org/websocket-services: homeassistant-home-assistant
         acme.cert-manager.io/http01-edit-in-place: "true"
       ingressClassName: nginx
