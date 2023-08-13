@@ -8,7 +8,7 @@ wallabag:
     annotations:
       external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
       cert-manager.io/cluster-issuer: letsencrypt
-      # acme.cert-manager.io/http01-edit-in-place: "true"
+      acme.cert-manager.io/http01-edit-in-place: "true"
     hosts:
       - host: wallabag.imdevinc.com
         paths:
