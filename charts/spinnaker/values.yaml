@@ -2,7 +2,7 @@ spinnaker:
   dockerRegistryAccountSecret: spinnaker-registry-secrets
   dockerRegistries:
     - name: ghcr
-      address: https://ghcr.io
+      address: ghcr.io
       username: imdevinc
   ingress:
     enabled: true
