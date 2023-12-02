@@ -1,0 +1,6 @@
+dependencies:
+- name: spinnaker
+  repository: https://opsmx.github.io/spinnaker-helm/
+  version: 2.2.15
+digest: sha256:878e0dab0dba5007b5c1b7130b84a245693877bd670df7132bc0ebf7e83eeaeb
+generated: "2023-11-29T08:01:26.6811468-08:00"
