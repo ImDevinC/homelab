@@ -1,15 +1,8 @@
 spinnaker:
-  halyard:
-    github:
-      enabled: true
-      accounts:
-        - name: imdevinc
-          username: ImDevinC
-          token: "encrypted:spinnaker-registry-secrets:GHCR"
   dockerRegistryAccountSecret: spinnaker-registry-secrets
   dockerRegistries:
     - name: GHCR
-      address: https://ghcr.oi
+      address: https://ghcr.io
       username: ImDevinC
   ingress:
     enabled: true
