@@ -1,4 +1,7 @@
 kube-prometheus-stack:
+  defaultRules:
+    disabled:
+      etcdDatabaseHighFragmentationRatio: true
   alertmanager:
     alertmanagerSpec:
       externalUrl: http://grafana.collins.home
