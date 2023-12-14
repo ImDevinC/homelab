@@ -14,18 +14,101 @@ spec:
             - name: dockerauth
           containers:
             - name: pmm
-              image: ghcr.io/imdevinc/pmm:latest
+              # image: ghcr.io/imdevinc/pmm:latest
+              image: meisnate12/plex-meta-manager:latest
+              args: ["--config", "/config/config.yaml", "-ro", "--run"]
               imagePullPolicy: Always
+              volumeMounts:
+                - name: pmm-config
+                  mountPath: /config/config.yaml
+                  subPath: config.yaml
+                - name: pmm-assets
+                  mountPath: /assets
               envFrom:
                 - configMapRef:
-                    name: pmm
+                    name: pmm-repo
                 - secretRef:
                     name: pmm-credentials
+          volumes:
+            - name: pmm-config
+              configMap:
+                name: pmm-config
+            - name: pmm-assets
+              persistentVolumeClaim:
+                claimName: pmm-assets
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: pmm
+  name: pmm-repo
 data:
   GITHUB_REPO: plex-meta-manager-configs
   GITHUB_OWNER: ImDevinC
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: pmm-assets
+# spec:
+#   storageClassName: nfs-client
+#   capacity:
+#     storage: 5Gi
+#   accessModes:
+#     - ReadWriteOnce
+#   persistentVolumeReclaimPolicy: Retain
+#   hostPath:
+#     path: "."
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pmm-assets
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: nfs-client
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pmm-config
+data:
+  config.yaml: |
+    settings:
+      custom_repo: https://github.com/ImDevinC/plex-meta-manager-configs
+      asset_directory: /assets
+      download_url_assets: true
+      create_asset_folders: true
+      prioritize_assets: true
+    plex:
+      url: http://plex.mediaserver:32400
+      token: <<PLEX_SECRET_TOKEN>>
+    tmdb:
+      apikey: <<TMDB_TOKEN>>
+      language: en
+    libraries:
+      Movies:
+        metadata_path:
+          - repo: /main/config/movies
+        delete_unmanaged_collections: true
+        operations:
+          metadata_backup:
+            path: /tmp/movies-backup.yml
+            add_blank_entries: true
+      TV Shows:
+        metadata_path:
+          - repo: /main/config/tv
+      Anime:
+        metadata_path:
+          - repo: /main/config/anime
+    radarr:
+      url: http://radarr.mediaserver:7878/radarr
+      token: <<RADARR_TOKEN>>
+      add: false
+      monitor: true
+      search: true
+      quality_profile: HD - 720p/1080p
+      root_folder_path: /movies
