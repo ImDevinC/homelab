@@ -43,20 +43,6 @@ metadata:
 data:
   GITHUB_REPO: plex-meta-manager-configs
   GITHUB_OWNER: ImDevinC
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: pmm-assets
-# spec:
-#   storageClassName: nfs-client
-#   capacity:
-#     storage: 5Gi
-#   accessModes:
-#     - ReadWriteOnce
-#   persistentVolumeReclaimPolicy: Retain
-#   hostPath:
-#     path: "."
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -95,7 +81,7 @@ data:
         delete_unmanaged_collections: true
         operations:
           metadata_backup:
-            path: /tmp/movies-backup.yml
+            path: /source/movies-backup.yml
             add_blank_entries: true
       TV Shows:
         metadata_path:
