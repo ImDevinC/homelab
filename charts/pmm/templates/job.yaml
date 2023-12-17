@@ -14,8 +14,7 @@ spec:
             - name: dockerauth
           containers:
             - name: pmm
-              # image: ghcr.io/imdevinc/pmm:latest
-              image: meisnate12/plex-meta-manager:latest
+              image: ghcr.io/imdevinc/pmm:latest
               args: ["--config", "/config/config.yaml", "-ro", "--run"]
               imagePullPolicy: Always
               volumeMounts:
