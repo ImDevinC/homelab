@@ -69,8 +69,6 @@ k8s-mediaserver:
     ingress:
       enabled: false
   requestrr:
-    container:
-      image: thomst08/requestrr
     ingress:
       enabled: false
   overseerr:
