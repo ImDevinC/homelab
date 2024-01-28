@@ -9,24 +9,24 @@ spec:
     privateKeySecretRef:
       name: letsencrypt
     solvers:
-    - selector:
-        dnsZones:
-          - "imdevinc.com"
-      http01:
-          ingress:
-            class: nginx
-    - selector:
-        dnsZones:
-          - "collins.home"
-      dns01:
-        route53:
-          region: us-east-1
-          accessKeyIdSecretRef:
-            name: route53-credentials
-            key: accessKeyID
-          secretAccessKeySecretRef:
-            name: route53-credentials
-            key: secretAccessKey
+      - selector:
+          dnsZones:
+            - "imdevinc.com"
+        http01:
+            ingress:
+              class: nginx
+      - selector:
+          dnsZones:
+            - "collins.home"
+        dns01:
+          route53:
+            region: us-east-1
+            accessKeyIdSecretRef:
+              name: route53-credentials
+              key: accessKeyID
+            secretAccessKeySecretRef:
+              name: route53-credentials
+              key: secretAccessKey
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -39,21 +39,21 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-staging
     solvers:
-    - selector:
-        dnsZones:
-          - "imdevinc.com"
-      http01:
-          ingress:
-            class: nginx
-    - selector:
-        dnsZones:
-          - "collins.home"
-      dns01:
-        route53:
-          region: us-east-1
-          accessKeyIdSecretRef:
-            name: route53-credentials
-            key: accessKeyID
-          secretAccessKeySecretRef:
-            name: route53-credentials
-            key: secretAccessKey
+      - selector:
+          dnsZones:
+            - "imdevinc.com"
+        http01:
+            ingress:
+              class: nginx
+      - selector:
+          dnsZones:
+            - "collins.home"
+        dns01:
+          route53:
+            region: us-east-1
+            accessKeyIdSecretRef:
+              name: route53-credentials
+              key: accessKeyID
+            secretAccessKeySecretRef:
+              name: route53-credentials
+              key: secretAccessKey
