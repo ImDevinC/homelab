@@ -27,6 +27,7 @@ kube-prometheus-stack:
         nginx.org/proxy-read-timeout: "3600"
         nginx.org/proxy-send-timeout: "3600"
         nginx.org/websocket-services: kube-prometheus-stack-grafana
+        cert-manager.io/cluster-issuer: letsencrypt-staging
     admin:
       existingSecret: grafana-creds
     dashboardProviders:
