@@ -21,7 +21,7 @@ spec:
         dns01:
           route53:
             region: us-east-1
-            accessKeyIdSecretRef:
+            accessKeyIDSecretRef:
               name: route53-credentials
               key: accessKeyID
             secretAccessKeySecretRef:
@@ -51,7 +51,7 @@ spec:
         dns01:
           route53:
             region: us-east-1
-            accessKeyIdSecretRef:
+            accessKeyIDSecretRef:
               name: route53-credentials
               key: accessKeyID
             secretAccessKeySecretRef:
