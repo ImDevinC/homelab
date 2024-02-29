@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: meero-metrics
+    namespace: eero-metrics
   project: default
   source:
     path: charts/eero-metrics
