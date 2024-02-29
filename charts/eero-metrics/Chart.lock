@@ -1,6 +1,6 @@
 dependencies:
 - name: eero-metrics
   repository: https://imdevinc.github.io/eero-metrics
-  version: 0.0.2
-digest: sha256:410c754ceed7be8b4cbe676c3de48289d49d78645b5de34dc4e4a4d8fba5da36
-generated: "2024-02-29T12:11:50.5222668-08:00"
+  version: 0.0.3
+digest: sha256:c7d1d09557052b27ff1f5c697025eb4f7dede84ce277f54c77b748191fbf8137
+generated: "2024-02-29T12:27:29.3431634-08:00"
