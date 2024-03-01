@@ -2,4 +2,5 @@
 (import 'sealed-secrets/mixin.libsonnet') +
 (import 'mediaserver/mixin.libsonnet') +
 (import 'nginx-ingress/mixin.libsonnet') + 
-(import 'homeassistant/mixin.libsonnet')
+(import 'homeassistant/mixin.libsonnet') +
+(import 'eero-metrics/mixin.libsonnet') +
