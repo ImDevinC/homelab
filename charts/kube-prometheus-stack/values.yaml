@@ -6178,7 +6178,6 @@ kube-prometheus-stack:
                "editable": true,
                "fiscalYearStartMonth": 0,
                "graphTooltip": 0,
-               "id": 35,
                "links": [ ],
                "liveNow": false,
                "panels": [
@@ -6269,7 +6268,7 @@ kube-prometheus-stack:
                            "expr": "eero_downloaded_bytes",
                            "instant": true,
                            "interval": "60m",
-                           "legendFormat": "{{hostname}}",
+                           "legendFormat": "{{display_name}}",
                            "range": true,
                            "refId": "A"
                         }
@@ -6365,7 +6364,7 @@ kube-prometheus-stack:
                            "expr": "eero_uploaded_bytes",
                            "instant": true,
                            "interval": "60m",
-                           "legendFormat": "{{hostname}}",
+                           "legendFormat": "{{display_name}}",
                            "range": true,
                            "refId": "A"
                         }
@@ -6389,7 +6388,7 @@ kube-prometheus-stack:
                "timezone": "",
                "title": "Network Usage by Device",
                "uid": "c7029f8d-7d2d-4cf4-aec1-624557f14536",
-               "version": 3,
+               "version": 2,
                "weekStart": ""
             }
   prometheus:
