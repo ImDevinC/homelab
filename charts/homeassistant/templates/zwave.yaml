@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: zwavejsui
-          image: docker.io/zwavejs/zwave-js-ui:latest
+          image: docker.io/zwavejs/zwave-js-ui:9.9.0
           imagePullPolicy: IfNotPresent
           readinessProbe:
             failureThreshold: 3
