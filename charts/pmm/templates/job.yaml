@@ -65,29 +65,72 @@ data:
     settings:
       custom_repo: https://github.com/ImDevinC/plex-meta-manager-configs
       asset_directory: /assets
+      asset_folders: true
+      asset_depth: 0
       download_url_assets: true
       create_asset_folders: true
       prioritize_assets: true
+      dimensional_asset_rename: false
+      show_missing_assets: false
+      show_missing_season_assets: false
+      show_missing_episode_assets: false
+      show_asset_not_needed: true
+      sync_mode: append
+      default_collection_order: None
+      run_order:
+        - operations
+        - metadata
+        - collections
+        - overlays
+      cache: false
+      cache_expiration: 1
+      minimum_items: 3
+      item_refresh_delay: 0
+      delete_below_minimum: false
+      delete_not_scheduled: false
+      run_again_delay: 0
+      missing_only_released: false
+      only_filter_missing: false
+      show_unmanaged: false
+      show_unconfigured: false
+      show_options: false
+      show_missing: false
+      show_filtered: false
+      save_report: false
+      tvdb_language: en
+      playlist_sync_to_users: all
+      playlist_exclude_users: None
+      playlist_report: false
+      verify_ssl: true
+      check_nightly: false
     plex:
       url: http://plex.mediaserver:32400
       token: <<PLEX_SECRET_TOKEN>>
+      timeout: 60
+      db_cache: 4096
+      clean_bundles: false
+      empty_trash: false
+      optimize: false
     tmdb:
       apikey: <<TMDB_TOKEN>>
       language: en
+      cache_expiration: 1
+      region: US
     libraries:
       Movies:
-        metadata_path:
+        metadata_files:
           - repo: /main/config/movies
         delete_unmanaged_collections: true
         operations:
           metadata_backup:
             path: /source/movies-backup.yml
             add_blank_entries: true
+            sync_tags: false
       TV Shows:
-        metadata_path:
+        metadata_files:
           - repo: /main/config/tv
       Anime:
-        metadata_path:
+        metadata_files:
           - repo: /main/config/anime
     radarr:
       url: http://radarr.mediaserver:7878/radarr
@@ -97,3 +140,9 @@ data:
       search: true
       quality_profile: HD - 720p/1080p
       root_folder_path: /movies
+      add_existing: false
+      upgrade_existing: false
+      ignore_cache: false
+      availability: announced
+      radarr_path: None
+      plex_path: None
