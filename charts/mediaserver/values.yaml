@@ -79,7 +79,7 @@ ingress:
   enabled: true
   className: nginx
   hosts:
-    - host: overseer.collins.home
+    - host: overseerr.collins.home
       paths:
         - path: /
           serviceName: overseerr
