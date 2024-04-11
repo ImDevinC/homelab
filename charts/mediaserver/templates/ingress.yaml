@@ -6,16 +6,21 @@ metadata:
 spec:
   ingressClassName:  {{ .Values.ingress.className }}
   rules:
-  - host: {{ .Values.ingress.host }}
+  {{- with .Values.ingress }}
+  {{- range $i, $v := .hosts}}
+  - host: {{ $v.host }}
     http:
       paths:
-        {{- range $k, $v := .Values.ingress.paths }}
-          - path: {{ $v.path }}
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ $v.serviceName }}
-                port:
-                  number: {{ $v.servicePort }}
+        {{- range $j, $w := .paths }}
+        - path: {{ $w.path }}
+          pathType: Prefix
+          backend:
+            service:
+              name: {{ $w.serviceName }}
+              port:
+                number: {{ $w.servicePort }}
         {{- end }}
+  {{- end }}
+  {{- end }}
 {{ end }}
+---
