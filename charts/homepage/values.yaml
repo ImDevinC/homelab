@@ -1,4 +1,4 @@
-homepage:
+﻿homepage:
   env:
     HOMEPAGE_VAR_TAUTULLI_TOKEN:
       valueFrom:

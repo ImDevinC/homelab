@@ -1,4 +1,4 @@
-apiVersion: v2
+﻿apiVersion: v2
 name: homepage
 version: 1.0.0
 dependencies:
