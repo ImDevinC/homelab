@@ -1,4 +1,7 @@
 ﻿homepage:
+  image:
+    tag: v0.8.11
+
   env:
     HOMEPAGE_VAR_TAUTULLI_TOKEN:
       valueFrom:
