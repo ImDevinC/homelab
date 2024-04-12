@@ -1,0 +1,196 @@
+homepage:
+  env:
+    HOMEPAGE_VAR_TAUTULLI_TOKEN:
+      valueFrom:
+        secretKeyRef:
+          name: homepage-creds
+          key: tautulli-token
+    HOMEPAGE_VAR_OVERSEERR_TOKEN:
+      valueFrom:
+        secretKeyRef:
+          name: homepage-creds
+          key: overseerr-token
+    HOMEPAGE_VAR_RADARR_TOKEN:
+      valueFrom:
+        secretKeyRef:
+          name: homepage-creds
+          key: radarr-token
+    HOMEPAGE_VAR_SONARR_TOKEN:
+      valueFrom:
+        secretKeyRef:
+          name: homepage-creds
+          key: sonarr-token
+    HOMEPAGE_VAR_PROWLARR_TOKEN:
+      valueFrom:
+        secretKeyRef:
+          name: homepage-creds
+          key: prowlarr-token
+    HOMEPAGE_VAR_SABNZBD_TOKEN:
+      valueFrom:
+        secretKeyRef:
+          name: homepage-creds
+          key: sabnzbd-token
+    HOMEPAGE_VAR_PIHOLE_TOKEN:
+      valueFrom:
+        secretKeyRef:
+          name: homepage-creds
+          key: pihole-token
+    HOMEPAGE_VAR_LATITUDE:
+      valueFrom:
+        secretKeyRef:
+          name: homepage-creds
+          key: latitude
+    HOMEPAGE_VAR_LONGITUDE:
+      valueFrom:
+        secretKeyRef:
+          name: homepage-creds
+          key: longitude
+  config:
+    settings:
+      title: Homepage
+      background: https://images.unsplash.com/photo-1622737133809-d95047b9e673?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3
+      headerStyle: clean
+      layout:
+        Media:
+          style: row
+          columns: 5
+        Media Management:
+          style: row
+          columns: 4
+
+    bookmarks:
+      - Developer:
+          - GitHub:
+              - abbr: GH
+                href: https://github.com
+    services:
+      - Media:
+          - Plex:
+              icon: https://beyondtv.com/wp-content/uploads/2020/04/910-9103810_plex-media-server-transparent-plex-icon.png
+              href: https://plex.tv/web
+              description: Plex Media Server
+          - Tautulli:
+              icon: http://media.collins.home/tautulli/images/logo.png
+              href: http://media.collins.home/tautulli
+              description: Plex Statistics
+              app: tautulli
+              namespace: mediaserver
+              widget:
+                type: tautulli
+                url: http://media.collins.home/tautulli
+                key: '{{HOMEPAGE_VAR_TAUTULLI_TOKEN}}'
+          - Overseer:
+              icon: https://user-images.githubusercontent.com/1066576/125193232-b41d8900-e28e-11eb-801b-3b643f672536.png
+              href: http://overseerr.collins.home
+              description: Overseerr Media Server
+              app: overseerr
+              namespace: mediaserver
+              widget:
+                type: overseerr
+                url: http://overseerr.collins.home
+                key: '{{HOMEPAGE_VAR_OVERSEERR_TOKEN}}'
+          - Radarr:
+              icon: http://media.collins.home/radarr/Content/Images/logo.svg
+              href: http://media.collins.home/radarr
+              description: Movie Download Manager
+              app: radarr
+              namespace: mediaserver
+              widget:
+                type: radarr
+                url: http://media.collins.home/radarr
+                key: '{{HOMEPAGE_VAR_RADARR_TOKEN}}'
+                enableQueue: true
+          - Sonarr:
+              icon: http://media.collins.home/sonarr/Content/Images/logo.svg
+              href: http://media.collins.home/sonarr
+              description: Series Download Manager
+              app: sonarr
+              namespace: mediaserver
+              widget:
+                type: sonarr
+                url: http://media.collins.home/sonarr
+                key: '{{HOMEPAGE_VAR_SONARR_TOKEN}}'
+                enableQueue: true
+      - Media Management:
+          - Prowlarr:
+              icon: http://media.collins.home/prowlarr/Content/Images/logo.svg
+              href: http://media.collins.home/prowlarr
+              description: NZB Index Manager
+              app: prowlarr
+              namespace: mediaserver
+              widget:
+                type: prowlarr
+                url: http://media.collins.home/prowlarr
+                key: '{{HOMEPAGE_VAR_PROWLARR_TOKEN}}'
+          - Sabnzbd:
+              icon: https://static-00.iconduck.com/assets.00/sabnzbd-text-icon-511x512-dq0m7rr6.png
+              href: http://media.collins.home/sabnzbd
+              description: NZB Downloader
+              app: sabnzbd
+              namespace: mediaserver
+              widget:
+                type: sabnzbd
+                url: http://media.collins.home/sabnzbd
+                key: '{{HOMEPAGE_VAR_SABNZBD_TOKEN}}'
+          - Requestrr:
+              icon: https://fleet.linuxserver.io/images/linuxserver_requestrr.png
+              href: http://media.collins.home/requestrr
+              description: Discord bot for managing requests
+              app: requestrr
+              namespace: mediaserver
+          - Transmission:
+              icon: https://transmissionbt.com/assets/images/Transmission_icon.png
+              href: http://media.collins.home/transmission
+              description: Torrent Downloader
+              app: transmission
+              namespace: mediaserver
+      - Network:
+        - Pi-hole:
+            icon: http://pi.hole/admin/img/logo.svg
+            href: http://pi.hole
+            description: Pi-hole DNS
+            widget:
+              type: pihole
+              url: http://pi.hole
+              key: '{{HOMEPAGE_VAR_PIHOLE_TOKEN}}'
+    widgets:
+      - datetime:
+          text_size: xl
+          format:
+            dateStyle: long
+            timeStyle: long
+            hourCycle: h23
+      - openmeteo:
+          label: Wildomar
+          latitude: '{{HOMEPAGE_VAR_LATITUDE}}'
+          longitude: '{{HOMEPAGE_VAR_LONGITUDE}}'
+          timezone: America/Los_Angeles
+          units: imperial
+          cache: 10
+          format:
+            maximumFractionDigits: 1
+      - resources:
+          cpu: true
+          memory: true
+          cputemp: true
+          uptime: true
+          units: imperial
+          disk: /
+    kubernetes:
+      mode: cluster
+
+  serviceAccount:
+    create: true
+    name: homepage
+
+  enableRbac: true
+
+  ingress:
+    main:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - host: homepage.collins.home
+          paths:
+            - path: /
+              pathType: Prefix
