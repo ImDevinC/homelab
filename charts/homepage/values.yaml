@@ -1,5 +1,6 @@
 ﻿homepage:
   image:
+    repository: ghcr.io/gethomepage/homepage
     tag: v0.8.11
 
   env:
