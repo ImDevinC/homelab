@@ -1,0 +1,61 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: dns-updater
+spec:
+  schedule: "0 1 * * *" # Every day at 1am
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          imagePullSecrets:
+            - name: dockerauth
+          containers:
+            - name: dns-updater
+              image: ghcr.io/imdevinc/dns-updater:0.0.7
+              args: ["-dir", "/etc/envs", "-force"]
+              imagePullPolicy: IfNotPresent
+              volumeMounts:
+                - name: envs
+                  mountPath: /etc/envs
+                  readOnly: true
+              envFrom:
+                - secretRef:
+                    name: dns-updater-creds
+          volumes:
+            - name: envs
+              configMap:
+                name: dns-updater
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dns-updater
+data:
+  remote.env: |
+    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
+    ADDRESS=remote.imdevinc.com
+    TYPE=cloudflare
+    CLOUDFLARE_API_TOKEN=
+  gha-dashboard.env: |
+    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
+    ADDRESS=gha-dashboard.imdevinc.com
+    TYPE=cloudflare
+    CLOUDFLARE_API_TOKEN=
+  homeassistant.env: |
+    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
+    ADDRESS=homeassistant.imdevinc.com
+    TYPE=cloudflare
+    CLOUDFLARE_API_TOKEN=
+  remote.env: |
+    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
+    ADDRESS=remote.imdevinc.com
+    TYPE=cloudflare
+    CLOUDFLARE_API_TOKEN=
+  wallabag.env: |
+    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
+    ADDRESS=wallabag.imdevinc.com
+    TYPE=cloudflare
+    CLOUDFLARE_API_TOKEN=
