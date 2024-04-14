@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: dns-updater
 spec:
-  schedule: "0 1 * * *" # Every day at 1am
+  schedule: "0 * * * *" # Every hour
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
@@ -15,7 +15,7 @@ spec:
           containers:
             - name: dns-updater
               image: ghcr.io/imdevinc/dns-updater:0.0.7
-              args: ["-dir", "/etc/envs", "-force"]
+              args: ["-dir", "/etc/envs"]
               imagePullPolicy: IfNotPresent
               volumeMounts:
                 - name: envs
