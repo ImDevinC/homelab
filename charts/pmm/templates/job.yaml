@@ -119,7 +119,7 @@ data:
     libraries:
       Movies:
         metadata_files:
-          - repo: /main/config/movies
+          - repo: /main/config/movies.yml
         delete_unmanaged_collections: true
         operations:
           metadata_backup:
@@ -128,10 +128,10 @@ data:
             sync_tags: false
       TV Shows:
         metadata_files:
-          - repo: /main/config/tv
+          - repo: /main/config/tv.yml
       Anime:
         metadata_files:
-          - repo: /main/config/anime
+          - repo: /main/config/anime.yml
     radarr:
       url: http://radarr.mediaserver:7878/radarr
       token: <<RADARR_TOKEN>>
