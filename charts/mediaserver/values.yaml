@@ -76,6 +76,7 @@ k8s-mediaserver:
       enabled: false
   mylarr:
     container:
+      image: lscr.io/linuxserver/mylar3
       tag: 0.8.0
     ingress:
       enabled: false
