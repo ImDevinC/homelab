@@ -5,6 +5,7 @@ k8s-mediaserver:
       customVolume: true
       size: 10Gi
       subPaths:
+        comics: media/comics
         tv: media/tv
         movies: media/movies
         downloads: downloads
