@@ -74,6 +74,9 @@ k8s-mediaserver:
   overseerr:
     ingress:
       enabled: false
+  mylarr:
+    ingress:
+      enabled: false
 
 ingress:
   enabled: true
@@ -107,3 +110,6 @@ ingress:
         - path: /requestrr
           serviceName: requestrr
           servicePort: 4545
+        - path: /mylarr
+          serviceName: mylarr
+          servicePort: 8090
