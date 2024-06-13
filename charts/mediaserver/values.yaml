@@ -77,6 +77,8 @@ k8s-mediaserver:
   mylarr:
     ingress:
       enabled: false
+    exportarr:
+      enabled: false
 
 ingress:
   enabled: true
