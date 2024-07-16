@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: dead-mans-snitch
+spec:
+  schedule: "*/30 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: curl
+              image: alpine/curl
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/sh", "-c", "curl ${DMS_URL}"]
+              env:
+                - name: DMS_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: dms-url
+                      key: url
+          restartPolicy: OnFailure
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: dms-url
+spec:
+  encryptedData:
+    url: AgBeNN85fV3d1aRQWsMArkH1qg9ryktruQZcFe88gj5BmC9JkiiPcal7DQxMgitG3sxHOrTOtnwK1W6EDwXYI6dhrGoO/O/9pTVeHwRdczt+i3Eyyx8g5vYKrGaYjg1GX4ye70S2cA4JwxJhMLq4MlqExEi9bOnSHzY/FBWPBRD8VDnseTsbcJaB6iyH2VqG8a7y1kxStKG5pCxImQtb7A6lX77YlHZ6TvbOowtDwiddKh1NKHxIgQrogkfptotRlTXntWGJtTFrGXvXQqVK5FM3DVcc8YXgKSUkWSSVkHWun3rCSsRUuRmD1iDhB0zslJw2Bt/5fW9dF0Ux+WzqdAzo2ycZcvweeV2ixoAkTcYw64z3TthMP9Zz4rBLbg7qpPdGL2zBH6bDzKt6a4wh2++blzoXixBzeiijx43HXc0QsExP5pNaudEcGfmcHybD3CrwwERF+xfaq1U/I08/zLAaBLy678dexmC+/qfrCINNnrNul4xwZ07nP5VEiAMdeKZFuBs7SzyFgPvb8N6F+n0qf2YU8+c8qLPh70SEMCRep7E9KaY3pm/n/DnE1+uhgl/Qfik6X3eZhguyEckJ0Gsf9B/BnZbFy734L7Sd9d4mC0jx+v8oVSS2E/4SBQceZkXhmvo6AhXO8Qjn0RVfzUl5rR1jL8RQ7fGIBTiE6ayvjT8n+IXH1r8HYeLFeFhs4pNqyrbW2jGf56NlUOBiQv0bhoHdWo/MWUhlM+fK
+  template:
+    metadata:
+      name: dms-url
+      namespace: dead-mans-snitch
