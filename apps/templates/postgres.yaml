@@ -20,8 +20,6 @@ spec:
           defaultStoragClass: nfs-client
         image:
           debug: true
-        volumePermissions:
-          enabled: true
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
