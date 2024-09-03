@@ -14,12 +14,12 @@ spec:
     chart: postgresql
     repoURL: https://charts.bitnami.com/bitnami 
     targetRevision: 15.5.27
-    helm: {}
-      #      values: |
-      #        global:
-      #          defaultStoragClass: nfs-client
-      #        image:
-      #          debug: true
+    helm:
+      values: |
+        global:
+          defaultStoragClass: nfs-client
+        image:
+          debug: true
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
