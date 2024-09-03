@@ -19,6 +19,8 @@ spec:
         global:
           defaultStoragClass: nfs-client
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
