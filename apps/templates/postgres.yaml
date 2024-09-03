@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgres
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: postgres
+  project: default
+  source:
+    chart: postgresql
+    repoURL: https://charts.bitnami.com/bitnami 
+    targetRevision: 15.5.27
+    helm:
+      values: |
+        global:
+          defaultStoragClass: nfs-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
