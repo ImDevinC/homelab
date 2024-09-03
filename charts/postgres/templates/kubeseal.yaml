@@ -2,14 +2,18 @@
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
+  annotations:
+    sealedsecrets.bitnami.com/cluster-wide: "true"
   creationTimestamp: null
   name: postgres-creds
   namespace: postgres
 spec:
   encryptedData:
-    pgpass: AgAS+2gLqLQl8tMR8wlpg2C2+Jh82jeZRopDFv78aKeZa93+yRToDWD02a9w3CK7YqSWwUdnW8r8VKH8tarcRsnDAoposUinLVotRrgxfqzyp+/gy9ZIY/xlsBk8EVZNJGzVKU2FpaEv3/U1CSIi6fcPfn1IOpL/b1cPraVYx5yu9LRnlnpP37A2f0r/v4Y1vNJ5zC9361vrTm+FWgLHeOZMkfAjc4/rk3O8SSWSVoe3cftnRyNRDSyu4eB1etX2Jp0zZHCVM+m2g68V3Pdsixx6M4uFBFECJ1UubVtZiDON6r4mZMymhkAZZBNZ5OucAtTDXvA6FaoT0smWohFi0xsjOVmJFOPn7nqUV0VuLCAzl7lU1a8APB28Nr+qMMvQaiwY9BNHp/IASj4h09F31Fk0ZIhV45Ihwc2pboBw9YV5vDIhY6jbzjfNgR0sCBc1/FyXRgNb5PNsGM305QSOA6y1O3CiTpOhXFksTI+SxSY4xtJBh+KeCIcI2C3EiWy8V5W2hlphf2d9s96fdz6Na5Q1lEGL0NhE42v+GIA9udWUmOXrgmDb3R8quo8Zsx4+CdpcFEQMljqXmU4wJn09+V5sfSoJyPapQB8W8tYdGl/hWBnEmL/QsnCpeZ1S0WPQeJS8jVY5dtGbhX8NLyF8gpEsfc3BHlWnOmLbNnbyLmGDEF6SDCFqF2mgX5Vq7eSnJpZqVq5fqWfQH5e0VuprpCi9+2zwiBp+3g==
+    pgpass: AgCKfvYpnTGyiwCFXEDdHtZ73STqNideb59lb/N4YKTKbDS4ShVeNuOBSttSjfl6l4N4rOx3WLcwz+w3XwzgufnUelTeVSJwKk4DacdIJyrLolUaWAFZd/9me2YD3vqYC3+7FN/r4pV0p7MwTaq/8+ja6BvVGEd/ULCSizXhnAo+4hmV5XnUGCtXELB2u7akwccn+/pV6n8b9QjYmXpBaOvSiDkhUEg5aRU6jb5B4odJmcB7sCfJDCBNEsTlcIPyBxWcnFSJWABs5DbQVSYl71a73Bli/3zuvIYa7kNi9dQD9fnEPOORvJVoFk1+180D+JlrGPy+pr6h/4qmYU9DZFdYLoC1fYdUjhBTj/kPnOUlDaTzez8WphFaJCcz2dBygNuObSuuLacYbgNVtvWS0A9HG8+qjI1mBMVpME+PIdgvjwidi9j0mSlMyi9xVAcbiaFAQyNRJfZZe64LG6QEv92PrrAPeVZIC8THj1ZIF17a16aCzjc70OV23R2DgnaXqtyNLVZEceWQnsD19xr5Yhi6Y6n2h7L9jChAdR4gr27H1Vys2y7M3QWuTr4SLh8qnIr5vbuRG9gpPWUr1JjGkMcAG7Y1z+wS75qnpjLxsy5rNK0QJZv5cQPlBllrHoyEUWguDUhLhrYxsqRC+6MF7isCkAWx+d7s+SbSAccLlXZUoOgefvxsLxaEnnaTrVpuyDMzcw4FoMarFmShRaKDADKw06j8NN8tHw==
   template:
     metadata:
+      annotations:
+        sealedsecrets.bitnami.com/cluster-wide: "true"
       creationTimestamp: null
       name: postgres-creds
       namespace: postgres
