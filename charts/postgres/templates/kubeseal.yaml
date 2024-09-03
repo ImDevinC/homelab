@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: postgres-creds
+  namespace: postgres
+spec:
+  encryptedData:
+    pgpass: AgAS+2gLqLQl8tMR8wlpg2C2+Jh82jeZRopDFv78aKeZa93+yRToDWD02a9w3CK7YqSWwUdnW8r8VKH8tarcRsnDAoposUinLVotRrgxfqzyp+/gy9ZIY/xlsBk8EVZNJGzVKU2FpaEv3/U1CSIi6fcPfn1IOpL/b1cPraVYx5yu9LRnlnpP37A2f0r/v4Y1vNJ5zC9361vrTm+FWgLHeOZMkfAjc4/rk3O8SSWSVoe3cftnRyNRDSyu4eB1etX2Jp0zZHCVM+m2g68V3Pdsixx6M4uFBFECJ1UubVtZiDON6r4mZMymhkAZZBNZ5OucAtTDXvA6FaoT0smWohFi0xsjOVmJFOPn7nqUV0VuLCAzl7lU1a8APB28Nr+qMMvQaiwY9BNHp/IASj4h09F31Fk0ZIhV45Ihwc2pboBw9YV5vDIhY6jbzjfNgR0sCBc1/FyXRgNb5PNsGM305QSOA6y1O3CiTpOhXFksTI+SxSY4xtJBh+KeCIcI2C3EiWy8V5W2hlphf2d9s96fdz6Na5Q1lEGL0NhE42v+GIA9udWUmOXrgmDb3R8quo8Zsx4+CdpcFEQMljqXmU4wJn09+V5sfSoJyPapQB8W8tYdGl/hWBnEmL/QsnCpeZ1S0WPQeJS8jVY5dtGbhX8NLyF8gpEsfc3BHlWnOmLbNnbyLmGDEF6SDCFqF2mgX5Vq7eSnJpZqVq5fqWfQH5e0VuprpCi9+2zwiBp+3g==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: postgres-creds
+      namespace: postgres
