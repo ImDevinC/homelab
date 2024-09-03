@@ -18,6 +18,8 @@ spec:
       values: |
         global:
           defaultStoragClass: nfs-client
+        image:
+          debug: true
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
