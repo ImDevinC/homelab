@@ -1,1 +1,4 @@
 secretRef: eero-metrics-secrets
+eero-metrics:
+  image:
+    tag: 0.1.1
