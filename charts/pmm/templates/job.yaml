@@ -75,8 +75,8 @@ data:
       show_missing_season_assets: false
       show_missing_episode_assets: false
       show_asset_not_needed: true
-      sync_mode: append
-      default_collection_order: None
+      sync_mode: sync
+      default_collection_order: release
       run_order:
         - operations
         - metadata
@@ -86,7 +86,7 @@ data:
       cache_expiration: 1
       minimum_items: 3
       item_refresh_delay: 0
-      delete_below_minimum: false
+      delete_below_minimum: true
       delete_not_scheduled: false
       run_again_delay: 0
       missing_only_released: false
@@ -120,8 +120,10 @@ data:
       Movies:
         metadata_files:
           - repo: /main/config/movies.yml
-        delete_unmanaged_collections: true
         operations:
+          delete_collections:
+            managed: false
+            less: 3
           metadata_backup:
             path: /source/movies-backup.yml
             add_blank_entries: true
