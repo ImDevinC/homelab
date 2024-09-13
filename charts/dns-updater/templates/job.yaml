@@ -59,3 +59,8 @@ data:
     ADDRESS=proxy.imdevinc.com
     TYPE=cloudflare
     CLOUDFLARE_API_TOKEN=
+  obsidian.env: |
+    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
+    ADDRESS=obsidian-livesync.imdevinc.com
+    TYPE=cloudflare
+    CLOUDFLARE_API_TOKEN=
