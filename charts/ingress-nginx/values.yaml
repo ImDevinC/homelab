@@ -10,6 +10,8 @@ ingress-nginx:
         env:
           - name: API_URL
             value: https://crowdsec-service.crowdsec.svc.cluster.local:8080
+          - name: API_KEY
+            value: mysecretkey12345
           - name: BOUNCER_CONFIG
             value: /crowdsec/crowdsec-bouncer.conf
         command: ['sh', '-c', "sh /docker_start.sh; mkdir -p /lua_plugins/crowdsec/; cp -R /crowdsec/* /lua_plugins/crowdsec/"]
