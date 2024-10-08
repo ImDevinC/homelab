@@ -1,9 +1,9 @@
 nginx-ingress:
   controller:
-    extraVolumes:
+    volumes:
       - name: crowdsec-bouncer-plugin
         emptyDir: {}
-    extraInitContainers:
+    initContainers:
       - name: init-clone-crowdsec-bouncer
         image: crowdsecurity/lua-bouncer-plugin
         imagePullPolicy: IfNotPresent
@@ -16,7 +16,7 @@ nginx-ingress:
         volumeMounts:
           - name: crowdsec-bouncer-plugin
             mountPath: /lua_plugins
-    extraVolumeMounts:
+    volumeMounts:
       - name: crowdsec-bouncer-plugin
         mountPath: /etc/nginx/lua/plugins/crowdsec
         subPath: crowdsec
