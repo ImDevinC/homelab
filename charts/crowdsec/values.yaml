@@ -1,0 +1,19 @@
+crowdsec:
+  container_runtime: containerd
+  agent:
+    acquisition:
+      - namespace: nginx
+        podName: ingress-nginx-controller-*
+        program: nginx
+    env:
+      - name: PARSERS
+        value: "crowdsecurity/cri-logs"
+      - name: COLLECTIONS
+        value: "crowdsecurity/nginx"
+  lapi:
+    env:
+      - name: BOUNCER_KEY_nginx
+        valueFrom:
+          secretKeyRef:
+            name: crowdsec-api-key
+            key: key
