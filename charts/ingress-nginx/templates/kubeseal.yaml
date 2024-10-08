@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: crowdsec-api-key
+  namespace: nginx
+spec:
+  encryptedData:
+    key: AgCUCt4gE0yWASJT7Oyl6EDoDkXMEgksiPtcFMTAPtVMvd612TibatfKAX7PDW6t7+x9wb1R1qrdtP4AFtr6plZB7kmqyzJ5UuX3B/J6JVbnO3vuBqRiw3UI4xhy/8KOiDTw6gRplQtrFhOLCpVeYnBNzd9dmc4T5E0X630b9uYogposKbQy1XK4nJmitX3Ue6ztzYvemL00gd/6bon+hEs/O1bhCXwdxQK73MjzfSwFj+akbI2usmtwWlyl6lqGXtlqS0VXmWg1mflVnEt5+a+AsS1wIvX7MIBHaYsMj2CfPw83u58ldPa8wvRcXww1icCvRvgp7x6V9a8Jk9gg5NmJZbZkQL+E0SkremVmmY6fOmGxLiDd9G6ewgxYXZ/wSfEQgZnsTNY5Vl7V6O1m/drUUTUnFmSnsPQuQO4fG34bGk/BxVZ1KQ+0nU468/j6ucKUSfJ+ql8Dpx1GGjl1Vv4x0U60HUAwnjGDtg5Q+719medLXO39qwUP6mBRDFZGxS2L2p36PEIxJKSUg7TGLB2Dznz0mHVHmOM2ZB4OkUZRyjuhlR1pI+p18yFPFfHH988z2NNC58HTtTixSzH+VZ0PC+wwYwoYbIz+KRsGFeYMncU4oW4UAUVx+hQHffoio8AyHHLxPNqaUyaYJq44ZxOQDNjEg75w35v4JRANElQbH9unn5La6MLJcpwl9rn/gXmYLQGTlSuaokV4ByN1cjpKWwsiX8wxpPJr4xU=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: crowdsec-api-key
+      namespace: nginx
