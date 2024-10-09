@@ -1,0 +1,18 @@
+authentik:
+  global:
+    envFrom:
+      - secretRef:
+          name: authentik-creds
+  authentik:
+    postgresql:
+      host: postgres.postgres
+  server:
+    ingress:
+      ingressClassName: nginx
+      enabled: true
+      hosts:
+        - authentik.collins.home
+  postgresql:
+    enabled: false
+  redis:
+    enabled: true
