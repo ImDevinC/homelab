@@ -3,8 +3,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Values.ingress.name | default "media" }}
-  annotations: 
-    {{- include .Values.ingress.annotations . | nindent 4 }} 
+  annotations: {{ toYaml .Values.ingress.annotations | nindent 4 }}
 spec:
   ingressClassName:  {{ .Values.ingress.className }}
   rules:
