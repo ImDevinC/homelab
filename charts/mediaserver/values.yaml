@@ -87,6 +87,11 @@ k8s-mediaserver:
 ingress:
   enabled: true
   className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/auth-url: http://authentik-server.authentik/outpost.goauthentik.io/auth/nginx
+    nginx.ingress.kubernetes.io/auth-signin: https://authentik.collins.home/output.goauthentik.io/start?rd=$escaped_uri
+    nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid
+    nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
   hosts:
     - host: overseerr.collins.home
       paths:
