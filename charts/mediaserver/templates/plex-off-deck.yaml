@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: off-deck
+  namespace: mediaserver
+data:
+  config.ini: |
+    [auth]
+    ignore_me=ignore_me
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: off-deck
+  namespace: mediaserver
+spec:
+  schedule: 0 * * * *
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - env:
+                - name: PLEXAPI_AUTH_SERVER_BASEURL
+                  value: http://plex.mediaserver:32400
+                - name: PLEXAPI_AUTH_SERVER_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      key: plex-token
+                      name: plex-token
+              image: python:3
+              imagePullPolicy: IfNotPresent
+              name: plex-off-deck
+              command: [/bin/bash]
+              args: ["-c", "curl -sLO https://raw.githubusercontent.com/blacktwin/JBOPS/refs/heads/master/utility/off_deck.py && pip install requests plexapi && python off_deck.py --playlists Goodnight"]
+              volumeMounts:
+                - mountPath: /root/.config/plexapi
+                  name: off-deck-config
+          volumes:
+            - name: off-deck-config
+              configMap:
+                name: off-deck
