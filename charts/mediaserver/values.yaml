@@ -93,6 +93,7 @@ k8s-mediaserver:
       enabled: true
       serviceMonitor: true
       apiSecret: sonarr-token
+      urlBase: ""
   transmission:
     ingress:
       enabled: true
