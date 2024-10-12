@@ -39,7 +39,9 @@ k8s-mediaserver:
       limits:
         memory: "1Gi"
     ingress:
-      enabled: false
+      enabled: true
+      ingressClassName: nginx
+      host: radarr.collins.home
     exportarr:
       enabled: true
       serviceMonitor: true
