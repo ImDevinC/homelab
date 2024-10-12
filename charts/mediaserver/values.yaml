@@ -40,7 +40,7 @@ k8s-mediaserver:
         memory: "1Gi"
     ingress:
       enabled: true
-      path: ""
+      path: "/"
       ingressClassName: nginx
       host: radarr.collins.home
       annotations:
