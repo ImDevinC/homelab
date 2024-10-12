@@ -52,7 +52,7 @@ k8s-mediaserver:
       enabled: true
       serviceMonitor: true
       apiSecret: radarr-token
-      urlBase: /radarr
+      urlBase: /
   sabnzbd:
     ingress:
       enabled: false
