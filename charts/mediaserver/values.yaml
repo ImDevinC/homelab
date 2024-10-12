@@ -60,7 +60,6 @@ k8s-mediaserver:
       enabled: true
       serviceMonitor: true
       apiSecret: radarr-token
-      urlBase: /
   sabnzbd:
     ingress:
       enabled: true
@@ -94,7 +93,6 @@ k8s-mediaserver:
       enabled: true
       serviceMonitor: true
       apiSecret: sonarr-token
-      urlBase: /
   transmission:
     ingress:
       enabled: true
