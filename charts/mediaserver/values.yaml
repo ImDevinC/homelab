@@ -155,7 +155,7 @@ k8s-mediaserver:
       enabled: false
 
 ingress:
-  enabled: true
+  enabled: false
   className: nginx
   #  annotations:
   #    nginx.ingress.kubernetes.io/auth-url: http://authentik-server.authentik.svc.cluster.local/outpost.goauthentik.io/auth/nginx
