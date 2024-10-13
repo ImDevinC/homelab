@@ -14,7 +14,7 @@ metadata:
   name: off-deck
   namespace: mediaserver
 spec:
-  schedule: 0 * * * *
+  schedule: 0 */6 * * *
   jobTemplate:
     spec:
       template:
