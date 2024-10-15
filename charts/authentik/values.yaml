@@ -4,6 +4,7 @@ authentik:
       - secretRef:
           name: authentik-creds
   authentik:
+    log_level: trace
     postgresql:
       host: postgres.postgres
   server:
