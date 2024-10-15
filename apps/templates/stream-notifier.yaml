@@ -6,6 +6,11 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  ignoreDifferences:
+    - group: networking.k8s.io
+      kind: Ingress
+      jqPathExpressions:
+        - '.spec.rules[] | .http.paths[] | select(.path | startswith("/.well-known/acme-challenge"))'
   destination:
     server: https://kubernetes.default.svc
     namespace: stream-notifier
