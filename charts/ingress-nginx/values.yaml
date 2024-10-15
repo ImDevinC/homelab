@@ -1,6 +1,8 @@
 ingress-nginx:
   controller:
     allowSnippetAnnotations: true
+    extraArgs:
+      v: "2"
     extraVolumes:
       - name: crowdsec-bouncer-plugin
         emptyDir: {}
