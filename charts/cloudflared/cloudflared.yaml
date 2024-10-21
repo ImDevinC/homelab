@@ -94,7 +94,7 @@ data:
     - hostname: gha-dashboard.imdevinc.com
       service: http://gha-dashboard.gha-dashboard:8080
     - hostname: homeassistant.imdevinc.com
-      service: http://homeassistant.homeassistant:8123
+      service: http://homeassistant-home-assistant.homeassistant:8123
     - hostname: obsidian-livesync.imdevinc.com
       service: http://obsidian-livesync-svc-couchdb.obsidian-livesync:5984
     - hostname: remote.imdevinc.com
