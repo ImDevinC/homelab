@@ -6,6 +6,11 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
+  ignoreDifferences:
+    - group: app
+      kind: Deployment
+      jsonPointers:
+        - /spec/template/spec/hostUsers
   destination:
     server: https://kubernetes.default.svc
     namespace: scrutiny
