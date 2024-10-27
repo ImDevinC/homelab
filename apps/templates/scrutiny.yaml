@@ -9,7 +9,7 @@ spec:
   ignoreDifferences:
     - group: apps/v1
       kind: Deployment
-      jqPathExpression:
+      jqPathExpressions:
         - '.spec.template.spec.hostUsers'
   destination:
     server: https://kubernetes.default.svc
