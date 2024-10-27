@@ -5,8 +5,7 @@ argo-cd:
     ingress:
       enabled: true
       ingressClassName: nginx
-      hosts: 
-        - argo.collins.home
+      hostname: argo.collins.home
     extraArgs:
       - --insecure
     config:
