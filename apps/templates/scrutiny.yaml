@@ -6,11 +6,6 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  ignoreDifferences:
-    - group: apps/v1
-      kind: Deployment
-      jqPathExpressions:
-        - '.spec.template.spec.hostUsers'
   destination:
     server: https://kubernetes.default.svc
     namespace: scrutiny

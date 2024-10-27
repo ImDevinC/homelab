@@ -1,4 +1,6 @@
 scrutiny:
+  podOptions:
+    hostUsers: false
   ingress:
     main:
       enabled: true

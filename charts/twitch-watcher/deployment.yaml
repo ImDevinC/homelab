@@ -12,6 +12,7 @@ spec:
       labels:
         app: twitch-watcher
     spec:
+      hostUsers: true
       imagePullSecrets:
         - name: dockerauth
       containers:
