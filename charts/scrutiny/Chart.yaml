@@ -1,0 +1,7 @@
+apiVersion: v2
+name: scrutiny
+version: 1.0.0
+dependencies:
+  - name: scrutiny
+    version: 12.2.0
+    repository: oci://tccr.io/truecharts
