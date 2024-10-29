@@ -24,9 +24,9 @@ k8s-mediaserver:
     hostNetwork: true
     ingress:
       enabled: false
-    resources:
-      limits:
-        nvidia.com/gpu: 1
+    resources: {}
+    #limits:
+    #    nvidia.com/gpu: 1
     extraVolumeMounts:
       - name: mediaserver-volume
         mountPath: /anime
