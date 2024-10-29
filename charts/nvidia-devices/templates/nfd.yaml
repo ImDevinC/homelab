@@ -102,3 +102,16 @@ spec:
         - name: features-d
           hostPath:
             path: "/etc/kubernetes/node-feature-discovery/features.d/"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nvidia-device-plugin
+data:
+  config: |
+    version: v1
+    sharing:
+      mps:
+        resources:
+          - name: nvidia.com/gpu
+            replicas: 10
