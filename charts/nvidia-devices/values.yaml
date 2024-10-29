@@ -1,4 +1,6 @@
 nvidia-device-plugin:
+  nfd:
+    enableNodeFeatureApi: true
   gfd:
     enabled: true
     #  config:
