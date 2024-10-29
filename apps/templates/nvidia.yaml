@@ -8,55 +8,15 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-system
+    namespace: nvidia-device-plugin
   project: default
   source:
-    chart: nvidia-device-plugin
-    repoURL: https://nvidia.github.io/k8s-device-plugin
-    targetRevision: 0.16.2
+    chart: charts/nvidia-devices
+    repoURL: https://github.com/imdevinc/homelab.git
+    targetRevision: HEAD
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: nvidia-feature-discovery
-  namespace: argo-cd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
-spec:
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: kube-system
-  project: default
-  source:
-    chart: nvidia-device-plugin
-    repoURL: https://nvidia.github.io/k8s-device-plugin
-    targetRevision: 0.16.2
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: node-feature-discovery
-  namespace: argo-cd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
-spec:
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: kube-system
-  project: default
-  source:
-    chart: node-feature-discovery
-    repoURL: https://kubernetes-sigs.github.io/node-feature-discovery/charts
-    targetRevision: 0.16.5
-  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
