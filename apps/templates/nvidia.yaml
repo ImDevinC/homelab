@@ -11,7 +11,7 @@ spec:
     namespace: nvidia-device-plugin
   project: default
   source:
-    chart: charts/nvidia-devices
+    path: charts/nvidia-devices
     repoURL: https://github.com/imdevinc/homelab.git
     targetRevision: HEAD
   syncPolicy:
