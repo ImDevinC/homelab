@@ -53,7 +53,7 @@ spec:
     namespace: kube-system
   project: default
   source:
-    chart: node-device-plugin
+    chart: node-feature-discovery
     repoURL: https://kubernetes-sigs.github.io/node-feature-discovery/charts
     targetRevision: 0.16.5
   syncPolicy:
