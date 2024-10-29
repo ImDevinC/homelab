@@ -31,7 +31,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: nfd-master
-  namespace: node-feature-discovery
+  namespace: nvidia-device-plugin
 ---
 apiVersion: apps/v1
 kind: DaemonSet
