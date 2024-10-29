@@ -3,5 +3,5 @@ nvidia-device-plugin:
     enableNodeFeatureApi: true
   gfd:
     enabled: true
-    #  config:
-    #    name: nvidia-plugin-config
+  config:
+    name: nvidia-plugin-config

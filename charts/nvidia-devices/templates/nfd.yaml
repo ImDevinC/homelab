@@ -6,7 +6,7 @@ data:
   config: |
     version: v1
     sharing:
-      mps:
+      timeslicing:
         resources:
           - name: nvidia.com/gpu
             replicas: 10
