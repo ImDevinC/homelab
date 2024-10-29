@@ -106,7 +106,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nvidia-device-plugin
+  name: nvidia-plugin-config
 data:
   config: |
     version: v1
