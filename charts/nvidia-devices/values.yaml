@@ -1,3 +1,5 @@
 nvidia-device-plugin:
+  gfd:
+    enabled: true
   config:
     name: nvidia-plugin-config
