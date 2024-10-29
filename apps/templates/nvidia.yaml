@@ -39,3 +39,24 @@ spec:
     automated:
       prune: true
       selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: node-feature-discovery
+  namespace: argo-cd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  project: default
+  source:
+    chart: node-device-plugin
+    repoURL: https://kubernetes-sigs.github.io/node-feature-discovery/charts
+    targetRevision: 0.16.5
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
