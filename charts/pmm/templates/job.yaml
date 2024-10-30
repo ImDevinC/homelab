@@ -23,6 +23,8 @@ spec:
                   subPath: config.yaml
                 - name: pmm-assets
                   mountPath: /assets
+                - name: pmm-cache
+                  mountPath: /config
               envFrom:
                 - configMapRef:
                     name: pmm-repo
@@ -35,6 +37,9 @@ spec:
             - name: pmm-assets
               persistentVolumeClaim:
                 claimName: pmm-assets
+            - name: pmm-cache
+              persistentVolumeClaim:
+                claimName: pmm-cache
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -43,6 +48,18 @@ metadata:
 data:
   GITHUB_REPO: plex-meta-manager-configs
   GITHUB_OWNER: ImDevinC
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pmm-cache
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: nfs-client
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -82,8 +99,8 @@ data:
         - metadata
         - collections
         - overlays
-      cache: false
-      cache_expiration: 1
+      cache: true
+      cache_expiration: 3
       minimum_items: 3
       item_refresh_delay: 0
       delete_below_minimum: true
@@ -137,7 +154,7 @@ data:
         metadata_files:
           - repo: /main/config/anime.yml
     radarr:
-      url: http://radarr.mediaserver:7878/radarr
+      url: http://radarr.mediaserver:7878
       token: <<RADARR_TOKEN>>
       add: false
       monitor: true
