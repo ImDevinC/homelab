@@ -120,6 +120,8 @@ data:
       Movies:
         metadata_files:
           - repo: /main/config/movies.yml
+        collection_files:
+          - repo: /main/config/movie-collections.yml
         operations:
           delete_collections:
             managed: false
