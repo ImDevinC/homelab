@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nutweb
+  labels:
+    app: nutweb
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: nut.collins.home
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nutweb
+                port:
+                  number: 9000
