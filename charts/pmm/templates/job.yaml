@@ -138,10 +138,13 @@ data:
         metadata_files:
           - repo: /main/config/movies.yml
         collection_files:
+          - default: franchise
+            template_variables:
+              minimum_items: 3
           - repo: /main/config/movie-collections.yml
         operations:
           delete_collections:
-            managed: false
+            managed: true
             less: 3
           metadata_backup:
             path: /source/movies-backup.yml
@@ -167,3 +170,4 @@ data:
       availability: announced
       radarr_path: None
       plex_path: None
+    
