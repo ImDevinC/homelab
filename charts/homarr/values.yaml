@@ -1,0 +1,30 @@
+homarr:
+  env:
+    TZ: "America/Los_Angeles"
+  persistence:
+    - name: homarr-config
+      enabled: true
+      storageClassName: nfs-client
+      accessMode: "ReadWriteOnce"
+      size: "50Mi"
+      mountPath: "/app/data/configs"
+    - name: homarr-data
+      enabled: true
+      storageClassName: nfs-client
+      accessMode: "ReadWriteOnce"
+      size: "50Mi"
+      mountPath: "/data"
+    - name: homarr-icons
+      enabled: true
+      storageClassName: nfs-client
+      accessMode: "ReadWriteOnce"
+      size: "50Mi"
+      mountPath: "/app/public/icons"
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - host: homarr.collins.home
+        paths:
+          - path: /
+            pathType: ImplementationSpecific

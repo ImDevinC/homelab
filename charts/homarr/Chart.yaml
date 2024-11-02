@@ -1,0 +1,7 @@
+apiVersion: v2
+name: homarr
+version: 1.0.0
+dependencies:
+  - name: homarr
+    version: 1.2.6
+    repository: https://oben01.github.io/charts/

@@ -1,0 +1,6 @@
+dependencies:
+- name: homarr
+  repository: https://oben01.github.io/charts/
+  version: 1.2.6
+digest: sha256:704cc73e648f78eb880fac920cddf125175a601479ac7572128b0478fd732a23
+generated: "2024-10-09T07:44:05.848420572-07:00"
