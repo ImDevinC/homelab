@@ -96,7 +96,7 @@ data:
     - hostname: homeassistant.imdevinc.com
       service: http://homeassistant-home-assistant.homeassistant:8123
     - hostname: obsidian-livesync.imdevinc.com
-      service: http://obsidian-livesync-svc-couchdb.obsidian-livesync:5984
+      service: http://couchdb-svc-couchdb.couchdb:5984
     - hostname: remote.imdevinc.com
       service: http://stream-notifier.stream-notifier:7000
     - hostname: wallabag.imdevinc.com
