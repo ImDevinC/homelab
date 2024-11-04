@@ -12,3 +12,8 @@ spec:
     - http01:
         ingress:
           class: nginx
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: cloudflare-token
+            key: apiToken
