@@ -9,6 +9,11 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+      - bsky.imdevinc.com
+      - "*.bsky.imdevinc.com"
+      secretName: bsky-tls
   rules:
     - host: "bsky.imdevinc.com"
       http:
