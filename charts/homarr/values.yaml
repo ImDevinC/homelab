@@ -1,6 +1,16 @@
 homarr:
   env:
     TZ: "America/Los_Angeles"
+    AUTH_OIDC_URI: http://authentik.collins.home
+    AUTH_OIDC_CLIENT_NAME: authentik
+    AUTH_PROVIDER: oidc
+  envSecrets:
+    AUTH_OIDC_CLIENT_ID:
+      key: AUTH_OIDC_CLIENT_ID
+      name: authentik-creds
+    AUTH_OIDC_CLIENT_SECRET:
+      key: AUTH_OIDC_CLIENT_SECRET
+      name: authentik-creds
   persistence:
     - name: homarr-config
       enabled: true
