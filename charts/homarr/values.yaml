@@ -4,6 +4,8 @@ homarr:
     AUTH_OIDC_URI: http://authentik.collins.home
     AUTH_OIDC_CLIENT_NAME: authentik
     AUTH_PROVIDER: oidc
+    AUTH_OIDC_AUTO_LOGIN: "true"
+    NEXTAUTH_URL: http://homarr.collins.home
   envSecrets:
     AUTH_OIDC_CLIENT_ID:
       key: AUTH_OIDC_CLIENT_ID
