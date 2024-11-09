@@ -12,6 +12,8 @@ argo-cd:
         issuer: http://authentik.collins.home/application/o/argocd/
         clientID: $authentik-creds:oidc.authentik.client_id
         clientSecret: $authentik-creds:oidc.authentik.client_secret
+        requestedCopes: ["openid", "profile", "email", "groups"]
+        requestedIDTokenClaims: {"groups": {"essential": true}}
   server:
     ingress:
       enabled: true
