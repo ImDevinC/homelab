@@ -4,6 +4,11 @@ argo-cd:
   dex:
     enabled: false
   configs:
+    rbac:
+      create: true
+      policy.csv: |
+        g, ArgoCD Admins, role:admin
+        g, ArgoCD Viewers, role:readonly
     cm:
       url: http://argo.collins.home
       create: true
