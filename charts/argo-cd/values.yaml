@@ -3,6 +3,9 @@ argo-cd:
     domain: argo.collins.home
   dex:
     enabled: false
+  params:
+    server:
+      insecure: true
   configs:
     cm:
       create: true
