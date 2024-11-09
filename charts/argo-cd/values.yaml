@@ -8,7 +8,7 @@ argo-cd:
       create: true
       oidc.config: |
         name: Authentik
-        issuer: http://authentik.collins.home
+        issuer: http://authentik.collins.home/application/o/argocd
         clientID: $authentik-creds:oidc.authentik.client_id
         clientSecret: $authentik-creds:oidc.authentik.client_secret
   server:
