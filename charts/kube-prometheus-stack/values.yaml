@@ -36,6 +36,8 @@ kube-prometheus-stack:
         mountPath: /etc/secrets/grafana_authentik_secret
         readOnly: true
     grafana.ini:
+      server:
+        root_url: http://grafana.collins.home
       auth.generic_oauth:
         enabled: true
         name: Authentik SSO
