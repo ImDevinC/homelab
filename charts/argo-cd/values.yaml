@@ -3,11 +3,9 @@ argo-cd:
     domain: argo.collins.home
   dex:
     enabled: false
-  params:
-    server:
-      insecure: true
   configs:
     cm:
+      url: http://argo.collins.home
       create: true
       oidc.config: |
         name: Authentik
