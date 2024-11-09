@@ -1,6 +1,14 @@
 argo-cd:
   dex:
     enabled: false
+  configs:
+    cm:
+      create: true
+      oidc.config: |
+        name: Authentik
+        issuer: http://authentik.collins.home
+        clientID: $oidc.authentik.client_id
+        clientSecret: $oidc.authentik.client_secret
   server:
     ingress:
       enabled: true
@@ -8,11 +16,6 @@ argo-cd:
       hostname: argo.collins.home
     extraArgs:
       - --insecure
-    config:
-      repositories: |
-        - type: helm
-          name: argo-cd
-          url: https://argoproj.github.io/argo-helm
     metrics:
       enabled: true
       serviceMonitor:
