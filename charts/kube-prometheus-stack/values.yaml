@@ -29,6 +29,27 @@ kube-prometheus-stack:
         nginx.org/websocket-services: kube-prometheus-stack-grafana
     admin:
       existingSecret: grafana-creds
+    extraSecretMounts:
+      - name: grafana-authentik-creds
+        secretName: grafana-authentik-creds
+        defaultMode: 0440
+        mountPath: /etc/secrets/grafana_authentik_secret
+        readOnly: true
+    grafana.ini:
+      auth.generic_oauth:
+        enabled: true
+        name: Authentik SSO
+        allow_sign_up: true
+        client_id: "$__file{/etc/secrets/grafana_authentik_secret/client_id}"
+        client_secret: "$__file{/etc/secrets/grafana_authentik_secret/client_secret}"
+        auto_login: true
+        api_url: http://authentik.collins.home/application/o/grafana
+        email_attribute_path: email
+        login_attribute_path: username
+        name_attribute_path: full_name
+        role_attribute_path: contains(resource_access.grafana.roles[*], 'grafana-admin') && 'GrafanaAdmin' || contains(resource_access.grafana.roles[*], 'admin') && 'Admin' || contains(resource_access.grafana.roles[*], 'grafana-editor') && 'Editor' || contains(resource_access.grafana.roles[*], 'viewer') && 'Viewer'
+        role_attribute_strict_mode: true
+        allow_assign_grafana_admin: true
     dashboardProviders:
       dashboardProviders.yaml:
         apiVersion: 1
