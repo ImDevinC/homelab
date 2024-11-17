@@ -1,0 +1,135 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: xtts-ui
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xtts-ui
+  labels:
+    app: xtts-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xtts-ui
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: xtts-ui
+    spec:
+      containers:
+        - image: aladdin1234/xtts-webui:0.2
+          imagePullPolicy: IfNotPresent
+          name: xtts-webui
+          ports:
+            - containerPort: 7860
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /venv/xtts/models
+              name: models
+            - mountPath: /venv/xtts/output
+              name: outputs
+            - mountPath: /venv/xtts/finetuned_models
+              name: finetuned-models
+          resources:
+            limits:
+              nvidia.com/gpu: "1"
+            requests:
+              nvidia.com/gpu: "1"
+      volumes:
+        - name: models
+          persistentVolumeClaim:
+            claimName: xtts-ui-models
+        - name: outputs
+          persistentVolumeClaim:
+            claimName: xtts-ui-outputs
+        - name: finetuned-models
+          persistentVolumeClaim:
+            claimName: xtts-ui-finetuned-models
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: xtts-ui
+  labels:
+    app: xtts-ui
+spec:
+  selector:
+    app: xtts-ui
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 7860
+      protocol: TCP
+      targetPort: 7860
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: xtts-ui
+  labels:
+    app: xtts-ui
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: xtts.collins.home
+      http:
+        paths:
+          - backend:
+              service:
+                name: xtts-ui
+                port:
+                  number: 7860
+            path: /
+            pathType: Prefix
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: xtts-ui-models
+  labels:
+    app: xtts-ui
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: xtts-ui-outputs
+  labels:
+    app: xtts-ui
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: xtts-ui-finetuned-models
+  labels:
+    app: xtts-ui
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+
