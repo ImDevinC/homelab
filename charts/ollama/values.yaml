@@ -1,0 +1,20 @@
+ollama:
+  ollama:
+    gpu:
+      enabled: true
+      type: 'nvidia'
+      number: 1
+    models:
+      - mistral
+      - llama3.2
+  ingress:
+    enabled: true
+    className: nginx
+    hosts:
+      - host: ollama.collins.home
+        paths:
+          - path: /
+            pathType: Prefix
+  persistentVolume:
+    enabled: true
+    storageClass: nfs-client

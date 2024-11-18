@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: piper
+  labels:
+    app: piper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: piper
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: piper
+    spec:
+      containers:
+        - image: rhasspy/wyoming-piper:1.5.0
+          imagePullPolicy: IfNotPresent
+          name: piper
+          args: ["--voice", "en_US-lessac-medium"]
+          ports:
+            - containerPort: 10200
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /data
+              name: data
+          resources:
+            limits:
+              nvidia.com/gpu: "1"
+            requests:
+              nvidia.com/gpu: "1"
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: piper-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: piper
+  labels:
+    app: piper
+spec:
+  selector:
+    app: piper
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 10200
+      protocol: TCP
+      targetPort: 10200
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: piper-data
+  labels:
+    app: piper
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: nfs-client
+  volumeMode: Filesystem

@@ -1,0 +1,12 @@
+open-webui:
+  clusterDomain: collins.home
+  ingress:
+    enabled: true
+    class: nginx
+    host: webui.collins.home
+  ollama:
+    enabled: false
+    ollamaUrls:
+      - http://ollama.ollama:11434
+  persistence:
+    storageClass: nfs-client
