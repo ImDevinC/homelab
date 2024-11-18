@@ -1,3 +1,6 @@
+clean:
+	rm -rf manifests
+
 alerts: mixins/mixin.libsonnet
 	@mkdir -p manifests
 	jsonnet -S mixins/alerts.jsonnet > manifests/$@.yaml
@@ -15,7 +18,7 @@ combine:
 		yq -i '.kube-prometheus-stack.grafana.dashboards.default.[strenv(baseFile)].json = strenv(val)' values.yaml ;\
 	done
 
-all: alerts dashboards combine
+all: clean alerts dashboards combine
 
 get-config:
 	kubectl get secret -n monitoring alertmanager-new-config -o jsonpath='{.data.alertmanager\.yaml}' | base64 -d > old-config.yaml
