@@ -1,5 +1,5 @@
 {
   grafanaDashboards+:: {
-    'nvidia': (import 'nvidia.json'),
+    'nvidia.json': (import 'nvidia.json'),
   },
 }
