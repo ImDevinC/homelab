@@ -1,6 +1,6 @@
 home-assistant:
   image:
-    tag: 2024.2.5
+    tag: 2024.11.2
   metrics:
     enabled: true
     serviceMonitor:
