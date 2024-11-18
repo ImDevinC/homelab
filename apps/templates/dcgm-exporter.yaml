@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gcdm-exporter
+  name: dcgm-exporter
   namespace: argo-cd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: gcdm-exporter
+    namespace: dcgm-exporter
   project: default
   source:
     path: charts/dcgm-exporter
