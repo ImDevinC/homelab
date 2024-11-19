@@ -3,7 +3,6 @@ kind: CronJob
 metadata:
   name: dns-updater
 spec:
-  suspend: true
   schedule: "0 * * * *" # Every hour
   concurrencyPolicy: Forbid
   jobTemplate:
@@ -35,33 +34,8 @@ kind: ConfigMap
 metadata:
   name: dns-updater
 data:
-  remote.env: |
+  asterisk.env: |
     ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=remote.imdevinc.com
-    TYPE=cloudflare
-    CLOUDFLARE_API_TOKEN=
-  gha-dashboard.env: |
-    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=gha-dashboard.imdevinc.com
-    TYPE=cloudflare
-    CLOUDFLARE_API_TOKEN=
-  homeassistant.env: |
-    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=homeassistant.imdevinc.com
-    TYPE=cloudflare
-    CLOUDFLARE_API_TOKEN=
-  wallabag.env: |
-    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=wallabag.imdevinc.com
-    TYPE=cloudflare
-    CLOUDFLARE_API_TOKEN=
-  proxy.env: |
-    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=proxy.imdevinc.com
-    TYPE=cloudflare
-    CLOUDFLARE_API_TOKEN=
-  obsidian.env: |
-    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=obsidian-livesync.imdevinc.com
+    ADDRESS=*.imdevinc.com
     TYPE=cloudflare
     CLOUDFLARE_API_TOKEN=
