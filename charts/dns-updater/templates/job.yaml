@@ -3,6 +3,7 @@ kind: CronJob
 metadata:
   name: dns-updater
 spec:
+  suspend: true
   schedule: "0 * * * *" # Every hour
   concurrencyPolicy: Forbid
   jobTemplate:
