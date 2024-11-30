@@ -3,7 +3,6 @@ kind: CronJob
 metadata:
   name: dns-updater
 spec:
-  suspend: true
   schedule: "0 * * * *" # Every hour
   concurrencyPolicy: Forbid
   jobTemplate:
@@ -15,7 +14,7 @@ spec:
             - name: dockerauth
           containers:
             - name: dns-updater
-              image: ghcr.io/imdevinc/dns-updater:0.0.7
+              image: ghcr.io/imdevinc/dns-updater:0.1.0
               args: ["-dir", "/etc/envs"]
               imagePullPolicy: IfNotPresent
               volumeMounts:
@@ -37,6 +36,13 @@ metadata:
 data:
   asterisk.env: |
     ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=*.imdevinc.com
+    ADDRESS=bsky.imdevinc.com
+    HOSTNAME=*.imdevinc.com
+    TYPE=cloudflare
+    CLOUDFLARE_API_TOKEN=
+  remote.env: |
+    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
+    ADDRESS=remote.imdevinc.com
+    HOSTNAME=remote.imdevinc.com
     TYPE=cloudflare
     CLOUDFLARE_API_TOKEN=
