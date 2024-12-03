@@ -4,6 +4,9 @@
   "onboarding": false,
   "platform": "github",
   "prHourlyLimit": 0,
+  "labels": [
+    "renovate"
+  ],
   "assignees": [
     "ImDevinC"
   ],
