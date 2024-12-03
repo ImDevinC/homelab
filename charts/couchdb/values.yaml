@@ -34,7 +34,7 @@ couchdb:
       writer: stderr
       level: debug
   ingress:
-    enabled: true
+    enabled: false
     className: nginx
     annotations:
       external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
