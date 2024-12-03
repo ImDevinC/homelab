@@ -15,7 +15,7 @@ home-assistant:
       hostPath: /mnt/media/config/homeassistant
   ingress:
     main:
-      enabled: true
+      enabled: false
       annotations:
         external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
         cert-manager.io/cluster-issuer: letsencrypt
