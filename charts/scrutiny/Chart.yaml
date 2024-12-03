@@ -3,5 +3,5 @@ name: scrutiny
 version: 1.0.0
 dependencies:
   - name: scrutiny
-    version: 12.2.0
+    version: 12.2.2
     repository: oci://tccr.io/truecharts
