@@ -3,5 +3,5 @@ name: spinnaker
 version: 1.0.0
 dependencies:
   - name: spinnaker
-    version: 2.2.15
+    version: 2.2.19
     repository: https://opsmx.github.io/spinnaker-helm/
