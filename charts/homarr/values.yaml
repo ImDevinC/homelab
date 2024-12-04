@@ -8,6 +8,7 @@ homarr:
     NEXTAUTH_URL: http://homarr.collins.home
     BASE_URL: http://homarr.collins.home
     DATABASE_URL: file:/data/db.sqlite
+    AUTH_OIDC_ADMIN_GROUP: homarr-admin
   envSecrets:
     AUTH_OIDC_CLIENT_ID:
       key: AUTH_OIDC_CLIENT_ID
