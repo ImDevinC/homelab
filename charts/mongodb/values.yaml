@@ -1,4 +1,5 @@
 mongodb:
+  createConfigmap: true
   auth:
     enabled: true
     existingSecret: database-creds
