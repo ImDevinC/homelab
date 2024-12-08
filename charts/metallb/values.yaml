@@ -4,6 +4,8 @@ addressPool:
     - 192.168.1.64/26
 
 metallb:
+  speaker:
+    ignoreExcludeLB: true
   prometheus:
     namespace: metallb-system
     serviceAccount: default
