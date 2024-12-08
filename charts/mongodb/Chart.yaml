@@ -3,5 +3,5 @@ name: mongodb
 version: 1.0.0
 dependencies:
   - name: mongodb
-    version: 13.6.4
+    version: 13.18.5
     repository: https://charts.bitnami.com/bitnami
