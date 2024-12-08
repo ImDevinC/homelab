@@ -5,8 +5,9 @@ ollama:
       type: 'nvidia'
       number: 1
     models:
-      - mistral
-      - llama3.2
+      pull:
+        - mistral
+        - llama3.2
   ingress:
     enabled: true
     className: nginx
