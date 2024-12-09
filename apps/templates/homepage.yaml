@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: homarr
+  name: homepage
   namespace: argo-cd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: homarr
+    namespace: homepage
   project: default
   source:
-    path: charts/homarr
+    path: charts/homepage
     repoURL: https://github.com/imdevinc/homelab.git
     targetRevision: HEAD
   syncPolicy:
