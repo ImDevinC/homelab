@@ -1,6 +1,7 @@
 crowdsec:
   container_runtime: containerd
   agent:
+    replicas: 0
     acquisition:
       - namespace: nginx
         podName: ingress-nginx-controller-*
@@ -11,6 +12,7 @@ crowdsec:
       - name: COLLECTIONS
         value: "crowdsecurity/nginx"
   lapi:
+    replicas: 0
     env:
       - name: BOUNCER_KEY_nginx
         valueFrom:
