@@ -97,7 +97,7 @@ prometheus-postgres-exporter:
     datasource:
       host: localhost
       user: postgres
-      passwordFile: /credentials/creds
+      passwordFile: /creds/credentials
   extraVolumes:
     - name: credentials
       secret:
