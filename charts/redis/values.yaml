@@ -1,11 +1,6 @@
 prometheus-redis-exporter:
   redisAddress: ""
-  redisAddressConfig:
-    enabled: true
-    isSecret: true
-    source:
-      name: redis-targets
-      key: input.json
+  command: ["-redis.addr=redis://authentik-redis-master.authentik:6379", "-redis.addr=redis://argo-cd-argocd-redis.argo-cd:6379"]
   serviceMonitor:
     enabled: true
     multipleTarget: true
