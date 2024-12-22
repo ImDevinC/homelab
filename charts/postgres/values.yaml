@@ -95,7 +95,7 @@ prometheus-postgres-exporter:
     enabled: true
   config:
     datasource:
-      host: 127.0.0.1
+      host: postgres.postgres
       user: postgres
       passwordFile: /creds/credentials
   extraVolumes:
