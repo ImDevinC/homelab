@@ -16,3 +16,4 @@ prometheus-redis-exporter:
         name: authentik
       - url: redis://argo-cd-argocd-redis.argo-cd:6379
         name: argo-cd
+    telemetryPath: /scrape
