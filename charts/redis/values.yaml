@@ -6,7 +6,7 @@ prometheus-redis-exporter:
       metadata:
         name: redis-exporter-extra
       data:
-        targets:
+        targets: |
           - redis://authentik-redis-master.authentik:6379
           - redis://argo-cd-argocd-redis.argo-cd:6379
   redisAddressConfig:
