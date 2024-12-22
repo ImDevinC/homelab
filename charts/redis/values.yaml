@@ -2,7 +2,7 @@ prometheus-redis-exporter:
   redisAddress: ""
   extraManifests:
     - apiVersion: v1
-      kind: ConnfigMap
+      kind: ConfigMap
       metadata:
         labels:
           name: redis-exporter-extra
