@@ -1,6 +1,13 @@
 prometheus-redis-exporter:
   redisAddress: ""
-  command: ["-redis.addr=redis://authentik-redis-master.authentik:6379", "-redis.addr=redis://argo-cd-argocd-redis.argo-cd:6379"]
+  extraArgs:
+    "redis.password-file": "/etc/redis.password"
+  auth:
+    enabled: true
+    redisPasswordFile:
+      secret:
+        name: redis-targets
+        mountPath: /etc/redis.password
   serviceMonitor:
     enabled: true
     multipleTarget: true
