@@ -7,7 +7,7 @@ prometheus-redis-exporter:
     redisPasswordFile:
       secret:
         name: redis-targets
-        mountPath: /etc/redis.password
+      mountPath: /etc/redis.password
   serviceMonitor:
     enabled: true
     multipleTarget: true
