@@ -6,4 +6,5 @@
 (import 'eero-metrics/mixin.libsonnet') +
 (import 'nvidia/mixin.libsonnet') +
 (import 'authentik/mixin.libsonnet') +
-(import 'postgres/mixin.libsonnet')
+(import 'postgres/mixin.libsonnet') +
+(import 'redis/mixin.libsonnet')
