@@ -1,7 +1,7 @@
 prometheus-redis-exporter:
   redisAddress: ""
   extraArgs:
-    "redis.password-file": "/etc/redis.password"
+    "redis.password-file": "/etc/redis.password/input.json"
   auth:
     enabled: true
     redisPasswordFile:
