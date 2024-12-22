@@ -4,12 +4,11 @@ prometheus-redis-exporter:
     - apiVersion: v1
       kind: ConfigMap
       metadata:
-        labels:
-          name: redis-exporter-extra
-        data:
-          targets:
-            - redis://authentik-redis-master.authentik:6379
-            - redis://argo-cd-argocd-redis.argo-cd:6379
+        name: redis-exporter-extra
+      data:
+        targets:
+          - redis://authentik-redis-master.authentik:6379
+          - redis://argo-cd-argocd-redis.argo-cd:6379
   redisAddressConfig:
     enabled: true
     source:
