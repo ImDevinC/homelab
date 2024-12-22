@@ -7,4 +7,5 @@
 (import 'nvidia/mixin.libsonnet') +
 (import 'authentik/mixin.libsonnet') +
 (import 'postgres/mixin.libsonnet') +
-(import 'redis/mixin.libsonnet')
+(import 'redis/mixin.libsonnet') +
+(import 'mongodb/mixin.libsonnet')
