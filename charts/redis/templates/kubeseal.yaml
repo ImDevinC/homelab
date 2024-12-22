@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: redis-targets
+  namespace: redis
+spec:
+  encryptedData:
+    input.json: AgAq0WjHMR2NaZAfIws6YWJK7jFvrbZ7XKK5tsxER0DUVLr+3WZS0cbOAlXPPbWYif0cebhbvwrdKz+uyvhoxlwhxWe1tCeP231lFqvCuS0hxSk/CLxBaNe2fmHuJpixscJK7LozW5LOIoyxaAbxxZGWS8GKzJG3jdsgO/vT1XASgZgVXQjzzkZ6Z8K7orkbcGkd5aOAqYku3h+kGX1rqiaUkZ3WZdftOUpI8reQAUWzYP1Em7s9hlQQN9tQ/2OpXtLnmpC0O6w3JRb5N7QNTdK0fyX5dnsBa4tG+W5tagPd3Y4h0Ra1qlp24tB6gfS08m0ikcPbZE11Yr6GdJc6z9v8oPp4GOj02k7RREBOhABrFcvDzsD1+pYUJKTfIAST3+M+1De4VW8NEwanUUuNthIYmW7wi8B69fQhxCDlU/q+Hqme8DBDobePJ90WMcKWn62yVN1EoXHg+2dRBFckWEw14HxuhKo2jUqxenCehMs/sZtkV3ydZVuEp2W/1kxNW0NFmIzH4jgrxoxvh2uK/xOsYVHKIfG1x5VRtQ6oAvlLS1kLqW2Ko/8w3hyATBYeJ/ew6CmaDI94jYWv++k2Bt06QJaQ4d3fnLow/vShy34bKtmdUL0Z2Lf0mnlE/TFQRZwUir7AfUkuUDrAn2LRguvDWcdFBb+P0LyGx39UawagjHAON1mhvZT8txeUdaWtpXKghytB8YE60+gw9XpJQZOQVCRkKcu3c9kRw3Qp/JuORkQ1GWWwcVHyyEKWNDr/FLezFBtJH6Z8sG+Za5M9Rw0xu8j5KiDMY9jLDyuq3XTJ2PzGApHtiSx/Yxt+FTLkeICOmJClFv592cngY83ld8C3c6Ei2IziSG4gHWiQFw==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: redis-targets
+      namespace: redis
