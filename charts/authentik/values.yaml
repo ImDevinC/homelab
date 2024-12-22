@@ -16,3 +16,7 @@ authentik:
     enabled: false
   redis:
     enabled: true
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
