@@ -105,4 +105,6 @@ prometheus-postgres-exporter:
         secretName: postgres-creds
         items:
           - key: pgpass
-            path: /creds
+  extraVolumeMounts:
+    - name: credentials
+      mountPath: /creds
