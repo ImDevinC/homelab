@@ -7289,65 +7289,14 @@ kube-prometheus-stack:
         overview.json:
           json: |-
             {
-               "__inputs": [
-                  {
-                     "description": "",
-                     "label": "Prometheus",
-                     "name": "DS_PROMETHEUS",
-                     "pluginId": "prometheus",
-                     "pluginName": "Prometheus",
-                     "type": "datasource"
-                  }
-               ],
-               "__requires": [
-                  {
-                     "id": "bargauge",
-                     "name": "Bar gauge",
-                     "type": "panel",
-                     "version": ""
-                  },
-                  {
-                     "id": "grafana",
-                     "name": "Grafana",
-                     "type": "grafana",
-                     "version": "8.1.4"
-                  },
-                  {
-                     "id": "piechart",
-                     "name": "Pie chart",
-                     "type": "panel",
-                     "version": ""
-                  },
-                  {
-                     "id": "prometheus",
-                     "name": "Prometheus",
-                     "type": "datasource",
-                     "version": "1.0.0"
-                  },
-                  {
-                     "id": "stat",
-                     "name": "Stat",
-                     "type": "panel",
-                     "version": ""
-                  },
-                  {
-                     "id": "text",
-                     "name": "Text",
-                     "type": "panel",
-                     "version": ""
-                  },
-                  {
-                     "id": "timeseries",
-                     "name": "Time series",
-                     "type": "panel",
-                     "version": ""
-                  }
-               ],
                "annotations": {
                   "list": [
                      {
                         "builtIn": 1,
-                        "datasource": "-- Grafana --",
+                        "datasource": {
+                           "type": "datasource",
+                           "uid": "grafana"
+                        },
                         "enable": true,
                         "hide": true,
                         "iconColor": "rgba(0, 211, 255, 1)",
@@ -7364,15 +7313,13 @@ kube-prometheus-stack:
                },
                "description": "Grafana Dashboard for Prometheus metrics exposed by authentik.",
                "editable": true,
-               "gnetId": 14837,
+               "fiscalYearStartMonth": 0,
                "graphTooltip": 1,
-               "id": null,
-               "iteration": 1631795206449,
+               "id": 39,
                "links": [ ],
                "panels": [
                   {
                      "collapsed": false,
-                     "datasource": null,
                      "gridPos": {
                         "h": 1,
                         "w": 24,
@@ -7385,16 +7332,23 @@ kube-prometheus-stack:
                      "type": "row"
                   },
                   {
-                     "datasource": "${DS_PROMETHEUS}",
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "fieldConfig": {
                         "defaults": {
                            "color": {
                               "mode": "palette-classic"
                            },
                            "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
+                              "barWidthFactor": 0.59999999999999998,
                               "drawStyle": "line",
                               "fillOpacity": 10,
                               "gradientMode": "hue",
@@ -7403,6 +7357,7 @@ kube-prometheus-stack:
                                  "tooltip": false,
                                  "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "linear",
                               "lineWidth": 1,
                               "pointSize": 5,
@@ -7448,15 +7403,21 @@ kube-prometheus-stack:
                         "legend": {
                            "calcs": [ ],
                            "displayMode": "list",
-                           "placement": "bottom"
+                           "placement": "bottom",
+                           "showLegend": true
                         },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
-                     "pluginVersion": "8.1.2",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "avg by (flow_slug) (rate(authentik_flows_plan_time_sum{namespace=~\"$namespace\"}[5m]) / rate(authentik_flows_plan_time_count{namespace=~\"$namespace\"}[5m]))",
                            "interval": "",
@@ -7464,14 +7425,15 @@ kube-prometheus-stack:
                            "refId": "A"
                         }
                      ],
-                     "timeFrom": null,
-                     "timeShift": null,
                      "title": "FlowPlanner time by flow",
                      "transparent": true,
                      "type": "timeseries"
                   },
                   {
-                     "datasource": "${DS_PROMETHEUS}",
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "fieldConfig": {
                         "defaults": {
                            "color": {
@@ -7531,6 +7493,7 @@ kube-prometheus-stack:
                         "legend": {
                            "displayMode": "list",
                            "placement": "bottom",
+                           "showLegend": true,
                            "values": [ ]
                         },
                         "pieType": "donut",
@@ -7543,12 +7506,17 @@ kube-prometheus-stack:
                         },
                         "text": { },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
-                     "pluginVersion": "7.5.6",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "sum(authentik_system_tasks{namespace=~\"$namespace\",status=\"TaskResultStatus.ERROR\"})",
                            "format": "time_series",
@@ -7558,6 +7526,10 @@ kube-prometheus-stack:
                            "refId": "A"
                         },
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "sum(authentik_system_tasks{namespace=~\"$namespace\",status=\"TaskResultStatus.SUCCESSFUL\"})",
                            "hide": false,
@@ -7572,7 +7544,10 @@ kube-prometheus-stack:
                      "type": "piechart"
                   },
                   {
-                     "datasource": null,
+                     "fieldConfig": {
+                        "defaults": { },
+                        "overrides": [ ]
+                     },
                      "gridPos": {
                         "h": 5,
                         "w": 4,
@@ -7581,17 +7556,24 @@ kube-prometheus-stack:
                      },
                      "id": 13,
                      "options": {
+                        "code": {
+                           "language": "plaintext",
+                           "showLineNumbers": false,
+                           "showMiniMap": false
+                        },
                         "content": "\n\n<img src=\"https://goauthentik.io/img/icon_top_brand.svg\">",
                         "mode": "html"
                      },
-                     "pluginVersion": "8.1.4",
-                     "timeFrom": null,
-                     "timeShift": null,
+                     "pluginVersion": "11.4.0",
+                     "title": "",
                      "transparent": true,
                      "type": "text"
                   },
                   {
-                     "datasource": "${DS_PROMETHEUS}",
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "fieldConfig": {
                         "defaults": {
                            "color": {
@@ -7631,6 +7613,7 @@ kube-prometheus-stack:
                         "graphMode": "area",
                         "justifyMode": "auto",
                         "orientation": "auto",
+                        "percentChangeColorMode": "standard",
                         "reduceOptions": {
                            "calcs": [
                               "lastNotNull"
@@ -7638,12 +7621,18 @@ kube-prometheus-stack:
                            "fields": "",
                            "values": false
                         },
+                        "showPercentChange": false,
                         "text": { },
-                        "textMode": "auto"
+                        "textMode": "auto",
+                        "wideLayout": true
                      },
-                     "pluginVersion": "8.1.4",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "max(authentik_admin_workers{namespace=~\"$namespace\"})",
                            "interval": "",
@@ -7656,7 +7645,10 @@ kube-prometheus-stack:
                      "type": "stat"
                   },
                   {
-                     "datasource": "${DS_PROMETHEUS}",
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "description": "",
                      "fieldConfig": {
                         "defaults": {
@@ -7686,6 +7678,7 @@ kube-prometheus-stack:
                         "legend": {
                            "displayMode": "list",
                            "placement": "bottom",
+                           "showLegend": true,
                            "values": [ ]
                         },
                         "pieType": "donut",
@@ -7698,12 +7691,17 @@ kube-prometheus-stack:
                         },
                         "text": { },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
-                     "pluginVersion": "7.5.6",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "sum(authentik_policies_cached{namespace=~\"$namespace\"})",
                            "instant": true,
@@ -7712,6 +7710,10 @@ kube-prometheus-stack:
                            "refId": "A"
                         },
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "sum(authentik_models{namespace=~\"$namespace\",app=\"authentik_policies\", model_name=\"policy\"}) - authentik_policies_cached",
                            "hide": false,
@@ -7726,7 +7728,10 @@ kube-prometheus-stack:
                      "type": "piechart"
                   },
                   {
-                     "datasource": "${DS_PROMETHEUS}",
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "fieldConfig": {
                         "defaults": {
                            "color": {
@@ -7766,6 +7771,7 @@ kube-prometheus-stack:
                         "graphMode": "area",
                         "justifyMode": "auto",
                         "orientation": "auto",
+                        "percentChangeColorMode": "standard",
                         "reduceOptions": {
                            "calcs": [
                               "lastNotNull"
@@ -7773,12 +7779,18 @@ kube-prometheus-stack:
                            "fields": "",
                            "values": false
                         },
+                        "showPercentChange": false,
                         "text": { },
-                        "textMode": "auto"
+                        "textMode": "auto",
+                        "wideLayout": true
                      },
-                     "pluginVersion": "8.1.4",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "sum(authentik_outposts_connected{namespace=~\"$namespace\"})",
                            "interval": "",
@@ -7791,7 +7803,10 @@ kube-prometheus-stack:
                      "type": "stat"
                   },
                   {
-                     "datasource": "${DS_PROMETHEUS}",
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "description": "",
                      "fieldConfig": {
                         "defaults": {
@@ -7825,6 +7840,16 @@ kube-prometheus-stack:
                      "id": 15,
                      "options": {
                         "displayMode": "lcd",
+                        "legend": {
+                           "calcs": [ ],
+                           "displayMode": "list",
+                           "placement": "bottom",
+                           "showLegend": false
+                        },
+                        "maxVizHeight": 300,
+                        "minVizHeight": 16,
+                        "minVizWidth": 8,
+                        "namePlacement": "auto",
                         "orientation": "horizontal",
                         "reduceOptions": {
                            "calcs": [
@@ -7834,11 +7859,17 @@ kube-prometheus-stack:
                            "values": false
                         },
                         "showUnfilled": true,
-                        "text": { }
+                        "sizing": "auto",
+                        "text": { },
+                        "valueMode": "color"
                      },
-                     "pluginVersion": "8.1.4",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "avg by (task_name) (authentik_system_tasks{namespace=~\"$namespace\"})",
                            "instant": true,
@@ -7847,23 +7878,28 @@ kube-prometheus-stack:
                            "refId": "A"
                         }
                      ],
-                     "timeFrom": null,
-                     "timeShift": null,
                      "title": "System task duration",
                      "transparent": true,
                      "type": "bargauge"
                   },
                   {
-                     "datasource": "${DS_PROMETHEUS}",
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "fieldConfig": {
                         "defaults": {
                            "color": {
                               "mode": "palette-classic"
                            },
                            "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
+                              "barWidthFactor": 0.59999999999999998,
                               "drawStyle": "line",
                               "fillOpacity": 10,
                               "gradientMode": "none",
@@ -7872,6 +7908,7 @@ kube-prometheus-stack:
                                  "tooltip": false,
                                  "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "linear",
                               "lineWidth": 1,
                               "pointSize": 5,
@@ -7917,15 +7954,21 @@ kube-prometheus-stack:
                         "legend": {
                            "calcs": [ ],
                            "displayMode": "list",
-                           "placement": "bottom"
+                           "placement": "bottom",
+                           "showLegend": true
                         },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
-                     "pluginVersion": "8.1.2",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "topk(5, avg by(binding_target_type) (rate(authentik_policies_execution_time_sum{namespace=~\"$namespace\"}[5m]) / rate(authentik_policies_execution_time_count{namespace=~\"$namespace\"}[5m])))",
                            "interval": "",
@@ -7933,23 +7976,28 @@ kube-prometheus-stack:
                            "refId": "A"
                         }
                      ],
-                     "timeFrom": null,
-                     "timeShift": null,
                      "title": "PolicyEngine Execution time by binding type (Top 5)",
                      "transparent": true,
                      "type": "timeseries"
                   },
                   {
-                     "datasource": "${DS_PROMETHEUS}",
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "fieldConfig": {
                         "defaults": {
                            "color": {
                               "mode": "palette-classic"
                            },
                            "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
+                              "barWidthFactor": 0.59999999999999998,
                               "drawStyle": "line",
                               "fillOpacity": 10,
                               "gradientMode": "hue",
@@ -7958,6 +8006,7 @@ kube-prometheus-stack:
                                  "tooltip": false,
                                  "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "linear",
                               "lineWidth": 1,
                               "pointSize": 5,
@@ -8003,15 +8052,21 @@ kube-prometheus-stack:
                         "legend": {
                            "calcs": [ ],
                            "displayMode": "list",
-                           "placement": "bottom"
+                           "placement": "bottom",
+                           "showLegend": true
                         },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
-                     "pluginVersion": "8.1.2",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "topk(5, avg by(object_type) (rate(authentik_policies_execution_time_sum{namespace=~\"$namespace\"}[5m]) / rate(authentik_policies_execution_time_count{namespace=~\"$namespace\"}[5m])))",
                            "interval": "",
@@ -8019,15 +8074,12 @@ kube-prometheus-stack:
                            "refId": "A"
                         }
                      ],
-                     "timeFrom": null,
-                     "timeShift": null,
                      "title": "PolicyEngine Execution time by binding target (Top 5)",
                      "transparent": true,
                      "type": "timeseries"
                   },
                   {
                      "collapsed": false,
-                     "datasource": null,
                      "gridPos": {
                         "h": 1,
                         "w": 24,
@@ -8041,16 +8093,23 @@ kube-prometheus-stack:
                      "type": "row"
                   },
                   {
-                     "datasource": null,
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "fieldConfig": {
                         "defaults": {
                            "color": {
                               "mode": "palette-classic"
                            },
                            "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
+                              "barWidthFactor": 0.59999999999999998,
                               "drawStyle": "line",
                               "fillOpacity": 0,
                               "gradientMode": "none",
@@ -8059,6 +8118,7 @@ kube-prometheus-stack:
                                  "tooltip": false,
                                  "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "linear",
                               "lineWidth": 1,
                               "pointSize": 5,
@@ -8103,14 +8163,21 @@ kube-prometheus-stack:
                         "legend": {
                            "calcs": [ ],
                            "displayMode": "list",
-                           "placement": "bottom"
+                           "placement": "bottom",
+                           "showLegend": true
                         },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "sum by (host) (rate(authentik_outpost_proxy_requests_sum{namespace=~\"$namespace\", outpost_name=\"$outpost_proxy\"}[5m]))",
                            "interval": "",
@@ -8123,7 +8190,10 @@ kube-prometheus-stack:
                      "type": "timeseries"
                   },
                   {
-                     "datasource": null,
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "description": "",
                      "fieldConfig": {
                         "defaults": {
@@ -8131,9 +8201,13 @@ kube-prometheus-stack:
                               "mode": "palette-classic"
                            },
                            "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
+                              "barWidthFactor": 0.59999999999999998,
                               "drawStyle": "line",
                               "fillOpacity": 0,
                               "gradientMode": "none",
@@ -8142,6 +8216,7 @@ kube-prometheus-stack:
                                  "tooltip": false,
                                  "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "linear",
                               "lineWidth": 1,
                               "pointSize": 5,
@@ -8186,14 +8261,21 @@ kube-prometheus-stack:
                         "legend": {
                            "calcs": [ ],
                            "displayMode": "list",
-                           "placement": "bottom"
+                           "placement": "bottom",
+                           "showLegend": true
                         },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "sum by (host) (rate(authentik_outpost_proxy_requests_sum{outpost_name=\"$outpost_proxy\", namespace=~\"$namespace\",user=\"\"}[5m]))",
                            "interval": "",
@@ -8207,7 +8289,6 @@ kube-prometheus-stack:
                   },
                   {
                      "collapsed": false,
-                     "datasource": null,
                      "gridPos": {
                         "h": 1,
                         "w": 24,
@@ -8221,16 +8302,23 @@ kube-prometheus-stack:
                      "type": "row"
                   },
                   {
-                     "datasource": null,
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "fieldConfig": {
                         "defaults": {
                            "color": {
                               "mode": "palette-classic"
                            },
                            "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
+                              "barWidthFactor": 0.59999999999999998,
                               "drawStyle": "line",
                               "fillOpacity": 0,
                               "gradientMode": "none",
@@ -8239,6 +8327,7 @@ kube-prometheus-stack:
                                  "tooltip": false,
                                  "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "linear",
                               "lineWidth": 1,
                               "pointSize": 5,
@@ -8283,14 +8372,21 @@ kube-prometheus-stack:
                         "legend": {
                            "calcs": [ ],
                            "displayMode": "list",
-                           "placement": "bottom"
+                           "placement": "bottom",
+                           "showLegend": true
                         },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "avg by (dn) (rate(authentik_outpost_ldap_requests_bucket{namespace=~\"$namespace\", outpost_name=\"$outpost_ldap\"}[5m]))",
                            "interval": "",
@@ -8303,16 +8399,23 @@ kube-prometheus-stack:
                      "type": "timeseries"
                   },
                   {
-                     "datasource": null,
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "fieldConfig": {
                         "defaults": {
                            "color": {
                               "mode": "palette-classic"
                            },
                            "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
+                              "barWidthFactor": 0.59999999999999998,
                               "drawStyle": "line",
                               "fillOpacity": 0,
                               "gradientMode": "none",
@@ -8321,6 +8424,7 @@ kube-prometheus-stack:
                                  "tooltip": false,
                                  "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "linear",
                               "lineWidth": 1,
                               "pointSize": 5,
@@ -8365,14 +8469,21 @@ kube-prometheus-stack:
                         "legend": {
                            "calcs": [ ],
                            "displayMode": "list",
-                           "placement": "bottom"
+                           "placement": "bottom",
+                           "showLegend": true
                         },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "avg by (reason) (rate(authentik_outpost_ldap_requests_rejected{namespace=~\"$namespace\", outpost_name=\"$outpost_ldap\"}[5m]))",
                            "interval": "",
@@ -8385,16 +8496,23 @@ kube-prometheus-stack:
                      "type": "timeseries"
                   },
                   {
-                     "datasource": null,
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "fieldConfig": {
                         "defaults": {
                            "color": {
                               "mode": "palette-classic"
                            },
                            "custom": {
+                              "axisBorderShow": false,
+                              "axisCenteredZero": false,
+                              "axisColorMode": "text",
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
+                              "barWidthFactor": 0.59999999999999998,
                               "drawStyle": "line",
                               "fillOpacity": 0,
                               "gradientMode": "none",
@@ -8403,6 +8521,7 @@ kube-prometheus-stack:
                                  "tooltip": false,
                                  "viz": false
                               },
+                              "insertNulls": false,
                               "lineInterpolation": "linear",
                               "lineWidth": 1,
                               "pointSize": 5,
@@ -8447,14 +8566,21 @@ kube-prometheus-stack:
                         "legend": {
                            "calcs": [ ],
                            "displayMode": "list",
-                           "placement": "bottom"
+                           "placement": "bottom",
+                           "showLegend": true
                         },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "avg by (flow) (rate(authentik_outpost_flow_timing_get_bucket{namespace=~\"$namespace\"}[5m]))",
                            "hide": false,
@@ -8463,6 +8589,10 @@ kube-prometheus-stack:
                            "refId": "A"
                         },
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "avg by (flow) (rate(authentik_outpost_flow_timing_post_bucket{namespace=~\"$namespace\"}[5m]))",
                            "hide": false,
@@ -8476,7 +8606,10 @@ kube-prometheus-stack:
                      "type": "timeseries"
                   },
                   {
-                     "datasource": null,
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "fieldConfig": {
                         "defaults": {
                            "color": {
@@ -8503,7 +8636,8 @@ kube-prometheus-stack:
                      "options": {
                         "legend": {
                            "displayMode": "list",
-                           "placement": "bottom"
+                           "placement": "bottom",
+                           "showLegend": true
                         },
                         "pieType": "pie",
                         "reduceOptions": {
@@ -8514,11 +8648,17 @@ kube-prometheus-stack:
                            "values": false
                         },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "group by (type) (authentik_outpost_ldap_requests_sum)",
                            "hide": false,
@@ -8532,7 +8672,10 @@ kube-prometheus-stack:
                      "type": "piechart"
                   },
                   {
-                     "datasource": null,
+                     "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                     },
                      "description": "",
                      "fieldConfig": {
                         "defaults": {
@@ -8560,7 +8703,8 @@ kube-prometheus-stack:
                      "options": {
                         "legend": {
                            "displayMode": "list",
-                           "placement": "bottom"
+                           "placement": "bottom",
+                           "showLegend": true
                         },
                         "pieType": "pie",
                         "reduceOptions": {
@@ -8571,11 +8715,17 @@ kube-prometheus-stack:
                            "values": false
                         },
                         "tooltip": {
-                           "mode": "single"
+                           "mode": "single",
+                           "sort": "none"
                         }
                      },
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
+                           "datasource": {
+                              "type": "prometheus",
+                              "uid": "prometheus"
+                           },
                            "exemplar": true,
                            "expr": "group by (reason) (authentik_outpost_ldap_requests_rejected)",
                            "hide": false,
@@ -8589,20 +8739,23 @@ kube-prometheus-stack:
                      "type": "piechart"
                   }
                ],
-               "refresh": false,
-               "schemaVersion": 30,
-               "style": "dark",
+               "preload": false,
+               "refresh": "",
+               "schemaVersion": 40,
                "tags": [ ],
                "templating": {
                   "list": [
                      {
-                        "allValue": null,
-                        "current": { },
-                        "datasource": "${DS_PROMETHEUS}",
+                        "current": {
+                           "text": [
+                              "All"
+                           ],
+                           "value": [
+                              "$__all"
+                           ]
+                        },
+                        "datasource": "prometheus",
                         "definition": "authentik_outpost_connection",
-                        "description": null,
-                        "error": null,
-                        "hide": 0,
                         "includeAll": true,
                         "label": "Namespace",
                         "multi": true,
@@ -8614,21 +8767,17 @@ kube-prometheus-stack:
                         },
                         "refresh": 1,
                         "regex": "/.*namespace=\"([^\"]*).*/",
-                        "skipUrlSync": false,
-                        "sort": 0,
                         "type": "query"
                      },
                      {
-                        "allValue": null,
-                        "current": { },
-                        "datasource": "${DS_PROMETHEUS}",
+                        "current": {
+                           "text": "authentik Embedded Outpost",
+                           "value": "authentik Embedded Outpost"
+                        },
+                        "datasource": "prometheus",
                         "definition": "authentik_outpost_info{outpost_type=\"proxy\"}",
-                        "description": null,
-                        "error": null,
                         "hide": 2,
                         "includeAll": false,
-                        "label": null,
-                        "multi": false,
                         "name": "outpost_proxy",
                         "options": [ ],
                         "query": {
@@ -8637,21 +8786,17 @@ kube-prometheus-stack:
                         },
                         "refresh": 1,
                         "regex": "/.*outpost_name=\"([^\"]*).*/",
-                        "skipUrlSync": false,
-                        "sort": 0,
                         "type": "query"
                      },
                      {
-                        "allValue": null,
-                        "current": { },
-                        "datasource": "${DS_PROMETHEUS}",
+                        "current": {
+                           "text": "",
+                           "value": ""
+                        },
+                        "datasource": "prometheus",
                         "definition": "authentik_outpost_info{outpost_type=\"ldap\"}",
-                        "description": null,
-                        "error": null,
                         "hide": 2,
                         "includeAll": false,
-                        "label": null,
-                        "multi": false,
                         "name": "outpost_ldap",
                         "options": [ ],
                         "query": {
@@ -8660,21 +8805,20 @@ kube-prometheus-stack:
                         },
                         "refresh": 1,
                         "regex": "/.*outpost_name=\"([^\"]*).*/",
-                        "skipUrlSync": false,
-                        "sort": 0,
                         "type": "query"
                      }
                   ]
                },
                "time": {
-                  "from": "now-6h",
+                  "from": "now-1h",
                   "to": "now"
                },
                "timepicker": { },
                "timezone": "",
                "title": "authentik",
                "uid": "authentik",
-               "version": 32
+               "version": 1,
+               "weekStart": ""
             }
   prometheus:
     prometheusSpec:
