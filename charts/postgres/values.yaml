@@ -89,3 +89,20 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+prometheus-postgres-exporter:
+  serviceMonitor:
+    enabled: true
+  config:
+    datasource:
+      host: localhost
+      user: postgres
+      passwordFile: /creds
+  extraVolumes:
+    - name: credentials
+      secret:
+        defaultMode: 420
+        secretName: postgres-creds
+        items:
+          - key: pgpass
+            path: /creds
