@@ -1,4 +1,20 @@
 prometheus-redis-exporter:
+  redisAddress: ""
+  extraManifests:
+    - apiVersion: v1
+      kind: ConnfigMap
+      metadata:
+        labels:
+          name: redis-exporter-extra
+        data:
+          targets:
+            - redis://authentik-redis-master.authentik:6379
+            - redis://argo-cd-argocd-redis.argo-cd:6379
+  redisAddressConfig:
+    enabled: true
+    source:
+      name: redis-exporter-extra
+      key: targets
   serviceMonitor:
     enabled: true
     multipleTarget: true
