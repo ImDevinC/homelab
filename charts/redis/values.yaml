@@ -1,0 +1,9 @@
+prometheus-redis-exporter:
+  serviceMonitor:
+    enabled: true
+    multipleTarget: true
+    targets:
+      - url: redis://authentik-redis-master.authentik:6379
+        name: authentik
+      - url: redis://argo-cd-argocd-redis.argo-cd:6379
+        name: argo-cd
