@@ -10,24 +10,7 @@ couchdb:
     accessModes:
       - ReadWriteMany
     size: 10Gi
-    storageClass: nfs-client
-    existingClaims:
-      - metadata:
-          name: couchdb-hp
-        spec:
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 5Gi
-          storageClassName: hostpath-csi
-        persistentVolumeName: couchdb-hp
-        storageClass: hostpath-csi
-        accessModes: ["ReadWriteOnce"]
-        size: 10Gi
-        claimName: couchdb-hp
-        volumeSource:
-          persistentVolumeClaim:
-            claimName: couchdb-hp
+    storageClass: hostpath-csi
   couchdbConfig:
     couchdb:
       single_node: true
