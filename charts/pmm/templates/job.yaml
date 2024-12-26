@@ -25,6 +25,10 @@ spec:
                   mountPath: /assets
                 - name: pmm-cache
                   mountPath: /config
+                - name: pmm-assets-hp
+                  mountPath: /assets-hp
+                - name: pmm-cache-hp
+                  mountPath: /config-hp
               envFrom:
                 - configMapRef:
                     name: pmm-repo
@@ -40,6 +44,12 @@ spec:
             - name: pmm-cache
               persistentVolumeClaim:
                 claimName: pmm-cache
+            - name: pmm-assets-hp
+              persistentVolumeClaim:
+                claimName: pmm-assets-hp
+            - name: pmm-cache-hp
+              persistentVolumeClaim:
+                claimName: pmm-cache-hp
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -72,6 +82,30 @@ spec:
     requests:
       storage: 5Gi
   storageClassName: nfs-client
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pmm-cache-hp
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: hostpath-csi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pmm-assets-hp
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: hostpath-csi
 ---
 apiVersion: v1
 kind: ConfigMap
