@@ -33,6 +33,8 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: data
+            - mountPath: /data-hp
+              name: data-hp
           resources:
             limits:
               nvidia.com/gpu: "1"
@@ -42,6 +44,9 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: whisper-data
+        - name: data-hp
+          persistentVolumeClaim:
+            claimName: whisper-data-hp
 ---
 apiVersion: v1
 kind: Service
@@ -73,3 +78,17 @@ spec:
       storage: 100Gi
   storageClassName: nfs-client
   volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: whisper-data-hp
+  labels:
+    app: whisper
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: hostpath-csi
