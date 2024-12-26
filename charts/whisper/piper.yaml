@@ -27,8 +27,6 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: /data
-              name: data
-            - mountPath: /data-hp
               name: data-hp
           resources:
             limits:
@@ -36,9 +34,6 @@ spec:
             requests:
               nvidia.com/gpu: "1"
       volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: piper-data
         - name: data-hp
           persistentVolumeClaim:
             claimName: piper-data-hp
@@ -58,21 +53,6 @@ spec:
       port: 10200
       protocol: TCP
       targetPort: 10200
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: piper-data
-  labels:
-    app: piper
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Gi
-  storageClassName: nfs-client
-  volumeMode: Filesystem
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
