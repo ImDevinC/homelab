@@ -36,6 +36,12 @@ spec:
               name: outputs
             - mountPath: /venv/xtts/finetuned_models
               name: finetuned-models
+            - mountPath: /venv/xtts/models-manual
+              name: models-manual
+            - mountPath: /venv/xtts/output-manual
+              name: outputs-manual
+            - mountPath: /venv/xtts/finetuned_models-manual
+              name: finetuned-models-manual
           resources:
             limits:
               nvidia.com/gpu: "1"
@@ -51,6 +57,15 @@ spec:
         - name: finetuned-models
           persistentVolumeClaim:
             claimName: xtts-ui-finetuned-models
+        - name: models-new
+          persistentVolumeClaim:
+            claimName: xtts-ui-models-hostpath
+        - name: outputs
+          persistentVolumeClaim:
+            claimName: xtts-ui-outputs-hostpath
+        - name: finetuned-models
+          persistentVolumeClaim:
+            claimName: xtts-ui-finetuned-models-hostpath
 ---
 apiVersion: v1
 kind: Service
