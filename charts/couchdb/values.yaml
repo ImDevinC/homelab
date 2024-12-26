@@ -13,11 +13,14 @@ couchdb:
     storageClass: nfs-client
     existingClaims:
       - volumeName: data-hp
-        persistentVolume: couchdb-hp
+        persistentVolumeName: couchdb-hp
         storageClass: hostpath-csi
         claimName: couchdb-hp
         accessModes: ["ReadWriteOnce"]
         size: 10Gi
+        volumeSource:
+          persistentVolumeClaim:
+            claimName: couchdb-hp
   couchdbConfig:
     couchdb:
       single_node: true
