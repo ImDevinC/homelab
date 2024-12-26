@@ -24,6 +24,7 @@ couchdb:
         storageClass: hostpath-csi
         accessModes: ["ReadWriteOnce"]
         size: 10Gi
+        claimName: couchdb-hp
         volumeSource:
           persistentVolumeClaim:
             claimName: couchdb-hp
