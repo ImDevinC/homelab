@@ -36,12 +36,6 @@ spec:
               name: outputs
             - mountPath: /venv/xtts/finetuned_models
               name: finetuned-models
-            - mountPath: /venv/xtts/models-manual
-              name: models-manual
-            - mountPath: /venv/xtts/output-manual
-              name: outputs-manual
-            - mountPath: /venv/xtts/finetuned_models-manual
-              name: finetuned-models-manual
           resources:
             limits:
               nvidia.com/gpu: "1"
@@ -50,20 +44,11 @@ spec:
       volumes:
         - name: models
           persistentVolumeClaim:
-            claimName: xtts-ui-models
+            claimName: xtts-ui-models-hostpath
         - name: outputs
           persistentVolumeClaim:
-            claimName: xtts-ui-outputs
-        - name: finetuned-models
-          persistentVolumeClaim:
-            claimName: xtts-ui-finetuned-models
-        - name: models-manual
-          persistentVolumeClaim:
-            claimName: xtts-ui-models-hostpath
-        - name: outputs-manual
-          persistentVolumeClaim:
             claimName: xtts-ui-outputs-hostpath
-        - name: finetuned-models-manual
+        - name: finetuned-models
           persistentVolumeClaim:
             claimName: xtts-ui-finetuned-models-hostpath
 ---
@@ -102,51 +87,6 @@ spec:
                   number: 7860
             path: /
             pathType: Prefix
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: xtts-ui-models
-  labels:
-    app: xtts-ui
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Gi
-  storageClassName: nfs-client
-  volumeMode: Filesystem
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: xtts-ui-outputs
-  labels:
-    app: xtts-ui
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Gi
-  storageClassName: nfs-client
-  volumeMode: Filesystem
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: xtts-ui-finetuned-models
-  labels:
-    app: xtts-ui
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Gi
-  storageClassName: nfs-client
-  volumeMode: Filesystem
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
