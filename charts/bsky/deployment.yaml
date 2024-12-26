@@ -76,10 +76,8 @@ spec:
               containerPort: 3000
               protocol: TCP
           volumeMounts:
-            - name: data
-              mountPath: /pds
             - name: data-hp
-              mountPath: /pds-hp
+              mountPath: /pds
           livenessProbe:
             httpGet:
               path: /xrpc/_health
@@ -91,9 +89,6 @@ spec:
           resources:
             {}
       volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: "bsky-pds"
         - name: data-hp
           persistentVolumeClaim:
             claimName: bsky-pds-hp
