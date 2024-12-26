@@ -19,11 +19,13 @@ scrutiny:
   persistence:
     config:
       enabled: true
+      mountPath: /opt/scrutiny/config
       type: pvc
       storageClass: hostpath-csi
       existingClaim: scrutiny-config-hp
     influx:
       enabled: true
+      mountPath: /opt/scrutiny/influxdb
       type: pvc
       storageClass: hostpath-csi
       existingClaim: scrutiny-influx-hp
