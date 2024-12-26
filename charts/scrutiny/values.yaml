@@ -16,3 +16,14 @@ scrutiny:
       integrations:
         traefik:
           enabled: false
+  persistence:
+    config-hp:
+      enabled: true
+      type: pvc
+      mountPath: /opt/scrutiny/config-hp
+      storageClass: hostpath-csi
+    influx-hp:
+      enabled: true
+      type: pvc
+      mountPath: /opt/scrutiny/influx-hp
+      storageClass: hostpath-csi
