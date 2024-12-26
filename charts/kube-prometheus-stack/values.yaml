@@ -11622,7 +11622,7 @@ kube-prometheus-stack:
       storageSpec:
         volumeClaimTemplate:
           spec:
-            storageClassName: nfs-client
+            storageClassName: hostpath-csi
             accessModes: ["ReadWriteOnce"]
             resources:
               requests:
