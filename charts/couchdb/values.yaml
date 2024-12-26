@@ -7,11 +7,7 @@ couchdb:
   clusterSize: 1
   persistentVolume:
     enabled: true
-    spec:
-      accessModes:
-        - ReadWriteMany
-      size: 10Gi
-      storageClassName: hostpath-csi
+    storageClass: hostpath-csi
   couchdbConfig:
     couchdb:
       single_node: true
