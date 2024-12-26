@@ -35,15 +35,6 @@ persistence:
 
 resources: {}
 
-volumes:
-  - name: postgres-data-hp
-    persistentVolumeClaim:
-      claimName: postgres-data-hp
-
-volumeMounts:
-  - name: postgres-data-hp
-    mountPath: /var/lib/postgresql/data/postgres-hp
-
 nodeSelector: {}
 
 tolerations: []
