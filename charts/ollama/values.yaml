@@ -19,3 +19,10 @@ ollama:
   persistentVolume:
     enabled: true
     storageClass: nfs-client
+  volumes:
+    - name: ollama-hp
+      persistentVolumeClaim:
+        claimName: ollama-hp
+  volumeMounts:
+    - name: ollama-hp
+      mountPath: /root/ollama-hp
