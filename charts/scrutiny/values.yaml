@@ -22,10 +22,8 @@ scrutiny:
       mountPath: /opt/scrutiny/config
       type: pvc
       storageClass: hostpath-csi
-      volumeName: scrutiny-config-hp
     influxdb:
       enabled: true
       mountPath: /opt/scrutiny/influxdb
       type: pvc
       storageClass: hostpath-csi
-      volumeName: scrutiny-influx-hp
