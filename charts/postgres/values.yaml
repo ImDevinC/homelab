@@ -27,7 +27,7 @@ service:
   port: 5432
 
 persistence:
-  storageClassName: nfs-client
+  storageClassName: hostpath-csi
   accessModes: [ReadWriteOnce]
   resources:
     requests:
