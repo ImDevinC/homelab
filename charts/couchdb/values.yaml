@@ -12,8 +12,8 @@ couchdb:
     size: 10Gi
     storageClass: nfs-client
     existingClaims:
-      volumeName: data-hp
-      claimName: couchdb-hp
+      - volumeName: data-hp
+        claimName: couchdb-hp
   couchdbConfig:
     couchdb:
       single_node: true
