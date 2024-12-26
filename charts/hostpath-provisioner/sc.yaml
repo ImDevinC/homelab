@@ -3,7 +3,7 @@ kind: StorageClass
 metadata:
   name: hostpath-csi
   annotations:
-    storageclass.kubernetes.io/is-default-class: true
+    storageclass.kubernetes.io/is-default-class: "true"
 provisioner: kubevirt.io.hostpath-provisioner
 reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer
