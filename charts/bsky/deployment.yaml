@@ -78,6 +78,8 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /pds
+            - name: data-hp
+              mountPath: /pds-hp
           livenessProbe:
             httpGet:
               path: /xrpc/_health
@@ -92,3 +94,6 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: "bsky-pds"
+        - name: data-hp
+          persistentVolumeClaim:
+            claimName: bsky-pds-hp
