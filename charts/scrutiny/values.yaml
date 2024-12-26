@@ -17,13 +17,13 @@ scrutiny:
         traefik:
           enabled: false
   persistence:
-    config-hp:
+    config:
       enabled: true
       type: pvc
-      mountPath: /opt/scrutiny/config-hp
       storageClass: hostpath-csi
-    influx-hp:
+      existingClaim: scrutiny-config-hp
+    influx:
       enabled: true
       type: pvc
-      mountPath: /opt/scrutiny/influx-hp
       storageClass: hostpath-csi
+      existingClaim: scrutiny-influx-hp
