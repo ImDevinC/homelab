@@ -6,11 +6,12 @@ couchdb:
   createAdminSecret: false
   clusterSize: 1
   persistentVolume:
-    enabled: true 
-    accessModes:
-      - ReadWriteMany
-    size: 10Gi
-    storageClass: hostpath-csi
+    enabled: true
+    spec:
+      accessModes:
+        - ReadWriteMany
+      size: 10Gi
+      storageClassName: hostpath-csi
   couchdbConfig:
     couchdb:
       single_node: true
