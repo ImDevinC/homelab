@@ -9,12 +9,5 @@ open-webui:
     ollamaUrls:
       - http://ollama.ollama:11434
   persistence:
-    storageClass: nfs-client
-  volumeMounts:
-    container:
-      - name: open-webui-hp
-        mountPath: /app/backend/data-hp
-  volumes:
-    - name: open-webui-hp
-      persistentVolumeClaim:
-        claimName: open-webui-hp
+    storageClass: hostpath-csi
+    existingClaim: open-webui-hp
