@@ -23,7 +23,7 @@ scrutiny:
       type: pvc
       storageClass: hostpath-csi
       existingClaim: scrutiny-config-hp
-    influx:
+    influxdb:
       enabled: true
       mountPath: /opt/scrutiny/influxdb
       type: pvc
