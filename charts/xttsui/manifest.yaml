@@ -57,13 +57,13 @@ spec:
         - name: finetuned-models
           persistentVolumeClaim:
             claimName: xtts-ui-finetuned-models
-        - name: models-new
+        - name: models-manual
           persistentVolumeClaim:
             claimName: xtts-ui-models-hostpath
-        - name: outputs
+        - name: outputs-manual
           persistentVolumeClaim:
             claimName: xtts-ui-outputs-hostpath
-        - name: finetuned-models
+        - name: finetuned-models-manual
           persistentVolumeClaim:
             claimName: xtts-ui-finetuned-models-hostpath
 ---
