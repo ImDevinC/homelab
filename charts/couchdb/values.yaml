@@ -12,10 +12,16 @@ couchdb:
     size: 10Gi
     storageClass: nfs-client
     existingClaims:
-      - volumeName: data-hp
+      - metadata:
+          name: couchdb-hp
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi
+          storageClassName: hostpath-csi
         persistentVolumeName: couchdb-hp
         storageClass: hostpath-csi
-        claimName: couchdb-hp
         accessModes: ["ReadWriteOnce"]
         size: 10Gi
         volumeSource:
