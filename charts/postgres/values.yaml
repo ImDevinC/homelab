@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: postgres
   pullPolicy: IfNotPresent
-  tag: 13
+  tag: 17
 
 imagePullSecrets: []
 nameOverride: ""
