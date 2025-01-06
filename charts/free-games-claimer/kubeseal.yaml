@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: free-games-credentials
+  namespace: free-games-claimer
+spec:
+  encryptedData:
+    NOTIFY: AgB9DTkP2kYcTVZnS/h2tiqID24jtQ9qSvifGcuZLIgUZf18KSf1H1c0ipzEB3aw7BvfR6U7hzvx6/dWsQN6W0O5XUha+7q9PhMIcWXnloAUJhP9TlW+V/XU1lpGy0wdpxD5afotZCOqgwz441vPzBtVYfaLMTy54LlQ3ZpSZUlJpEAL9n8hFq/4KdYUICG0fMJdFagC2AGxaLQCdN+gu1MSx3wYwGauuVkzd+sfZpN2gOl7gPNpJQmBM1lUASCCChkUXNN0mG2/NoHrRpYRsNCG8pTLOc3MAVWzL6K6jgppyOn1kqPnyMk0B9Uc7c1zmASiD79x+OWhRqty4MnWnwbmNBk5i9QeMgezIuVZGNcFkRnJ5gi0IDIk7iFggFImIZbHGOwwdHfcsUcbMina4ru+X2NmjM64iOfAlajLW0p9Ra7ff2mW5vXof29ijU3NS/GrNOJ3q6oGDgTiDuxZ+EuFUvGoRKeJgPnsDvosp87WKHMxktpqL14dXOogtRXZtfEnLRXfCIKup0/+RKgoplviH4/n/4rfPcOeWRGFUkya8/1gsHGwo1u6GOAxq419vY7R4eSj8L+qpAqnANROh7Wi2ELzr/wdXhjFAnURjuH3X+rxdr6pZSLtmUkL4MFGPIhaFUEvAvga0jZLJbAenHPWjlbdcVt2JVSysFyw8eYtOQjfU/C/+3vNamij+M7pa2CD75Zu61UxfAMfETeAVbdbWZYap4OSGd0RGIzWnLJvMcKuYv7KDMYAzQ26H3EVKaGk5NvPmVAvnKXbIj1v5dEPug+xZB8DeoLZ6u8dcn/qWFyE1kMJND7v72/rNtym8ZgUWQ==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: free-games-credentials
+      namespace: free-games-claimer

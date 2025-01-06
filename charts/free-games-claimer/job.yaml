@@ -1,0 +1,46 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: free-games-claimer
+  namespace: free-games-claimer
+spec:
+  schedule: "0 12 * * *" # Every day at 1am
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          imagePullSecrets:
+            - name: dockerauth
+          containers:
+            - name: free-games-claimer
+              image: ghcr.io/vogler/free-games-claimer
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: free-games-credentials
+              ports:
+                - containerPort: 6080
+                  name: http
+                  protocol: TCP
+              volumeMounts:
+                - name: free-games-claimer
+                  mountPath: /fgc/data/
+          volumes:
+            - name: free-games-claimer
+              persistentVolumeClaim:
+                claimName: free-games-claimer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: free-games-claimer
+  namespace: free-games-claimer
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512M
+  storageClassName: hostpath-csi
