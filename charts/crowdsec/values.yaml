@@ -1,7 +1,6 @@
 crowdsec:
   container_runtime: containerd
   agent:
-    isDeployment: true
     acquisition:
       - namespace: nginx
         podName: ingress-nginx-controller-*
