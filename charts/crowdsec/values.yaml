@@ -1,7 +1,6 @@
 crowdsec:
   container_runtime: containerd
   agent:
-    replicas: 0
     isDeployment: true
     acquisition:
       - namespace: nginx
@@ -13,7 +12,6 @@ crowdsec:
       - name: COLLECTIONS
         value: "crowdsecurity/nginx"
   lapi:
-    replicas: 0
     env:
       - name: BOUNCER_KEY_nginx
         valueFrom:
