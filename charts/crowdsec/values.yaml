@@ -7,9 +7,9 @@ crowdsec:
         program: nginx
     env:
       - name: PARSERS
-        value: "crowdsecurity/cri-logs"
+        value: "crowdsecurity/cri-logs crowdsecurity/geoip-enrich crowdsecurity/sshd-logs"
       - name: COLLECTIONS
-        value: "crowdsecurity/nginx"
+        value: "crowdsecurity/nginx crowdsecurity/http-cve crowdsecurity/whitelist-good-actors crowdsecurity/iptables crowdsecurity/linux crowdsecurity/base-http-scenarios"
   lapi:
     env:
       - name: BOUNCER_KEY_nginx
