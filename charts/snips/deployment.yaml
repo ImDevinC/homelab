@@ -14,6 +14,15 @@ spec:
         app: snips
     spec:
       containers:
+      - name: stats-exporter
+        image: prom/statsd-exporter
+        ports:
+          - containerPort: 9125
+            name: metrics-udp
+            protocol: UDP
+          - containerPort: 9102
+            name: metrics-http
+            protocol: TCP
       - name: snips
         image: ghcr.io/robherley/snips.sh
         env:
@@ -23,6 +32,8 @@ spec:
             value: ssh://snips.imdevinc.com
           - name: SNIPS_SSH_AUTHORIZEDKEYSPATH
             value: /authorized_keys/authorized_keys
+          - name: SNIPS_METRICS_STATSD
+            value: udp://localhost:9125
         ports:
           - containerPort: 8080
             name: http

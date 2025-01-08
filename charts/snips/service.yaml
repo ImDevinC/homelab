@@ -16,5 +16,9 @@ spec:
     port: 22
     protocol: TCP
     targetPort: ssh
+  - name: metrics
+    port: 9102
+    protocol: TCP
+    targetPort: metrics-http
   selector:
     app: snips
