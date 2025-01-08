@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snips
+  namespace: snips
+spec:
+  selector:
+    matchLabels:
+      app: snips
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: snips
+    spec:
+      containers:
+      - name: snips
+        image: ghcr.io/robherley/snips.sh
+        env:
+          - name: SNIPS_HTTP_EXTERNAL
+            value: https://snips.imdevinc.com
+          - name: SNIPS_SSH_EXTERNAL
+            value: ssh://snips.imdevinc.com
+          - name: SNIPS_SSH_AUTHORIZEDKEYSPATH
+            value: /authorized_keys/authorized_keys
+        ports:
+          - containerPort: 8080
+            name: http
+            protocol: TCP
+          - containerPort: 2222
+            name: ssh
+            protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /meta.json
+            port: http
+          failureThreshold: 1
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        - name: authorized-keys
+          mountPath: /authorized_keys
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: snips-data
+        - name: authorized-keys
+          configMap:
+            name: snips-authorized-keys
