@@ -20,7 +20,23 @@ crowdsec:
         value: "crowdsecurity/cri-logs crowdsecurity/geoip-enrich crowdsecurity/sshd-logs"
       - name: COLLECTIONS
         value: "crowdsecurity/nginx crowdsecurity/http-cve crowdsecurity/whitelist-good-actors crowdsecurity/iptables crowdsecurity/linux crowdsecurity/base-http-scenarios"
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
   lapi:
+    dashboard:
+      enabled: true
+      ingress:
+        enabled: true
+        annotations:
+          nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+        ingressClassName: nginx
+        host: crowdsec.collins.home
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
     env:
       - name: BOUNCER_KEY_nginx
         valueFrom:
