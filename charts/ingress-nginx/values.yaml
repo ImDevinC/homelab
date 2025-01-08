@@ -7,6 +7,7 @@ ingress-nginx:
     allowSnippetAnnotations: true
     extraArgs:
       v: "3"
+      tcp-services-configmap: nginx/ingress-nginx-tcp
     extraVolumes:
       - name: crowdsec-bouncer-plugin
         emptyDir: {}
@@ -35,3 +36,4 @@ ingress-nginx:
     config:
       plugins: crowdsec
       lua-shared-dicts: "crowdsec_cache: 50m"
+
