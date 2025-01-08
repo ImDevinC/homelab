@@ -8,7 +8,7 @@ crowdsec:
             token: "${REGISTRATION_TOKEN}"
             allowed_ranges:
               - "127.0.0.1/32"
-              - "192.168.1.64/26"
+              - "10.0.0.0/8"
   container_runtime: containerd
   agent:
     acquisition:
