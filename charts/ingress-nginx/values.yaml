@@ -1,4 +1,6 @@
 ingress-nginx:
+  tcp:
+    "22": "snips/snips:22"
   controller:
     metrics:
       enabled: true
