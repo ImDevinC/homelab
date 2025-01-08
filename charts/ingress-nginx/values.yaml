@@ -7,7 +7,7 @@ ingress-nginx:
     allowSnippetAnnotations: true
     extraArgs:
       v: "3"
-      tcp-services-configmap: nginx/ingress-nginx-tcp
+      tcp-services-configmap: $(POD_NAMESPACE)/ingress-nginx-tcp
     extraVolumes:
       - name: crowdsec-bouncer-plugin
         emptyDir: {}
