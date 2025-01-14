@@ -14,8 +14,7 @@ spec:
       labels:
         app: cloudflared
     spec:
-      containers:
-      - name: cloudflared
+      containers: - name: cloudflared
         image: cloudflare/cloudflared:2024.10.0
         args:
         - tunnel
