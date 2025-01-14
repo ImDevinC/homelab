@@ -101,7 +101,7 @@ data:
       service: http://stream-notifier.stream-notifier:7000
     - hostname: wallabag.imdevinc.com
       service: http://wallabag.wallabag:80
-    - hostname: auth.imdevinc.com
+    - hostname: login.imdevinc.com
       service: http://pocket-id.pocket-id:3000
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
