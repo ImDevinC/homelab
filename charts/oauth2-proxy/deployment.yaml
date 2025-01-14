@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oauth2-proxy
+  namespace: oauth2-proxy
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: oauth2-proxy
+  template:
+    metadata:
+      labels:
+        app: oauth2-proxy
+    spec:
+      containers:
+        - name: oauth2-proxy
+          image: "quay.io/oauth2-proxy/oauth2-proxy:latest"
+          envFrom:
+            - secretRef:
+                name: oauth2-proxy-secrets
+          env:
+            - name: TZ
+              value: America/Los_Angeles
+            - name: OAUTH2_PROXY_OIDC_ISSUER_URL
+              value: https://login.imdevinc.com
+            - name: OAUTH2_PROXY_PROVIDER
+              value: oidc
+            - name: OAUTH2_PROXY_SCOPE
+              value: openid email profile
+            - name: OAUTH2_PROXY_REVERSE_PROXY
+              value: 'true'
+            - name: OAUTH2_PROXY_EMAIL_DOMAINS
+              value: '*'
+            - name: OAUTH2_PROXY_COOKIE_SECURE
+              value: 'true'
+            - name: OAUTH2_PROXY_HTTP_ADDRESS
+              value: 0.0.0.0:4180
+            - name: OAUTH2_PROXY_INSECURE_OIDC_ALLOW_UNVERIFIED_EMAIL
+              value: 'true'
+            - name: OAUTH2_PROXY_WHITELIST_DOMAINS
+              value: .imdevinc.com
+            - name: OAUTH2_PROXY_COOKIE_DOMAINS
+              value: .imdevinc.com
+            - name: OAUTH2_PROXY_SET_XAUTHREQUEST
+              value: 'true'
+            - name: OAUTH2_PROXY_REDIRECT_URL
+              value: https://snips.imdevinc.com
+            - name: OAUTH2_PROXY_PASS_ACCESS_TOKEN
+              value: 'true'
+            - name: OAUTH2_PROXY_PASS_AUTHORIZATION_HEADER
+              value: 'true'
+            - name: OAUTH2_PROXY_SET_XAUTHREQUEST
+              value: 'true'
+            - name: OAUTH2_PROXY_SET_AUTHORIZATION_HEADER
+              value: 'true'
+            - name: OAUTH2_PROXY_STANDARD_LOGGING
+              value: 'true'
+            - name: OAUTH2_PROXY_AUTH_LOGGING
+              value: 'true'
+            - name: OAUTH2_PROXY_REQUEST_LOGGING
+              value: 'true'
+            - name: OAUTH2_PROXY_SILENCE_PING_LOGGING
+              value: 'true'
+          ports:
+            - name: http
+              containerPort: 4180

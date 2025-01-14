@@ -19,7 +19,7 @@ spec:
         - image: stonith404/pocket-id:v0.24.1
           env:
             - name: PUBLIC_APP_URL
-              value: https://auth.imdevinc.com
+              value: https://login.imdevinc.com
             - name: CADDY_PORT
               value: "8000"
             - name: TRUST_PROXY
