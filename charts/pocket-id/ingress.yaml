@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
+    nginx.ingress.kubernetes.io/proxy-busy-buffers-size: 512k
+    nginx.ingress.kubernetes.io/proxy-buffers: 4 512k
+    nginx.ingress.kubernetes.io/proxy-buffers-size: 256k
+  name: pocket-id
+  namespace: pocket-id
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: login.imdevinc.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: pocket-id
+            port:
+              name: http
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - login.imdevinc.com
+    secretName: pocket-id-tls
