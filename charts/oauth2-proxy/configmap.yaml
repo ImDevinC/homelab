@@ -1,0 +1,27 @@
+apiVersion: v1
+data:
+  oauth2-proxy.cfg: |
+    client_id="74efa6c0-06af-4a29-aeb4-64d74d2153f5"
+    client_secret="hjZBZA8Vz4C62uwpncYKJA4jKvY1gZA7"
+    oidc_issuer_url="https://auth.imdevinc.com"
+
+    cookie_secret="random-word-replace-me"
+
+    upstreams="file:///dev/null"
+
+    provider="oidc"
+    scope="openid email profile groups"
+
+    reverse_proxy=true
+
+    email_domains=["*"]
+
+    cookie_secure="true"
+    
+    http_address="0.0.0.0:4180"
+
+    redirect_url="https://snips.imdevinc.com"
+kind: ConfigMap
+metadata:
+  name: oauth2-proxy-config
+  namespace: oauth2-proxy

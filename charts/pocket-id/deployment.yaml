@@ -20,6 +20,10 @@ spec:
           env:
             - name: PUBLIC_APP_URL
               value: https://auth.imdevinc.com
+            - name: CADDY_PORT
+              value: "8000"
+            - name: TRUST_PROXY
+              value: "true"
           envFrom:
             - secretRef:
                 name: pocket-id-secrets
@@ -35,7 +39,7 @@ spec:
             timeoutSeconds: 1
           name: pocket-id
           ports:
-          - containerPort: 3000
+          - containerPort: 8000
             name: http
             protocol: TCP
           volumeMounts:
