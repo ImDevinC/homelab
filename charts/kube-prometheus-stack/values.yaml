@@ -43,6 +43,8 @@ kube-prometheus-stack:
         root_url: http://grafana.collins.home
       auth:
         disable_login_form: true
+      auth.basic:
+        enabled: false
       auth.anonymous:
         enabled: true
         org_name: Homelab
