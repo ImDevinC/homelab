@@ -27,9 +27,6 @@ kube-prometheus-stack:
         nginx.org/proxy-read-timeout: "3600"
         nginx.org/proxy-send-timeout: "3600"
         nginx.org/websocket-services: kube-prometheus-stack-grafana
-        nginx.ingress.kubernetes.io/auth-response-headers: X-Auth-Request-User,X-Auth-Request-Email
-        nginx.ingress.kubernetes.io/auth-signin: https://oauth.imdevinc.com/oauth2/start
-        nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy.svc.cluster.local/oauth2/auth
     admin:
       existingSecret: grafana-creds
     extraSecretMounts:
@@ -41,18 +38,10 @@ kube-prometheus-stack:
     grafana.ini:
       server:
         root_url: http://grafana.collins.home
-      auth:
-        disable_login_form: true
-      auth.basic:
-        enabled: false
-      auth.anonymous:
-        enabled: true
-        org_name: Main Org.
-        org_role: Admin
       auth.generic_oauth:
-        enabled: false # Using Pocket ID
+        enabled: true
         name: Authentik SSO
-        allow_sign_up: false
+        allow_sign_up: true
         client_id: "$__file{/etc/secrets/grafana_authentik_secret/client_id}"
         client_secret: "$__file{/etc/secrets/grafana_authentik_secret/client_secret}"
         auto_login: true
