@@ -41,6 +41,10 @@ kube-prometheus-stack:
     grafana.ini:
       server:
         root_url: http://grafana.collins.home
+      auth.anonymous:
+        enabled: true
+        org_name: Homelab
+        org_role: Admin
       auth.generic_oauth:
         enabled: false # Using Pocket ID
         name: Authentik SSO
