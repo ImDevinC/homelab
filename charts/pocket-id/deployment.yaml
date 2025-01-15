@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pocket-id
+  name: pocket-id
+  namespace: pocket-id
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pocket-id
+  template:
+    metadata:
+      labels:
+        app: pocket-id
+    spec:
+      containers:
+        - image: stonith404/pocket-id:v0.24.1
+          env:
+            - name: PUBLIC_APP_URL
+              value: https://login.imdevinc.com
+            - name: CADDY_PORT
+              value: "8000"
+            - name: TRUST_PROXY
+              value: "true"
+          envFrom:
+            - secretRef:
+                name: pocket-id-secrets
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: http
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: pocket-id
+          ports:
+          - containerPort: 8000
+            name: http
+            protocol: TCP
+          volumeMounts:
+          - mountPath: /app/backend/data
+            name: data
+      restartPolicy: Always
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: data

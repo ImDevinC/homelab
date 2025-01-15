@@ -1,0 +1,27 @@
+oauth2-proxy:
+  ingress:
+    className: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      external-dns.alpha.kubernetes.io/ingress-hostname-source: annotations-only
+    enabled: true
+    hosts:
+      - oauth.imdevinc.com
+    tls:
+      - hosts:
+        - oauth.imdevinc.com
+        secretName: oauth2-proxy-tls
+  proxyVarsAsSecrets: false
+  extraVolumes:
+    - name: config
+      secret:
+        defaultMode: 420
+        secretName: oauth2-proxy-config
+  extraVolumeMounts:
+    - name: config
+      mountPath: /opt/oauth2-proxy
+      readOnly: true
+  extraArgs:
+    config: /opt/oauth2-proxy/config.cfg
+  config:
+    configFile: ''
