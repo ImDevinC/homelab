@@ -47,7 +47,7 @@ kube-prometheus-stack:
         enabled: false
       auth.anonymous:
         enabled: true
-        org_name: Homelab
+        org_name: Main Org.
         org_role: Admin
       auth.generic_oauth:
         enabled: false # Using Pocket ID
