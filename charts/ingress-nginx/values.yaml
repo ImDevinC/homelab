@@ -6,6 +6,8 @@ ingress-nginx:
       enabled: true
       serviceMonitor:
         enabled: true
+    service:
+      externalTrafficPolicy: Local
     allowSnippetAnnotations: true
     extraArgs:
       v: "3"
