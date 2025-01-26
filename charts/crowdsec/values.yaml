@@ -20,6 +20,8 @@ crowdsec:
         value: "crowdsecurity/cri-logs crowdsecurity/geoip-enrich crowdsecurity/sshd-logs"
       - name: COLLECTIONS
         value: "crowdsecurity/nginx crowdsecurity/http-cve crowdsecurity/whitelist-good-actors crowdsecurity/iptables crowdsecurity/linux crowdsecurity/base-http-scenarios"
+      - name: DISABLE_PARSERS
+        value: "crowdsecurity/whitelists"
     metrics:
       enabled: true
       serviceMonitor:
