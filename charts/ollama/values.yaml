@@ -8,6 +8,7 @@ ollama:
       pull:
         - mistral
         - llama3.2
+        - deepseek-r1
   ingress:
     enabled: true
     className: nginx
