@@ -6,10 +6,9 @@ ollama:
       number: 1
     models:
       pull:
-        - mistral
-        - llama3.2
-        - deepseek-r1
-        - deepseek-r1:14b
+        - mistral:7b
+        - llama3.2:3b
+        - deepseek-r1:7b
   ingress:
     enabled: true
     className: nginx
