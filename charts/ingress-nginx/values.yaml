@@ -40,4 +40,4 @@ ingress-nginx:
     config:
       plugins: crowdsec
       lua-shared-dicts: "crowdsec_cache: 50m"
-
+      annotations-risk-level: Critical
