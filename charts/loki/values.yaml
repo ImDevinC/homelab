@@ -59,3 +59,5 @@ loki:
       enabled: true
     querier:
       max_concurrent: 2
+grafana-agent-operator:
+
