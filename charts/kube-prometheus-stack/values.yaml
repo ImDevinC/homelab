@@ -18,6 +18,10 @@ kube-prometheus-stack:
             type: camptocamp-prometheus-alertmanager-datasource
             url: http://kube-prometheus-stack-alertmanager:9093
             access: proxy
+          - name: Loki
+            type: loki
+            url: http://loki.loki:3100
+            access: proxy
     ingress:
       enabled: true
       hosts:
