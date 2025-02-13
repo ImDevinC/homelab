@@ -4,6 +4,12 @@ open-webui:
     enabled: true
     class: nginx
     host: webui.collins.home
+    annotations:
+      nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid,authorization
+      nginx.ingress.kubernetes.io/auth-signin: http://webui.collins.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
+      nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
+      nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-authentik-embedded-outpost.authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
+
   ollama:
     enabled: false
     ollamaUrls:
@@ -11,3 +17,6 @@ open-webui:
   persistence:
     storageClass: hostpath-csi
     existingClaim: open-webui-hp
+  extraEnvVars:
+    - name: WEBUI_AUTH_TRUSTED_EMAIL_HEADER
+      value: X-authentik-email
