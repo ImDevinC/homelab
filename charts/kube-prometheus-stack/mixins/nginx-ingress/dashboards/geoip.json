@@ -1,0 +1,985 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 41,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "P8E80F9AEF21F6940"
+      },
+      "description": "Count of how many times in the given range distinct IP addresses accessed the servers.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [
+            {
+              "options": {
+                "-Infinity": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "0"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "min": 0,
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 10
+              },
+              {
+                "color": "orange",
+                "value": 20
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 27,
+        "w": 20,
+        "x": 2,
+        "y": 0
+      },
+      "id": 7,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Layer 0",
+          "type": "default"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": false,
+          "showDebug": true,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "Count",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "field": "Count",
+                  "fixed": 5,
+                  "max": 30,
+                  "min": 3
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "text": {
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "location": {
+              "gazetteer": "public/gazetteer/countries.json",
+              "latitude": "geoip_location_latitude",
+              "longitude": "geoip_location_longitude",
+              "lookup": "Country",
+              "mode": "lookup"
+            },
+            "name": "Hotspots",
+            "tooltip": true,
+            "type": "markers"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "coords",
+          "lat": 30.206087,
+          "lon": 2.499148,
+          "zoom": 2.73
+        }
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "editorMode": "code",
+          "expr": "sum by (geoip_country_name) (count_over_time({job=\"nginx/ingress-nginx\", geoip_country_name=~\".+\"}[$__range]))",
+          "hide": false,
+          "queryType": "instant",
+          "refId": "A"
+        }
+      ],
+      "title": "Access by Country",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "Value #A": "Count",
+              "geoip_country_name": "Country"
+            }
+          }
+        }
+      ],
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "P8E80F9AEF21F6940"
+      },
+      "description": "Source IP addresses accessing the infrastructure",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 100
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 26,
+        "w": 20,
+        "x": 2,
+        "y": 27
+      },
+      "id": 2,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Layer 0",
+          "type": "default"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": false,
+          "showDebug": true,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "blur": 12,
+              "radius": 5,
+              "weight": {
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "location": {
+              "latitude": "Latitude",
+              "longitude": "Longitude",
+              "mode": "coords"
+            },
+            "name": "Map",
+            "opacity": 0.7,
+            "tooltip": true,
+            "type": "heatmap"
+          }
+        ],
+        "tooltip": {
+          "mode": "none"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "europe",
+          "lat": 46,
+          "lon": 14,
+          "zoom": 3
+        }
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "editorMode": "code",
+          "expr": "{job=\"nginx/ingress-nginx\", geoip_country_name=~\".+\"}",
+          "hide": false,
+          "queryType": "range",
+          "refId": "B"
+        }
+      ],
+      "title": "IP Locations Heatmap",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "kvp",
+            "replace": true,
+            "source": "labels"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "geoip_location_latitude"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "geoip_location_longitude"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "FACILITY": true,
+              "FILE_NAME": true,
+              "HOST": true,
+              "HOST_FROM": true,
+              "ISODATE": false,
+              "LEGACY_MSGHDR": true,
+              "MESSAGE": true,
+              "PRIORITY": true,
+              "PROGRAM": true,
+              "SOURCE": true,
+              "filename": true,
+              "geoip_city_geoname_id": true,
+              "geoip_city_name": true,
+              "geoip_city_names_en": false,
+              "geoip_continent_code": true,
+              "geoip_continent_geoname_id": true,
+              "geoip_continent_names_en": true,
+              "geoip_continet_name": true,
+              "geoip_country_geoname_id": true,
+              "geoip_country_is_in_european_union": true,
+              "geoip_country_iso_code": true,
+              "geoip_country_name": true,
+              "geoip_country_names_en": false,
+              "geoip_location_accuracy_radius": false,
+              "geoip_location_latitude": false,
+              "geoip_location_location": true,
+              "geoip_location_metro_code": true,
+              "geoip_location_time_zone": true,
+              "geoip_registered_country_geoname_id": true,
+              "geoip_registered_country_is_in_european_union": true,
+              "geoip_registered_country_iso_code": true,
+              "geoip_registered_country_names_en": false,
+              "geoip_subdivisions_0_geoname_id": true,
+              "geoip_subdivisions_0_iso_code": true,
+              "geoip_subdivisions_0_names_en": true,
+              "geoip_subdivisions_1_geoname_id": true,
+              "geoip_subdivisions_1_iso_code": true,
+              "geoip_subdivisions_1_names_en": true,
+              "input_interface": true,
+              "ipt_CODE": true,
+              "ipt_IN": true,
+              "ipt_LEN": true,
+              "ipt_TYPE": true,
+              "job": true,
+              "kv_DPT": false,
+              "kv_DST": true,
+              "kv_ID": true,
+              "kv_IN": true,
+              "kv_LEN": true,
+              "kv_MAC": true,
+              "kv_OUT": false,
+              "kv_PREC": true,
+              "kv_PROTO": true,
+              "kv_RES": true,
+              "kv_SPT": true,
+              "kv_TOS": true,
+              "kv_TTL": true,
+              "kv_URGP": true,
+              "kv_WINDOW": true,
+              "output_interface": true,
+              "protocol": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "FACILITY": "",
+              "ISODATE": "Time",
+              "geoip_city_names_en": "City",
+              "geoip_continent_code": "",
+              "geoip_country_names_en": "Country",
+              "geoip_location_accuracy_radius": "Accuracy Radius",
+              "geoip_location_latitude": "Latitude",
+              "geoip_location_longitude": "Longitude",
+              "geoip_postal_code": "Postal Code",
+              "geoip_registered_country_is_in_european_union": "",
+              "geoip_registered_country_names_en": "Registered Country",
+              "geoip_subdivisions_1_iso_code": "",
+              "ipt_DPT": "Destination Port",
+              "ipt_DST": "Destintation",
+              "ipt_IN": "Input Interface",
+              "ipt_LEN": "",
+              "ipt_OUT": "Output Interface",
+              "ipt_PROTO": "Protocol",
+              "ipt_SPT": "Source Port",
+              "ipt_SRC": "Source",
+              "job": "",
+              "kv_DPT": "Destintation Port",
+              "kv_OUT": "Output Interface",
+              "kv_SRC": "Source"
+            }
+          }
+        }
+      ],
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "P8E80F9AEF21F6940"
+      },
+      "description": "Source IP addresses accessing webservices other than SSH",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 26,
+        "w": 20,
+        "x": 2,
+        "y": 53
+      },
+      "id": 8,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Layer 0",
+          "type": "default"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": false,
+          "showDebug": true,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "showLegend": false,
+              "style": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "text": {
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "location": {
+              "latitude": "Latitude",
+              "longitude": "Longitude",
+              "mode": "coords"
+            },
+            "name": "Map",
+            "tooltip": true,
+            "type": "markers"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "europe",
+          "lat": 46,
+          "lon": 14,
+          "zoom": 3
+        }
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "editorMode": "code",
+          "expr": "{job=\"nginx/ingress-nginx\", geoip_country_name=~\".+\", dst_port!=\"22\"}",
+          "hide": false,
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "IP Locations (non SSH Traffic)",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "kvp",
+            "replace": true,
+            "source": "labels"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "geoip_location_latitude"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "geoip_location_longitude"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "FACILITY": true,
+              "FILE_NAME": true,
+              "HOST": true,
+              "HOST_FROM": true,
+              "ISODATE": false,
+              "LEGACY_MSGHDR": true,
+              "MESSAGE": true,
+              "PRIORITY": true,
+              "PROGRAM": true,
+              "SOURCE": true,
+              "filename": true,
+              "geoip_city_geoname_id": true,
+              "geoip_city_names_en": false,
+              "geoip_continent_code": true,
+              "geoip_continent_geoname_id": true,
+              "geoip_continent_names_en": true,
+              "geoip_continet_name": false,
+              "geoip_country_geoname_id": true,
+              "geoip_country_is_in_european_union": true,
+              "geoip_country_iso_code": true,
+              "geoip_country_names_en": false,
+              "geoip_location_accuracy_radius": false,
+              "geoip_location_latitude": false,
+              "geoip_location_location": true,
+              "geoip_location_metro_code": true,
+              "geoip_location_time_zone": true,
+              "geoip_registered_country_geoname_id": true,
+              "geoip_registered_country_is_in_european_union": true,
+              "geoip_registered_country_iso_code": true,
+              "geoip_registered_country_names_en": false,
+              "geoip_subdivisions_0_geoname_id": true,
+              "geoip_subdivisions_0_iso_code": true,
+              "geoip_subdivisions_0_names_en": true,
+              "geoip_subdivisions_1_geoname_id": true,
+              "geoip_subdivisions_1_iso_code": true,
+              "geoip_subdivisions_1_names_en": true,
+              "input_interface": true,
+              "ipt_CODE": true,
+              "ipt_IN": true,
+              "ipt_LEN": true,
+              "ipt_TYPE": true,
+              "job": true,
+              "kv_DPT": false,
+              "kv_DST": true,
+              "kv_ID": true,
+              "kv_IN": true,
+              "kv_LEN": true,
+              "kv_MAC": true,
+              "kv_OUT": false,
+              "kv_PREC": true,
+              "kv_PROTO": true,
+              "kv_RES": true,
+              "kv_SPT": true,
+              "kv_TOS": true,
+              "kv_TTL": true,
+              "kv_URGP": true,
+              "kv_WINDOW": true,
+              "output_interface": true
+            },
+            "indexByName": {
+              "dst_port": 5,
+              "filename": 7,
+              "geoip_city_name": 0,
+              "geoip_continent_code": 8,
+              "geoip_continet_name": 2,
+              "geoip_country_name": 1,
+              "geoip_location_latitude": 3,
+              "geoip_location_longitude": 4,
+              "input_interface": 9,
+              "job": 10,
+              "output_interface": 11,
+              "protocol": 6
+            },
+            "renameByName": {
+              "FACILITY": "",
+              "ISODATE": "Time",
+              "dst_port": "Port",
+              "geoip_city_name": "City",
+              "geoip_city_names_en": "City",
+              "geoip_continent_code": "",
+              "geoip_continet_name": "Continent",
+              "geoip_country_name": "Country",
+              "geoip_country_names_en": "Country",
+              "geoip_location_accuracy_radius": "Accuracy Radius",
+              "geoip_location_latitude": "Latitude",
+              "geoip_location_longitude": "Longitude",
+              "geoip_postal_code": "Postal Code",
+              "geoip_registered_country_is_in_european_union": "",
+              "geoip_registered_country_names_en": "Registered Country",
+              "geoip_subdivisions_1_iso_code": "",
+              "ipt_DPT": "Destination Port",
+              "ipt_DST": "Destintation",
+              "ipt_IN": "Input Interface",
+              "ipt_LEN": "",
+              "ipt_OUT": "Output Interface",
+              "ipt_PROTO": "Protocol",
+              "ipt_SPT": "Source Port",
+              "ipt_SRC": "Source",
+              "job": "",
+              "kv_DPT": "Destintation Port",
+              "kv_OUT": "Output Interface",
+              "kv_SRC": "Source",
+              "output_interface": "",
+              "protocol": "Protocol"
+            }
+          }
+        }
+      ],
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "P8E80F9AEF21F6940"
+      },
+      "description": "Source IP addresses by location accessing ssh",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 26,
+        "w": 20,
+        "x": 2,
+        "y": 79
+      },
+      "id": 3,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Layer 0",
+          "type": "default"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": false,
+          "showDebug": true,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "showLegend": false,
+              "style": {
+                "color": {
+                  "fixed": "red"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "text": {
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "location": {
+              "latitude": "Latitude",
+              "longitude": "Longitude",
+              "mode": "coords"
+            },
+            "name": "Map",
+            "tooltip": true,
+            "type": "markers"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "europe",
+          "lat": 46,
+          "lon": 14,
+          "zoom": 3
+        }
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "editorMode": "code",
+          "expr": "{job=\"nginx/ingress-nginx\", geoip_country_name=~\".+\", dst_port=\"22\"}",
+          "hide": false,
+          "queryType": "range",
+          "refId": "B"
+        }
+      ],
+      "title": "IP Locations (SSH)",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "kvp",
+            "replace": true,
+            "source": "labels"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "geoip_location_latitude"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "geoip_location_longitude"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "FACILITY": true,
+              "FILE_NAME": true,
+              "HOST": true,
+              "HOST_FROM": true,
+              "ISODATE": true,
+              "LEGACY_MSGHDR": true,
+              "MESSAGE": true,
+              "PRIORITY": true,
+              "PROGRAM": true,
+              "SOURCE": true,
+              "filename": true,
+              "geoip_city_geoname_id": true,
+              "geoip_city_names_en": false,
+              "geoip_continent_code": true,
+              "geoip_continent_geoname_id": true,
+              "geoip_continent_names_en": true,
+              "geoip_country_geoname_id": true,
+              "geoip_country_is_in_european_union": true,
+              "geoip_country_iso_code": true,
+              "geoip_country_names_en": true,
+              "geoip_location_accuracy_radius": false,
+              "geoip_location_latitude": false,
+              "geoip_location_location": true,
+              "geoip_location_metro_code": true,
+              "geoip_location_time_zone": true,
+              "geoip_registered_country_geoname_id": true,
+              "geoip_registered_country_is_in_european_union": true,
+              "geoip_registered_country_iso_code": true,
+              "geoip_registered_country_names_en": true,
+              "geoip_subdivisions_0_geoname_id": true,
+              "geoip_subdivisions_0_iso_code": true,
+              "geoip_subdivisions_0_names_en": true,
+              "geoip_subdivisions_1_geoname_id": true,
+              "geoip_subdivisions_1_iso_code": true,
+              "geoip_subdivisions_1_names_en": true,
+              "input_interface": true,
+              "ipt_CODE": true,
+              "ipt_IN": true,
+              "ipt_LEN": true,
+              "ipt_TYPE": true,
+              "job": true,
+              "kv_DPT": false,
+              "kv_DST": true,
+              "kv_ID": true,
+              "kv_IN": true,
+              "kv_LEN": true,
+              "kv_MAC": true,
+              "kv_OUT": false,
+              "kv_PREC": true,
+              "kv_PROTO": true,
+              "kv_RES": true,
+              "kv_SPT": true,
+              "kv_TOS": true,
+              "kv_TTL": true,
+              "kv_URGP": true,
+              "kv_WINDOW": true,
+              "output_interface": true
+            },
+            "indexByName": {
+              "dst_port": 5,
+              "filename": 7,
+              "geoip_city_name": 0,
+              "geoip_continent_code": 8,
+              "geoip_continet_name": 2,
+              "geoip_country_name": 1,
+              "geoip_location_latitude": 3,
+              "geoip_location_longitude": 4,
+              "input_interface": 9,
+              "job": 10,
+              "output_interface": 11,
+              "protocol": 6
+            },
+            "renameByName": {
+              "FACILITY": "",
+              "ISODATE": "Time",
+              "dst_port": "Port",
+              "filename": "",
+              "geoip_city_name": "City",
+              "geoip_city_names_en": "City Name",
+              "geoip_continent_code": "",
+              "geoip_continet_name": "Continent",
+              "geoip_country_name": "Country",
+              "geoip_location_accuracy_radius": "Accuracy Radius",
+              "geoip_location_latitude": "Latitude",
+              "geoip_location_longitude": "Longitude",
+              "geoip_postal_code": "Postal Code",
+              "ipt_DPT": "Destination Port",
+              "ipt_DST": "Destintation",
+              "ipt_IN": "Input Interface",
+              "ipt_LEN": "",
+              "ipt_OUT": "Output Interface",
+              "ipt_PROTO": "Protocol",
+              "ipt_SPT": "Source Port",
+              "ipt_SRC": "Source",
+              "job": "",
+              "kv_DPT": "Destintation Port",
+              "kv_OUT": "Output Interface",
+              "kv_SRC": "Source",
+              "protocol": "Protocol"
+            }
+          }
+        }
+      ],
+      "type": "geomap"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
+  "tags": [
+    "nginx"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-2d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "GeoIP",
+  "uid": "pV2rGDZ4z",
+  "version": 2,
+  "weekStart": ""
+}

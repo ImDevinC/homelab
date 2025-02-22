@@ -3,5 +3,6 @@
 {
   grafanaDashboards+:: {
     'nginx-ingress.json': (import 'nginx-ingress.json'),
+    'geoip.json': (import 'geoip.json')
   },
 }
