@@ -13,11 +13,11 @@ loki-stack:
                     db: /maxmind/GeoLite2-City.mmdb
                     source: ip
                     db_type: city
-  extraVolumeMounts:
-    - name: maxmind
-      mountPath: /maxmind/
-      readonly: true
-  extraVolumes:
-    - name: maxmind
-      hostPath:
-        path: /mnt/media/config/maxmind
+    extraVolumeMounts:
+      - name: maxmind
+        mountPath: /maxmind/
+        readonly: true
+    extraVolumes:
+      - name: maxmind
+        hostPath:
+          path: /mnt/media/config/maxmind
