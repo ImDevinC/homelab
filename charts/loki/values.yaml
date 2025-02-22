@@ -1,0 +1,15 @@
+loki-stack:
+  promtail:
+    config:
+      snippets:
+        pipelineStages:
+          - cri: {}
+          - match:
+              selector: '{name="ingress-nginx"}'
+              stages:
+                - regex:
+                  expression: '^(?P<ip>\S+) .*'
+                - geoip:
+                    db: /maxmind/GeoLite2-City.mmdb
+                    source: ip
+                    db_type: city
