@@ -8,7 +8,7 @@ loki-stack:
               selector: '{name="ingress-nginx"}'
               stages:
                 - regex:
-                  expression: '^(?P<ip>\S+) .*'
+                    expression: '^(?P<ip>\S+) .*'
                 - geoip:
                     db: /maxmind/GeoLite2-City.mmdb
                     source: ip
