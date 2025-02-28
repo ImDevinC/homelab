@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: maxmind-downloader
+  namespace: maxmind
+spec:
+  schedule: "0 1 * * *" # Every day at 1am
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: wget
+              image: inutano/wget:1.20.3-r1
+              args:
+                - /bin/sh
+                - -c
+                - 'wget -O /tmp/maxmind.tar.gz --user ${USERNAME} --password ${PASSWORD} https://download.maxmind.com/geoip/databases/GeoLite2-City/download?suffix=tar.gz && tar -xvzf /tmp/maxmind.tar.gz -C /tmp/ --strip-components 1 && cp /tmp/GeoLite2-City.mmdb /maxmind-data/GeoLite2-City.mmdb'
+              imagePullPolicy: IfNotPresent
+              volumeMounts:
+                - name: maxmind-data
+                  mountPath: /maxmind-data/
+              envFrom:
+                - secretRef:
+                    name: maxmind-credentials
+              securityContext:
+                runAsUser: 1000
+                runAsGroup: 1000
+          volumes:
+            - name: maxmind-data
+              hostPath:
+                path: /mnt/media/config/maxmind
