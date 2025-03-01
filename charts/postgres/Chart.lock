@@ -1,6 +1,6 @@
 dependencies:
 - name: prometheus-postgres-exporter
   repository: https://prometheus-community.github.io/helm-charts
-  version: 6.8.1
-digest: sha256:e0ca74582fd91d69b3cdc9b647dd992cda7099ca34d9f2c4fcf2848f6f7fb3b2
-generated: "2024-12-29T01:45:11.913581998Z"
+  version: 6.9.0
+digest: sha256:767b7bcc6afd3b612beb4f1c9adeecdb890b58e9750677cc8ac7463a52641595
+generated: "2025-03-01T01:03:48.624766792Z"
