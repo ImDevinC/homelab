@@ -15195,55 +15195,6 @@ kube-prometheus-stack:
         nvidia-smi.json:
           json: |-
             {
-               "__elements": { },
-               "__inputs": [
-                  {
-                     "description": "",
-                     "label": "Prometheus",
-                     "name": "DS_PROMETHEUS",
-                     "pluginId": "prometheus",
-                     "pluginName": "Prometheus",
-                     "type": "datasource"
-                  }
-               ],
-               "__requires": [
-                  {
-                     "id": "bargauge",
-                     "name": "Bar gauge",
-                     "type": "panel",
-                     "version": ""
-                  },
-                  {
-                     "id": "gauge",
-                     "name": "Gauge",
-                     "type": "panel",
-                     "version": ""
-                  },
-                  {
-                     "id": "grafana",
-                     "name": "Grafana",
-                     "type": "grafana",
-                     "version": "11.2.0"
-                  },
-                  {
-                     "id": "prometheus",
-                     "name": "Prometheus",
-                     "type": "datasource",
-                     "version": "1.0.0"
-                  },
-                  {
-                     "id": "stat",
-                     "name": "Stat",
-                     "type": "panel",
-                     "version": ""
-                  },
-                  {
-                     "id": "timeseries",
-                     "name": "Time series",
-                     "type": "panel",
-                     "version": ""
-                  }
-               ],
                "annotations": {
                   "list": [
                      {
@@ -15263,9 +15214,8 @@ kube-prometheus-stack:
                "description": "Nvidia GPU Metrics based on the prometheus metrics from github.com/utkuozdemir/nvidia_gpu_exporter",
                "editable": true,
                "fiscalYearStartMonth": 0,
-               "gnetId": 14574,
                "graphTooltip": 0,
-               "id": null,
+               "id": 9,
                "links": [ ],
                "panels": [
                   {
@@ -15319,7 +15269,7 @@ kube-prometheus-stack:
                         "textMode": "name",
                         "wideLayout": true
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -15397,7 +15347,7 @@ kube-prometheus-stack:
                         "textMode": "value",
                         "wideLayout": true
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -15472,7 +15422,7 @@ kube-prometheus-stack:
                         "sizing": "auto",
                         "text": { }
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -15547,7 +15497,7 @@ kube-prometheus-stack:
                         "sizing": "auto",
                         "text": { }
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -15622,7 +15572,7 @@ kube-prometheus-stack:
                         "sizing": "auto",
                         "text": { }
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -15697,7 +15647,7 @@ kube-prometheus-stack:
                         "sizing": "auto",
                         "text": { }
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -15801,7 +15751,7 @@ kube-prometheus-stack:
                            "sort": "none"
                         }
                      },
-                     "pluginVersion": "11.1.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -15869,7 +15819,7 @@ kube-prometheus-stack:
                         "textMode": "name",
                         "wideLayout": true
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -15938,7 +15888,7 @@ kube-prometheus-stack:
                         "textMode": "name",
                         "wideLayout": true
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -16003,6 +15953,12 @@ kube-prometheus-stack:
                      "id": 32,
                      "options": {
                         "displayMode": "gradient",
+                        "legend": {
+                           "calcs": [ ],
+                           "displayMode": "list",
+                           "placement": "bottom",
+                           "showLegend": false
+                        },
                         "maxVizHeight": 300,
                         "minVizHeight": 16,
                         "minVizWidth": 8,
@@ -16020,7 +15976,7 @@ kube-prometheus-stack:
                         "text": { },
                         "valueMode": "color"
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -16168,7 +16124,7 @@ kube-prometheus-stack:
                         "sizing": "auto",
                         "text": { }
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -16243,7 +16199,7 @@ kube-prometheus-stack:
                         "sizing": "auto",
                         "text": { }
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -16318,7 +16274,7 @@ kube-prometheus-stack:
                         "sizing": "auto",
                         "text": { }
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -16393,7 +16349,7 @@ kube-prometheus-stack:
                         "sizing": "auto",
                         "text": { }
                      },
-                     "pluginVersion": "11.2.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -16497,7 +16453,7 @@ kube-prometheus-stack:
                            "sort": "none"
                         }
                      },
-                     "pluginVersion": "11.1.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -16596,7 +16552,7 @@ kube-prometheus-stack:
                            "sort": "none"
                         }
                      },
-                     "pluginVersion": "11.1.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -16700,7 +16656,7 @@ kube-prometheus-stack:
                            "sort": "none"
                         }
                      },
-                     "pluginVersion": "11.1.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -16799,7 +16755,7 @@ kube-prometheus-stack:
                            "sort": "none"
                         }
                      },
-                     "pluginVersion": "11.1.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -16903,7 +16859,7 @@ kube-prometheus-stack:
                            "sort": "none"
                         }
                      },
-                     "pluginVersion": "11.1.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -17002,7 +16958,7 @@ kube-prometheus-stack:
                            "sort": "none"
                         }
                      },
-                     "pluginVersion": "11.1.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -17102,7 +17058,7 @@ kube-prometheus-stack:
                            "sort": "none"
                         }
                      },
-                     "pluginVersion": "11.1.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -17202,7 +17158,7 @@ kube-prometheus-stack:
                            "sort": "none"
                         }
                      },
-                     "pluginVersion": "11.1.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -17302,7 +17258,7 @@ kube-prometheus-stack:
                            "sort": "none"
                         }
                      },
-                     "pluginVersion": "11.1.0",
+                     "pluginVersion": "11.4.0",
                      "targets": [
                         {
                            "datasource": {
@@ -17321,8 +17277,9 @@ kube-prometheus-stack:
                      "type": "timeseries"
                   }
                ],
+               "preload": false,
                "refresh": "10s",
-               "schemaVersion": 39,
+               "schemaVersion": 40,
                "tags": [
                   "nvidia",
                   "nvidia-smi",
@@ -17335,13 +17292,12 @@ kube-prometheus-stack:
                         "current": { },
                         "datasource": {
                            "type": "prometheus",
-                           "uid": "${DS_PROMETHEUS}"
+                           "uid": "prometheus"
                         },
                         "definition": "label_values(nvidia_smi_index, job)",
-                        "hide": 0,
+                        "description": "",
                         "includeAll": false,
                         "label": "Job",
-                        "multi": false,
                         "name": "job",
                         "options": [ ],
                         "query": {
@@ -17350,23 +17306,17 @@ kube-prometheus-stack:
                         },
                         "refresh": 1,
                         "regex": "",
-                        "skipUrlSync": false,
-                        "tagValuesQuery": "",
-                        "tagsQuery": "",
-                        "type": "query",
-                        "useTags": false
+                        "type": "query"
                      },
                      {
                         "current": { },
                         "datasource": {
                            "type": "prometheus",
-                           "uid": "${DS_PROMETHEUS}"
+                           "uid": "prometheus"
                         },
                         "definition": "label_values(nvidia_smi_index{job=\"$job\"},instance)",
-                        "hide": 0,
                         "includeAll": false,
                         "label": "Host",
-                        "multi": false,
                         "name": "node",
                         "options": [ ],
                         "query": {
@@ -17375,23 +17325,17 @@ kube-prometheus-stack:
                         },
                         "refresh": 1,
                         "regex": "",
-                        "skipUrlSync": false,
-                        "tagValuesQuery": "",
-                        "tagsQuery": "",
-                        "type": "query",
-                        "useTags": false
+                        "type": "query"
                      },
                      {
                         "current": { },
                         "datasource": {
                            "type": "prometheus",
-                           "uid": "${DS_PROMETHEUS}"
+                           "uid": "prometheus"
                         },
                         "definition": "label_values(nvidia_smi_index{instance=\"$node\"},uuid)",
-                        "hide": 0,
                         "includeAll": false,
                         "label": "GPU",
-                        "multi": false,
                         "name": "gpu",
                         "options": [ ],
                         "query": {
@@ -17400,12 +17344,8 @@ kube-prometheus-stack:
                         },
                         "refresh": 1,
                         "regex": "",
-                        "skipUrlSync": false,
                         "sort": 1,
-                        "tagValuesQuery": "",
-                        "tagsQuery": "",
-                        "type": "query",
-                        "useTags": false
+                        "type": "query"
                      }
                   ]
                },
@@ -17417,7 +17357,7 @@ kube-prometheus-stack:
                "timezone": "",
                "title": "Nvidia GPU Metrics",
                "uid": "vlvPlrgnk",
-               "version": 8,
+               "version": 1,
                "weekStart": ""
             }
   prometheus:
