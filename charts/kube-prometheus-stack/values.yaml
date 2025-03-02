@@ -15195,7 +15195,7 @@ kube-prometheus-stack:
   prometheus:
     prometheusSpec:
       additionalScrapeConfigs:
-        - job_name: archlinux
+        - job_name: node-exporter
           static_configs:
             - targets: ['archlinux:9100']
       serviceMonitorSelectorNilUsesHelmValues: false
