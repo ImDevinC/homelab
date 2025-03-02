@@ -15221,7 +15221,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "The official product name of the GPU. This is an alphanumeric string. For all products.",
                      "fieldConfig": {
@@ -15274,7 +15274,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_gpu_info{uuid=\"$gpu\"}",
@@ -15290,7 +15290,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "The current performance state for the GPU. States range from P0 (maximum performance) to P12 (minimum performance).",
                      "fieldConfig": {
@@ -15352,7 +15352,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_pstate{uuid=\"$gpu\"}",
@@ -15367,7 +15367,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Percent of time over the past sample period during which one or more kernels was executing on the GPU.\nThe sample period may be between 1 second and 1/6 second depending on the product.",
                      "fieldConfig": {
@@ -15427,7 +15427,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_utilization_gpu_ratio{uuid=\"$gpu\"}",
@@ -15442,7 +15442,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "The last measured power draw for the entire board, in watts. Only available if power management is supported. This reading is accurate to within +/- 5 watts / The software power limit in watts.",
                      "fieldConfig": {
@@ -15502,7 +15502,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_power_draw_watts{uuid=\"$gpu\"} / nvidia_smi_power_default_limit_watts{uuid=\"$gpu\"}",
@@ -15517,7 +15517,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "The fan speed value is the percent of the product's maximum noise tolerance fan speed that the device's fan is currently intended to run at. This value may exceed 100% in certain cases. Note: The reported speed is the intended fan speed. If the fan is physically blocked and unable to spin, this output will not match the actual fan speed. Many parts do not report fan speeds because they rely on cooling via fans in the surrounding enclosure.\n",
                      "fieldConfig": {
@@ -15577,7 +15577,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_fan_speed_ratio{uuid=\"$gpu\"}",
@@ -15592,7 +15592,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Core GPU temperature. in degrees C.",
                      "fieldConfig": {
@@ -15652,7 +15652,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_temperature_gpu{uuid=\"$gpu\"}",
@@ -15667,7 +15667,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Percent of time over the past sample period during which global (device) memory was being read or written.\nThe sample period may be between 1 second and 1/6 second depending on the product.",
                      "fieldConfig": {
@@ -15756,7 +15756,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_utilization_memory_ratio{uuid=\"$gpu\"}",
@@ -15771,7 +15771,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "The version of the installed NVIDIA display driver. This is an alphanumeric string.",
                      "fieldConfig": {
@@ -15824,7 +15824,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_gpu_info{uuid=\"$gpu\"}",
@@ -15840,7 +15840,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "The BIOS of the GPU board.",
                      "fieldConfig": {
@@ -15893,7 +15893,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_gpu_info{uuid=\"$gpu\"}",
@@ -15909,7 +15909,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Information about factors that are reducing the frequency of clocks. If all throttle reasons are returned as \"Not Active\" it means that clocks are running as high as possible.",
                      "fieldConfig": {
@@ -15981,7 +15981,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_event_reasons_gpu_idle{uuid=\"$gpu\"} or nvidia_smi_clocks_throttle_reasons_gpu_idle{uuid=\"$gpu\"}",
@@ -15993,7 +15993,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_event_reasons_hw_thermal_slowdown{uuid=\"$gpu\"} or nvidia_smi_clocks_throttle_reasons_hw_thermal_slowdown{uuid=\"$gpu\"}",
@@ -16005,7 +16005,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_event_reasons_sw_power_cap{uuid=\"$gpu\"} or nvidia_smi_clocks_throttle_reasons_sw_power_cap{uuid=\"$gpu\"}",
@@ -16017,7 +16017,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_event_reasons_applications_clocks_setting{uuid=\"$gpu\"} or nvidia_smi_clocks_throttle_reasons_applications_clocks_setting{uuid=\"$gpu\"}",
@@ -16029,7 +16029,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_event_reasons_hw_power_brake_slowdown{uuid=\"$gpu\"} or nvidia_smi_clocks_throttle_reasons_hw_power_brake_slowdown{uuid=\"$gpu\"}",
@@ -16041,7 +16041,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_event_reasons_sw_thermal_slowdown{uuid=\"$gpu\"} or nvidia_smi_clocks_throttle_reasons_sw_thermal_slowdown{uuid=\"$gpu\"}",
@@ -16053,7 +16053,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_event_reasons_sync_boost{uuid=\"$gpu\"} or nvidia_smi_clocks_throttle_reasons_sync_boost{uuid=\"$gpu\"}",
@@ -16069,7 +16069,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Current frequency of graphics (shader) clock\n/\nMaximum frequency of graphics (shader) clock.\n",
                      "fieldConfig": {
@@ -16129,7 +16129,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_current_graphics_clock_hz{uuid=\"$gpu\"} / nvidia_smi_clocks_max_graphics_clock_hz{uuid=\"$gpu\"}",
@@ -16144,7 +16144,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Current frequency of memory clock / Maximum frequency of memory clock",
                      "fieldConfig": {
@@ -16204,7 +16204,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_current_memory_clock_hz{uuid=\"$gpu\"} / nvidia_smi_clocks_max_memory_clock_hz{uuid=\"$gpu\"}",
@@ -16219,7 +16219,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Total memory allocated by active contexts / Total installed GPU memory.",
                      "fieldConfig": {
@@ -16279,7 +16279,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_memory_used_bytes{uuid=\"$gpu\"} / nvidia_smi_memory_total_bytes{uuid=\"$gpu\"}",
@@ -16294,7 +16294,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Percent of time over the past sample period during which global (device) memory was being read or written.\nThe sample period may be between 1 second and 1/6 second depending on the product.",
                      "fieldConfig": {
@@ -16354,7 +16354,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_utilization_memory_ratio{uuid=\"$gpu\"}",
@@ -16369,7 +16369,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Percent of time over the past sample period during which one or more kernels was executing on the GPU.\nThe sample period may be between 1 second and 1/6 second depending on the product.",
                      "fieldConfig": {
@@ -16458,7 +16458,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_utilization_gpu_ratio{uuid=\"$gpu\"}",
@@ -16473,7 +16473,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Total memory allocated by active contexts.",
                      "fieldConfig": {
@@ -16557,7 +16557,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_memory_used_bytes{uuid=\"$gpu\"}",
@@ -16572,7 +16572,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Core GPU temperature. in degrees C.",
                      "fieldConfig": {
@@ -16661,7 +16661,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_temperature_gpu{uuid=\"$gpu\"}",
@@ -16676,7 +16676,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "The last measured power draw for the entire board, in watts. Only available if power management is supported. This reading is accurate to within +/- 5 watts",
                      "fieldConfig": {
@@ -16760,7 +16760,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_power_draw_watts{uuid=\"$gpu\"}",
@@ -16775,7 +16775,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "The fan speed value is the percent of the product's maximum noise tolerance fan speed that the device's fan is currently intended to run at. This value may exceed 100% in certain cases. Note: The reported speed is the intended fan speed. If the fan is physically blocked and unable to spin, this output will not match the actual fan speed. Many parts do not report fan speeds because they rely on cooling via fans in the surrounding enclosure.\n",
                      "fieldConfig": {
@@ -16864,7 +16864,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_fan_speed_ratio{uuid=\"$gpu\"}",
@@ -16879,7 +16879,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Current frequency of graphics (shader) clock.",
                      "fieldConfig": {
@@ -16963,7 +16963,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_current_graphics_clock_hz{uuid=\"$gpu\"}",
@@ -16979,7 +16979,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Current frequency of video encoder/decoder clock.",
                      "fieldConfig": {
@@ -17063,7 +17063,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_current_video_clock_hz{uuid=\"$gpu\"}",
@@ -17079,7 +17079,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Current frequency of SM (Streaming Multiprocessor) clock.",
                      "fieldConfig": {
@@ -17163,7 +17163,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_current_sm_clock_hz{uuid=\"$gpu\"}",
@@ -17179,7 +17179,7 @@ kube-prometheus-stack:
                   {
                      "datasource": {
                         "type": "prometheus",
-                        "uid": "${DS_PROMETHEUS}"
+                        "uid": "prometheus"
                      },
                      "description": "Current frequency of memory clock.",
                      "fieldConfig": {
@@ -17263,7 +17263,7 @@ kube-prometheus-stack:
                         {
                            "datasource": {
                               "type": "prometheus",
-                              "uid": "${DS_PROMETHEUS}"
+                              "uid": "prometheus"
                            },
                            "exemplar": true,
                            "expr": "nvidia_smi_clocks_current_memory_clock_hz{uuid=\"$gpu\"}",
@@ -17306,7 +17306,7 @@ kube-prometheus-stack:
                         "current": { },
                         "datasource": {
                            "type": "prometheus",
-                           "uid": "${DS_PROMETHEUS}"
+                           "uid": "prometheus"
                         },
                         "definition": "label_values(nvidia_smi_index, job)",
                         "description": "",
@@ -17326,7 +17326,7 @@ kube-prometheus-stack:
                         "current": { },
                         "datasource": {
                            "type": "prometheus",
-                           "uid": "${DS_PROMETHEUS}"
+                           "uid": "prometheus"
                         },
                         "definition": "label_values(nvidia_smi_index{job=\"$job\"},instance)",
                         "includeAll": false,
@@ -17345,7 +17345,7 @@ kube-prometheus-stack:
                         "current": { },
                         "datasource": {
                            "type": "prometheus",
-                           "uid": "${DS_PROMETHEUS}"
+                           "uid": "prometheus"
                         },
                         "definition": "label_values(nvidia_smi_index{instance=\"$node\"},uuid)",
                         "includeAll": false,
