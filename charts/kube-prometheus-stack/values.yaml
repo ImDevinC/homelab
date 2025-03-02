@@ -15194,6 +15194,10 @@ kube-prometheus-stack:
             }
   prometheus:
     prometheusSpec:
+      additionalScrapeConfigs:
+        - job_name: archlinux
+          static_configs:
+            - targets: ['archlinux:9100']
       serviceMonitorSelectorNilUsesHelmValues: false
       storageSpec:
         volumeClaimTemplate:
