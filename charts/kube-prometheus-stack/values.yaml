@@ -15198,6 +15198,9 @@ kube-prometheus-stack:
         - job_name: node-exporter
           static_configs:
             - targets: ['archlinux:9100']
+        - job_name: node-exporter
+          static_configs:
+            - targets: ['archlinux:9835']
       serviceMonitorSelectorNilUsesHelmValues: false
       storageSpec:
         volumeClaimTemplate:
