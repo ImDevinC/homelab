@@ -16,6 +16,7 @@ combine:
 		baseFile=`basename $$file .json`;\
 		kubectl create configmap -n monitoring $${baseFile}-dashboard --dry-run=client --from-file="manifests/$${baseFile}.json" -o yaml > manifests/dashboards/$${baseFile}-dashboard-cm.yaml ;\
 		yq -i '.metadata.labels.grafana_dashboard = "1"' manifests/dashboards/$${baseFile}-dashboard-cm.yaml ;\
+		sed -i 's/{{\(\S\+\)}}/{{`{{\1}}`}}/g' manifests/dashboards/$${baseFile}-dashboard-cm.yaml ;\
 	done
 	yq eval-all "." manifests/dashboards/*.yaml > templates/dashboards.yaml
 
