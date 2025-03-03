@@ -1,4 +1,5 @@
 mongodb:
+  useStatefulSet: true
   resourcesPreset: none
   createConfigmap: true
   auth:
