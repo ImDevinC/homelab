@@ -11,12 +11,13 @@ dashboards: mixins/mixin.libsonnet
 
 combine:
 	yq -i eval-all 'select(fileIndex==0).kube-prometheus-stack.additionalPrometheusRulesMap.alerts = select(fileIndex==1) | select(fileIndex==0)' ./values.yaml manifests/alerts.yaml
+	mkdir -p manifests/dashboards
 	for file in manifests/*.json; do\
-		val=`cat $$file`; \
-		export val=$$val \
-		export baseFile=`basename $$file`; \
-		yq -i '.kube-prometheus-stack.grafana.dashboards.default.[strenv(baseFile)].json = strenv(val)' values.yaml ;\
+		baseFile=`basename $$file .json`;\
+		kubectl create configmap -n monitoring $${baseFile}-dashboard --dry-run=client --from-file="manifests/$${baseFile}.json" -o yaml > manifests/dashboards/$${baseFile}-dashboard-cm.yaml ;\
+		yq -i '.metadata.labels.grafana_dashboard = "1"' manifests/dashboards/$${baseFile}-dashboard-cm.yaml ;\
 	done
+	yq eval-all "." manifests/dashboards/*.yaml > templates/dashboards.yaml
 
 all: clean alerts dashboards combine
 
