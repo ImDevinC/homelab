@@ -3195,7 +3195,7 @@ data:
 kind: ConfigMap
 metadata:
   creationTimestamp: null
-  name: collections_overview-dashboard
+  name: collections-overview-dashboard
   namespace: monitoring
   labels:
     grafana_dashboard: "1"
@@ -7982,7 +7982,7 @@ data:
 kind: ConfigMap
 metadata:
   creationTimestamp: null
-  name: in_memory_details-dashboard
+  name: in-memory-details-dashboard
   namespace: monitoring
   labels:
     grafana_dashboard: "1"
@@ -17403,7 +17403,7 @@ data:
 kind: ConfigMap
 metadata:
   creationTimestamp: null
-  name: instance_overview-dashboard
+  name: instance-overview-dashboard
   namespace: monitoring
   labels:
     grafana_dashboard: "1"
@@ -21211,7 +21211,7 @@ data:
 kind: ConfigMap
 metadata:
   creationTimestamp: null
-  name: instance_summary-dashboard
+  name: instance-summary-dashboard
   namespace: monitoring
   labels:
     grafana_dashboard: "1"
@@ -34312,7 +34312,7 @@ data:
 kind: ConfigMap
 metadata:
   creationTimestamp: null
-  name: replicaset_summary-dashboard
+  name: replicaset-summary-dashboard
   namespace: monitoring
   labels:
     grafana_dashboard: "1"

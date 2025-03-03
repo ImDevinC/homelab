@@ -14,7 +14,8 @@ combine:
 	mkdir -p manifests/dashboards
 	for file in manifests/*.json; do\
 		baseFile=`basename $$file .json`;\
-		kubectl create configmap -n monitoring $${baseFile}-dashboard --dry-run=client --from-file="manifests/$${baseFile}.json" -o yaml > manifests/dashboards/$${baseFile}-dashboard-cm.yaml ;\
+		cmName=`sed 's/_/-/g' <<< $${baseFile}`;\
+		kubectl create configmap -n monitoring $${cmName}-dashboard --dry-run=client --from-file="manifests/$${baseFile}.json" -o yaml > manifests/dashboards/$${baseFile}-dashboard-cm.yaml ;\
 		yq -i '.metadata.labels.grafana_dashboard = "1"' manifests/dashboards/$${baseFile}-dashboard-cm.yaml ;\
 		sed -i 's/{{\s\?\(\S\+\)\s\?}}/{{`{{\1}}`}}/g' manifests/dashboards/$${baseFile}-dashboard-cm.yaml ;\
 	done
