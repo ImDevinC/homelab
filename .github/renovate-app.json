@@ -4,6 +4,7 @@
   "onboarding": false,
   "platform": "github",
   "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
   "labels": [
     "renovate"
   ],
