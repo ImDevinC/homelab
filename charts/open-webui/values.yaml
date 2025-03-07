@@ -11,6 +11,3 @@ open-webui:
   persistence:
     storageClass: hostpath-csi
     existingClaim: open-webui-hp
-  extraEnvVars:
-    - name: WEBUI_AUTH_TRUSTED_EMAIL_HEADER
-      value: X-authentik-email
