@@ -3,6 +3,11 @@ kube-prometheus-stack:
     disabled:
       etcdDatabaseHighFragmentationRatio: true
   alertmanager:
+    ingress:
+      enabled: true
+      hosts:
+        - alertmanager.collins.home
+      ingressClassName: nginx
     alertmanagerSpec:
       externalUrl: http://grafana.collins.home
       useExistingSecret: False
