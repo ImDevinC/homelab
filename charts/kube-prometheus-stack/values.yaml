@@ -64,6 +64,9 @@ kube-prometheus-stack:
         token_url: http://authentik.collins.home/application/o/token/
         role_attribute_path: "contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'"
   prometheus:
+    ingress:
+      hosts:
+        - prometheus.collins.home
     prometheusSpec:
       additionalScrapeConfigs:
         - job_name: node-exporter
