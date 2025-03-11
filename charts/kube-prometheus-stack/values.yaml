@@ -66,6 +66,7 @@ kube-prometheus-stack:
   prometheus:
     ingress:
       enabled: true
+      ingressClassName: nginx
       hosts:
         - prometheus.collins.home
     prometheusSpec:
