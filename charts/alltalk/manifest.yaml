@@ -1,0 +1,130 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: alltalk
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alltalk
+  labels:
+    app: alltalk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alltalk
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: alltalk
+    spec:
+      containers:
+        - image: erew123/alltalk_tts@sha256:d5e91df89211411846a5e0eee0581e4797b67096ae0a36ad1aadcf35fdec2403
+          args: ["--config=/config/config.json"]
+          imagePullPolicy: IfNotPresent
+          name: alltalk
+          env:
+            - name: NVIDIA_IMEX_CHANNELS
+              value: "0"
+          ports:
+            - containerPort: 7851
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /app/models
+              name: storage
+              subPath: models
+            - mountPath: /app/outputs
+              name: storage
+              subPath: outputs
+            - mountPath: /app/finetune
+              name: storage
+              subPath: finetune
+            - mountPath: /app/voices
+              name: storage
+              subPath: voices
+            - mountPath: /config
+              name: config
+          resources:
+            limits:
+              nvidia.com/gpu: "1"
+            requests:
+              nvidia.com/gpu: "1"
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: alltalk-storage
+        - name: config
+          configMap:
+            name: alltalk-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alltalk
+  labels:
+    app: alltalk
+spec:
+  selector:
+    app: alltalk
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 7851
+      protocol: TCP
+      targetPort: 7851
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: alltalk
+  labels:
+    app: alltalk
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: alltalk.collins.home
+      http:
+        paths:
+          - backend:
+              service:
+                name: alltalk
+                port:
+                  number: 7851
+            path: /
+            pathType: Prefix
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: alltalk-storage
+  labels:
+    app: alltalk
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: hostpath-csi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alltalk-config
+  labels:
+    app: alltalk
+data:
+  config.json: |
+    {
+        "branding": "AllTalk ",
+        "delete_output_wavs": false,
+        "gradio_interface": false,
+        "output_folder": "outputs",
+        "firstrun_splash": false,
+        "firstrun_model": false,
+        "launch_gradio": false,
+    }
