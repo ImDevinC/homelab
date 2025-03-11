@@ -65,6 +65,7 @@ kube-prometheus-stack:
         role_attribute_path: "contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'"
   prometheus:
     ingress:
+      enabled: true
       hosts:
         - prometheus.collins.home
     prometheusSpec:
