@@ -9,4 +9,5 @@
 (import 'redis/mixin.libsonnet') +
 (import 'mongodb/mixin.libsonnet') +
 (import 'nginx-ingress/mixin.libsonnet') +
-(import 'crowdsec/mixin.libsonnet')
+(import 'crowdsec/mixin.libsonnet') +
+(import 'pi-hole/mixin.libsonnet')

@@ -77,6 +77,9 @@ kube-prometheus-stack:
         - job_name: nvidia-smi
           static_configs:
             - targets: ['archlinux:9835']
+        - job_name: rpi
+          static_configs:
+            - targets: ['pi.hole:9110']
       serviceMonitorSelectorNilUsesHelmValues: false
       storageSpec:
         volumeClaimTemplate:
