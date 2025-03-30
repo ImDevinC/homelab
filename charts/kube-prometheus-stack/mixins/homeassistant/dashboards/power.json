@@ -110,7 +110,7 @@
                     "disableTextWrap": false,
                     "editorMode": "code",
                     "exemplar": false,
-                    "expr": "sum(homeassistant_sensor_power_w{friendly_name!~\".*\\\\[W\\\\]$\", entity!~\".*_battery_power$\", entity!=\"sensor.filter_pump_power\",entity!=\"sensor.energy_usage\",entity!=\"sensor.energy_production\",entity!=\"sensor.power_production_now\"}) by (friendly_name)",
+                    "expr": "sum(homeassistant_sensor_power_w{friendly_name!~\".*\\\\[W\\\\]$\", entity!~\".*_battery_power$\", entity!=\"sensor.filter_pump_power\",entity!=\"sensor.energy_usage\",entity!=\"sensor.energy_production\",entity!=\"sensor.power_production_now\",entity!=\"sensor.solar_power\",entity!=\"sensor.cyberpower_nominal_real_power\"}) by (friendly_name)",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
