@@ -9,9 +9,10 @@ kube-prometheus-stack:
         - alertmanager.collins.home
       ingressClassName: nginx
     alertmanagerSpec:
-      externalUrl: http://grafana.collins.home
-      useExistingSecret: True
-      configSecret: alertmanager-new-config
+      externalUrl: http://alertmanager.collins.home
+      useExistingSecret: true
+      secrets:
+        - alertmanager-new-config
       forceEnableClusterMode: true
   grafana:
     sidecar:
