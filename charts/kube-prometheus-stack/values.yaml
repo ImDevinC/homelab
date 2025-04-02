@@ -11,8 +11,7 @@ kube-prometheus-stack:
     alertmanagerSpec:
       externalUrl: http://alertmanager.collins.home
       useExistingSecret: true
-      secrets:
-        - alertmanager-new-config
+      configSecret: alertmanager-new-config
       forceEnableClusterMode: true
   grafana:
     sidecar:
