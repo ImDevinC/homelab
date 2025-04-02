@@ -10,7 +10,7 @@ kube-prometheus-stack:
       ingressClassName: nginx
     alertmanagerSpec:
       externalUrl: http://grafana.collins.home
-      useExistingSecret: False
+      useExistingSecret: True
       configSecret: alertmanager-new-config
       forceEnableClusterMode: true
   grafana:
@@ -23,10 +23,6 @@ kube-prometheus-stack:
       datasources.yaml:
         apiVersion: 1
         datasources:
-          - name: Alertmanager API
-            type: camptocamp-prometheus-alertmanager-datasource
-            url: http://kube-prometheus-stack-alertmanager:9093
-            access: proxy
           - name: Loki
             type: loki
             url: http://loki.loki:3100
