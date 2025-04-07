@@ -22,7 +22,7 @@ spec:
         app: alltalk
     spec:
       containers:
-        - image: erew123/alltalk_tts@latest-xtts
+        - image: erew123/alltalk_tts:latest-xtts
           args: ["--config=/config/config.json"]
           imagePullPolicy: IfNotPresent
           name: alltalk
