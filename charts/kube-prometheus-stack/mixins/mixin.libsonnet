@@ -10,4 +10,5 @@
 (import 'mongodb/mixin.libsonnet') +
 (import 'nginx-ingress/mixin.libsonnet') +
 (import 'crowdsec/mixin.libsonnet') +
-(import 'pi-hole/mixin.libsonnet')
+(import 'pi-hole/mixin.libsonnet') +
+(import 'speedtest/mixin.libsonnet')
