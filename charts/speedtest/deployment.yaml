@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: speedtest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: speedtest
+  template:
+    metadata:
+      labels:
+        app: speedtest
+    spec:
+      imagePullSecrets:
+        - name: dockerauth
+      containers:
+        - name: speedtest
+          image: ghcr.io/beykansen/internet-speed-monitor:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: metrics
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8080"
+            - name: INTERVAL
+              value: "15"

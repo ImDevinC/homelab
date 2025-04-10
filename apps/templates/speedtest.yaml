@@ -1,22 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: wallabag
+  name: speedtest
   namespace: argo-cd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: wallabag
+    namespace: speedtest
   project: default
   source:
-    path: charts/wallabag
+    path: charts/speedtest
     repoURL: https://github.com/imdevinc/homelab.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-    automated:
-      prune: true
+    automated: 
       
