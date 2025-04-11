@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: dns-duration
+  name: dns-duration
+  namespace: dns-duration
+spec:
+  endpoints:
+  - interval: 5m
+    path: /metrics
+    port: metrics
+    scrapeTimeout: 30s
+  selector:
+    matchLabels:
+      app: dns-duration
+
