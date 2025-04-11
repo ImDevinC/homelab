@@ -29,3 +29,5 @@ spec:
           env:
             - name: DNS_ADDRESS
               value: "8.8.8.8:53 192.168.1.249:53"
+            - name: INTERVAL
+              value: "1"
