@@ -16,7 +16,7 @@ spec:
         - name: dockerauth
       containers:
         - name: dns-duration
-          image: ghcr.io/imdevinc/dns-duration:0.0.1
+          image: ghcr.io/imdevinc/dns-duration:0.1.0
           imagePullPolicy: IfNotPresent
           args:
             - --dns-server
