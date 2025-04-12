@@ -27,7 +27,8 @@ spec:
               name: metrics
               protocol: TCP
           env:
-            - name: DNS_ADDRESS
-              value: "8.8.8.8:53 192.168.1.249:53"
             - name: INTERVAL
               value: "1"
+            - name: LOOKUP_HOSTNAME
+              value: "imdevinc.com"
+
