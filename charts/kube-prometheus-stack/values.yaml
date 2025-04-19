@@ -76,6 +76,9 @@ kube-prometheus-stack:
         - job_name: rpi
           static_configs:
             - targets: ['pi.hole:9110']
+        - job_name: fail2ban
+          static_configs:
+            - targets: ['pi.hole:9191']
         - job_name: crowdsec
           static_configs:
             - targets: ['pi.hole:6060', 'pi.hole:60601']
