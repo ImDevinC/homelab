@@ -1,5 +1,9 @@
 opentelemetry-collector:
   mode: deployment
+  image:
+    repository: otel/opentelemetry-collector
+  command:
+    name: otelcol
   extraEnvsFrom:
     - secretRef:
         name: honeycomb-credentials
