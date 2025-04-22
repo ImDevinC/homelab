@@ -6,7 +6,7 @@ opentelemetry-collector:
     name: otelcol-k8s
   extraEnvsFrom:
     - secretRef:
-        name: honeycomb-credentials
+        name: honeycomb-creds
   config:
     receivers:
       prometheus:
