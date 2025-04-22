@@ -1,9 +1,9 @@
 opentelemetry-collector:
   mode: deployment
   image:
-    repository: otel/opentelemetry-collector
+    repository: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-k8s
   command:
-    name: otelcol
+    name: otelcol-k8s
   extraEnvsFrom:
     - secretRef:
         name: honeycomb-credentials
