@@ -20,8 +20,8 @@ opentelemetry-collector:
       otlp/metrics:
         endpoint: "api.honeycomb.io:443"
         headers:
-          x-honeycomb-team: "${HONEYCOMB_API_KEY}"
-          x-honeycomb-dataset: "${HONEYCOMB_DATASET}"
+          x-honeycomb-team: "${env:HONEYCOMB_API_KEY}"
+          x-honeycomb-dataset: "${env:HONEYCOMB_DATASET}"
     service:
       pipelines:
         metrics:
