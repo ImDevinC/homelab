@@ -1,3 +1,29 @@
+open-telemetry:
+  mode: deployment
+  extraEnvsFrom:
+    - secretRef:
+        name: honeycomb-credentials
+  config:
+    receivers:
+      prometheus:
+        config:
+          scrape_configs:
+            - job_name: "prometheus"
+              scrape_interval: 60s
+              static_configs:
+                - targets: ["prometheus:9090"]
+    exporters:
+      otlp/metrics:
+        endpoint: "api.honeycomb.io:443"
+        headers:
+          x-honeycomb-team: "${HONEYCOMB_API_KEY}"
+          x-honeycomb-dataset: "${HONEYCOMB_DATASET}"
+    service:
+      pipelines:
+        metrics:
+          receivers: [prometheus]
+          processors: []
+          exporters: [otlp/metrics]
 kube-prometheus-stack:
   defaultRules:
     disabled:

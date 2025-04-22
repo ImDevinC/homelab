@@ -5,3 +5,6 @@ dependencies:
   - name: kube-prometheus-stack
     version: 70.4.1
     repository: https://prometheus-community.github.io/helm-charts
+  - name: open-telemetry
+    version: 0.122.2
+    repository: https://open-telemetry.github.io/opentelemetry-helm-charts
