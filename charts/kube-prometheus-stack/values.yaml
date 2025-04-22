@@ -15,7 +15,7 @@ opentelemetry-collector:
             - job_name: "prometheus"
               scrape_interval: 60s
               static_configs:
-                - targets: ["prometheus:9090"]
+                - targets: ["kube-prometheus-stack-prometheus:9090"]
     exporters:
       otlp/metrics:
         endpoint: "api.honeycomb.io:443"
