@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnd-proxy
+  namespace: dnd-proxy
+spec:
+  selector:
+    matchLabels:
+      app: dnd-proxy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dnd-proxy
+    spec:
+      containers:
+      - name: dnd-proxy
+        image: ghcr.io/imdevinc/dnd-proxy:0.0.4
+        ports:
+          - containerPort: 8080
+            name: http
+            protocol: TCP
