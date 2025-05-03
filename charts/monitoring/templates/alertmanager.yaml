@@ -5,8 +5,6 @@ metadata:
 spec:
   externalUrl: http://alertmanager2.collins.home
   forceEnableClusterMode: true
-  portName: http-web
-  retention: 120h
   routePrefix: /
   alertmanagerConfiguration:
     name: config
@@ -100,6 +98,6 @@ spec:
               service:
                 name: alertmanager-operated
                 port:
-                  name: http-web
+                  name: web
             path: /
             pathType: ImplementationSpecific

@@ -65,7 +65,7 @@ spec:
   alerting:
     alertmanagers:
       - name: alertmanager-operated
-        port: http-web
+        port: web
   tsdb:
     outOfOrderTimeWindow: 10m
   securityContext:
