@@ -1,0 +1,105 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Alertmanager
+metadata:
+  name: alertmanager
+spec:
+  externalUrl: http://alertmanager2.collins.home
+  forceEnableClusterMode: true
+  portName: http-web
+  retention: 120h
+  routePrefix: /
+  alertmanagerConfiguration:
+    name: config
+    global:
+      resolveTimeout: 5m
+  secrets:
+    - alertmanager-creds
+  securityContext:
+    fsGroup: 2000
+    runAsGroup: 2000
+    runAsNonRoot: true
+    runAsUser: 1000
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: config
+spec:
+  inhibitRules:
+  - equal:
+      - namespace
+      - alertname
+    sourceMatch:
+      - name: severity
+        value: critical
+    targetMatch:
+      - name: severity
+        matchType: =~
+        value: warning|info
+  - equal:
+      - namespace
+      - alertname
+    sourceMatch:
+      - name: severity
+        value: warning
+    targetMatch:
+      - name: severity
+        value: info
+  - equal:
+      - namespace
+    sourceMatch:
+      - name: alertname
+        value: InfoInhibitor
+    targetMatch:
+      - name: severity
+        value: info
+
+  receivers:
+  - name: "null"
+  - name: pushover
+    pushoverConfigs:
+      - sendResolved: true
+        userKey:
+          name: alertmanager-creds
+          key: PUSHOVER_USER_KEY
+        token:
+          name: alertmanager-creds
+          key: PUSHOVER_TOKEN
+        priority: '{{ if eq .Status "firing" }}1{{ else }}0{{ end }}'
+
+  route:
+    groupBy:
+    - namespace
+    groupInterval: 5m
+    groupWait: 30s
+    receiver: pushover
+    repeatInterval: 12h
+    routes:
+    - matchers:
+      - name: alertname
+        matchType: =~
+        value: InfoInhibitor|Watchdog|etcdMembersDown|etcdInsufficientMembers|KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|etcdHighCommitDurations
+      receiver: "null"
+    - matchers: # These jobs also run on the desktop, and we don't want to alert there
+      - name: job
+        matchType: =~
+        value: node-exporter|nvidia-smi
+      receiver: "null"
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: alertmanager
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: alertmanager2.collins.home
+      http:
+        paths:
+          - backend:
+              service:
+                name: alertmanager-operated
+                port:
+                  name: http-web
+            path: /
+            pathType: ImplementationSpecific

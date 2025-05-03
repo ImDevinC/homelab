@@ -1,0 +1,52 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus
+spec:
+  serviceMonitorSelector: null
+  podMonitorSelector: null
+  probeSelector: null
+  scrapeConfigSelector: null
+  enableRemoteWriteReceiver: true
+  ruleSelector:
+    matchLabels:
+      test: test
+  externalUrl: prometheus2.collins.home
+  routePrefix: /
+  alerting:
+    alertmanagers:
+      - name: alertmanager-operated
+        port: http-web
+  tsdb:
+    outOfOrderTimeWindow: 10m
+  securityContext:
+    fsGroup: 2000
+    runAsUser: 1000
+    runAsNonRoot: true
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: hostpath-csi
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 50Gi
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: prometheus2.collins.home
+      http:
+        paths:
+          - backend:
+              service:
+                name: prometheus-operated
+                port:
+                  name: web
+            path: /
+            pathType: ImplementationSpecific

@@ -1,0 +1,10 @@
+apiVersion: v2
+name: monitoring
+version: 1.0.0
+dependencies:
+  - name: opentelemetry-operator
+    repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+    version: 0.88.3
+#  - name: prometheus-operator-crds
+#    repository: https://prometheus-community.github.io/helm-charts
+#    version: 20.0.0
