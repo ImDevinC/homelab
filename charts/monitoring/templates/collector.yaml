@@ -39,6 +39,11 @@ spec:
 
     processors:
       batch: {}
+      attributes/cluster:
+        actions:
+          - key: cluster
+            value: k8s
+            action: insert
 
     exporters:
       debug: {}
@@ -51,7 +56,7 @@ spec:
       pipelines:
         metrics:
           receivers: [prometheus]
-          processors: [batch]
+          processors: [attributes/cluster,batch]
           exporters: [debug,prometheusremotewrite]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
