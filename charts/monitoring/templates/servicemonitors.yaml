@@ -1,0 +1,320 @@
+# Source: kube-prometheus-stack/charts/grafana/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: grafana
+spec:
+  endpoints:
+  - port: grafana-http
+    scrapeTimeout: 30s
+    honorLabels: true
+    path: /metrics
+    scheme: http
+  jobLabel: grafana
+  selector:
+    matchLabels:
+      app.kubernetes.io/managed-by: grafana-operator
+---
+# Source: kube-prometheus-stack/charts/kube-state-metrics/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kube-state-metrics
+spec:
+  jobLabel: app.kubernetes.io/name
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kube-state-metrics
+  endpoints:
+    - port: http
+      honorLabels: true
+---
+# Source: kube-prometheus-stack/charts/prometheus-node-exporter/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prometheus-node-exporter
+spec:
+  jobLabel: prometheus-node-exporter
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-node-exporter
+  attachMetadata:
+    node: false
+  endpoints:
+    - port: http-metrics
+      scheme: http
+---
+# Source: kube-prometheus-stack/templates/alertmanager/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: alertmanager
+spec:
+  selector:
+    matchLabels:
+      operated-alertedmanager: "true"
+  endpoints:
+  - port: web
+    enableHttp2: true
+    path: "/metrics"
+---
+# Source: kube-prometheus-stack/templates/exporters/core-dns/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: coredns
+spec:
+  jobLabel: coredns
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  selector:
+    matchLabels:
+      k8s-app: coredns
+  endpoints:
+  - port: metrics
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+---
+# Source: kube-prometheus-stack/templates/exporters/kube-api-server/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: apiserver
+spec:
+  endpoints:
+  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    port: https
+    scheme: https
+    metricRelabelings:
+      - action: drop
+        regex: (etcd_request|apiserver_request_slo|apiserver_request_sli|apiserver_request)_duration_seconds_bucket;(0\.15|0\.2|0\.3|0\.35|0\.4|0\.45|0\.6|0\.7|0\.8|0\.9|1\.25|1\.5|1\.75|2|3|3\.5|4|4\.5|6|7|8|9|15|20|40|45|50)(\.0)?
+        sourceLabels:
+        - __name__
+        - le
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      serverName: kubernetes
+      insecureSkipVerify: false
+  jobLabel: component
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  selector:
+    matchLabels:
+      component: apiserver
+      provider: kubernetes
+---
+# Source: kube-prometheus-stack/templates/exporters/kube-controller-manager/servicemonitor.yaml
+# TODO: INVESTIGATE
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kube-controller-manager
+spec:
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  jobLabel: jobLabel
+  selector:
+    matchLabels:
+      app: kube-prometheus-stack-kube-controller-manager
+      release: "release-name"
+  endpoints:
+  - port: http-metrics
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    scheme: https
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecureSkipVerify: true
+---
+# Source: kube-prometheus-stack/templates/exporters/kube-etcd/servicemonitor.yaml
+# TODO: INVESTIGATE
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: release-name-kube-promethe-kube-etcd
+spec:
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  jobLabel: jobLabel
+  selector:
+    matchLabels:
+      app: kube-prometheus-stack-kube-etcd
+      release: "release-name"
+  endpoints:
+  - port: http-metrics
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+---
+# Source: kube-prometheus-stack/templates/exporters/kube-proxy/servicemonitor.yaml
+# TODO: INVESTIGATE
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: release-name-kube-promethe-kube-proxy
+spec:
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  jobLabel: jobLabel
+  selector:
+    matchLabels:
+      app: kube-prometheus-stack-kube-proxy
+      release: "release-name"
+  endpoints:
+  - port: http-metrics
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+---
+# Source: kube-prometheus-stack/templates/exporters/kube-scheduler/servicemonitor.yaml
+# TODO: INVESTIGATE
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: release-name-kube-promethe-kube-scheduler
+spec:
+  jobLabel: jobLabel
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  selector:
+    matchLabels:
+      app: kube-prometheus-stack-kube-scheduler
+      release: "release-name"
+  endpoints:
+  - port: http-metrics
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    scheme: https
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecureSkipVerify: true
+---
+# Source: kube-prometheus-stack/templates/exporters/kubelet/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kubelet
+spec:
+  attachMetadata:
+    node: false
+  jobLabel: k8s-app
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kubelet
+      k8s-app: kubelet
+  endpoints:
+  - port: https-metrics
+    scheme: https    
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecureSkipVerify: true
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    honorLabels: true
+    honorTimestamps: true
+    metricRelabelings:
+    - action: drop
+      regex: (csi_operations|storage_operation_duration)_seconds_bucket;(0.25|2.5|15|25|120|600)(\.0)?
+      sourceLabels:
+      - __name__
+      - le
+    relabelings:
+    - action: replace
+      sourceLabels:
+      - __metrics_path__
+      targetLabel: metrics_path
+  - port: https-metrics
+    scheme: https
+    path: /metrics/cadvisor
+    interval: 10s
+    honorLabels: true
+    honorTimestamps: true
+    trackTimestampsStaleness: true    
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecureSkipVerify: true
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    metricRelabelings:
+    - action: drop
+      regex: container_cpu_(cfs_throttled_seconds_total|load_average_10s|system_seconds_total|user_seconds_total)
+      sourceLabels:
+      - __name__
+    - action: drop
+      regex: container_fs_(io_current|io_time_seconds_total|io_time_weighted_seconds_total|reads_merged_total|sector_reads_total|sector_writes_total|writes_merged_total)
+      sourceLabels:
+      - __name__
+    - action: drop
+      regex: container_memory_(mapped_file|swap)
+      sourceLabels:
+      - __name__
+    - action: drop
+      regex: container_(file_descriptors|tasks_state|threads_max)
+      sourceLabels:
+      - __name__
+    - action: drop
+      regex: container_memory_failures_total;hierarchy
+      sourceLabels:
+      - __name__
+      - scope
+    - action: drop
+      regex: container_network_.*;(cali|cilium|cni|lxc|nodelocaldns|tunl).*
+      sourceLabels:
+      - __name__
+      - interface
+    - action: drop
+      regex: container_spec.*
+      sourceLabels:
+      - __name__
+    - action: drop
+      regex: .+;
+      sourceLabels:
+      - id
+      - pod
+    relabelings:
+    - action: replace
+      sourceLabels:
+      - __metrics_path__
+      targetLabel: metrics_path
+  - port: https-metrics
+    scheme: https
+    path: /metrics/probes
+    honorLabels: true
+    honorTimestamps: true    
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecureSkipVerify: true
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    relabelings:
+    - action: replace
+      sourceLabels:
+      - __metrics_path__
+      targetLabel: metrics_path
+---
+# Source: kube-prometheus-stack/templates/prometheus-operator/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prometheus-operator
+spec:
+  endpoints:
+  - port: http
+    scheme: http
+    honorLabels: true
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-operator
+---
+# Source: kube-prometheus-stack/templates/prometheus/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prometheus
+spec:
+  selector:
+    matchLabels:
+      operated-prometheus: "true"
+  endpoints:
+  - port: web
+    path: "/metrics"
