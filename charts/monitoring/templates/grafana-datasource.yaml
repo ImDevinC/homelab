@@ -9,7 +9,7 @@ spec:
     jsonData:
       timeInterval: 5s
       tlsSkipVerify: true
-    name: Prometheus
+    name: prometheus
     url: http://prometheus-operated:9090
   instanceSelector:
     matchLabels:
@@ -23,7 +23,7 @@ spec:
   datasource:
     access: proxy
     type: loki
-    name: Loki
+    name: loki
     url: http://loki.loki:3100
   instanceSelector:
     matchLabels:
