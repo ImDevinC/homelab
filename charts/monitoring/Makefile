@@ -16,8 +16,7 @@ combine:
 		baseFile=`basename $$file .json`;\
 		cmName=`sed 's/_/-/g' <<< $${baseFile}`;\
 		content=`cat $${file} | gzip | base64 -w0` ;\
-		#file=$${file} cmName=$${cmName} yq e -n '.apiVersion = "grafana.integreatly.org/v1beta1" | .kind = "GrafanaDashboard" | .metadata.name = strenv(cmName) | .spec.instanceSelector.matchLabels.instance = "default" | .spec.json = (load(strenv(file)) | to_json)' > manifests/dashboards/$${baseFile}-dashboard.yaml ;\
-		content=$${content} cmName=$${cmName} yq e -n '.apiVersion = "grafana.integreatly.org/v1beta1" | .kind = "GrafanaDashboard" | .metadata.name = strenv(cmName) | .spec.instanceSelector.matchLabels.instance = "default" | .spec.gzipJson = strenv(content)' > manifests/dashboards/$${baseFile}-dashboard.yaml ;\
+		content=$${content} cmName=$${cmName} yq e -n '.apiVersion = "grafana.integreatly.org/v1beta1" | .kind = "GrafanaDashboard" | .metadata.name = strenv(cmName) | .spec.instanceSelector.matchLabels.instance = "default" | .spec.gzipJson = strenv(content) | .spec.folder = ""' > manifests/dashboards/$${baseFile}-dashboard.yaml ;\
 		#sed -i 's/{{\s\?\(\S\+\)\s\?}}/{{`{{\1}}`}}/g' manifests/dashboards/$${baseFile}-dashboard.yaml ;\
 	done
 	yq eval-all "." manifests/dashboards/*.yaml > templates/dashboards.yaml
