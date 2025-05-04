@@ -30,7 +30,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "loki"
       },
       "description": "Count of how many times in the given range distinct IP addresses accessed the servers.",
       "fieldConfig": {
@@ -172,7 +172,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "loki"
           },
           "editorMode": "code",
           "expr": "sum by (geoip_country_name) (count_over_time({job=\"nginx/ingress-nginx\", geoip_country_name=~\".+\"}[$__range]))",
@@ -203,7 +203,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "loki"
       },
       "description": "Source IP addresses accessing the infrastructure",
       "fieldConfig": {
@@ -298,7 +298,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "loki"
           },
           "editorMode": "code",
           "expr": "{job=\"nginx/ingress-nginx\", geoip_country_name=~\".+\"}",
@@ -434,7 +434,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "loki"
       },
       "description": "Source IP addresses accessing webservices other than SSH",
       "fieldConfig": {
@@ -550,7 +550,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "loki"
           },
           "editorMode": "code",
           "expr": "{job=\"nginx/ingress-nginx\", geoip_country_name=~\".+\", dst_port!=\"22\"}",
@@ -702,7 +702,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "loki"
       },
       "description": "Source IP addresses by location accessing ssh",
       "fieldConfig": {
@@ -818,7 +818,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "loki"
           },
           "editorMode": "code",
           "expr": "{job=\"nginx/ingress-nginx\", geoip_country_name=~\".+\", dst_port=\"22\"}",

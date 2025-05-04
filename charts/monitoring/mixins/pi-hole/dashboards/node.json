@@ -103,7 +103,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "kO-rxRDVz"
+            "uid": "prometheus"
           },
           "editorMode": "builder",
           "expr": "rpi_temperature_f",
@@ -210,7 +210,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "kO-rxRDVz"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "max_over_time(rpi_temperature_f[$__interval])",
@@ -293,7 +293,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "kO-rxRDVz"
+            "uid": "prometheus"
           },
           "editorMode": "builder",
           "expr": "rpi_voltage",
@@ -377,7 +377,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "kO-rxRDVz"
+            "uid": "prometheus"
           },
           "editorMode": "builder",
           "expr": "rpi_power_state",
@@ -477,7 +477,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "kO-rxRDVz"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "avg_over_time(rpi_voltage[$__interval])",
@@ -576,7 +576,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "kO-rxRDVz"
+            "uid": "prometheus"
           },
           "editorMode": "builder",
           "expr": "rpi_power_state",
@@ -660,7 +660,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "kO-rxRDVz"
+            "uid": "prometheus"
           },
           "editorMode": "builder",
           "expr": "rpi_clock_rate_measured_hz",
@@ -760,7 +760,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "kO-rxRDVz"
+            "uid": "prometheus"
           },
           "editorMode": "code",
           "expr": "avg_over_time(rpi_clock_rate_measured_hz[$__interval])",
