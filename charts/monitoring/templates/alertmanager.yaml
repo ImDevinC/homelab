@@ -3,7 +3,7 @@ kind: Alertmanager
 metadata:
   name: alertmanager
 spec:
-  externalUrl: http://alertmanager2.collins.home
+  externalUrl: http://alertmanager.collins.home
   forceEnableClusterMode: true
   routePrefix: /
   alertmanagerConfiguration:
@@ -91,7 +91,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: alertmanager2.collins.home
+    - host: alertmanager.collins.home
       http:
         paths:
           - backend:

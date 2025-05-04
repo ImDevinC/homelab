@@ -12,7 +12,7 @@ spec:
     auth:
       disable_login_form: "false"
     server:
-      root_url: http://grafana2.collins.home
+      root_url: http://grafana.collins.home
     auth.generic_oauth:
       enabled: "true"
       name: Authentik SSO
@@ -163,7 +163,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: grafana2.collins.home
+    - host: grafana.collins.home
       http:
         paths:
           - backend:
