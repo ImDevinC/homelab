@@ -5,14 +5,145 @@ metadata:
   labels:
     instance: default
 spec:
+  disableDefaultAdminSecret: true
+  deployment:
+    spec:
+      template:
+        spec:
+          volumes:
+            - name: dashboards
+              emptyDir: {}
+            - name: provisioning-config
+              configMap:
+                name: provisioning-config
+            - name: grafana-authentik-creds
+              secret:
+                secretName: grafana-authentik-creds
+          containers:
+            - name: grafana
+              volumeMounts:
+                - mountPath: /etc/grafana/provisioning/dashboards
+                  name: provisioning-config
+                - mountPath: /var/lib/grafana/dashboards
+                  name: dashboards
+                - mountPath: /etc/secrets/grafana_authentik_secret
+                  name: grafana-authentik-creds
+                  readOnly: true
+            - image: ghcr.io/kiwigrid/k8s-sidecar:1.24.5
+              name: k8s-sidecar
+              env:
+                - name: LABEL
+                  value: grafana_dashboard
+                - name: LABEL_VALUE
+                  value: "1"
+                - name: FOLDER
+                  value: /var/lib/grafana/dashboards
+                - name: NAMESPACE
+                  value: ALL
+                - name: RESOURCE
+                  value: configmap
+              volumeMounts:
+                - mountPath: /var/lib/grafana/dashboards
+                  name: dashboards
   config:
     log:
       mode: console
     auth:
       disable_login_form: "false"
-    security:
-      admin_user: root
-      admin_password: secret
+    server:
+      root_url: http://grafana2.collins.home
+    auth.generic_oauth:
+      enabled: "true"
+      name: Authentik SSO
+      allow_sign_up: "true"
+      client_id: "$__file{/etc/secrets/grafana_authentik_secret/client_id}"
+      client_secret: "$__file{/etc/secrets/grafana_authentik_secret/client_secret}"
+      auto_login: "true"
+      scopes: openid profile email
+      api_url: http://authentik.collins.home/application/o/userinfo/
+      auth_url: http://authentik.collins.home/application/o/authorize/
+      token_url: http://authentik.collins.home/application/o/token/
+      role_attribute_path: "contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: provisioning-config
+data:
+  provisioning.yaml: |-
+    apiVersion: 1
+    providers:
+      - name: configmap-dashboard-provider
+        orgId: 1
+        folder: ''
+        folderUid: ''
+        type: file
+        disableDeletion: false
+        updateIntervalSeconds: 10
+        allowUiUpdates: false
+        options:
+          path: /var/lib/grafana/dashboards
+          foldersFromFileStructure: true
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: sidecar-role
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "watch", "list"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: sidecar-rolebinding
+roleRef:
+  kind: ClusterRole
+  name: sidecar-role
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+  - kind: ServiceAccount
+    name: grafana-sa
+    namespace: monitoring2
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sample-configmap
+  labels:
+    grafana_dashboard: "1"
+data:
+  dashboard.json: |-
+    {
+      "id": null,
+      "title": "Simple Dashboard",
+      "tags": [],
+      "style": "dark",
+      "timezone": "browser",
+      "editable": true,
+      "hideControls": false,
+      "graphTooltip": 1,
+      "panels": [],
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "timepicker": {
+        "time_options": [],
+        "refresh_intervals": []
+      },
+      "templating": {
+        "list": []
+      },
+      "annotations": {
+        "list": []
+      },
+      "refresh": "5s",
+      "schemaVersion": 17,
+      "version": 0,
+      "links": []
+    }
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
