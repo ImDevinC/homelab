@@ -5,6 +5,33 @@ metadata:
   labels:
     instance: default
 spec:
+  disableDefaultAdminSecret: true
+  url: http://grafana.collins.home
+  adminPassword:
+    name: grafana-authentik-creds
+    key: admin_password
+  adminUser:
+    name: grafana-authentik-creds
+    key: admin_username
+  config:
+    log:
+      mode: console
+    auth:
+      disable_login_form: "false"
+    server:
+      root_url: http://grafana2.collins.home
+    auth.generic_oauth:
+      enabled: "true"
+      name: Authentik SSO
+      allow_sign_up: "true"
+      client_id: "$__file{/etc/secrets/grafana_authentik_secret/client_id}"
+      client_secret: "$__file{/etc/secrets/grafana_authentik_secret/client_secret}"
+      auto_login: "true"
+      scopes: openid profile email
+      api_url: http://authentik.collins.home/application/o/userinfo/
+      auth_url: http://authentik.collins.home/application/o/authorize/
+      token_url: http://authentik.collins.home/application/o/token/
+      role_attribute_path: "contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'"
   deployment:
     spec:
       template:
@@ -44,25 +71,6 @@ spec:
               volumeMounts:
                 - mountPath: /var/lib/grafana/dashboards
                   name: dashboards
-  config:
-    log:
-      mode: console
-    auth:
-      disable_login_form: "false"
-    server:
-      root_url: http://grafana2.collins.home
-    auth.generic_oauth:
-      enabled: "true"
-      name: Authentik SSO
-      allow_sign_up: "true"
-      client_id: "$__file{/etc/secrets/grafana_authentik_secret/client_id}"
-      client_secret: "$__file{/etc/secrets/grafana_authentik_secret/client_secret}"
-      auto_login: "true"
-      scopes: openid profile email
-      api_url: http://authentik.collins.home/application/o/userinfo/
-      auth_url: http://authentik.collins.home/application/o/authorize/
-      token_url: http://authentik.collins.home/application/o/token/
-      role_attribute_path: "contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'"
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -104,7 +112,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: grafana-sa
-    namespace: monitoring2
+    namespace: monitoring
 ---
 apiVersion: v1
 kind: ConfigMap

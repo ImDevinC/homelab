@@ -113,5 +113,5 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: prometheus-operator
-  namespace: monitoring2
+  namespace: monitoring
 ---

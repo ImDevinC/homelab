@@ -5,16 +5,13 @@ metadata:
 spec:
   serviceAccountName: prometheus
   enableRemoteWriteReceiver: true
-  ruleSelector:
-    matchLabels:
-      test: test
   externalUrl: prometheus2.collins.home
   routePrefix: /
   alerting:
     alertmanagers:
       - name: alertmanager-operated
         port: web
-        namespace: monitoring2
+        namespace: monitoring
   tsdb:
     outOfOrderTimeWindow: 10m
   securityContext:
@@ -37,7 +34,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: prometheus2.collins.home
+    - host: prometheus.collins.home
       http:
         paths:
           - backend:
@@ -94,5 +91,5 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: prometheus
-  namespace: monitoring2
+  namespace: monitoring
 ---

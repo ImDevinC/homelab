@@ -114,5 +114,5 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: opentelemetry-allocator-sa
-    namespace: monitoring2
+    namespace: monitoring
 ---
