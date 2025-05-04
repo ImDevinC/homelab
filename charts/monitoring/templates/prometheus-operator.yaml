@@ -115,3 +115,8 @@ subjects:
   name: prometheus-operator
   namespace: monitoring
 ---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus-operator
+---
