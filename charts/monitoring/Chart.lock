@@ -5,5 +5,8 @@ dependencies:
 - name: grafana-operator
   repository: https://grafana.github.io/helm-charts
   version: v5.17.1
-digest: sha256:7221245c8eedacf5867e27a4e3a82c175c6e1ec4619c12384588ca524cf8c957
-generated: "2025-05-03T17:11:18.089493099-07:00"
+- name: prometheus-operator-crds
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 20.0.0
+digest: sha256:9586d29ccfc055d63713f98104119c5cd2e16e76ccfd37b3f3a083d757715e17
+generated: "2025-05-03T22:13:59.382598145-07:00"
