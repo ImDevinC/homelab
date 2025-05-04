@@ -6,7 +6,6 @@ metadata:
     instance: default
 spec:
   disableDefaultAdminSecret: true
-  url: http://grafana.collins.home
   config:
     log:
       mode: console

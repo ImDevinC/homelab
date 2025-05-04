@@ -8,7 +8,6 @@ spec:
   targetAllocator:
     enabled: true
     serviceAccount: opentelemetry-allocator-sa
-    mtls: true
     prometheusCR:
       enabled: true
       podMonitorSelector: {}
