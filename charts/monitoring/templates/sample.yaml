@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug
+  namespace: monitoring
+spec:
+  serviceAccount: opentelemetry-allocator-sa
+  containers:
+  - name: ubuntu
+    image: ubuntu:latest
+    command: [sleep]
+    args: [infinity]
