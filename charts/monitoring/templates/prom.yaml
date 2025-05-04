@@ -1,3 +1,53 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus
+spec:
+  serviceAccountName: prometheus
+  enableRemoteWriteReceiver: true
+  ruleSelector:
+    matchLabels:
+      test: test
+  externalUrl: prometheus2.collins.home
+  routePrefix: /
+  alerting:
+    alertmanagers:
+      - name: alertmanager-operated
+        port: web
+        namespace: monitoring2
+  tsdb:
+    outOfOrderTimeWindow: 10m
+  securityContext:
+    fsGroup: 2000
+    runAsUser: 1000
+    runAsNonRoot: true
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: hostpath-csi
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 50Gi
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: prometheus2.collins.home
+      http:
+        paths:
+          - backend:
+              service:
+                name: prometheus-operated
+                port:
+                  name: web
+            path: /
+            pathType: ImplementationSpecific
+---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -46,55 +96,3 @@ subjects:
   name: prometheus
   namespace: monitoring2
 ---
-apiVersion: monitoring.coreos.com/v1
-kind: Prometheus
-metadata:
-  name: prometheus
-spec:
-  serviceAccountName: prometheus
-  serviceMonitorSelector: null
-  podMonitorSelector: null
-  probeSelector: null
-  scrapeConfigSelector: null
-  enableRemoteWriteReceiver: true
-  ruleSelector:
-    matchLabels:
-      test: test
-  externalUrl: prometheus2.collins.home
-  routePrefix: /
-  alerting:
-    alertmanagers:
-      - name: alertmanager-operated
-        port: web
-  tsdb:
-    outOfOrderTimeWindow: 10m
-  securityContext:
-    fsGroup: 2000
-    runAsUser: 1000
-    runAsNonRoot: true
-  storage:
-    volumeClaimTemplate:
-      spec:
-        storageClassName: hostpath-csi
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 50Gi
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: prometheus
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: prometheus2.collins.home
-      http:
-        paths:
-          - backend:
-              service:
-                name: prometheus-operated
-                port:
-                  name: web
-            path: /
-            pathType: ImplementationSpecific
