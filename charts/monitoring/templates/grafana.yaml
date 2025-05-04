@@ -7,12 +7,6 @@ metadata:
 spec:
   disableDefaultAdminSecret: true
   url: http://grafana.collins.home
-  adminPassword:
-    name: grafana-authentik-creds
-    key: admin_password
-  adminUser:
-    name: grafana-authentik-creds
-    key: admin_username
   config:
     log:
       mode: console
@@ -55,6 +49,17 @@ spec:
                 - mountPath: /etc/secrets/grafana_authentik_secret
                   name: grafana-authentik-creds
                   readOnly: true
+              env:
+                - name: GF_SECURITY_ADMIN_USER
+                  valueFrom:
+                    secretKeyRef:
+                      key: admin_username
+                      name: grafana-authentik-creds
+                - name: GF_SECURITY_ADMIN_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      key: admin_password
+                      name: grafana-authentik-creds
             - image: ghcr.io/kiwigrid/k8s-sidecar:1.24.5
               name: k8s-sidecar
               env:
