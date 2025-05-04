@@ -2,5 +2,8 @@ dependencies:
 - name: opentelemetry-operator
   repository: https://open-telemetry.github.io/opentelemetry-helm-charts
   version: 0.88.3
-digest: sha256:a566256c961abd9e8868a30b91cfce6a0a4de26cbcd7add884c3eb5a192755b7
-generated: "2025-05-03T13:52:20.500459368-07:00"
+- name: grafana-operator
+  repository: https://grafana.github.io/helm-charts
+  version: v5.17.1
+digest: sha256:7221245c8eedacf5867e27a4e3a82c175c6e1ec4619c12384588ca524cf8c957
+generated: "2025-05-03T17:11:18.089493099-07:00"

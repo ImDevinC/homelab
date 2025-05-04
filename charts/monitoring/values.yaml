@@ -3,3 +3,5 @@ opentelemetry-operator:
     collectorImage:
       repository: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib
 prometheus-operator-crds: {}
+grafana-operator:
+  enforceCacheLabels: off

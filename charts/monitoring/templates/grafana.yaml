@@ -1,0 +1,73 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: Grafana
+metadata:
+  name: grafana
+  labels:
+    instance: default
+spec:
+  config:
+    log:
+      mode: console
+    auth:
+      disable_login_form: "false"
+    security:
+      admin_user: root
+      admin_password: secret
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: grafana2.collins.home
+      http:
+        paths:
+          - backend:
+              service:
+                name: grafana-service
+                port:
+                  name: grafana
+            path: /
+            pathType: ImplementationSpecific
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: grafanadashboard-sample
+spec:
+  instanceSelector:
+    matchLabels:
+      instance: default
+  resyncPeriod: 30s
+  json: >
+    {
+      "id": null,
+      "title": "Simple Dashboard",
+      "tags": [],
+      "style": "dark",
+      "timezone": "browser",
+      "editable": true,
+      "hideControls": false,
+      "graphTooltip": 1,
+      "panels": [],
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "timepicker": {
+        "time_options": [],
+        "refresh_intervals": []
+      },
+      "templating": {
+        "list": []
+      },
+      "annotations": {
+        "list": []
+      },
+      "refresh": "5s",
+      "schemaVersion": 17,
+      "version": 0,
+      "links": []
+    }
