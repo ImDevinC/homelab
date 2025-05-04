@@ -2,6 +2,8 @@ opentelemetry-operator:
   manager:
     collectorImage:
       repository: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib
-prometheus-operator-crds: {}
+prometheus-operator-crds:
+  annotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=true
 grafana-operator:
   enforceCacheLabels: off
