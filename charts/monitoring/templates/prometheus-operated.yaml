@@ -7,6 +7,7 @@ spec:
   enableRemoteWriteReceiver: true
   ruleSelector: {}
   ruleNamespaceSelector: {}
+  probeSelector: {} # We don't use probes, but instead of having to supply a whole config, we enable this
   externalUrl: prometheus.collins.home
   alerting:
     alertmanagers:
