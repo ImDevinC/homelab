@@ -6,7 +6,6 @@ spec:
   serviceAccountName: prometheus
   enableRemoteWriteReceiver: true
   externalUrl: prometheus.collins.home
-  routePrefix: /
   alerting:
     alertmanagers:
       - name: alertmanager-operated
