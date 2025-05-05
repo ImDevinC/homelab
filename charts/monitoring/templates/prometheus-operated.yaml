@@ -5,6 +5,8 @@ metadata:
 spec:
   serviceAccountName: prometheus
   enableRemoteWriteReceiver: true
+  ruleSelector: {}
+  ruleNamespaceSelector: {}
   externalUrl: prometheus.collins.home
   alerting:
     alertmanagers:
