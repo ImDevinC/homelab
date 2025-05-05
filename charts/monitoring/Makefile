@@ -16,7 +16,7 @@ dashboards: mixins/mixin.libsonnet
 		baseFile=`basename $$file .json`;\
 		cmName=`sed 's/_/-/g' <<< $${baseFile}`;\
 		content=`cat $${file} | gzip | base64 -w0` ;\
-		content=$${content} cmName=$${cmName} yq e -n '.apiVersion = "grafana.integreatly.org/v1beta1" | .kind = "GrafanaDashboard" | .metadata.name = strenv(cmName) | .spec.instanceSelector.matchLabels.instance = "default" | .spec.gzipJson = strenv(content) | .spec.folder = "null"' > manifests/dashboards/$${baseFile}-dashboard.yaml ;\
+		content=$${content} cmName=$${cmName} yq e -n '.apiVersion = "grafana.integreatly.org/v1beta1" | .kind = "GrafanaDashboard" | .metadata.name = strenv(cmName) | .spec.instanceSelector.matchLabels.instance = "default" | .spec.gzipJson = strenv(content) | .spec.folder = ""' > manifests/dashboards/$${baseFile}-dashboard.yaml ;\
 	done
 	echo -e "# DO NOT EDIT\n# THIS FILE IS GENERATED AUTOMATICALLY AND ANY CHANGES WILL BE OVERWRITTEN" > templates/dashboards.yaml
 	yq eval-all "." manifests/dashboards/*.yaml >> templates/dashboards.yaml
