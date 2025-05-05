@@ -22,9 +22,9 @@ spec:
         - "alert": "CertManagerCertExpirySoon"
           "annotations":
             "dashboard_url": "http://grafana.collins.home/d/TvuRo2iMk/cert-manager"
-            "description": "The domain that this cert covers will be unavailable after {{ $value | humanizeDuration }}. Clients using endpoints that this cert protects will start to fail in {{ $value | humanizeDuration }}."
+            "description": "The domain that this cert covers will be unavailable after {{`{{ $value | humanizeDuration }}`}}. Clients using endpoints that this cert protects will start to fail in {{`{{ $value | humanizeDuration }}`}}."
             "runbook_url": "https://gitlab.com/uneeq-oss/cert-manager-mixin/-/blob/master/RUNBOOK.md#certmanagercertexpirysoon"
-            "summary": "The cert `{{ $labels.name }}` is {{ $value | humanizeDuration }} from expiry, it should have renewed over a week ago."
+            "summary": "The cert `{{`{{ $labels.name }}`}}` is {{`{{ $value | humanizeDuration }}`}} from expiry, it should have renewed over a week ago."
           "expr": |
             avg by (exported_namespace, namespace, name) (
               certmanager_certificate_expiration_timestamp_seconds - time()
@@ -37,7 +37,7 @@ spec:
             "dashboard_url": "http://grafana.collins.home/d/TvuRo2iMk/cert-manager"
             "description": "This certificate has not been ready to serve traffic for at least 10m. If the cert is being renewed or there is another valid cert, the ingress controller _may_ be able to serve that instead."
             "runbook_url": "https://gitlab.com/uneeq-oss/cert-manager-mixin/-/blob/master/RUNBOOK.md#certmanagercertnotready"
-            "summary": "The cert `{{ $labels.name }}` is not ready to serve traffic."
+            "summary": "The cert `{{`{{ $labels.name }}`}}` is not ready to serve traffic."
           "expr": |
             max by (name, exported_namespace, namespace, condition) (
               certmanager_certificate_ready_status{condition!="True"} == 1
@@ -62,7 +62,7 @@ spec:
       "rules":
         - "alert": "SealedSecretsUnsealErrorHigh"
           "annotations":
-            "description": "High number of errors during unsealing Sealed Secrets in {{ $labels.namespace }} namespace."
+            "description": "High number of errors during unsealing Sealed Secrets in {{`{{ $labels.namespace }}`}} namespace."
             "runbook_url": "https://github.com/bitnami-labs/sealed-secrets"
             "summary": "Sealed Secrets Unseal Error High"
           "expr": |
@@ -123,8 +123,8 @@ spec:
       "rules":
         - "alert": "PostgreSQLMaxConnectionsReached"
           "annotations":
-            "description": "{{ $labels.instance }} is exceeding the currently configured maximum Postgres connection limit (current value: {{ $value }}s). Services may be degraded - please take immediate action (you probably need to increase max_connections in the Docker image and re-deploy."
-            "summary": "{{ $labels.instance }} has maxed out Postgres connections."
+            "description": "{{`{{ $labels.instance }}`}} is exceeding the currently configured maximum Postgres connection limit (current value: {{`{{ $value }}`}}s). Services may be degraded - please take immediate action (you probably need to increase max_connections in the Docker image and re-deploy."
+            "summary": "{{`{{ $labels.instance }}`}} has maxed out Postgres connections."
           "expr": |
             sum by (instance) (pg_stat_activity_count{})
             >=
@@ -136,8 +136,8 @@ spec:
             "severity": "warning"
         - "alert": "PostgreSQLHighConnections"
           "annotations":
-            "description": "{{ $labels.instance }} is exceeding 80% of the currently configured maximum Postgres connection limit (current value: {{ $value }}s). Please check utilization graphs and confirm if this is normal service growth, abuse or an otherwise temporary condition or if new resources need to be provisioned (or the limits increased, which is mostly likely)."
-            "summary": "{{ $labels.instance }} is over 80% of max Postgres connections."
+            "description": "{{`{{ $labels.instance }}`}} is exceeding 80% of the currently configured maximum Postgres connection limit (current value: {{`{{ $value }}`}}s). Please check utilization graphs and confirm if this is normal service growth, abuse or an otherwise temporary condition or if new resources need to be provisioned (or the limits increased, which is mostly likely)."
+            "summary": "{{`{{ $labels.instance }}`}} is over 80% of max Postgres connections."
           "expr": |
             sum by (instance) (pg_stat_activity_count{})
             >
@@ -151,16 +151,16 @@ spec:
             "severity": "warning"
         - "alert": "PostgreSQLDown"
           "annotations":
-            "description": "{{ $labels.instance }} is rejecting query requests from the exporter, and thus probably not allowing DNS requests to work either. User services should not be effected provided at least 1 node is still alive."
-            "summary": "PostgreSQL is not processing queries: {{ $labels.instance }}"
+            "description": "{{`{{ $labels.instance }}`}} is rejecting query requests from the exporter, and thus probably not allowing DNS requests to work either. User services should not be effected provided at least 1 node is still alive."
+            "summary": "PostgreSQL is not processing queries: {{`{{ $labels.instance }}`}}"
           "expr": "pg_up{} != 1"
           "for": "1m"
           "labels":
             "severity": "warning"
         - "alert": "PostgreSQLSlowQueries"
           "annotations":
-            "description": "PostgreSQL high number of slow queries {{ $labels.cluster }} for database {{ $labels.datname }} with a value of {{ $value }} "
-            "summary": "PostgreSQL high number of slow on {{ $labels.cluster }} for database {{ $labels.datname }} "
+            "description": "PostgreSQL high number of slow queries {{`{{ $labels.cluster }}`}} for database {{`{{ $labels.datname }}`}} with a value of {{`{{ $value }}`}} "
+            "summary": "PostgreSQL high number of slow on {{`{{ $labels.cluster }}`}} for database {{`{{ $labels.datname }}`}} "
           "expr": |
             avg by (datname) (
               rate (
@@ -172,8 +172,8 @@ spec:
             "severity": "warning"
         - "alert": "PostgreSQLQPS"
           "annotations":
-            "description": "PostgreSQL high number of queries per second on {{ $labels.cluster }} for database {{ $labels.datname }} with a value of {{ $value }}"
-            "summary": "PostgreSQL high number of queries per second {{ $labels.cluster }} for database {{ $labels.datname }}"
+            "description": "PostgreSQL high number of queries per second on {{`{{ $labels.cluster }}`}} for database {{`{{ $labels.datname }}`}} with a value of {{`{{ $value }}`}}"
+            "summary": "PostgreSQL high number of queries per second {{`{{ $labels.cluster }}`}} for database {{`{{ $labels.datname }}`}}"
           "expr": |
             avg by (datname) (
               irate(
@@ -189,8 +189,8 @@ spec:
             "severity": "warning"
         - "alert": "PostgreSQLCacheHitRatio"
           "annotations":
-            "description": "PostgreSQL low on cache hit rate on {{ $labels.cluster }} for database {{ $labels.datname }} with a value of {{ $value }}"
-            "summary": "PostgreSQL low cache hit rate on {{ $labels.cluster }} for database {{ $labels.datname }}"
+            "description": "PostgreSQL low on cache hit rate on {{`{{ $labels.cluster }}`}} for database {{`{{ $labels.datname }}`}} with a value of {{`{{ $value }}`}}"
+            "summary": "PostgreSQL low cache hit rate on {{`{{ $labels.cluster }}`}} for database {{`{{ $labels.datname }}`}}"
           "expr": |
             avg by (datname) (
               rate(pg_stat_database_blks_hit{datname!~"template.*",}[5m])
@@ -212,48 +212,48 @@ spec:
       "rules":
         - "alert": "RedisDown"
           "annotations":
-            "description": "Redis instance is down\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
-            "summary": "Redis down (instance {{ $labels.instance }})"
+            "description": "Redis instance is down\n  VALUE = {{`{{ $value }}`}}\n  LABELS: {{`{{ $labels }}`}}"
+            "summary": "Redis down (instance {{`{{ $labels.instance }}`}})"
           "expr": "redis_up{job=\"redis\"} == 0"
           "for": "5m"
           "labels":
             "severity": "critical"
         - "alert": "RedisOutOfMemory"
           "annotations":
-            "description": "Redis is running out of memory (> 90%)\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
-            "summary": "Redis out of memory (instance {{ $labels.instance }})"
+            "description": "Redis is running out of memory (> 90%)\n  VALUE = {{`{{ $value }}`}}\n  LABELS: {{`{{ $labels }}`}}"
+            "summary": "Redis out of memory (instance {{`{{ $labels.instance }}`}})"
           "expr": "redis_memory_used_bytes{job=\"redis\"} / redis_total_system_memory_bytes{job=\"redis\"} * 100 > 90"
           "for": "5m"
           "labels":
             "severity": "warning"
         - "alert": "RedisTooManyConnections"
           "annotations":
-            "description": "Redis instance has too many connections\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
-            "summary": "Redis too many connections (instance {{ $labels.instance }})"
+            "description": "Redis instance has too many connections\n  VALUE = {{`{{ $value }}`}}\n  LABELS: {{`{{ $labels }}`}}"
+            "summary": "Redis too many connections (instance {{`{{ $labels.instance }}`}})"
           "expr": "redis_connected_clients{job=\"redis\"} > 100"
           "for": "5m"
           "labels":
             "severity": "warning"
         - "alert": "RedisClusterSlotFail"
           "annotations":
-            "description": "Redis cluster has slots fail\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
-            "summary": "Number of hash slots mapping to a node in FAIL state (instance {{ $labels.instance }})"
+            "description": "Redis cluster has slots fail\n  VALUE = {{`{{ $value }}`}}\n  LABELS: {{`{{ $labels }}`}}"
+            "summary": "Number of hash slots mapping to a node in FAIL state (instance {{`{{ $labels.instance }}`}})"
           "expr": "redis_cluster_slots_fail{job=\"redis\"} > 0"
           "for": "5m"
           "labels":
             "severity": "warning"
         - "alert": "RedisClusterSlotPfail"
           "annotations":
-            "description": "Redis cluster has slots pfail\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
-            "summary": "Number of hash slots mapping to a node in PFAIL state (instance {{ $labels.instance }})"
+            "description": "Redis cluster has slots pfail\n  VALUE = {{`{{ $value }}`}}\n  LABELS: {{`{{ $labels }}`}}"
+            "summary": "Number of hash slots mapping to a node in PFAIL state (instance {{`{{ $labels.instance }}`}})"
           "expr": "redis_cluster_slots_pfail{job=\"redis\"} > 0"
           "for": "5m"
           "labels":
             "severity": "warning"
         - "alert": "RedisClusterStateNotOk"
           "annotations":
-            "description": "Redis cluster is not ok\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
-            "summary": "Redis cluster state is not ok (instance {{ $labels.instance }})"
+            "description": "Redis cluster is not ok\n  VALUE = {{`{{ $value }}`}}\n  LABELS: {{`{{ $labels }}`}}"
+            "summary": "Redis cluster state is not ok (instance {{`{{ $labels.instance }}`}})"
           "expr": "redis_cluster_state{job=\"redis\"} == 0"
           "for": "5m"
           "labels":
