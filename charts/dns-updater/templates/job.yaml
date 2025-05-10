@@ -58,3 +58,9 @@ data:
     RECORD=snips.imdevinc.com
     TYPE=cloudflare
     CLOUDFLARE_API_TOKEN=
+  internal.env: |
+    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
+    ADDRESS=int.imdevinc.com
+    RECORD=*.imdevinc.com
+    TYPE=cloudflare
+    CLOUDFLARE_API_TOKEN=
