@@ -1,6 +1,6 @@
 argo-cd:
   global:
-    domain: argo.collins.home
+    domain: argocd.int.imdevinc.com
   dex:
     enabled: false
   configs:
@@ -10,7 +10,7 @@ argo-cd:
         g, ArgoCD Admins, role:admin
         g, ArgoCD Viewers, role:readonly
     cm:
-      url: http://argo.collins.home
+      url: http://argocd.int.imdevinc.com
       create: true
       oidc.config: |
         name: Authentik
@@ -20,10 +20,10 @@ argo-cd:
         requestedCopes: ["openid", "profile", "email", "groups"]
         requestedIDTokenClaims: {"groups": {"essential": true}}
   server:
-    ingress:
-      enabled: true
-      ingressClassName: nginx
-      hostname: argo.collins.home
+    #ingress:
+    #  enabled: true
+    #  ingressClassName: nginx
+    #  hostname: argo.collins.home
     extraArgs:
       - --insecure
     metrics:
