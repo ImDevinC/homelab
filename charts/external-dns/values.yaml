@@ -1,4 +1,9 @@
-pihole:
-  server: http://192.168.1.249
-  serviceMonitor:
-    enabled: true
+external-dns:
+  domainFilters:
+    - "*.int.imdevinc.com"
+  policy: upsert-only
+  sources: 
+  - "gateway"
+  provider:
+    name: pihole
+    server: http://102.168.1.249
