@@ -6,4 +6,6 @@ external-dns:
   - gateway-httproute
   provider:
     name: pihole
-    server: http://102.168.1.249
+    pihole:
+      server: http://192.168.1.249 
+      secretName: pihole-password
