@@ -3,7 +3,7 @@ external-dns:
     - "*.int.imdevinc.com"
   policy: upsert-only
   sources: 
-  - "gateway"
+  - gateway-httproute
   provider:
     name: pihole
     server: http://102.168.1.249
