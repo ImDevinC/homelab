@@ -2,23 +2,6 @@ wallabag:
   domainName: https://wallabag.imdevinc.com
   userRegistration: false
 
-  ingress:
-    enabled: false
-    className: "nginx"
-    annotations:
-      external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
-      cert-manager.io/cluster-issuer: letsencrypt
-      acme.cert-manager.io/http01-edit-in-place: "true"
-    hosts:
-      - host: wallabag.imdevinc.com
-        paths:
-          - path: /
-            pathType: Prefix
-    tls:
-      - hosts:
-        - wallabag.imdevinc.com
-        secretName: wallabag-tls
-
   storage:
     data:
       customVolume: true

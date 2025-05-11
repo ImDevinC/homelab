@@ -156,20 +156,22 @@ data:
       "links": []
     }
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
   name: grafana
 spec:
-  ingressClassName: nginx
+  parentRefs:
+  - name: traefik-gateway
+    namespace: traefik
+  hostnames:
+  - grafana.int.imdevinc.com
   rules:
-    - host: grafana.collins.home
-      http:
-        paths:
-          - backend:
-              service:
-                name: grafana-service
-                port:
-                  name: grafana
-            path: /
-            pathType: ImplementationSpecific
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: grafana-service
+      namespace: monitoring
+      port: 3000

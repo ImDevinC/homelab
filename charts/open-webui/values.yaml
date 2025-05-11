@@ -1,9 +1,5 @@
 open-webui:
-  clusterDomain: collins.home
-  ingress:
-    enabled: true
-    class: nginx
-    host: webui.collins.home
+  clusterDomain: int.imdevinc.com
   ollama:
     enabled: false
     ollamaUrls:

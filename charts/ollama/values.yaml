@@ -9,14 +9,6 @@ ollama:
         - mistral:7b
         - llama3.2:3b
         - deepseek-r1:7b
-  ingress:
-    enabled: true
-    className: nginx
-    hosts:
-      - host: ollama.collins.home
-        paths:
-          - path: /
-            pathType: Prefix
   persistentVolume:
     enabled: true
     storageClass: hostpath-csi

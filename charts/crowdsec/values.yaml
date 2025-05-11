@@ -27,12 +27,6 @@ crowdsec:
   lapi:
     dashboard:
       enabled: true
-      ingress:
-        enabled: true
-        annotations:
-          nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-        ingressClassName: nginx
-        host: crowdsec.collins.home
     metrics:
       enabled: true
       serviceMonitor:
