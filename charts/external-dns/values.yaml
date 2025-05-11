@@ -1,5 +1,5 @@
 external-dns:
-  loglevel: debug
+  logLevel: debug
   domainFilters:
     - "*.int.imdevinc.com"
   policy: upsert-only
