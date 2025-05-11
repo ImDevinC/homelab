@@ -33,44 +33,20 @@ k8s-mediaserver:
         subPath: media/anime
   prowlarr:
     ingress:
-      enabled: true
-      path: "/"
-      ingressClassName: nginx
-      host: prowlarr.collins.home
-      annotations:
-        nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-authentik-embedded-outpost.authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
-        nginx.ingress.kubernetes.io/auth-signin: http://prowlarr.collins.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid,authorization
-        nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
+      enabled: false
   radarr:
     resources:
       limits:
         memory: "1Gi"
     ingress:
-      enabled: true
-      path: "/"
-      ingressClassName: nginx
-      host: radarr.collins.home
-      annotations:
-        nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-authentik-embedded-outpost.authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
-        nginx.ingress.kubernetes.io/auth-signin: http://radarr.collins.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid,authorization
-        nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
+      enabled: false
     exportarr:
       enabled: true
       serviceMonitor: true
       apiSecret: radarr-token
   sabnzbd:
     ingress:
-      enabled: true
-      path: "/"
-      ingressClassName: nginx
-      host: sabnzbd.collins.home
-      annotations:
-        nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-authentik-embedded-outpost.authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
-        nginx.ingress.kubernetes.io/auth-signin: http://sabnzbd.collins.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid,authorization
-        nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
+      enabled: false
   sonarr:
     resources:
       limits:
@@ -80,15 +56,7 @@ k8s-mediaserver:
         mountPath: /anime
         subPath: media/anime
     ingress:
-      enabled: true
-      path: "/"
-      ingressClassName: nginx
-      host: sonarr.collins.home
-      annotations:
-        nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-authentik-embedded-outpost.authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
-        nginx.ingress.kubernetes.io/auth-signin: http://sonarr.collins.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid,authorization
-        nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
+      enabled: false
     exportarr:
       enabled: true
       serviceMonitor: true
@@ -96,102 +64,21 @@ k8s-mediaserver:
       urlBase: ""
   transmission:
     ingress:
-      enabled: true
-      path: "/"
-      ingressClassName: nginx
-      host: transmission.collins.home
-      annotations:
-        nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-authentik-embedded-outpost.authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
-        nginx.ingress.kubernetes.io/auth-signin: http://transmission.collins.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid,authorization
-        nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
+      enabled: false
   tautulli:
     ingress:
-      enabled: true
-      path: "/"
-      ingressClassName: nginx
-      host: tautulli.collins.home
-      annotations:
-        nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-authentik-embedded-outpost.authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
-        nginx.ingress.kubernetes.io/auth-signin: http://tautulli.collins.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid,authorization
-        nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
+      enabled: false
   requestrr:
     ingress:
-      enabled: true
-      path: "/"
-      ingressClassName: nginx
-      host: requestrr.collins.home
-      annotations:
-        nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-authentik-embedded-outpost.authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
-        nginx.ingress.kubernetes.io/auth-signin: http://requestrr.collins.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid,authorization
-        nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
+      enabled: false
   overseerr:
     ingress:
-      enabled: true
-      path: "/"
-      ingressClassName: nginx
-      host: overseerr.collins.home
-      annotations:
-        nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-authentik-embedded-outpost.authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
-        nginx.ingress.kubernetes.io/auth-signin: http://overseerr.collins.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid,authorization
-        nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
+      enabled: false
   mylarr:
     container:
       image: lscr.io/linuxserver/mylar3
       tag: 0.8.0
     ingress:
-      enabled: true
-      path: "/"
-      ingressClassName: nginx
-      host: mylarr.collins.home
-      annotations:
-        nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-authentik-embedded-outpost.authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
-        nginx.ingress.kubernetes.io/auth-signin: http://mylarr.collins.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid,authorization
-        nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
+      enabled: false
     exportarr:
       enabled: false
-
-ingress:
-  enabled: false
-  className: nginx
-  #  annotations:
-  #    nginx.ingress.kubernetes.io/auth-url: http://authentik-server.authentik.svc.cluster.local/outpost.goauthentik.io/auth/nginx
-  #    nginx.ingress.kubernetes.io/auth-signin: http://authentik.collins.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
-  #    nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid
-  #    nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
-  hosts:
-    - host: overseerr.collins.home
-      paths:
-        - path: /
-          serviceName: overseerr
-          servicePort: 5055
-    - host: media.collins.home
-      paths:
-        - path: /prowlarr
-          serviceName: prowlarr
-          servicePort: 9696
-        - path: /radarr
-          serviceName: radarr
-          servicePort: 7878
-        - path: /sabnzbd
-          serviceName: sabnzbd
-          servicePort: 8080
-        - path: /sonarr
-          serviceName: sonarr
-          servicePort: 8989
-        - path: /transmission
-          serviceName: transmission
-          servicePort: 9091
-        - path: /tautulli
-          serviceName: tautulli
-          servicePort: 8181
-        - path: /requestrr
-          serviceName: requestrr
-          servicePort: 4545
-        - path: /mylarr
-          serviceName: mylarr
-          servicePort: 8090
