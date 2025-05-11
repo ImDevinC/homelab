@@ -13,3 +13,9 @@ oauth2-proxy:
     config: /opt/oauth2-proxy/config.cfg
   config:
     configFile: ''
+dex:
+  config:
+    issuer: https://dex.int.imdevinc.com
+    storage:
+      type: memory
+    enablePasswordDB: true
