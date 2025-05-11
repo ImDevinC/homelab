@@ -10,6 +10,8 @@ external-dns:
   env:
     - name: EXTERNAL_DNS_PIHOLE_SERVER
       value: http://192.168.1.249
+    - name: EXTERNAL_DNS_PIHOLE_API_VERSION
+      value: "6"
     - name: EXTERNAL_DNS_PIHOLE_PASSWORD
       valueFrom:
         secretKeyRef:
