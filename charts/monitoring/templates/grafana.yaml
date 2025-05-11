@@ -164,6 +164,8 @@ spec:
   parentRefs:
   - name: traefik-gateway
     namespace: traefik
+    group: gateway.networking.k8s.io
+    kind: Gateway
   hostnames:
   - grafana.int.imdevinc.com
   rules:
@@ -175,3 +177,6 @@ spec:
     - name: grafana-service
       namespace: monitoring
       port: 3000
+      group: ''
+      kind: Service
+      weight: 1
