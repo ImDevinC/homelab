@@ -4,7 +4,7 @@ external-dns:
     tag: v20250510-v0.16.1-151-g2f165e87
   logLevel: debug
   domainFilters:
-    - "*.int.imdevinc.com"
+    - "int.imdevinc.com"
   policy: upsert-only
   sources: 
   - gateway-httproute
