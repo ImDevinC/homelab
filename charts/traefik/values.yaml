@@ -1,0 +1,37 @@
+traefik:
+  logs:
+    general:
+      level: DEBUG
+  providers:
+    kubernetesIngress:
+      enabled: false
+    kubernetesGateway:
+      enabled: true
+  gateway:
+    listeners:
+      web:
+        namespacePolicy: All
+        forwardedHeaders:
+          insecure: true
+      websecure:
+        port: 8443
+        namespacePolicy: All
+        protocol: HTTPS
+        certificateRefs:
+          - name: wildcard-tls
+            namespace: traefik
+        forwardedHeaders:
+          insecure: true
+  service:
+    spec:
+      externalTrafficPolicy: Local
+  ports:
+    websecure:
+      middlewares:
+        - traefik-ipallowlist@kubernetescrd
+    web:
+      redirections:
+        entryPoint:
+          scheme: https
+          to: websecure
+

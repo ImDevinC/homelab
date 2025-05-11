@@ -1,0 +1,43 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: ipallowlist
+  namespace: traefik
+spec:
+  ipAllowList:
+    sourceRange:
+      - 192.168.1.0/24
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard
+  namespace: traefik
+spec:
+  secretName: wildcard-tls
+  dnsNames:
+    - "*.int.imdevinc.com"
+  issuerRef:
+    name: letsencrypt-traefik
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-traefik
+spec:
+  acme:
+    email: me@imdevinc.com
+    preferredChain: ""
+    privateKeySecretRef:
+      name: letsencrypt
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+    - http01:
+        ingress:
+          class: traefik
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            key: apiToken
+            name: cloudflare-token
