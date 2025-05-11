@@ -1,4 +1,7 @@
 external-dns:
+  image:
+    repository: gcr.io/k8s-staging-external-dns/external-dns
+    tag: v20250510-v0.16.1-151-g2f165e87
   logLevel: debug
   domainFilters:
     - "*.int.imdevinc.com"
