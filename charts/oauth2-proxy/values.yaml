@@ -1,16 +1,4 @@
 oauth2-proxy:
-  ingress:
-    className: nginx
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt
-      external-dns.alpha.kubernetes.io/ingress-hostname-source: annotations-only
-    enabled: true
-    hosts:
-      - oauth.imdevinc.com
-    tls:
-      - hosts:
-        - oauth.imdevinc.com
-        secretName: oauth2-proxy-tls
   proxyVarsAsSecrets: false
   extraVolumes:
     - name: config
