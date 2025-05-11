@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stream-notifier
+  namespace: stream-notifier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stream-notifier
+  template:
+    metadata:
+      labels:
+        app: stream-notifier
+    spec:
+      imagePullSecrets:
+        - name: dockerauth
+      containers:
+        - image: ghcr.io/imdevinc/stream-notifier:v1.13
+          imagePullPolicy: IfNotPresent
+          name: stream-notifier
+          envFrom:
+            - secretRef:
+                name: stream-notifier-credentials
+          env:
+            - name: TWITCH_REDIRECT_URI
+              value: https://remote.imdevinc.com/api/auth/twitch/redirect
+            - name: WEBHOOK_CALLBACK_URL
+              value: https://remote.imdevinc.com/api/twitch/eventsub/callback
+            - name: ROOT_URL
+              value: https://remote.imdevinc.com
+            - name: DATABASE_USERNAME
+              value: root
+            - name: DATABASE_URL
+              value: mongodb.mongodb
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-creds
+                  key: mongodb-root-password
+          ports:
+            - name: http
+              containerPort: 7000
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 1
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: 7000
+            timeoutSeconds: 1
