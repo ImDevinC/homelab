@@ -34,18 +34,6 @@ kind: ConfigMap
 metadata:
   name: dns-updater
 data:
-  bsky.env: |
-    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=bsky.imdevinc.com
-    RECORD=bsky.imdevinc.com
-    TYPE=cloudflare
-    CLOUDFLARE_API_TOKEN=
-  wildcard.bsky.env: |
-    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=imdevinc.bsky.imdevinc.com
-    RECORD=*.bsky.imdevinc.com
-    TYPE=cloudflare
-    CLOUDFLARE_API_TOKEN=
   remote.env: |
     ZONE_ID=858d89547f2d1be1b3cd765677d080a5
     ADDRESS=remote.imdevinc.com
@@ -56,11 +44,5 @@ data:
     ZONE_ID=858d89547f2d1be1b3cd765677d080a5
     ADDRESS=snips.imdevinc.com
     RECORD=snips.imdevinc.com
-    TYPE=cloudflare
-    CLOUDFLARE_API_TOKEN=
-  internal.env: |
-    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=int.imdevinc.com
-    RECORD=*.imdevinc.com
     TYPE=cloudflare
     CLOUDFLARE_API_TOKEN=
