@@ -16,4 +16,4 @@ spec:
     backendRefs:
     - name: argo-cd-argocd-server
       namespace: argo-cd
-      port: http
+      port: 80
