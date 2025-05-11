@@ -84,24 +84,6 @@ spec:
         value: node-exporter|nvidia-smi
       receiver: "null"
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: alertmanager
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: alertmanager.collins.home
-      http:
-        paths:
-          - backend:
-              service:
-                name: alertmanager-operated
-                port:
-                  name: web
-            path: /
-            pathType: ImplementationSpecific
----
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
