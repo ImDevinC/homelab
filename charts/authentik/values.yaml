@@ -11,11 +11,6 @@ authentik:
       enabled: true
       serviceMonitor:
         enabled: true
-    ingress:
-      ingressClassName: nginx
-      enabled: true
-      hosts:
-        - authentik.collins.home
   postgresql:
     enabled: false
   redis:
