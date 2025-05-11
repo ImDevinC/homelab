@@ -8,18 +8,21 @@ traefik:
     kubernetesGateway:
       enabled: true
   gateway:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-traefik
     listeners:
       web:
+        hostname: "*.int.imdevinc.com"
         namespacePolicy: All
         forwardedHeaders:
           insecure: true
       websecure:
+        hostname: "*.int.imdevinc.com"
         port: 8443
         namespacePolicy: All
         protocol: HTTPS
         certificateRefs:
           - name: wildcard-tls
-            namespace: traefik
         forwardedHeaders:
           insecure: true
   service:
