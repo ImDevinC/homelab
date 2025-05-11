@@ -10,7 +10,7 @@ argo-cd:
         g, ArgoCD Admins, role:admin
         g, ArgoCD Viewers, role:readonly
     cm:
-      url: http://argocd.int.imdevinc.com
+      url: https://argocd.int.imdevinc.com
       create: true
       oidc.config: |
         name: Authentik
