@@ -77,26 +77,6 @@ spec:
       protocol: TCP
       targetPort: 7851
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: alltalk
-  labels:
-    app: alltalk
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: alltalk.collins.home
-      http:
-        paths:
-          - backend:
-              service:
-                name: alltalk
-                port:
-                  number: 7851
-            path: /
-            pathType: Prefix
----
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
