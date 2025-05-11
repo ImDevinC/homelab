@@ -2,6 +2,9 @@ wallabag:
   domainName: https://wallabag.imdevinc.com
   userRegistration: false
 
+  ingress:
+    enabled: false
+
   storage:
     data:
       customVolume: true
