@@ -17,3 +17,21 @@ spec:
           apiTokenSecretRef:
             name: cloudflare-token
             key: apiToken
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-traefik
+spec:
+  acme:
+    email: me@imdevinc.com
+    preferredChain: ""
+    privateKeySecretRef:
+      name: letsencrypt
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            key: apiToken
+            name: cloudflare-token
