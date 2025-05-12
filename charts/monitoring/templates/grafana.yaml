@@ -12,7 +12,7 @@ spec:
     auth:
       disable_login_form: "false"
     server:
-      root_url: http://grafana.collins.home
+      root_url: http://grafana.int.imdevinc.com
     auth.generic_oauth:
       enabled: "true"
       name: Authentik SSO
@@ -21,9 +21,9 @@ spec:
       client_secret: "$__file{/etc/secrets/grafana_authentik_secret/client_secret}"
       auto_login: "true"
       scopes: openid profile email
-      api_url: http://authentik.collins.home/application/o/userinfo/
-      auth_url: http://authentik.collins.home/application/o/authorize/
-      token_url: http://authentik.collins.home/application/o/token/
+      api_url: http://authentik.int.imdevinc.com/application/o/userinfo/
+      auth_url: http://authentik.int.imdevinc.com/application/o/authorize/
+      token_url: http://authentik.int.imdevinc.com/application/o/token/
       role_attribute_path: "contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'"
   deployment:
     spec:

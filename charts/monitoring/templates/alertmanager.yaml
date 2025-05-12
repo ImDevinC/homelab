@@ -3,7 +3,7 @@ kind: Alertmanager
 metadata:
   name: alertmanager
 spec:
-  externalUrl: http://alertmanager.collins.home
+  externalUrl: http://alertmanager.int.imdevinc.com
   forceEnableClusterMode: true
   routePrefix: /
   alertmanagerConfiguration:
