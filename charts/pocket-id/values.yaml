@@ -1,0 +1,6 @@
+pocket-id:
+  ingress:
+    host: login.int.imdevinc.com
+  persistence:
+    data:
+      storageClass: hostpath-csi
