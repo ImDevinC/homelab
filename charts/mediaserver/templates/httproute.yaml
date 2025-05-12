@@ -17,6 +17,12 @@ spec:
     - name: prowlarr
       namespace: mediaserver
       port: 9696
+    filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: traefik.io
+          kind: Middleware
+          name: mediaserver-credentials
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -37,6 +43,12 @@ spec:
     - name: radarr
       namespace: mediaserver
       port: 7878
+    filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: traefik.io
+          kind: Middleware
+          name: mediaserver-credentials
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -57,6 +69,12 @@ spec:
     - name: sabnzbd
       namespace: mediaserver
       port: 8080
+    filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: traefik.io
+          kind: Middleware
+          name: mediaserver-credentials
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -77,6 +95,12 @@ spec:
     - name: sonarr
       namespace: mediaserver
       port: 8989
+    filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: traefik.io
+          kind: Middleware
+          name: mediaserver-credentials
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -177,4 +201,10 @@ spec:
     - name: mylarr
       namespace: mediaserver
       port: 8090
+    filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: traefik.io
+          kind: Middleware
+          name: mediaserver-credentials
 ---
