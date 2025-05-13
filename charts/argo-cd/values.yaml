@@ -10,6 +10,7 @@ argo-cd:
         g, ArgoCD Admins, role:admin
         g, ArgoCD Viewers, role:readonly
     cm:
+      kustomize.buildOptions: --enable-helm
       url: https://argocd.int.imdevinc.com
       create: true
       oidc.config: |
