@@ -1,3 +1,7 @@
+redis:
+  architecture: standalone
+  auth:
+    enabled: false
 prometheus-redis-exporter:
   redisAddress: ""
   extraArgs:
