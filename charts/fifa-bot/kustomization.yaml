@@ -8,11 +8,6 @@ helmCharts:
     namespace: fifa-bot
     version: 2.0.0
     valuesFile: values.yaml
-  - name: redis
-    repo: oci://registry-1.docker.io/bitnamicharts
-    releaseName: redis
-    namespace: fifa-bot
-    version: 21.0.3
 resources:
   - sealed.yaml
 namespace: fifa-bot
