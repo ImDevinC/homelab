@@ -23,6 +23,8 @@ env:
       secretKeyRef:
         key: SLACK_WEBHOOK_URL
         name: fifa-bot-creds
+  - name: LOG_LEVEL
+    value: DEBUG
 
 podAnnotations: {}
 podLabels: {}
