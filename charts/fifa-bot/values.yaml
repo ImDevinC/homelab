@@ -1,0 +1,36 @@
+image:
+  repository: ghcr.io/imdevinc/fifa-bot
+  pullPolicy: IfNotPresent
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+env:
+  - name: REDIS_ADDRESS
+    value: 127.0.0.1:6379
+  - name: REDIS_DB
+    value: "0"
+  - name: SLACK_WEBHOOK_URL
+    valueFrom:
+      secretKeyRef:
+        key: SLACK_WEBHOOK_URL
+        name: fifa-bot-creds
+
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+securityContext: {}
+resources: {}
+volumes: []
+volumeMounts: []
+nodeSelector: {}
+tolerations: []
+affinity: {}

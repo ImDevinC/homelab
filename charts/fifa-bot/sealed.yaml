@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: fifa-bot-creds
+  namespace: fifa-bot
+spec:
+  encryptedData:
+    SLACK_WEBHOOK_URL: AgB7XuqZ0z0UOeMWCZxQh4luPr7yBZ3rNsBjo/bcM8nXX+VDF6Ysbpnz9hxPQQnwxiOCluMvaMw3Xtm9+fMwWTkDKvqU/YtiJ3JsDNuc4fmVZ2QR9NNchGALOAmt8w+9jBe0O9GX9ijigtcahXJdCYqNGFNxVdMi41bDbK3ETrBPpz+WamxHMi4C+Wy5Rd5IG51eVnOiSseb5ULjcQtMlWGviyHc3oovNh0b1iL8KbDbdIEV6E69hcbA/erR6ATaugM3UgPdbEIex22zbmeR6mWHEiq4YOh+iepu7JC3BqpXjzVzFgAxXj2tFbLAio3PMRARNMxJb/VfiJcflRqMBxr/tEQ5QNVU0uMq/ulgEipd1OImiWdyfB7exyZKtnEIRQEUIw0LW6WCwUSzrxc7ycRzn4mGfHHh5XudxdoARzQFYuUB0qImCzx1evB/IGDffDcnAklceygMcnR8QR3vkJN+FovydU/o9KFdNmPPPkuMwr+jSe1UdZD7zOEubMYA9Nc8zLwktTCMT6eUUwGpcMi04qVvsihEI3NEpNJvHkO0VJQawy7m0+868X0A7wMax3jzOHg2+5ublC6dYakN+QKfjY5uBZwVUWGfXMlUAzKiHSftRdPturv9IEj7Sd3eZarSUL8yv2roPEGO+LM2nQz2P0Vb5bK3JNwYPcR33ycw9oSxi//jEqHjeW6ZhJrGmitMjEdrFJ4UpkPgfwp/umK8JzindSriVkn2KUuBivGifWbc45PAAWtDAAZtK6eadu3obaHrA0knKEtj24VEBY7/aBfqaVd4xlWcbi4pkbU2OOo=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: fifa-bot-creds
+      namespace: fifa-bot
