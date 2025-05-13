@@ -15,7 +15,7 @@ serviceAccount:
 
 env:
   - name: REDIS_ADDRESS
-    value: redis.redis-master:6379
+    value: redis-master.redis:6379
   - name: REDIS_DB
     value: "0"
   - name: SLACK_WEBHOOK_URL
