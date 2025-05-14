@@ -29,9 +29,9 @@ traefik:
     spec:
       externalTrafficPolicy: Local
   ports:
-    websecure:
-      middlewares:
-        - traefik-ipallowlist@kubernetescrd
+#    websecure:
+#      middlewares:
+#        - traefik-ipallowlist@kubernetescrd
     web:
       redirections:
         entryPoint:
