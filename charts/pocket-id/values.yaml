@@ -3,4 +3,5 @@ pocket-id:
     host: login.int.imdevinc.com
   persistence:
     data:
+      enabled: true
       storageClass: hostpath-csi
