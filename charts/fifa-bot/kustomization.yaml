@@ -10,4 +10,5 @@ helmCharts:
     valuesFile: values.yaml
 resources:
   - sealed.yaml
+  - pprof.yaml
 namespace: fifa-bot
