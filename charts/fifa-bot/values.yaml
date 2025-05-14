@@ -1,7 +1,7 @@
 image:
   repository: ghcr.io/imdevinc/fifa-bot
   pullPolicy: IfNotPresent
-  tag: ""
+  tag: 2.0.5
 
 imagePullSecrets: []
 nameOverride: ""
@@ -13,7 +13,14 @@ serviceAccount:
   annotations: {}
   name: ""
 
+profiling:
+  enabled: true
+  port: 8080
+  serviceType: ClusterIP
+
 env:
+  - name: ENABLE_PROFILING
+    value: "true"
   - name: REDIS_ADDRESS
     value: redis-master.redis:6379
   - name: REDIS_DB

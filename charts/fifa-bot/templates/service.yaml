@@ -1,0 +1,17 @@
+{{- if .Values.profiling.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "fifa-bot.fullname" . }}
+  labels:
+    {{- include "fifa-bot.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.profiling.serviceType }}
+  ports:
+    - port: {{ .Values.profiling.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "fifa-bot.selectorLabels" . | nindent 4 }}
+{{- end }}
