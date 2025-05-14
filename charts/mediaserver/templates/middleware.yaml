@@ -1,0 +1,30 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: mediaserver-oidc
+  namespace: mediaserver
+spec:
+  plugin:
+    traefik-oidc-auth:
+      Secret: PMYZT3D2J4da20RsSIMMZaArKI6d3pxt
+      Provider:
+        Url: https://login.int.imdevinc.com
+        ClientId: 26ca0aad-dcc0-4bfa-8454-eccf2da539ba
+        ClientSecret: urn:k8s:secret:oidc-creds:providerClientSecret
+        TokenValidation: IdToken
+      Scopes: [openid, profile, email]
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: oidc-creds
+  namespace: mediaserver
+spec:
+  encryptedData:
+    providerClientSecret: AgCkd4z9X7h9tEKCKQeUQkpgpHQDqUBM+JRP0KXK4INecpJ/i9XQVkjSpsvvAlfHnoWbvxLPH/4L8TrkZLmYvbt8N2NTaKQSUIgtywT6/PX9zN8VmRNMLX5oPvrYgDuUgj0LfbU0/7PF/7+UM6vlyQdmaYv4izotW+bnN1SVIXIZ+gD5gRjoPVKDYDwTK9WfDjNf126GpLObbtXw48QFpZPCgW7Ox4V3BuNmAxT8VOOXypwpMO3Ygg276ifFN2peOJEXYqGR7e+z2Hz7NutwTOPnTncCoKbIE2bS9cTnUeoN9S9rg0g5qUpVscg+CTfGs4z8uUNDVqFP2bBgbNdWi190Ywn13jCyseBMv4Yo1GRtTEkSxMb3zNn9RLqs4jdIDIe75hMGP8Yc1qHzlowL4Ma3en+SxJZSDXXlkRajzgvDuezjgd/llsREiq1mio7LKuBOdn1tcrZSRtSH1vqxAQ8v54YS675UVuXGg6Tg84KNU/77Jacof1EoWkiV0zEoIFgAYhKhqfu5E01sE03CyK3epTHz8+iWGyR9uvkxOhFxICA9MGhOYKZFLpCcJAfs0XBXUmyeTHwbWikaTEthDQRnA4utRIzqZvhqxootsu0OTU/EiKnpnKhF3pi0PbF8JlfdD1tUNnPRHVRRm5rWVkTWRbWLw0cyilrgZybhLi1N5twH+dmiZ0wRl0YUrZ0OWQ9nOof7tgjvKNFGvYj4/sSSPL0G8xuh1qPBSdnuMZ3how==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: oidc-creds
+      namespace: mediaserver
