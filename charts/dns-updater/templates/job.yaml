@@ -40,9 +40,3 @@ data:
     RECORD=int.imdevinc.com
     TYPE=cloudflare
     CLOUDFLARE_API_TOKEN=
-  remote.env: |
-    ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=remote.imdevinc.com
-    RECORD=remote.imdevinc.com
-    TYPE=cloudflare
-    CLOUDFLARE_API_TOKEN=
