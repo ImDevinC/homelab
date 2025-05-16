@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: postgres
+  repository: postgis
   pullPolicy: IfNotPresent
-  tag: 17
+  tag: 17-3.5
 
 imagePullSecrets: []
 nameOverride: ""
