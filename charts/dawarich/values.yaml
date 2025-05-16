@@ -1,0 +1,23 @@
+keybase:
+  existingSecret: dawarich-creds
+
+env:
+  timeZone: "America/Los_Angeles"
+  distanceUnit: mi
+
+dawarich:
+  host: dawarich.int.imdevinc.com
+
+postgresql:
+  enabled: false
+  host: postgres.postgres
+  port: 5432
+  auth:
+    existingSecret: dawarich-creds
+
+redis:
+  enabled: false
+  host: redis-master.redis
+  port: 6379
+  auth:
+    enabled: false
