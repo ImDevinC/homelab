@@ -11,8 +11,6 @@ spec:
       template:
         spec:
           restartPolicy: Never
-          imagePullSecrets:
-            - name: dockerauth
           containers:
             - name: free-games-claimer
               image: ghcr.io/vogler/free-games-claimer

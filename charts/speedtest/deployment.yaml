@@ -12,8 +12,6 @@ spec:
       labels:
         app: speedtest
     spec:
-      imagePullSecrets:
-        - name: dockerauth
       containers:
         - name: speedtest
           image: ghcr.io/beykansen/internet-speed-monitor:latest

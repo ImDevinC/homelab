@@ -10,8 +10,6 @@ spec:
       template:
         spec:
           restartPolicy: Never
-          imagePullSecrets:
-            - name: dockerauth
           containers:
             - name: dns-updater
               image: ghcr.io/imdevinc/dns-updater:0.1.1

@@ -10,8 +10,6 @@ spec:
       template:
         spec:
           restartPolicy: Never
-          imagePullSecrets:
-            - name: dockerauth
           containers:
             - name: pmm
               image: ghcr.io/imdevinc/pmm:latest

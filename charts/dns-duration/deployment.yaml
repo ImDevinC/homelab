@@ -12,8 +12,6 @@ spec:
       labels:
         app: dns-duration
     spec:
-      imagePullSecrets:
-        - name: dockerauth
       containers:
         - name: dns-duration
           image: ghcr.io/imdevinc/dns-duration:0.1.0

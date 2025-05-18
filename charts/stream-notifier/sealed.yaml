@@ -1,20 +1,6 @@
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  name: dockerauth
-  namespace: stream-notifier
-spec:
-  encryptedData:
-    .dockerconfigjson: AgCUnJZUJdvuLaXewPGuwX7BXHdwtuZGdVAoluV1rfMlZ8ptWmOF41twonReZPjNjb08x+b73eUuLJfzaiYrZZlehuhsLplgmE6equG8QQdKgcXmqQaU3X810906KBQzqHOW/SWPv7dv3u+YAiOWBETgF2LxK9YkUgJTs53Z5cYN9lSWPN4a7xgkxl57TsMPhQNWEqvohl/0UXqXQpYxLuVQbPe/MTJxyb4gZRa7fiO4vQttp9YkgoowW8aksobIj7KhNZGt0YtJeaDB8LxtmjK2cacwAFkWtu3KxxQmaaCSpCkEzWt4ceTrqyc+colA5XufaM6qTbr3px80uJJuf7tfTtl+PHLHcSaaA34RGnBv8MPtq6mkZy75YVGSEWwOULL93jY3jGXjRgGJxzHyLbeoa6cjiUAg8fYaZAqhGQNKJMMyZgB2IwMKV0v5CsfSRZq7qPG+Dw5/6HWufWEKpcVostigfPIdFWOaYB1SOEvTCjmuPxWgxo9cWMKKTBk3SqTwcq983HPh7Eat+jCU93xDQh/lPx+0ad8hITPv59U+gvrrL5fAGOtf7XOiDO136f/vtQsPBfi4ybmAVYpkVkcKn6ZkqELw1L4wiVnqU0qvNzsYSUdVhiS/Fvawbko0c/c4/g+vs5ppqPFQhOvb5gQZpHqlDj7hF7GXh8JTvFxKhG3VBJh97eNOPvtJdmOuwJ70uuFFJDAeTHyB6baSOYnkqXfzb6s3piQV2Dv1k7jHzd9bC2OF07ApLn9m1XpGu61VSI+Q5rEku2AAqKH7fTWYIVb/aLInR7UvPSYf6evoQfzygsCt4tTQv7NNu5AJP160a8t++waP+xyc9Q8+IR4WAxkofrbgDVEX8c2vUG5EkFP9j/QTjaDWBpFjHrd5iNeSC+zT7+AHLm/kIg+RimnqlNPmnEanH3wWZw+moTa+iM8eFrjUn723Uf7nPviB6gWGDy1/eg==
-  template:
-    metadata:
-      name: dockerauth
-      namespace: stream-notifier
-    type: kubernetes.io/dockerconfigjson
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
   name: stream-notifier-credentials
   namespace: stream-notifier
 spec:

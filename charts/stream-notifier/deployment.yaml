@@ -13,8 +13,6 @@ spec:
       labels:
         app: stream-notifier
     spec:
-      imagePullSecrets:
-        - name: dockerauth
       containers:
         - image: ghcr.io/imdevinc/stream-notifier:v1.13
           imagePullPolicy: IfNotPresent
