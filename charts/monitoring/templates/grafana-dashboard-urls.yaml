@@ -3,7 +3,7 @@ kind: GrafanaDashboard
 metadata:
   name: k8s-system-api-server
 spec:
-  folder: ""
+  folder: General
   instanceSelector:
     matchLabels:
       instance: default
@@ -14,7 +14,7 @@ kind: GrafanaDashboard
 metadata:
   name: k8s-system-coredns
 spec:
-  folder: ""
+  folder: General
   instanceSelector:
     matchLabels:
       instance: default
@@ -25,7 +25,7 @@ kind: GrafanaDashboard
 metadata:
   name: k8s-views-global
 spec:
-  folder: ""
+  folder: General
   instanceSelector:
     matchLabels:
       instance: default
@@ -36,7 +36,7 @@ kind: GrafanaDashboard
 metadata:
   name: k8s-views-namespaces
 spec:
-  folder: ""
+  folder: General
   instanceSelector:
     matchLabels:
       instance: default
@@ -47,7 +47,7 @@ kind: GrafanaDashboard
 metadata:
   name: k8s-views-nodes
 spec:
-  folder: ""
+  folder: General
   instanceSelector:
     matchLabels:
       instance: default
@@ -58,7 +58,7 @@ kind: GrafanaDashboard
 metadata:
   name: k8s-views-pods
 spec:
-  folder: ""
+  folder: General
   instanceSelector:
     matchLabels:
       instance: default
