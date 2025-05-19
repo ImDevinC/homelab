@@ -7,9 +7,6 @@ traefik:
       enabled: false
     kubernetesGateway:
       enabled: true
-  ingressRoute:
-    dashboard:
-      enable: true
   gateway:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-traefik
