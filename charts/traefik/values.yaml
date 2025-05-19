@@ -3,7 +3,7 @@ traefik:
     - "--api.insecure"
   logs:
     general:
-      level: TRACE
+      level: INFO
   providers:
     kubernetesIngress:
       enabled: false
