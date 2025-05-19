@@ -1,7 +1,9 @@
 traefik:
+  globalArguments:
+    - "--api.insecure"
   logs:
     general:
-      level: DEBUG
+      level: TRACE
   providers:
     kubernetesIngress:
       enabled: false
