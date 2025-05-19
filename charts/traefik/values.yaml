@@ -30,8 +30,8 @@ traefik:
       externalTrafficPolicy: Local
   ports:
     websecure:
-      middlewares: []
-#        - traefik-ipallowlist@kubernetescrd
+      middlewares:
+        - traefik-ipallowlist@kubernetescrd
     web:
       redirections:
         entryPoint:
