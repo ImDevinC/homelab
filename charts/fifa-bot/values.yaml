@@ -1,7 +1,7 @@
 image:
   repository: ghcr.io/imdevinc/fifa-bot
   pullPolicy: IfNotPresent
-  tag: 2.1.2
+  tag: 2.1.3
 
 imagePullSecrets: []
 nameOverride: ""
