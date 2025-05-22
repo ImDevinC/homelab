@@ -5,10 +5,9 @@ traefik:
     general:
       level: INFO
   providers:
-    kubernetesIngress:
-      enabled: false
     kubernetesGateway:
       enabled: true
+      nativeLBByDefault: true
   gateway:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-traefik
