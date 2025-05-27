@@ -5,6 +5,9 @@ traefik:
     general:
       format: json
       level: TRACE
+    access:
+      enabled: true
+      format: json
   providers:
     kubernetesIngress:
       enabled: false
