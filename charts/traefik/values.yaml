@@ -4,10 +4,10 @@ traefik:
   logs:
     general:
       format: json
-      level: TRACE
-    access:
-      enabled: true
-      format: json
+      level: INFO
+#    access:
+#      enabled: true
+#      format: json
   providers:
     kubernetesIngress:
       enabled: false
