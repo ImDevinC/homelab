@@ -1,6 +1,7 @@
 pocket-id:
   updateStrategy:
-    partition: 0
+    rollingUpdate:
+      partition: 0
   ingress:
     host: login.int.imdevinc.com
   persistence:
