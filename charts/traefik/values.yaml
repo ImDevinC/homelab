@@ -33,10 +33,10 @@ traefik:
     spec:
       externalTrafficPolicy: Local
   ports:
-#    websecure:
+    websecure:
 #      middlewares:
 #        - traefik-ipallowlist@kubernetescrd
-#    web:
+    web:
 #      redirections:
 #        entryPoint:
 #          scheme: https
