@@ -6,6 +6,8 @@ traefik:
         command: ["/bin/bash"]
         args: ["-c", "sleep infinity"]
         securityContext:
+          runAsNonRoot: false
+          allowPrivilegeEscalation: false
           runAsUser: 0
           capabilities:
             add:
