@@ -6,7 +6,7 @@ traefik:
         command: ["/bin/bash"]
         args: ["-c", "sleep infinity"]
         securityContext:
-          runAsRoot: true
+          runAsUser: 0
           capabilities:
             add:
               - NET_ADMIN
