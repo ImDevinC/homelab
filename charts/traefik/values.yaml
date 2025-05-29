@@ -1,4 +1,15 @@
 traefik:
+  deployment:
+    additionalContainers:
+      - name: netshoot
+        image: nicolaka/netshoot
+        command: ["/bin/bash"]
+        args: ["-c", "sleep infinity"]
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+              - NET_RAW
   globalArguments:
     - "--api.insecure"
   logs:
