@@ -32,11 +32,11 @@ traefik:
   service:
     spec:
       externalTrafficPolicy: Local
-  ports:
-    websecure:
+#  ports:
+#    websecure:
 #      middlewares:
 #        - traefik-ipallowlist@kubernetescrd
-    web:
+#    web:
 #      redirections:
 #        entryPoint:
 #          scheme: https
