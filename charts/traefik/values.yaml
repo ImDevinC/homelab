@@ -36,11 +36,11 @@ traefik:
 #    websecure:
 #      middlewares:
 #        - traefik-ipallowlist@kubernetescrd
-    web:
-      redirections:
-        entryPoint:
-          scheme: https
-          to: websecure
+#    web:
+#      redirections:
+#        entryPoint:
+#          scheme: https
+#          to: websecure
 #  experimental:
 #    plugins:
 #      traefik-oidc-auth:
