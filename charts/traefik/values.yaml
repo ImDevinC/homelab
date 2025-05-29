@@ -11,23 +11,23 @@ traefik:
     kubernetesGateway:
       enabled: true
   gateway:
-    #annotations:
-    #  cert-manager.io/cluster-issuer: letsencrypt-traefik
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-traefik
     listeners:
       web:
         hostname: "*.int.imdevinc.com"
         namespacePolicy: All
         forwardedHeaders:
           insecure: true
-      #websecure:
-      #  hostname: "*.int.imdevinc.com"
-      #  port: 8443
-      #  namespacePolicy: All
-      #  protocol: HTTPS
-      #  certificateRefs:
-      #    - name: wildcard-tls
-      #  forwardedHeaders:
-      #    insecure: true
+      websecure:
+        hostname: "*.int.imdevinc.com"
+        port: 8443
+        namespacePolicy: All
+        protocol: HTTPS
+        certificateRefs:
+          - name: wildcard-tls
+        forwardedHeaders:
+          insecure: true
   service:
     spec:
       externalTrafficPolicy: Local
@@ -35,11 +35,11 @@ traefik:
 #    websecure:
 #      middlewares:
 #        - traefik-ipallowlist@kubernetescrd
-#    web:
-#      redirections:
-#        entryPoint:
-#          scheme: https
-#          to: websecure
+    web:
+      redirections:
+        entryPoint:
+          scheme: https
+          to: websecure
 #  experimental:
 #    plugins:
 #      traefik-oidc-auth:
