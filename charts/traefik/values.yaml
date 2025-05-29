@@ -1,18 +1,4 @@
 traefik:
-  deployment:
-    additionalContainers:
-      - name: netshoot
-        image: nicolaka/netshoot
-        command: ["/bin/bash"]
-        args: ["-c", "sleep infinity"]
-        securityContext:
-          runAsNonRoot: false
-          allowPrivilegeEscalation: false
-          runAsUser: 0
-          capabilities:
-            add:
-              - NET_ADMIN
-              - NET_RAW
   globalArguments:
     - "--api.insecure"
   logs:
@@ -23,8 +9,6 @@ traefik:
 #      enabled: true
 #      format: json
   providers:
-    kubernetesIngress:
-      enabled: false
     kubernetesGateway:
       enabled: true
   gateway:
