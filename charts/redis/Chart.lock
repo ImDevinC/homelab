@@ -1,9 +1,9 @@
 dependencies:
 - name: prometheus-redis-exporter
   repository: https://prometheus-community.github.io/helm-charts
-  version: 6.10.3
+  version: 6.11.0
 - name: redis
   repository: oci://registry-1.docker.io/bitnamicharts
   version: 21.1.7
-digest: sha256:ea74b16ebedc6f7eb2f920cb9a3f075eb8704abd5599339c3c6be4867657225f
-generated: "2025-05-27T12:28:19.050079183-07:00"
+digest: sha256:7380692f35c77ebdcf29a9e4d0c31f816c6308b4798efd880d87776fd30b1941
+generated: "2025-06-01T01:21:09.10512491Z"
