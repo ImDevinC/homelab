@@ -1,6 +1,6 @@
 dependencies:
 - name: pocket-id
   repository: https://anza-labs.github.io/charts
-  version: 0.5.0
-digest: sha256:06c31d18cc656b4d800e5b1be2c4c685e5b254aa95feb014a9ad50be387fd2e5
-generated: "2025-05-27T19:10:49.240519687Z"
+  version: 1.1.2
+digest: sha256:dafdd0645897c112404ad32bb68e58b01b5587e2f29ffaf6477cd075ed7138d6
+generated: "2025-06-01T01:21:26.241625126Z"
