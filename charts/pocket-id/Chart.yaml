@@ -3,7 +3,7 @@ name: pocket-id
 version: 0.1.0
 dependencies:
   - name: pocket-id
-    version: 0.5.0
+    version: 1.1.2
     repository: https://anza-labs.github.io/charts 
 
 
