@@ -7,12 +7,12 @@ dependencies:
   version: v5.18.0
 - name: prometheus-operator-crds
   repository: https://prometheus-community.github.io/helm-charts
-  version: 20.0.0
+  version: 20.0.1
 - name: kube-state-metrics
   repository: https://prometheus-community.github.io/helm-charts
   version: 5.33.2
 - name: prometheus-node-exporter
   repository: https://prometheus-community.github.io/helm-charts
   version: 4.46.1
-digest: sha256:386bab563d708602df8c3b3a149ef74903e184255c11c90329e6d11ded634ecc
-generated: "2025-05-27T12:30:42.425234371-07:00"
+digest: sha256:d76bd04bf50a25246d5b7c3eb2ecd750a0f33f63a9d4616057ece5cc16530e10
+generated: "2025-06-01T01:18:41.491640542Z"
