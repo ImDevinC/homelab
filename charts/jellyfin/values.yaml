@@ -1,0 +1,14 @@
+resources:
+  limits:
+    nvidia.com/gpu: 1
+persistence:
+  media:
+    enabled: false
+volumes:
+  - name: mediaserver
+    hostPath:
+      path: /mnt/media/media
+      type: ""
+volumeMounts:
+  - name: mediaserver
+    mountPath: /mnt/media

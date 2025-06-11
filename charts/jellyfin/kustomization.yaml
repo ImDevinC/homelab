@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+helmCharts:
+  - name: jellyfin
+    releaseName: jellyfin
+    namespace: mediaserver
+    repo: https://jellyfin.github.io/jellyfin-helm
+    version: 2.3.0
+    valuesFile: values.yaml
+namespace: mediaserver
+resources:
+  - httproute.yaml
