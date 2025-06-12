@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: postgis/postgis
+  repository: ghcr.io/joeyates/postgis_pgvector
   pullPolicy: IfNotPresent
-  tag: 17-3.5
+  tag: 17-3.5-v0.8.0
 
 imagePullSecrets: []
 nameOverride: ""
