@@ -1,0 +1,42 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: surfsense
+spec:
+  parentRefs:
+  - name: traefik-gateway
+    namespace: traefik
+  hostnames:
+  - surfsense.int.imdevinc.com
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: surfsense-ui
+      namespace: surfsense
+      port: 3000
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /backend/
+    backendRefs:
+    - name: surfsense-backend
+      namespace: surfsense
+      port: 8000
+    filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: traefik.io
+          kind: Middleware
+          name: strip-api-prefix
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-api-prefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /backend

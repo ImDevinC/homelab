@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: surfsense-backend
+  namespace: surfsense
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: surfsense-backend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: surfsense-backend
+    spec:
+      containers:
+      - name: surfsense-backend
+        image: ghcr.io/modsetter/surfsense_backend:v1.0.1
+        ports:
+          - containerPort: 8000
+            name: http
+            protocol: TCP
+        envFrom:
+          - secretRef:
+              name: database-creds
+        env:
+        - name: AUTH_TYPE
+          value: LOCAL
+        - name: PYTHONPATH
+          value: /app
+        - name: UVICORN_LOOP
+          value: asyncio
+        - name: UNSTRUCTURED_HAS_PATCH_LOOP
+          value: "1"
+        - name: NEXT_FRONTEND_URL
+          value: https://surfsense.int.imdevinc.com
+        - name: EMBEDDING_MODEL
+          value: mixedbread-ai/mxbai-embed-large-v1
+        - name: RERANKERS_MODEL_NAME
+          value: ms-marco-MiniLM-L-12-v2
+        - name: RERANKERS_MODEL_TYPE
+          value: flashrank
+        - name: UVICORN_FORWARDED_ALLOW_IPS
+          value: '*'
+        - name: UVICORN_PROXY_HEADERS
+          value: "true"
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: surfsense-backend
+  name: surfsense-backend
+  namespace: surfsense
+spec:
+  ports:
+  - name: http
+    port: 8000
+    protocol: TCP
+    targetPort: http
+  selector:
+    app.kubernetes.io/name: surfsense-backend
+  type: ClusterIP

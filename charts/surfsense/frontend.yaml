@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: surfsense-ui
+  namespace: surfsense
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: surfsense-ui
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: surfsense-ui
+    spec:
+      containers:
+      - name: surfsense-ui
+        image: ghcr.io/modsetter/surfsense_ui:v1.0.1
+        ports:
+          - containerPort: 3000
+            name: http
+            protocol: TCP
+        env:
+        - name: NEXT_PUBLIC_FASTAPI_BACKEND_URL
+          value: https://surfsense.int.imdevinc.com/backend
+        - name: NEXT_PUBLIC_FASTAPI_BACKEND_AUTH_TYPE
+          value: LOCAL
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: surfsense-ui
+  name: surfsense-ui
+  namespace: surfsense
+spec:
+  ports:
+  - name: http
+    port: 3000
+    protocol: TCP
+    targetPort: http
+  selector:
+    app.kubernetes.io/name: surfsense-ui
+  type: ClusterIP
