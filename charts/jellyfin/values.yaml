@@ -3,12 +3,14 @@ resources:
     nvidia.com/gpu: 1
 persistence:
   media:
-    enabled: false
-volumes:
-  - name: mediaserver
-    hostPath:
-      path: /mnt/media/media
-      type: ""
-volumeMounts:
-  - name: mediaserver
-    mountPath: /mnt/media
+    enabled: true
+    type: hostPath
+    hostPath: /mnt/media/media/misc
+#volumes:
+#  - name: mediaserver
+#    hostPath:
+#      path: /mnt/media/media
+#      type: ""
+#volumeMounts:
+#  - name: mediaserver
+#    mountPath: /mnt/media
