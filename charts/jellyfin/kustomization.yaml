@@ -10,3 +10,10 @@ helmCharts:
 namespace: mediaserver
 resources:
   - httproute.yaml
+patches:
+  - target:
+      version: v1
+      group: apps
+      kind: Deployment
+      name: jellyfin
+    path: remove-volumes.yaml
