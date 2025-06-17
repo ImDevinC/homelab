@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: surfsense-backend
-        image: ghcr.io/modsetter/surfsense_backend:v1.0.1
+        image: ghcr.io/imdevinc/surfsense-open-source-alternative-to-notebooklm-backend:latest
         ports:
           - containerPort: 8000
             name: http
