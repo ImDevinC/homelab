@@ -26,6 +26,13 @@ spec:
         - name: NEXT_PUBLIC_FASTAPI_BACKEND_AUTH_TYPE
           value: LOCAL
         imagePullPolicy: IfNotPresent
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 30
+          successThreshold: 1
+          tcpSocket:
+            port: 3000
+          timeoutSeconds: 1
       restartPolicy: Always
 ---
 apiVersion: v1
