@@ -36,7 +36,7 @@ spec:
           value: flashrank
         - name: FORWARDED_ALLOW_IPS
           value: '*'
-        - name: UVICORN_PROXY_HEADERS
+        - name: PROXY_HEADERS
           value: "true"
         imagePullPolicy: IfNotPresent
         resources:
