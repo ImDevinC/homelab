@@ -44,7 +44,7 @@ spec:
             nvidia.com/gpu: 1
         readinessProbe:
           failureThreshold: 3
-          periodSeconds: 10
+          periodSeconds: 30
           successThreshold: 1
           tcpSocket:
             port: 8000
