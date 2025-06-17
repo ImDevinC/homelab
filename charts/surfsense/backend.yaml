@@ -26,12 +26,6 @@ spec:
         env:
         - name: AUTH_TYPE
           value: LOCAL
-        - name: PYTHONPATH
-          value: /app
-        - name: UVICORN_LOOP
-          value: asyncio
-        - name: UNSTRUCTURED_HAS_PATCH_LOOP
-          value: "1"
         - name: NEXT_FRONTEND_URL
           value: https://surfsense.int.imdevinc.com
         - name: EMBEDDING_MODEL
