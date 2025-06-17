@@ -34,7 +34,7 @@ spec:
           value: ms-marco-MiniLM-L-12-v2
         - name: RERANKERS_MODEL_TYPE
           value: flashrank
-        - name: UVICORN_FORWARDED_ALLOW_IPS
+        - name: FORWARDED_ALLOW_IPS
           value: '*'
         - name: UVICORN_PROXY_HEADERS
           value: "true"
