@@ -13,6 +13,9 @@ spec:
     - path:
         type: PathPrefix
         value: /
+    - path:
+        type: PathPrefix
+        value: /auth/callback
     backendRefs:
     - name: surfsense-ui
       namespace: surfsense
