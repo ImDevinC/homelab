@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: surfsense-ui
-        image: ghcr.io/imdevinc/surfsense-open-source-alternative-to-notebooklm-ui:latest
+        image: ghcr.io/imdevinc/surfsense-ui:v1
         ports:
           - containerPort: 3000
             name: http

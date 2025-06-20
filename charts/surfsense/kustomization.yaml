@@ -7,3 +7,8 @@ resources:
   - backend.yaml
   - frontend.yaml
   - httproute.yaml
+images:
+  - name: ghcr.io/imdevinc/surfsense-backend
+    digest: sha256:10ad1a288f89e36d2cda5b8bdfdee6da2e6f9dd11fa99c7371b768924c3c3d44
+  - name: ghcr.io/imdevinc/surfsense-ui
+    digest: sha256:2b70560b29e988730c66135ed9be14bb5b99ad17aa5568eeae59e5a72edfe1f2
