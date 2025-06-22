@@ -9,6 +9,6 @@ resources:
   - httproute.yaml
 images:
   - name: ghcr.io/imdevinc/surfsense-backend
-    digest: sha256:10ad1a288f89e36d2cda5b8bdfdee6da2e6f9dd11fa99c7371b768924c3c3d44
+    digest: sha256:d63352b736aa5b2a3ebe6771ea5aa3f121af722a6795f6ec90a9dccb026cd752
   - name: ghcr.io/imdevinc/surfsense-ui
-    digest: sha256:2b70560b29e988730c66135ed9be14bb5b99ad17aa5568eeae59e5a72edfe1f2
+    digest: sha256:4f190bd8678ec2bb5dd9ff4378d83570939cc6844b220730928f9b5e34d84d55
