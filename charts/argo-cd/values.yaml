@@ -17,7 +17,6 @@ argo-cd:
         name: Pocket ID
         issuer: https://login.int.imdevinc.com
         clientID: 13d65c19-2d8c-4a32-9662-a152eae8973e
-        clientSecret: $authentik-creds:oidc.authentik.client_secret
         clientSecret: $oidc-creds:clientSecret
         requestedCopes: ["openid", "profile", "email", "groups"]
         requestedIDTokenClaims: {"groups": {"essential": true}}
