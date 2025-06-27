@@ -20,7 +20,7 @@ spec:
       client_id: "$__file{/etc/secrets/grafana_pocket_id_creds/client_id}"
       client_secret: "$__file{/etc/secrets/grafana_pocket_id_creds/client_secret}"
       auto_login: "true"
-      scopes: openid profile email
+      scopes: openid profile email groups
       api_url: https://login.int.imdevinc.com/api/oidc/userinfo
       auth_url: https://login.int.imdevinc.com/authorize
       token_url: https://login.int.imdevinc.com/api/oidc/token
