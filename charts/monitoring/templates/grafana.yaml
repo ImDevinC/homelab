@@ -17,8 +17,8 @@ spec:
       enabled: "true"
       name: Pocket ID
       allow_sign_up: "false"
-      client_id: "$__file{/etc/secrets/grafana_authentik_secret/client_id}"
-      client_secret: "$__file{/etc/secrets/grafana_authentik_secret/client_secret}"
+      client_id: "$__file{/etc/secrets/grafana_pocket_id_creds/client_id}"
+      client_secret: "$__file{/etc/secrets/grafana_pocket_id_creds/client_secret}"
       auto_login: "true"
       scopes: openid profile email
       api_url: https://login.int.imdevinc.com/api/oidc/userinfo
