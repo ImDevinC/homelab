@@ -10,6 +10,8 @@ spec:
     clientSecret: AgCxCya9o5fdpW1MtlrJ40/JsnbAgswM64c0QyN5cuZUyEqT48BsFKp1CKT2/TCp8skExFw/rUrwq59d3Quzy6tlIFejYyF3zOvZYM/NYFs1yMdoSh1I7j91/kuqMk+ZTZa5325r8cd5aGJM6VyL75i7di3AW1MY21vWreoNvGxEfzbLe2r0qEmiL8Bk/4NfbHYC8IHort7PXgGbgkK3tvl9XbuaG4rOLzg8JwccCsukmqVQhdlJoe2tLtTxFDt7aqptg6y5LsSm0WAFPe/b6FokE4jZNZI5T0KTVgxCZqnTezuaWa4nOsIDoCcDac/RhS+pbAAJeN3tKPzDg3B8ajKKlJkf0VwE7MxEdqiH742+KW0WcsmXlyvdKvQLY7rS5Kqur2y4wBN9PJRrZTJK5bnCpGDnOtcC+jdS1RqCUwYSvJc5+oWY0yHgjbOZ4AGIx2GPsOVPd+sNp85hIipWJIQ2JEIpSwI/iAbIBpEWTzhIhM/VQ2A5xPogerEU3vI8GIayB8JlBJP7IUIV6gk1EX2jQkvFIrrFQR3R4oCd+xTdyFDovy730qxRyyCaqC+NNqAsnYJEM1DwsJCSU/3GqoDLk4zxmGNEDzpTvudCI0jfzyyZqZPy2lCuqXtsjv3x2eLumgO3VU4O29MZ7nX0jifkz5JIgLRBdMamhmJeM5YsjwPQYZgJrXDryJ5+Aal85B2nqvlILxOigemixNfeaKtE/zzFB8YfyeZLUxQ59J3FTw==
   template:
     metadata:
+      labels:
+        app.kubernetes.io/part-of: argocd
       creationTimestamp: null
       name: pocket-id-creds
       namespace: argo-cd
