@@ -15,15 +15,15 @@ spec:
       root_url: http://grafana.int.imdevinc.com
     auth.generic_oauth:
       enabled: "true"
-      name: Authentik SSO
-      allow_sign_up: "true"
+      name: Pocket ID
+      allow_sign_up: "false"
       client_id: "$__file{/etc/secrets/grafana_authentik_secret/client_id}"
       client_secret: "$__file{/etc/secrets/grafana_authentik_secret/client_secret}"
       auto_login: "true"
       scopes: openid profile email
-      api_url: http://authentik.int.imdevinc.com/application/o/userinfo/
-      auth_url: http://authentik.int.imdevinc.com/application/o/authorize/
-      token_url: http://authentik.int.imdevinc.com/application/o/token/
+      api_url: https://login.int.imdevinc.com/api/oidc/userinfo
+      auth_url: https://login.int.imdevinc.com/authorize
+      token_url: https://login.int.imdevinc.com/api/oidc/token
       role_attribute_path: "contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'"
   deployment:
     spec:
