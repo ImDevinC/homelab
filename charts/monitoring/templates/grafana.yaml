@@ -35,9 +35,9 @@ spec:
             - name: provisioning-config
               configMap:
                 name: provisioning-config
-            - name: grafana-authentik-creds
+            - name: grafana-pocket-id-creds
               secret:
-                secretName: grafana-authentik-creds
+                secretName: grafana-pocket-id-creds
           containers:
             - name: grafana
               volumeMounts:
@@ -45,20 +45,20 @@ spec:
                   name: provisioning-config
                 - mountPath: /var/lib/grafana/dashboards
                   name: dashboards
-                - mountPath: /etc/secrets/grafana_authentik_secret
-                  name: grafana-authentik-creds
+                - mountPath: /etc/secrets/grafana_pocket_id_creds
+                  name: grafana-pocket-id-creds
                   readOnly: true
               env:
                 - name: GF_SECURITY_ADMIN_USER
                   valueFrom:
                     secretKeyRef:
                       key: admin_username
-                      name: grafana-authentik-creds
+                      name: grafana-pocket-id-creds
                 - name: GF_SECURITY_ADMIN_PASSWORD
                   valueFrom:
                     secretKeyRef:
                       key: admin_password
-                      name: grafana-authentik-creds
+                      name: grafana-pocket-id-creds
             - image: ghcr.io/kiwigrid/k8s-sidecar:1.24.5
               name: k8s-sidecar
               env:
