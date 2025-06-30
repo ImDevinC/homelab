@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: eb2ab
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eb2ab
+  labels:
+    app: eb2ab
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: eb2ab
+  template:
+    metadata:
+      labels:
+        app: eb2ab
+    spec:
+      containers:
+        - image: athomasson2/ebook2audiobook
+          imagePullPolicy: IfNotPresent
+          name: eb2ab
+          ports:
+            - containerPort: 7860
+              name: http
+              protocol: TCP
+          resources:
+            limits:
+              nvidia.com/gpu: "1"
+            requests:
+              nvidia.com/gpu: "1"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eb2ab
+  labels:
+    app: eb2ab
+spec:
+  selector:
+    app: eb2ab
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 7860
+      protocol: TCP
+      targetPort: 7860
