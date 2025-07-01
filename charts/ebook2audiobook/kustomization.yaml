@@ -6,4 +6,4 @@ resources:
   - httproute.yaml
 images:
   - name: athomasson2/ebook2audiobook
-    newTag: v25.6.29
+    newTag: v25.6.30
