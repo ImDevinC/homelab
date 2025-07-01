@@ -9,5 +9,5 @@ dependencies:
     version: 6.12.0
     repository: https://prometheus-community.github.io/helm-charts
   - name: redis
-    version: 21.1.11
+    version: 21.2.6
     repository: oci://registry-1.docker.io/bitnamicharts
