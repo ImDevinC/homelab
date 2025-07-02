@@ -14,6 +14,7 @@ spec:
             - name: wallabag-tagger
               image: ghcr.io/imdevinc/wallabag-tagger:0.1.0
               imagePullPolicy: Always
+              args: ["tags"]
               envFrom:
                 - secretRef:
                     name: wallabag-tagger-creds
