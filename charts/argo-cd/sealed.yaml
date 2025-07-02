@@ -1,0 +1,16 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: pocket-id-creds
+  namespace: argo-cd
+spec:
+  encryptedData:
+    clientSecret: AgBnicvpYDSKjB45ugEWtnpcuOaXFbUjnf2M+LuN6xpk0Fwoe/5jTjL3Jm+icVXQHy48ek8LrsOXPfZ01eKxP59kryXhGdSuNw0fmX6ozGhYeK1g/KBFUA4O5/6k0tuf0cblxAMzEnw8w5mF3OTqvycq2OvNm8LxkhCPLmDcxu5d498C7Vi46g9Z3aWe/0Uyx2FngLUuVW+2j/5Yf6Eccnnajh111khjuRLdEbN2GkKzXmRwkDeWYNfZiOdMZPkQ9rElOt7FUIJbIKbjlG/LHEgfiCbyDYhcIxchOQYZjEA01M9/ZZk7Rs+yNXloB5v5jWkyIOhXs1pNK/EFKv40wtSEOr2YTYex2vhGAHj6ruRKpauBYI9zOFL38isu+gvd9v3yDUP4RlI/r5R2decl4gwSkzaa0pKR/ZH6DlyJFQzlkxFfJD2owdxJSMxOY9oatx4ustUsFyQ18k5Tg4b567WopphIxO3dsbr3zG8NPO6ef1wrtxkZyXEtIuWw7EftIcH1msHZ+ZBAWLHYWvdUPifJCL680OZjw21IT8i2MoZQjnC3lwAUBh37cWfExxDEhHLrPCPcRuBGeoMrqM4OQe+/pyIXfrTON/NIKGoCx9mNVTYujmLekqDi0esSSHNWnIt4hLdtp4dFKbTa0F0PHPtgX22zY5qKEJC2VNVIBAY5fyA5mqbBrTQlr5nzvNCg3q9Gd2nHKBQJWKtRsLRanXsOSNIyJ6o6ToizuyM/URB8jw==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: pocket-id-creds
+      labels:
+        app.kubernetes.io/part-of: argocd

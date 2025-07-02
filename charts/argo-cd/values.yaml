@@ -1,38 +1,37 @@
-argo-cd:
-  global:
-    domain: argocd.int.imdevinc.com
-  dex:
-    enabled: false
-  configs:
-    rbac:
-      create: true
-      policy.csv: |
-        g, ArgoCD Admins, role:admin
-        g, ArgoCD Viewers, role:readonly
-    cm:
-      kustomize.buildOptions: --enable-helm
-      url: https://argocd.int.imdevinc.com
-      create: true
-      oidc.config: |
-        name: Pocket ID
-        issuer: https://login.int.imdevinc.com
-        clientID: 13d65c19-2d8c-4a32-9662-a152eae8973e
-        clientSecret: $pocket-id-creds:clientSecret
-        requestedCopes: ["openid", "profile", "email", "groups"]
-        requestedIDTokenClaims: {"groups": {"essential": true}}
-  server:
-    extraArgs:
-      - --insecure
-    metrics:
+global:
+  domain: argocd.int.imdevinc.com
+dex:
+  enabled: false
+configs:
+  rbac:
+    create: true
+    policy.csv: |
+      g, ArgoCD Admins, role:admin
+      g, ArgoCD Viewers, role:readonly
+  cm:
+    kustomize.buildOptions: --enable-helm
+    url: https://argocd.int.imdevinc.com
+    create: true
+    oidc.config: |
+      name: Pocket ID
+      issuer: https://login.int.imdevinc.com
+      clientID: 0560d20b-7844-4efd-86cd-3e4109e82844
+      clientSecret: $pocket-id-creds:clientSecret
+      requestedCopes: ["openid", "profile", "email", "groups"]
+      requestedIDTokenClaims: {"groups": {"essential": true}}
+server:
+  extraArgs:
+    - --insecure
+  metrics:
+    enabled: true
+    serviceMonitor:
       enabled: true
-      serviceMonitor:
-        enabled: true
-    secret:
-      create: false
-  repoServer:
-    env:
-      - name: ARGOCD_GPG_ENABLED
-        value: 'false'
-    containerSecurityContext:
-      seccompProfile:
-        type: Unconfined
+  secret:
+    create: false
+repoServer:
+  env:
+    - name: ARGOCD_GPG_ENABLED
+      value: 'false'
+  containerSecurityContext:
+    seccompProfile:
+      type: Unconfined
