@@ -12,7 +12,7 @@ spec:
     auth:
       disable_login_form: "false"
     server:
-      root_url: http://grafana.int.imdevinc.com
+      root_url: https://grafana.int.imdevinc.com
     auth.generic_oauth:
       enabled: "true"
       name: Pocket ID
