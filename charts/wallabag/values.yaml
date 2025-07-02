@@ -1,20 +1,19 @@
-wallabag:
-  domainName: https://wallabag.imdevinc.com
-  userRegistration: false
+domainName: https://wallabag.imdevinc.com
+userRegistration: false
 
-  ingress:
-    enabled: false
+ingress:
+  enabled: false
 
-  storage:
-    data:
-      customVolume: true
-      subPath: wallabag/data
-      volumes:
-        hostPath:
-          path: /mnt/media
-    images:
-      customVolume: true
-      subPath: wallabag/images
-      volumes:
-        hostPath:
-          path: /mnt/media
+storage:
+  data:
+    customVolume: true
+    subPath: wallabag/data
+    volumes:
+      hostPath:
+        path: /mnt/media
+  images:
+    customVolume: true
+    subPath: wallabag/images
+    volumes:
+      hostPath:
+        path: /mnt/media

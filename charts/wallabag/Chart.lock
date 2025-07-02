@@ -1,6 +1,0 @@
-dependencies:
-- name: wallabag
-  repository: https://imdevinc.github.io/wallabag-helm
-  version: 0.1.1
-digest: sha256:3b70663165b781850085ca6a3f00789957f55fc2d04ac240c4846059ca6dade1
-generated: "2023-01-31T12:05:36.001735887-08:00"

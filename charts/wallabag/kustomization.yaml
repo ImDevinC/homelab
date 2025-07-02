@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+helmCharts:
+  - name: wallabag
+    releaseName: wallabag
+    namespace: wallabag
+    repo: https://imdevinc.github.io/wallabag-helm
+    version: 0.1.1
+    valuesFile: values.yaml
+namespace: wallabag
+resources:
+  - tagger.yaml
+  - sealed.yaml
+images:
+  - name: wallabag/wallabag
+    newTag: 2.6.13
+  - name: ghcr.io/imdevinc/wallabag-tagger
+    newTag: 0.1.0

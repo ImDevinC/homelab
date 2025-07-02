@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: wallabag-tagger
+spec:
+  schedule: "0 1 * * *" # Every day at 1am
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: wallabag-tagger
+              image: ghcr.io/imdevinc/wallabag-tagger:0.1.0
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: wallabag-tagger-creds
