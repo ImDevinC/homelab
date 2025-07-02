@@ -13,4 +13,5 @@ spec:
       creationTimestamp: null
       name: pocket-id-creds
       namespace: argo-cd
-      app.kubernetes.io/part-of: argocd
+      labels:
+        app.kubernetes.io/part-of: argocd
