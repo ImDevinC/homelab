@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+helmCharts:
+  - name: ollama
+    releaseName: ollama
+    namespace: ollama
+    repo: https://otwld.github.io/ollama-helm/
+    version: 1.22.0
+    valuesFile: values.yaml
+namespace: ollama
+resources:
+  - pvc.yaml
+  - httproute.yaml
