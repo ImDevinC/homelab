@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+helmCharts:
+  - name: pocket-id
+    releaseName: pocket-id
+    namespace: pocket-id
+    repo: https://anza-labs.github.io/charts
+    version: 1.3.1
+    valuesFile: values.yaml
+namespace: pocket-id
+resources:
+  - httproute.yaml
