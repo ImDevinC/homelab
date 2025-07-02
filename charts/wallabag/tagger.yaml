@@ -18,3 +18,14 @@ spec:
               envFrom:
                 - secretRef:
                     name: wallabag-tagger-creds
+                - configMapRef:
+                    name: wallabag-tagger-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wallabag-tagger-config
+data:
+  WALLABAG_URL: https://wallabag.imdevinc.com
+  OLLAMA_URL: https://ollama.int.imdevinc.com
+  OLLAMA_MODEL: granite3.3
