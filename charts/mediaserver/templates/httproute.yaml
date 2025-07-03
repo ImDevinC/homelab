@@ -206,5 +206,5 @@ spec:
         extensionRef:
           group: traefik.io
           kind: Middleware
-          name: mediaserver-credentials
+          name: mylarr-oidc
 ---

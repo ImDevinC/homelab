@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: mediaserver-oidc
+  name: mylarr-oidc
   namespace: mediaserver
 spec:
   plugin:
@@ -9,22 +9,22 @@ spec:
       Secret: PMYZT3D2J4da20RsSIMMZaArKI6d3pxt
       Provider:
         Url: https://login.int.imdevinc.com
-        ClientId: 26ca0aad-dcc0-4bfa-8454-eccf2da539ba
-        ClientSecret: urn:k8s:secret:oidc-creds:providerClientSecret
+        ClientId: 6c52549b-11a5-45e7-b346-48c36e7c674b
+        ClientSecret: urn:k8s:secret:mylarr-pocket-id-creds:client-secret
         TokenValidation: IdToken
-      Scopes: [openid, profile, email]
+      Scopes: [openid, profile, email, groups]
 ---
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
   creationTimestamp: null
-  name: oidc-creds
+  name: mylarr-pocket-id-creds
   namespace: mediaserver
 spec:
   encryptedData:
-    providerClientSecret: AgCkd4z9X7h9tEKCKQeUQkpgpHQDqUBM+JRP0KXK4INecpJ/i9XQVkjSpsvvAlfHnoWbvxLPH/4L8TrkZLmYvbt8N2NTaKQSUIgtywT6/PX9zN8VmRNMLX5oPvrYgDuUgj0LfbU0/7PF/7+UM6vlyQdmaYv4izotW+bnN1SVIXIZ+gD5gRjoPVKDYDwTK9WfDjNf126GpLObbtXw48QFpZPCgW7Ox4V3BuNmAxT8VOOXypwpMO3Ygg276ifFN2peOJEXYqGR7e+z2Hz7NutwTOPnTncCoKbIE2bS9cTnUeoN9S9rg0g5qUpVscg+CTfGs4z8uUNDVqFP2bBgbNdWi190Ywn13jCyseBMv4Yo1GRtTEkSxMb3zNn9RLqs4jdIDIe75hMGP8Yc1qHzlowL4Ma3en+SxJZSDXXlkRajzgvDuezjgd/llsREiq1mio7LKuBOdn1tcrZSRtSH1vqxAQ8v54YS675UVuXGg6Tg84KNU/77Jacof1EoWkiV0zEoIFgAYhKhqfu5E01sE03CyK3epTHz8+iWGyR9uvkxOhFxICA9MGhOYKZFLpCcJAfs0XBXUmyeTHwbWikaTEthDQRnA4utRIzqZvhqxootsu0OTU/EiKnpnKhF3pi0PbF8JlfdD1tUNnPRHVRRm5rWVkTWRbWLw0cyilrgZybhLi1N5twH+dmiZ0wRl0YUrZ0OWQ9nOof7tgjvKNFGvYj4/sSSPL0G8xuh1qPBSdnuMZ3how==
+    client-secret: AgAETBOwM1tr3vfkl6BaXjQ24BoAfr0sGlXJ+E4GTpq7kTEsUagEU+l+HqigoyCWuEPyn5WGjakhMsTpNp7JhIWSwlMpcoyZAei0/m9na7jQExpED78RyOTXUgvV1dVdrnxodgNa3RUkKpMPyegtuugkmmtspEAErx1JoyvhLotA74Adz8TSAWtveFUK5w0Oh6dKyK7mQw1J2VNGXu/GoRA38pkboYjZOotGwT00ltTMzENocqrjOo2zJco+tPfXNMPGHRo2mAS0KPKoeYdIFy5l+3tVSxljMGV/KaoS1HXfUHFSq5Ru04jIRCI9c61EvLHulvDy/FJSZL1EvDC4qlbscZhwsapz0jJpfqWep6BU86fx3aBucBlW97V9Js3PMWHqWX34Vw+J+4xlJtb8CT23LwYnmEOUJSlplsBjN04rBFHWshu1CRv2XG4M8HLKapaYwZsaTlIWvhrK1LprG3e6iciMpD09hXhDIQqS1eo0AhMCPtdozRNl/WamiA9yyqIJvHmIil+pf+qeJVLwbI7W7JhTLjSoG6gU4K5JgVB4QlpfPGSrJBW1CMsJZfEoJdOyuCZeDaMaN9K54ciVTLBJETzxVyMwLKBDDe/JcgOm1D9as2+fZDR2XV/acDZv/vNC7QT/khGBRPIrg9Z2sZi2ZQODV7nouA/1CY43yMIwmx/8inEqmIYtHn9kmsheIBkH138eFyE83M0bP+sh9kJBZd9VWSXdetPQYQPR6JE0aQ==
   template:
     metadata:
       creationTimestamp: null
-      name: oidc-creds
+      name: mylarr-pocket-id-creds
       namespace: mediaserver
