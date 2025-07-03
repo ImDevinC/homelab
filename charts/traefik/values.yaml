@@ -1,47 +1,46 @@
-traefik:
-  globalArguments:
-    - "--api.insecure"
-  logs:
-    general:
-      format: json
-      level: INFO
-  providers:
-    kubernetesIngress:
-      enabled: false
-    kubernetesGateway:
-      enabled: true
-  gateway:
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-traefik
-    listeners:
-      web:
-        hostname: "*.int.imdevinc.com"
-        namespacePolicy: All
-        forwardedHeaders:
-          insecure: true
-      websecure:
-        hostname: "*.int.imdevinc.com"
-        port: 8443
-        namespacePolicy: All
-        protocol: HTTPS
-        certificateRefs:
-          - name: wildcard-tls
-        forwardedHeaders:
-          insecure: true
-  service:
-    spec:
-      externalTrafficPolicy: Local
-#  ports:
-#    websecure:
-#      middlewares:
-#        - traefik-ipallowlist@kubernetescrd
+globalArguments:
+  - "--api.insecure"
+logs:
+  general:
+    format: json
+    level: INFO
+providers:
+  kubernetesIngress:
+    enabled: false
+  kubernetesGateway:
+    enabled: true
+gateway:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-traefik
+  listeners:
     web:
-      redirections:
-        entryPoint:
-          scheme: https
-          to: websecure
-  experimental:
-    plugins:
-      traefik-oidc-auth:
-        moduleName: "github.com/sevensolutions/traefik-oidc-auth"
-        version: "v0.11.0"
+      hostname: "*.int.imdevinc.com"
+      namespacePolicy: All
+      forwardedHeaders:
+        insecure: true
+    websecure:
+      hostname: "*.int.imdevinc.com"
+      port: 8443
+      namespacePolicy: All
+      protocol: HTTPS
+      certificateRefs:
+        - name: wildcard-tls
+      forwardedHeaders:
+        insecure: true
+service:
+  spec:
+    externalTrafficPolicy: Local
+ports:
+  websecure:
+    middlewares:
+      - traefik-ipallowlist@kubernetescrd
+  web:
+    redirections:
+      entryPoint:
+        scheme: https
+        to: websecure
+experimental:
+  plugins:
+    traefik-oidc-auth:
+      moduleName: "github.com/sevensolutions/traefik-oidc-auth"
+      version: "v0.11.0"
