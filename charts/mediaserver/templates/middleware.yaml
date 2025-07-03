@@ -28,3 +28,34 @@ spec:
       creationTimestamp: null
       name: mylarr-pocket-id-creds
       namespace: mediaserver
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: prowlarr-oidc
+  namespace: mediaserver
+spec:
+  plugin:
+    traefik-oidc-auth:
+      Secret: PMYZT3D2J4da20RsSIMMZaArKI6d3pxt
+      Provider:
+        Url: https://login.int.imdevinc.com
+        ClientId: 596dea44-1952-4906-a135-37a9891025a6
+        ClientSecret: urn:k8s:secret:prowlarr-pocket-id-creds:client-secret
+        TokenValidation: IdToken
+      Scopes: [openid, profile, email, groups]
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: prowlarr-pocket-id-creds
+  namespace: mediaserver
+spec:
+  encryptedData:
+    client-secret: AgCzsbIZMA/d9r6yupmtfD3W4WMI7U/4ZaOtP8u6aj2D24sffymDW8Kcmbn5UPKEUINNEhMrKT4QTtQk4GB8QiEEW/BHrBHbQ9qBlGButggNFyqrYEm1iPdAuMp1Mc8CmlG69RR8ROMpbaf5UqKABYCZChkRPKOjYPOWHGGICI39oYcQisdw0FoDnQnZoRN4R+rwnJQCZu3+6HJVBVq3F+C+d1FjJEy77t4ipbeQY1LvZ3UQk3rRX8EY/361laYgh1UnQn0OP+3Jokl8B4KpIgv47zwJCgcng63UUfRV3tESC9FuqnfjnJKY+JsxewQbrXPlYA/R9o3gh+N8ZnpcHw2cAA41jQu+GX9tUNoURmB+aYX9P9qffLEQ4tagXMdNGxqM+6oPndh7aWudpdVhsnFS8x/nwOMJVfn351oOHs5RnnGnYBfm/mts9fiijnijJW4s0lyKueuiJ4SrIsp/Os9nm1ryGMB2W9yvJXhe0bJd9kUXKwIP64KpazfUscjBdLS9jLIRZIbYwlOw28l9IqvPWGB1N0jKxDm8tCu34neUI4tYlE+i82fqmCkD+pite6+r8nAAqD0M+9wl+zhlIVZgoIOxvsc/HgHpjeb0chEvWsjIrvVlQf9HMwHRP5FkDA9bTFhYcvM9gYhd3so2LAWsGfrN7JJxWpbRYKFn2IbVldr9pn05rBfEAkExD27sr+n7JQ4XdPt6Fu4FIsWCDHniZIe4/tOkm9VGUKE5ItHS8Q==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: prowlarr-pocket-id-creds
+      namespace: mediaserver
