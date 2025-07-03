@@ -36,7 +36,7 @@ spec:
       Secret: PMYZT3D2J4da20RsSIMMZaArKI6d3pxt
       Provider:
         Url: https://login.int.imdevinc.com
-        ClientId: urn:k8s:secret:prowlarr-pocket-id-creds:client-id
-        ClientSecret: urn:k8s:secret:prowlarr-pocket-id-creds:client-secret
+        ClientId: urn:k8s:secret:mediaserver-oidc:client-id
+        ClientSecret: urn:k8s:secret:mediaserver-oidc:client-secret
         TokenValidation: IdToken
       Scopes: [openid, profile, email, groups]
