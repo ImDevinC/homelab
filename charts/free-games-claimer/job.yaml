@@ -6,6 +6,8 @@ metadata:
 spec:
   schedule: "0 12 * * *" # Every day at 1am
   concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:

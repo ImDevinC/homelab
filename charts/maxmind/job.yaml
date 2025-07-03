@@ -5,6 +5,8 @@ metadata:
   namespace: maxmind
 spec:
   schedule: "0 1 * * *" # Every day at 1am
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:

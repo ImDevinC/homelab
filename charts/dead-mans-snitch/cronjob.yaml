@@ -4,6 +4,8 @@ metadata:
   name: dead-mans-snitch
 spec:
   schedule: "*/30 * * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
