@@ -207,4 +207,9 @@ spec:
           group: traefik.io
           kind: Middleware
           name: mylarr-oidc
+      - type: ExtensionRef
+        extensionRef:
+          group: traefik.io
+          kind: Middleware
+          name: mylarr-basic-auth
 ---
