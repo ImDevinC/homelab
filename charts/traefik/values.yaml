@@ -34,6 +34,7 @@ ports:
   websecure:
     middlewares:
       - traefik-ipallowlist@kubernetescrd
+      - traefik-mediaserver-oidc@kubernetescrd
   web:
     redirections:
       entryPoint:

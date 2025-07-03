@@ -1,0 +1,42 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: ipallowlist
+  namespace: traefik
+spec:
+  ipAllowList:
+    sourceRange:
+      - 192.168.1.0/24
+      - 10.0.0.0/8
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: mediaserver-oidc
+  namespace: traefik
+spec:
+  encryptedData:
+    client-id: AgC9p5owZP0khF+3oR7IdyRn2B3NQbpez0bahWToyqNyavKRSykFFKcK5kuHXDuZjZgcjV+UjaJD9Ta9Amtifb1RvFU6Np7HEKeA5tLGWIIP8Q/HGIe5lcPRzsV7Pe6U5Nw4/pu26ShWX/V+XzGml3T5IyY//7PqjmUS7vmAZh3/eB+jOwOkzGdut4VmP2y1cyOVLGfivlzKWxwrz6gEQn9ZqtRTDaOHqP8KzZZmS5i0N1PTYlqRKicBxPTVCFKBSJepwy8b/9Xviyk/0Vtr5eF5aIrHvHbbHHGG6rGwBwbIe9G1qmVapfE41kwlppY/hPN7cGOT15Fss+aDIjxaA6gCm5zSfvAHLFu2LB0K6Gvf/fbt6n2XKg9UyMQvqj4xd9mQn/nJXrTB2dIP08dCCRLuVZ38c4j/kqtVye1NH79UnSrOzZ9M26sabT9pQ55O2iis1PqxLm4gQO7SyLdHHn4Ka7y1S9b+k8I0BWa5yvzmvOkiEh5iPamhs4+DIFobLoKYp6w4VSHszT5HO9dbOPzy4ntvdTMQJNUF/Y5kciAxPBdsuoLO+pjDR/k3xsp04PPZWZWkTzBb5p1P+hnBT4HVc/jLP3Q1sx4UCJcH0Tp2tCpTXKKRWAs0UxWnIzRmG5XQUaJ7NBzrTZDIBsqi9lBrXLhqDbodeg40m/4GgekycKL58qkR2rtLXZFWShRZ8pSm8y9urNBdFaP+JbS1GQAJBkRS4ydvdqGw4eJsecuHqYbig3A=
+    client-secret: AgBBpAxFYXZxZjzvvtKkZzf0MeU2Eqn22y1hLTbMezlOxV4IC49kRiT1lXYq7VAEnSnXjK41IFu2tZecdJiC2AnCCntDR/Zz9CN4TK/3TMgl1nn70KufZDJj4fCUkQjwT9AsFR9TuirUDZ8bJbQlvIQfOYfBoBJzY+IhQXupyG2i5YVseD0qmyr8MiBgOdc1MxbN1u/j0KvM+cRhHu9SNV8h8GNRf4zxPoTSGZ0DQ0MvEutkrNhxB321ixraaySDUKiLpBMbv4E/xc0kNAirj7dEQ/0aKD/PObcvii4GRmHtPxFfzfJQBcJDVjaOmR5DRO7cV87z4EQHytH458h5ACb/POo9Oq6CJxQuQlVPNBj8ZjcS4ltldh9OCgtvhJzl0zL3QQuz1EWoInFnTl1WeGAU8o7k/absC2DW9AG4Gj8CJDWxOdL1Vp/aS1DhZeLR2Fj/EDkAssWCE5+++xzTJs67kLRrKq0BgUzxIWlfe1cO9xJtCO4mZkD02aF1zBJ3b/eSx76ct6jgfWyr/uRu1W/0SPxA0eHjkc8xylpkryliV4OrsshQe3dvX2FBc55LNh7J/mp/v3iJGY1FsBSV1ynYTNAw/AWPgEENux9o+JY9NwiYNxCD/TZkrO9kXTIMcjGKit1rhJYsnHpA6jCyYqWgOeq/8C7uXDgD/tXiQBBxI0VKKS1g5XsrIX9t4/tWd5yOa/LxJgsswwqtZkqmZHrFd+ZUW0mjcqAJfjSQ3sZbnw==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: mediaserver-oidc
+      namespace: traefik
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: mediaserver-oidc
+  namespace: traefik
+spec:
+  plugin:
+    traefik-oidc-auth:
+      Secret: PMYZT3D2J4da20RsSIMMZaArKI6d3pxt
+      Provider:
+        Url: https://login.int.imdevinc.com
+        ClientId: urn:k8s:secret:prowlarr-pocket-id-creds:client-id
+        ClientSecret: urn:k8s:secret:prowlarr-pocket-id-creds:client-secret
+        TokenValidation: IdToken
+      Scopes: [openid, profile, email, groups]

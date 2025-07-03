@@ -9,4 +9,4 @@ helmCharts:
     valuesFile: values.yaml
 namespace: traefik
 resources:
-  - config.yaml
+  - middleware.yaml
