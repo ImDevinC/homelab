@@ -5,10 +5,10 @@ metadata:
 spec:
   schedule: "0 1 * * *" # Every day at 1am
   concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
-      successfulJobsHistoryLimit: 1
-      failedJobsHistoryLimit: 1
       template:
         spec:
           restartPolicy: Never
