@@ -11,6 +11,8 @@ spec:
     spec:
       template:
         spec:
+          backoffLimit: 0
+          ttlSecondsAfterFinished: 0
           restartPolicy: Never
           containers:
             - name: wallabag-tagger
