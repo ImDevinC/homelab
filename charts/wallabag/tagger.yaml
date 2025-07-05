@@ -9,10 +9,10 @@ spec:
   failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
+      backoffLimit: 0
+      ttlSecondsAfterFinished: 0
       template:
         spec:
-          backoffLimit: 0
-          ttlSecondsAfterFinished: 0
           restartPolicy: Never
           containers:
             - name: wallabag-tagger
