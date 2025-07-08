@@ -1,3 +1,4 @@
+replicaCount: 0
 domainName: https://wallabag.imdevinc.com
 userRegistration: false
 
