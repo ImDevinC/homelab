@@ -37,6 +37,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: free-games-claimer
   namespace: free-games-claimer
+  labels:
+    backup: "true"
 spec:
   accessModes:
     - ReadWriteOnce
