@@ -44,7 +44,7 @@ spec:
           value: openai/tts-1
         - name: STT_SERVICE
           value: openai/whisper-1
-        - NAME: ETL_SERVICE
+        - name: ETL_SERVICE
           value: UNSTRUCTURED
         imagePullPolicy: IfNotPresent
         resources:
