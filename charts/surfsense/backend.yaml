@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: surfsense-backend
-        image: ghcr.io/imdevinc/surfsense-backend:v1
+        image: ghcr.io/modsetter/surfsense_backend:latest
         ports:
           - containerPort: 8000
             name: http
@@ -23,6 +23,8 @@ spec:
         envFrom:
           - secretRef:
               name: database-creds
+          - secretRef:
+              name: surfsense-secrets
         env:
         - name: AUTH_TYPE
           value: LOCAL
@@ -38,6 +40,12 @@ spec:
           value: '*'
         - name: PROXY_HEADERS
           value: "true"
+        - name: TTS_SERVICE
+          value: openai/tts-1
+        - name: STT_SERVICE
+          value: openai/whisper-1
+        - NAME: ETL_SERVICE
+          value: UNSTRUCTURED
         imagePullPolicy: IfNotPresent
         resources:
           limits:

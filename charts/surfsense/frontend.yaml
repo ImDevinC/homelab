@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: surfsense-ui
-        image: ghcr.io/imdevinc/surfsense-ui:v1
+        image: ghcr.io/modsetter/surfsense_ui:latest
         ports:
           - containerPort: 3000
             name: http
