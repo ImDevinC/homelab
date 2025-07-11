@@ -1,11 +1,11 @@
 apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
+kind: PodMonitor
 metadata:
   labels:
     app: cloudflared
   name: cloudflared
 spec:
-  endpoints:
+  podMetricsEndpoints:
   - interval: 5m
     path: /metrics
     port: metrics
