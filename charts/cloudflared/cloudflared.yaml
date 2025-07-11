@@ -25,18 +25,14 @@ spec:
         env:
           - name: TUNNEL_METRICS
             value: 0.0.0.0:9100
-          - name: TUNNEL_LOGLEVEL
-            value: debug
         ports:
           - containerPort: 9100
             protocol: TCP
             name: metrics
         livenessProbe:
           httpGet:
-            # Cloudflared has a /ready endpoint which returns 200 if and only if
-            # it has an active connection to the edge.
             path: /ready
-            port: 2000
+            port: metrics
           failureThreshold: 1
           initialDelaySeconds: 10
           periodSeconds: 10
