@@ -1,7 +1,7 @@
 opentelemetry-operator:
   manager:
     featureGatesMap:
-      operator.targetallocator.mtls: true
+      operator.targetallocator.mtls: false
     collectorImage:
       repository: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib
 prometheus-operator-crds:
