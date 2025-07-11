@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: legoai
+  labels:
+    app: legoai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: legoai
+  template:
+    metadata:
+      labels:
+        app: legoai
+    spec:
+      containers:
+        - image: ghcr.io/imdevinc/lego-ai
+          imagePullPolicy: IfNotPresent
+          name: legoai
+          env:
+            - name: LEGOAI_IMAGE_MODEL
+              value: dall-e-3
+            - name: LEGOAI_CHAT_MODEL
+              value: gpt-4o
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: legoai
+  labels:
+    app: legoai
+spec:
+  selector:
+    app: legoai
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080

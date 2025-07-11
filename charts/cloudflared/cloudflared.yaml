@@ -103,5 +103,7 @@ data:
       service: http://wallabag.wallabag:80
     - hostname: dnd-proxy.imdevinc.com
       service: http://dnd-proxy.dnd-proxy:8080
+    - hostname: lego.imdevinc.com
+      service: http://legoai.legoai:8080
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
