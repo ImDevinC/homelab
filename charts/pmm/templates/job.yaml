@@ -170,4 +170,5 @@ data:
       availability: announced
       radarr_path: None
       plex_path: None
-    
+    playlist_files:
+      - repo: /main/config/playlists.yaml
