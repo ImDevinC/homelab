@@ -94,14 +94,4 @@ data:
       radarr_path: None
       plex_path: None
     playlist_files:
-      - default: playlist
-        template_variables:
-          use_arrow: false
-          use_dcau: false
-          use_dragonball: true
-          use_mcu: true
-          use_pokemon: false
-          use_startrek: false
-          use_starwars: true
-          use_clonewars: false
-          use_xmen: false
+      - repo: /main/config/playlist.yaml
