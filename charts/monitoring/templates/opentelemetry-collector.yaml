@@ -57,7 +57,7 @@ spec:
         metrics:
           receivers: [prometheus]
           processors: [attributes/cluster,batch]
-          exporters: [debug,prometheusremotewrite]
+          exporters: [prometheusremotewrite]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
