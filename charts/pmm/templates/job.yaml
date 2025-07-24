@@ -115,8 +115,6 @@ data:
       show_filtered: false
       save_report: false
       tvdb_language: en
-      playlist_sync_to_users: all
-      playlist_exclude_users: None
       playlist_report: false
       verify_ssl: true
       check_nightly: false
