@@ -47,7 +47,6 @@ spec:
             action: insert
 
     exporters:
-      debug: {}
       prometheusremotewrite:
         endpoint: http://prometheus-operated:9090/api/v1/write
         tls:
