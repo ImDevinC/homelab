@@ -13,10 +13,10 @@ data:
       create_asset_folders: true
       prioritize_assets: true
       dimensional_asset_rename: false
-      show_missing_assets: false
-      show_missing_season_assets: false
-      show_missing_episode_assets: false
-      show_asset_not_needed: true
+      show_missing_assets: true
+      show_missing_season_assets: true
+      show_missing_episode_assets: true
+      show_asset_not_needed: false
       sync_mode: sync
       default_collection_order: release
       run_order:
