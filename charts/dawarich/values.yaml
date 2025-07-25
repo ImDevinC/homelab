@@ -6,7 +6,8 @@ env:
   distanceUnit: mi
 
 dawarich:
-  host: dawarich.int.imdevinc.com
+  hosts:
+    - dawarich.int.imdevinc.com
 
 postgresql:
   enabled: false
