@@ -38,6 +38,12 @@ spec:
             - name: mediaserver-volume
               mountPath: "/comics-1"
               subPath: "media/comics"
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+
       volumes:
         - name: mediaserver-volume
           hostPath:
