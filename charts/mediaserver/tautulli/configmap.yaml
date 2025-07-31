@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  config.ini: |
+    [General]
+    http_root = /tautulli
+    launch_browser = 0
+  init-tautulli.sh: |
+    #!/bin/bash
+    echo "### Initializing config"
+    if [ ! -f /tautulli-config/config.ini ]; then
+      cp -n /init-tautulli/config.ini /tautulli-config/config.ini
+      echo "### No configuration found, intialized with default settings ###"
+    fi
+kind: ConfigMap
+metadata:
+  name: init-tautulli-cm
