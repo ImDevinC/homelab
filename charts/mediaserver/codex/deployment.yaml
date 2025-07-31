@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codex
+  labels:
+    app: codex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: codex
+  template:
+    metadata:
+      labels:
+        app: codex
+    spec:
+      initContainers:
+      containers:
+        - name: codex
+          image: ajslater/codex
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            tcpSocket:
+              port: 9810
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          ports:
+            - name: http
+              containerPort: 5656
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: "/config"
+              subPath: "config/codex"
+            - name: mediaserver-volume
+              mountPath: "/comics"
+              subPath: "media/comics"
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media

@@ -38,3 +38,5 @@ images:
     newTag: 2.0.2-develop
   - name: mrcas/kapowarr
     newTag: v1.2.0
+  - name: ajslater/codex
+    newTag: 1.8.6
