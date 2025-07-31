@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tautulli
+  labels:
+    app: tautulli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tautulli
+  template:
+    metadata:
+      labels:
+        app: tautulli
+    spec:
+      initContainers:
+        - name: config-tautulli
+          image: docker.io/ubuntu:groovy
+          command: ["/init-tautulli/init-tautulli.sh"]
+          volumeMounts:
+            - mountPath: /init-tautulli
+              name: init-files-tautulli
+            - name: mediaserver-volume
+              mountPath: /tautulli-config
+              subPath: "config/tautulli"
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+      containers:
+        - name: tautulli
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          image: "docker.io/linuxserver/tautulli:latest"
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            tcpSocket:
+              port: 8181
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          ports:
+            - name: tautulli-port
+              containerPort: 8181
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: /config
+              subPath: "config/tautulli"
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
+        - name: init-files-tautulli
+          configMap:
+            defaultMode: 493
+            name: init-tautulli-cm

@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transmission
+  labels:
+    app: transmission
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transmission
+  template:
+    metadata:
+      labels:
+        app: transmission
+    spec:
+      initContainers:
+        - name: config-transmission
+          image: docker.io/ubuntu:groovy
+          command: ["/init-transmission/init-transmission.sh"]
+          volumeMounts:
+            - mountPath: /init-transmission
+              name: init-files-transmission
+            - name: mediaserver-volume
+              mountPath: "/transmission-config"
+              subPath: "config/transmission"
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+      containers:
+        - name: transmission
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          image: "docker.io/linuxserver/transmission:latest"
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            tcpSocket:
+              port: 9091
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          ports:
+            - name: trans-port
+              containerPort: 9091
+              protocol: TCP
+            - name: trans-peer-tcp
+              containerPort: 51413
+              protocol: TCP
+            - name: trans-peer-udp
+              containerPort: 51413
+              protocol: UDP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: "/config"
+              subPath: "config/transmission"
+            - name: mediaserver-volume
+              mountPath: "/downloads"
+              subPath: "downloads"
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
+        - name: init-files-transmission
+          configMap:
+            defaultMode: 493
+            name: init-transmission-cm

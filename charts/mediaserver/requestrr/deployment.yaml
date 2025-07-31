@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: requestrr
+  labels:
+    app: requestrr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: requestrr
+  template:
+    metadata:
+      labels:
+        app: requestrr
+    spec:
+      initContainers:
+        - name: config-requestrr
+          image: docker.io/ubuntu:groovy
+          command: ["/init-requestrr/init-requestrr.sh"]
+          volumeMounts:
+            - mountPath: /init-requestrr
+              name: init-files-requestrr
+            - name: mediaserver-volume
+              mountPath: /requestrr-config
+              subPath: "config/requestrr"
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+      containers:
+        - name: requestrr
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          image: "thomst08/requestrr:latest"
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            tcpSocket:
+              port: 4545
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          ports:
+            - name: requestrr-port
+              containerPort: 4545
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: /root/config
+              subPath: "config/requestrr"
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
+        - name: init-files-requestrr
+          configMap:
+            defaultMode: 493
+            name: init-requestrr-cm

@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sabnzbd
+  labels:
+    app: sabnzbd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sabnzbd
+  template:
+    metadata:
+      labels:
+        app: sabnzbd
+    spec:
+      initContainers:
+        - name: config-sabnzbd
+          image: docker.io/ubuntu:groovy
+          command: ["/init-sabnzbd/init-sabnzbd.sh"]
+          volumeMounts:
+            - mountPath: /init-sabnzbd
+              name: init-files-sabnzbd
+            - name: mediaserver-volume
+              mountPath: "/sabnzbd-config"
+              subPath: "config/sabnzbd"
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+      containers:
+        - name: sabnzbd
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          image: "docker.io/linuxserver/sabnzbd:latest"
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          ports:
+            - name: sabnzbd-http
+              containerPort: 8080
+              protocol: TCP
+            - name: sabnzbd-https
+              containerPort: 9090
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: "/config"
+              subPath: "config/sabnzbd"
+            - name: mediaserver-volume
+              mountPath: "/downloads"
+              subPath: "downloads"
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
+        - name: init-files-sabnzbd
+          configMap:
+            defaultMode: 493
+            name: init-sabnzbd-cm

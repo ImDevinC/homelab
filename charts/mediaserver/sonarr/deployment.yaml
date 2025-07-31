@@ -1,0 +1,98 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+  labels:
+    app: sonarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonarr
+  template:
+    metadata:
+      labels:
+        app: sonarr
+    spec:
+      initContainers:
+        - name: config-sonarr
+          image: docker.io/ubuntu:groovy
+          command: ["/init-sonarr/init-sonarr.sh"]
+          volumeMounts:
+            - mountPath: /init-sonarr
+              name: init-files-sonarr
+            - name: mediaserver-volume
+              mountPath: /sonarr-config
+              subPath: "config/sonarr"
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+      containers:
+        - name: metrics
+          image: "ghcr.io/onedr0p/exportarr:v1.0.0"
+          imagePullPolicy: IfNotPresent
+          args:
+            - sonarr
+          env:
+            - name: PORT
+              value: "9090"
+            - name: URL
+              value: "http://localhost:8989"
+            - name: APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: sonarr-token
+                  key: api-key
+          ports:
+            - name: monitoring
+              containerPort: 9090
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: monitoring
+            failureThreshold: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: monitoring
+            failureThreshold: 5
+            periodSeconds: 10
+        - name: sonarr
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          image: "docker.io/linuxserver/sonarr:latest"
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            tcpSocket:
+              port: 8989
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          ports:
+            - name: sonarr-port
+              containerPort: 8989
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: "/config"
+              subPath: "config/sonarr"
+            - name: mediaserver-volume
+              mountPath: "/downloads"
+              subPath: "downloads"
+            - name: mediaserver-volume
+              mountPath: "/tv"
+              subPath: "media/tv"
+            - mountPath: /anime
+              name: mediaserver-volume
+              subPath: media/anime
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
+        - name: init-files-sonarr
+          configMap:
+            defaultMode: 493
+            name: init-sonarr-cm

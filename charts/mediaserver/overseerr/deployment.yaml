@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: overseerr
+  labels:
+    app: overseerr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: overseerr
+  template:
+    metadata:
+      labels:
+        app: overseerr
+    spec:
+      initContainers:
+        - name: config-overseerr
+          image: docker.io/ubuntu:groovy
+          command: ["/init-overseerr/init-overseerr.sh"]
+          volumeMounts:
+            - mountPath: /init-overseerr
+              name: init-files-overseerr
+            - name: mediaserver-volume
+              mountPath: /overseerr-config
+              subPath: "config/overseerr"
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+      containers:
+        - name: overseerr
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          image: "docker.io/linuxserver/overseerr:latest"
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            tcpSocket:
+              port: 5055
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          ports:
+            - name: overseerr-port
+              containerPort: 5055
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: /config
+              subPath: "config/overseerr"
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
+        - name: init-files-overseerr
+          configMap:
+            defaultMode: 493
+            name: init-overseerr-cm

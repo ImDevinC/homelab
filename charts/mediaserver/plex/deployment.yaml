@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex
+  labels:
+    app: plex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plex
+  template:
+    metadata:
+      labels:
+        app: plex
+    spec:
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
+      hostNetwork: true
+      containers:
+        - name: plex
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          image: "docker.io/linuxserver/plex:1.41.5"
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            tcpSocket:
+              port: 32400
+            initialDelaySeconds: 20
+            periodSeconds: 15
+          ports:
+            - name: plex-port
+              containerPort: 32400
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: /config
+              subPath: "config/plex"
+            - name: mediaserver-volume
+              mountPath: /movies
+              subPath: "media/movies"
+            - name: mediaserver-volume
+              mountPath: /tv
+              subPath: "media/tv"
+            - mountPath: /anime
+              name: mediaserver-volume
+              subPath: media/anime
+          resources:
+            limits:
+              nvidia.com/gpu: 1

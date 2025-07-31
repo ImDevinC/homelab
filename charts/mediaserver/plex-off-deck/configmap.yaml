@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: off-deck
+  namespace: mediaserver
+data:
+  config.ini: |
+    [auth]
+    ignore_me=ignore_me

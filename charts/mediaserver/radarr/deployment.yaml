@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+  labels:
+    app: radarr
+spec:
+  strategy:
+    type: Recreate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: radarr
+  template:
+    metadata:
+      labels:
+        app: radarr
+    spec:
+      initContainers:
+        - name: config-radarr
+          image: docker.io/ubuntu:groovy
+          command: ["/init-radarr/init-radarr.sh"]
+          volumeMounts:
+            - mountPath: /init-radarr
+              name: init-files-radarr
+            - name: mediaserver-volume
+              mountPath: /radarr-config
+              subPath: "config/radarr"
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+      containers:
+        - name: metrics
+          image: "ghcr.io/onedr0p/exportarr:v1.0.0"
+          imagePullPolicy: IfNotPresent
+          args:
+            - radarr
+          env:
+            - name: PORT
+              value: "9090"
+            - name: URL
+              value: "http://localhost:7878"
+            - name: APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: radarr-token
+                  key: api-key
+          ports:
+            - name: monitoring
+              containerPort: 9090
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: monitoring
+            failureThreshold: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: monitoring
+            failureThreshold: 5
+            periodSeconds: 10
+        - name: radarr
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          image: "docker.io/linuxserver/radarr:latest"
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            tcpSocket:
+              port: 7878
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          ports:
+            - name: radarr-port
+              containerPort: 7878
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: "/config"
+              subPath: "config/radarr"
+            - name: mediaserver-volume
+              mountPath: "/downloads"
+              subPath: "downloads"
+            - name: mediaserver-volume
+              mountPath: "/movies"
+              subPath: "media/movies"
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
+        - name: init-files-radarr
+          configMap:
+            defaultMode: 493
+            name: init-radarr-cm
