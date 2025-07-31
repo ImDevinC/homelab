@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: mediaserver
 resources:
+  - kapowarr
   - mylarr
   - overseerr
   - plex
@@ -36,3 +37,5 @@ images:
     newTag: 4.0.6
   - name: docker.io/linuxserver/prowlarr
     newTag: 2.0.2-develop
+  - name: mrcas/kapowarr
+    newTag: v1.2.0

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kapowarr
+  labels:
+    app: kapowarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kapowarr
+  template:
+    metadata:
+      labels:
+        app: kapowarr
+    spec:
+      initContainers:
+      containers:
+        - name: kapowarr
+          image: mrcas/kapowarr
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            tcpSocket:
+              port: 5656
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          ports:
+            - name: http
+              containerPort: 5656
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: "/app/db"
+              subPath: "config/kapowarr"
+            - name: mediaserver-volume
+              mountPath: "/app/temp_downloads"
+              subPath: "downloads"
+            - name: mediaserver-volume
+              mountPath: "/comics-1"
+              subPath: "media/comics"
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
