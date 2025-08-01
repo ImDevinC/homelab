@@ -21,7 +21,8 @@ gateway:
     websecure:
       hostname: "*.int.imdevinc.com"
       port: 8443
-      namespacePolicy: All
+      namespacePolicy:
+        from: All
       protocol: HTTPS
       certificateRefs:
         - name: wildcard-tls
