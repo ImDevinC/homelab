@@ -10,7 +10,7 @@ metadata:
   labels:
     app: eb2ab
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: eb2ab
