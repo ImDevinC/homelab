@@ -15,7 +15,8 @@ gateway:
   listeners:
     web:
       hostname: "*.int.imdevinc.com"
-      namespacePolicy: All
+      namespacePolicy:
+        from: All
       forwardedHeaders:
         insecure: true
     websecure:
