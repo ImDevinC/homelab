@@ -6,6 +6,7 @@ resources:
   - pvc.yaml
   - sealed.yaml
   - service.yaml
+  - httproute.yaml
 images:
   - name: n8nio/n8n
     newTag: 1.105.2
