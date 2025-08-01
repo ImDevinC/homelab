@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mediaserver
+  name: n8n
   namespace: argo-cd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
