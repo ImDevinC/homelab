@@ -1,4 +1,3 @@
-(import 'authentik/mixin.libsonnet') +
 (import 'cert-manager/mixin.libsonnet') +
 (import 'crowdsec/mixin.libsonnet') +
 (import 'eero-metrics/mixin.libsonnet') +
@@ -7,7 +6,6 @@
 (import 'kube-state-metrics/mixin.libsonnet') +
 (import 'mediaserver/mixin.libsonnet') +
 (import 'mongodb/mixin.libsonnet') +
-(import 'nginx-ingress/mixin.libsonnet') +
 (import 'nvidia/mixin.libsonnet') +
 (import 'pi-hole/mixin.libsonnet') +
 (import 'postgres/mixin.libsonnet') +
