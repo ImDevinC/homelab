@@ -33,6 +33,8 @@ spec:
           env:
             - name: N8N_EDITOR_BASE_URL
               value: https://n8n.int.imdevinc.com
+            - name: N8N_PUBLIC_API_ENDPOINT
+              value: https://n8n.int.imdevinc.com
             - name: DB_TYPE
               value: postgresdb
             - name: DB_POSTGRESDB_HOST
