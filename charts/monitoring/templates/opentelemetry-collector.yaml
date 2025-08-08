@@ -53,6 +53,9 @@ spec:
           insecure: true
 
     service:
+      telemetry:
+        logs:
+          level: DEBUG
       pipelines:
         metrics:
           receivers: [prometheus]
