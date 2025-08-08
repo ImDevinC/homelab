@@ -36,7 +36,7 @@ spec:
             initialDelaySeconds: 10
             periodSeconds: 20
           ports:
-            - name: recommendarr-port
+            - name: http
               containerPort: 3000
               protocol: TCP
           volumeMounts:
