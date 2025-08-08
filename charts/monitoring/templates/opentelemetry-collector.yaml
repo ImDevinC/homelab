@@ -5,6 +5,7 @@ metadata:
   name: otelcol
 spec:
   mode: statefulset
+  args: [--zap-devel]
   serviceAccount: opentelemetry-allocator-sa
   targetAllocator:
     enabled: true
