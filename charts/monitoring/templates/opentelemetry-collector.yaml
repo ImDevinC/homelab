@@ -6,7 +6,7 @@ metadata:
 spec:
   mode: statefulset
   args:
-    '--zap-log-level': debug
+    zap-log-level: debug
   serviceAccount: opentelemetry-allocator-sa
   targetAllocator:
     enabled: true
