@@ -29,11 +29,11 @@ spec:
                   name: recommendarr-secret
                   key: session-secret
             - name: CUSTOM_OAUTH_AUTH_URL
-              value: https://login.int.imdevinc.com/oauth/authorize
+              value: https://login.int.imdevinc.com/authorize
             - name: CUSTOM_OAUTH_TOKEN_URL
-              value: https://login.int.imdevinc.com/oauth/token
+              value: https://login.int.imdevinc.com/api/oidc/token
             - name: CUSTOM_OAUTH_USERINFO_URL
-              value: https://login.int.imdevinc.com/oauth/userinfo
+              value: https://login.int.imdevinc.com/api/oidc/userinfo
             - name: CUSTOM_OAUTH_CLIENT_ID
               valueFrom:
                 secretKeyRef:
