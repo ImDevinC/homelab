@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendar
+  labels:
+    app: recommendar
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      name: recommendar-port
+  selector:
+    app: recommendar

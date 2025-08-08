@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendarr
+  labels:
+    app: recommendarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendarr
+  template:
+    metadata:
+      labels:
+        app: recommendarr
+    spec:
+      containers:
+        - name: recommendarr
+          env:
+            - name: PUBLIC_URL
+              value: https://recommendarr.int.imdevinc.com
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: recommendarr-secret
+                  key: session-secret
+          image: tannermiddleton/recommendarr:latest
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          ports:
+            - name: recommendarr-port
+              containerPort: 3000
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: /app/server/data
+              subPath: "config/recommendarr"
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media

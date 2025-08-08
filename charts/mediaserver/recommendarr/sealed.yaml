@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: recommendar-secret
+  namespace: mediaserver
+spec:
+  encryptedData:
+    session-secret: AgDFefZ0agLNeqXQW5g/GOV7dx28n66LH4OlbPF7zM5VWaX//D+WixZpoN8GFXxyTzetLh9tFBIdZ56gZqh6KyFCCwKfcfg58Jg9GNCMnEZ8rYlYzDT9cgsSCzA/F+WWp7c/UURgmJDiNAQAKLYmf+xzx3gzfxKEZ1jXEiB0HrQ/V7BbRJZs9/dwgikmy5PpkWEAofzLFJd+Zc15dt3cFjJ/zePwa9veUM4AxsnbD5RVoVe+SGWlWH4Q2tDlLxkB1iTg/mN3qNICzWbb5oOaizvXxV3qJ5x1RpRIcxbAzkZLRc6LLKOCUlPdPJunCOUXi/DMiYCXOyjWI8czXpovCK3jFdh067IPzZZDXA3lM7x8mQdSR3IFB5zWDD2MJFUrNQg3Owd1862lmve6/i687iqd4j8pnuK3cSqHynnPeLBa2mXpR24FeJ+nAD+iq5YZqNUAYRz45eoKrKJ+0ggCiOLxJDRYTs1PBXWYbsXFtam701OFVv1N3fGjFK8/IQcCP0KyLzqRlZXGOGzaTliOgZHp3571wfRlRBSeWHMKO/gvUCiIONIgoYZtNVOkY8G7wYvMypJ8r+VguS/fUvN+ZywoHOKWNFPM4ZY7DYN5EERz1DHVWVQeaeF2Y7OSHl20Ek1bPaJItMHPMHhH454BfqRl603Bg4raI8FXLcxOOWtqeRDTVUE2RdkC8nrkSUs+R9IFF5cqgl0gxsgbOYH/EcfbY/dfOIq2mw==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: recommendar-secret
+      namespace: mediaserver

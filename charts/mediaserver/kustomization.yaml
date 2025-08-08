@@ -14,6 +14,7 @@ resources:
   - sonarr
   - tautulli
   - transmission
+  - recommendarr
 images:
   - name: lscr.io/linuxserver/mylar3
     newTag: 0.8.2
@@ -41,3 +42,5 @@ images:
     newTag: v1.2.0
   - name: ajslater/codex
     newTag: 1.8.6
+  - name: tannermiddleton/recommendarr:latest
+    newTag: v1.4.4
