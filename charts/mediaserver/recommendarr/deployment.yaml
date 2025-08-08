@@ -28,6 +28,22 @@ spec:
                 secretKeyRef:
                   name: recommendarr-secret
                   key: session-secret
+            - name: CUSTOM_OAUTH_AUTH_URL
+              value: https://login.int.imdevinc.com/oauth/authorize
+            - name: CUSTOM_OAUTH_TOKEN_URL
+              value: https://login.int.imdevinc.com/oauth/token
+            - name: CUSTOM_OAUTH_USERINFO_URL
+              value: https://login.int.imdevinc.com/oauth/userinfo
+            - name: CUSTOM_OAUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: recommendarr-secret
+                  key: oidc-client-id
+            - name: CUSTOM_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: recommendarr-secret
+                  key: oidc-client-secret
           image: tannermiddleton/recommendarr:latest
           imagePullPolicy: IfNotPresent
           readinessProbe:
