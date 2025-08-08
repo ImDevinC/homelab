@@ -7,7 +7,6 @@ ollama:
     pull:
       - granite3.3:8b
       - qwen2.5-coder:14b
-      - gpt-oss:20b
 persistentVolume:
   enabled: true
   storageClass: hostpath-csi
