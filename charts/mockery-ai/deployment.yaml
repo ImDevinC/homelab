@@ -19,7 +19,7 @@ spec:
             - name: PORT
               value: "8080"
             - name: OPENAI_MODEL
-              value: gpt-5-mini
+              value: gpt-5-nano
             - name: OPENAI_API_KEY
               valueFrom:
                 secretKeyRef:
