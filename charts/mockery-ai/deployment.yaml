@@ -19,7 +19,9 @@ spec:
             - name: PORT
               value: "8080"
             - name: OPENAI_MODEL
-              value: gpt-5-mini
+              value: gpt-4-mini
+            - name: LLM_TEMPERATURE
+              value: "0.7"
             - name: OPENAI_API_KEY
               valueFrom:
                 secretKeyRef:
