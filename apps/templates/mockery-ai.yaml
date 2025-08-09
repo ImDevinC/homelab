@@ -15,6 +15,7 @@ spec:
     repoURL: git@github.com:ImDevinC/homelab.git
     targetRevision: HEAD
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
-      
