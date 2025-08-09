@@ -1,0 +1,10 @@
+kind: Kustomization
+namespace: mockery-ai
+resources:
+  - deployment.yaml
+  - httproute.yaml
+  - sealed.yaml
+  - service.yaml
+images:
+  - name: ghcr.io/imdevinc/ai-mockery
+    newTag: 0.0.1

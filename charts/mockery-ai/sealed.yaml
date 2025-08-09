@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: mockery-ai-secrets
+  namespace: mockery-ai
+spec:
+  encryptedData:
+    openai-key: AgB9dvyfIfvsYwSZqVCHRLlwfTGoY15uVonPYkaDPuxmDRvb4YrLrMZ2AARqef8nmYoTJdo1wVvEfTAlM4TztCldAZ075b3QnKH32FAKTxen0RI4GiLJvmX/bloL+VfhBW9zsGtkYPFcCo0j3IXVkz+Ji79oEiMkih0d8yUFpPy60VXiyML2ABAsLJrHCrH4bJrlA77KxTIKoSs9sIkP0zRtNlikknTvq8gqh30mILLlMzv91YFYPDbzyUVlX8UJAq9uCT7otuAqj57FjJNfmo8MyGxI5r6oPnF4krJvfw/LPM9GYOEsWTtPkqIUb7D2IhLJuV+nBcbimy2TJgAUE6xv+yUSG3MBTsX7kgbqkkuZDsnT7TxU6t8V1U+SpLjAIwOwFq5DF+8si7VjP5BriAGKxAuwueizREnHW/e9r8JfppTIm4ThI89t0XvTiQ4VsMozHshGuO+8iBgdpAF8JYPv9VKOpkQRxMg5/ypzDOvXAS+jgqDSOieMeYZMj74bZh1wRzqKqdYqRKEo8VRCH2UBGjacfar8JyLN4EQUVT32UWxF+WkOiXiF/2bFgkDceWswGS+xU5q0Vn/vCJabrISlymBu++1hrMRVbDv+aqW1XY2oIQiGsOtBK7xA15eVW4HmI+eMnhgX8iIsReiLF6QPvC7RCivbBPW5yaBbYGUjX2oq8lhlHbQuhDr4bawi/OvFTT913Ekdpcy0HQmHqcr9mKHtp1v1BUzTGt7i4zsjl2vUupaxLxpqbnuhv5FQbCow8fV13S0a2YZ2Fs9DdWVno2JoQ2JTKRoybzvw0QATKwZVY3MDPlgoGvp9V9nM7/mCs5u2RSl1pdCbKNvI2rcvKo202SNdBLOH7esIU/M5Q3zDLPk=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: mockery-ai-secrets
+      namespace: mockery-ai

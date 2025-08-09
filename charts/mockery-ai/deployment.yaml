@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mockery-ai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mockery-ai
+  template:
+    metadata:
+      labels:
+        app: mockery-ai
+    spec:
+      containers:
+        - name: mockery-ai
+          image: ghcr.io/imdevinc/ai-mockery:latest
+          env:
+            - name: PORT
+              value: "8080"
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: mockery-ai-secrets
+                  key: openai-key
+          ports:
+            - containerPort: 8080
