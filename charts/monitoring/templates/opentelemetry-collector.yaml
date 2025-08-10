@@ -123,3 +123,35 @@ subjects:
     name: opentelemetry-allocator-sa
     namespace: monitoring
 ---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name:  opentelemetry-operator-controller-manager-cert-manager-role
+rules:
+- apiGroups:
+  - cert-manager.io
+  resources:
+  - issuers
+  - certificaterequests
+  - certificates
+  verbs:
+  - create
+  - get
+  - list
+  - watch
+  - update
+  - patch
+  - delete
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: opentelemetry-operator-controller-manager-cert-manager-role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: opentelemetry-operator-controller-manager-cert-manager-role
+subjects:
+  - kind: ServiceAccount
+    name: opentelemetry-operator
+    namespace: monitoring
