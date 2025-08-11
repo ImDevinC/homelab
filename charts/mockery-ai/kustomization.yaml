@@ -7,4 +7,4 @@ resources:
   - service.yaml
 images:
   - name: ghcr.io/imdevinc/ai-mockery
-    newTag: 0.0.4
+    newTag: 0.0.5
