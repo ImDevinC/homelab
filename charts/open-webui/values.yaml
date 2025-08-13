@@ -40,3 +40,5 @@ extraEnvVars:
     value: openwebui_users,openwebui_admins
   - name: OAUTH_ADMIN_ROLES
     value: openwebui_admins
+  - name: OAUTH_SCOPES
+    value: openid email profile groups
