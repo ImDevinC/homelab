@@ -36,9 +36,13 @@ extraEnvVars:
     value: https://openwebui.int.imdevinc.com/oauth/oidc/callback
   - name: OAUTH_SCOPES
     value: openid email profile groups
-  - name: ENABLE_OAUTH_GROUP_MANAGEMENT
-    value: 'true'
   - name: DEFAULT_USER_ROLE
     value: user
-  - name: ENABLE_OAUTH_PERSISTENT_CONFIG
-    value: 'false'
+  - name: OAUTH_ROLE_MANAGEMENT
+    value: 'true'
+  - name: OAUTH_ALLOWED_ROLES
+    value: "OpenwebUI Users,OpenwebUI Admins"
+  - name: OAUTH_ADMIN_ROLES
+    value: "OpenwebUI Admins"
+  - name: OAUTH_ROLES_CLAIM
+    value: groups
