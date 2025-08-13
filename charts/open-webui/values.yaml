@@ -45,4 +45,4 @@ extraEnvVars:
   - name: OAUTH_ALLOWED_ROLES
     value: "OpenwebUI Admins, OpenwebUI Users"
   - name: DEFAULT_USER_ROLE
-    value: user
+    value: admin
