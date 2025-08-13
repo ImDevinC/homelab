@@ -1,9 +1,42 @@
-open-webui:
-  clusterDomain: int.imdevinc.com
-  ollama:
+clusterDomain: int.imdevinc.com
+ollama:
+  enabled: false
+  ollamaUrls:
+    - http://ollama.ollama:11434
+tika:
+  enabled: true
+websocket:
+  enabled: true
+  url: redis://redis-master.redis:6379
+  redis:
     enabled: false
-    ollamaUrls:
-      - http://ollama.ollama:11434
-  persistence:
-    storageClass: hostpath-csi
-    existingClaim: open-webui-hp
+persistence:
+  storageClass: hostpath-csi
+  existingClaim: open-webui-hp
+extraEnvVars:
+  - name: ENABLE_OAUTH_SIGNUP
+    value: 'false'
+  - name: OAUTH_MERGE_ACCOUNTS_BY_EMAIL
+    value: 'false'
+  - name: OAUTH_CLIENT_ID
+    valueFrom:
+      secretKeyRef:
+        name: oauth-details
+        key: client-id
+  - name: OAUTH_CLIENT_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: oauth-details
+        key: client-secret
+  - name: OPENID_PROVIDER_URL
+    value: https://login.int.imdevinc.com/.well-known/openid-configuration
+  - name: OAUTH_PROVIDER_NAME
+    value: Pocket
+  - name: OPENID_REDIRECT_URI
+    value: https://openwebui.int.imdevinc.com/oauth/oidc/callback
+  - name: ENABLE_OAUTH_ROLE_MANAGEMENT
+    value: 'true'
+  - name: OAUTH_ALLOWED_ROLES
+    value: user,admin
+  - name: OAUTH_ADMIN_ROLES
+    value: admin
