@@ -37,12 +37,10 @@ extraEnvVars:
   - name: ENABLE_OAUTH_ROLE_MANAGEMENT
     value: 'true'
   - name: OAUTH_ALLOWED_ROLES
-    value: openwebui_users,openwebui_admins
+    value: OpenwebUI Admins,OpenwebUI Users
   - name: OAUTH_ADMIN_ROLES
-    value: openwebui_admins
+    value: OpenwebUI Admins
   - name: OAUTH_SCOPES
     value: openid email profile groups
-  - name: ENABLE_OAUTH_GROUP_MANAGEMENT
-    value: 'true'
   - name: ENABLE_OAUTH_GROUP_MANAGEMENT
     value: 'true'
