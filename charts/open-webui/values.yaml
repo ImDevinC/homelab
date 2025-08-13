@@ -46,3 +46,5 @@ extraEnvVars:
     value: "OpenwebUI Admins, OpenwebUI Users"
   - name: DEFAULT_USER_ROLE
     value: admin
+  - name: ENABLE_OAUTH_PERSISTENT_CONFIG
+    value: 'false'
