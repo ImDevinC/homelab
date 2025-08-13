@@ -44,3 +44,5 @@ extraEnvVars:
     value: openid email profile groups
   - name: ENABLE_OAUTH_GROUP_MANAGEMENT
     value: 'true'
+  - name: ENABLE_OAUTH_GROUP_MANAGEMENT
+    value: 'true'
