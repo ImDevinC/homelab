@@ -37,6 +37,6 @@ extraEnvVars:
   - name: ENABLE_OAUTH_ROLE_MANAGEMENT
     value: 'true'
   - name: OAUTH_ALLOWED_ROLES
-    value: user,admin
+    value: openwebui_users,openwebui_admins
   - name: OAUTH_ADMIN_ROLES
-    value: admin
+    value: openwebui_admins
