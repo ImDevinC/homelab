@@ -1,38 +1,36 @@
-{{ if .Values.zwavejsui.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: zwavejsui
   labels:
-    {{- include "homeassistant.labels" . | nindent 4 }}
+    app: zwavejsui
 spec:
   replicas: 1
   selector:
     matchLabels:
-      {{- include "homeassistant.selectorLabels" . | nindent 6 }}
+      app: zwavejsui
   template:
     metadata:
       labels:
-        {{- include "homeassistant.selectorLabels" . | nindent 8 }}
         app: zwavejsui
     spec:
       containers:
         - name: zwavejsui
-          image: docker.io/zwavejs/zwave-js-ui:9.27.2
+          image: docker.io/zwavejs/zwave-js-ui
           imagePullPolicy: IfNotPresent
           readinessProbe:
             failureThreshold: 3
             periodSeconds: 10
             successThreshold: 1
             tcpSocket:
-              port: {{ .Values.zwavejsui.ports.http }}
+              port: 8091
             timeoutSeconds: 1
           ports:
             - name: http
-              containerPort: {{ .Values.zwavejsui.ports.http }}
+              containerPort: 8091
               protocol: TCP
             - name: websocket
-              containerPort: {{ .Values.zwavejsui.ports.websocket }}
+              containerPort: 3000
           volumeMounts:
             - mountPath: /usr/src/app/store
               name: config
@@ -42,10 +40,10 @@ spec:
             privileged: true
       volumes:
         - hostPath:
-            path: {{ .Values.zwavejsui.configPath }}
+            path: /mnt/media/config/zwavejsui
           name: config
         - hostPath:
-            path: {{ .Values.zwavejsui.zwaveDevicePath }}
+            path: /dev/serial/by-id/usb-0658_0200-if00
           name: usb
 ---
 apiVersion: v1
@@ -53,18 +51,16 @@ kind: Service
 metadata:
   name: zwavejsui
   labels:
-    {{- include "homeassistant.labels" . | nindent 4 }}
+    app: zwavejsui
 spec:
-  type: {{ .Values.zwavejsui.service.type }}
   ports:
-    - port: {{ .Values.zwavejsui.service.port.http }}
-      targetPort: {{ .Values.zwavejsui.container.port.http }}
+    - port: 8091
+      targetPort: 8091
       protocol: TCP
       name: http
-    - port: {{ .Values.zwavejsui.service.port.websocket }}
-      targetPort: {{ .Values.zwavejsui.container.port.websocket }}
+    - port: 3000
+      targetPort: 3000
       protocol: TCP
       name: websocket
   selector:
     app: zwavejsui
-{{ end }}
