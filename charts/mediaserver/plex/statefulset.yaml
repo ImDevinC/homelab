@@ -1,15 +1,17 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: plex
   labels:
     app: plex
 spec:
+  podManagementPolicy: OrderedReady
   replicas: 1
   selector:
     matchLabels:
       app: plex
+  serviceName: plex-headless
   template:
     metadata:
       labels:
