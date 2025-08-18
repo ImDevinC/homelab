@@ -16,4 +16,4 @@ spec:
       backendRefs:
         - name: transmission-peer-tcp
           namespace: mediaserver
-          port: 54143
+          port: 51413
