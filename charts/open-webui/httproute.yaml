@@ -7,7 +7,7 @@ spec:
   - name: traefik-gateway
     namespace: traefik
   hostnames:
-  - openwebui.int.imdevinc.com
+  - chatgpt.int.imdevinc.com
   rules:
   - matches:
     - path:

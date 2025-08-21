@@ -33,7 +33,7 @@ extraEnvVars:
   - name: OAUTH_PROVIDER_NAME
     value: Pocket
   - name: OPENID_REDIRECT_URI
-    value: https://openwebui.int.imdevinc.com/oauth/oidc/callback
+    value: https://chatgpt.int.imdevinc.com/oauth/oidc/callback
   - name: OAUTH_SCOPES
     value: openid email profile groups
   - name: DEFAULT_USER_ROLE
