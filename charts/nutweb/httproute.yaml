@@ -5,7 +5,7 @@ metadata:
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Management
-    gethomepage.dev/icon: nutweb.png
+    gethomepage.dev/icon: sh-nutalert
     gethomepage.dev/name: Nutweb
 spec:
   parentRefs:

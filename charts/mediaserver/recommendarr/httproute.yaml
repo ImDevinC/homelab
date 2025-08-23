@@ -5,7 +5,7 @@ metadata:
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Media
-    gethomepage.dev/icon: recommendarr.png
+    gethomepage.dev/icon: sh-recommendarr
     gethomepage.dev/name: Recommendarr
 spec:
   parentRefs:
