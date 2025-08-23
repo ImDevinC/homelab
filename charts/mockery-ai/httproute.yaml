@@ -5,7 +5,7 @@ metadata:
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Homelab
-    gethomepage.dev/icon: mockery.png
+    gethomepage.dev/icon: si-roll20
     gethomepage.dev/name: MockeryAI
 spec:
   parentRefs:
