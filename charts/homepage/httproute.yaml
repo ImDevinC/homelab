@@ -1,25 +1,19 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: n8n
-  annotations:
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Homelab
-    gethomepage.dev/icon: n8n.png
-    gethomepage.dev/name: n8n
+  name: homepage
 spec:
   parentRefs:
   - name: traefik-gateway
     namespace: traefik
   hostnames:
-  - n8n.int.imdevinc.com
+  - homepage.int.imdevinc.com
   rules:
   - matches:
     - path:
         type: PathPrefix
         value: /
     backendRefs:
-    - name: n8n
-      namespace: n8n
-      port: 5678
-
+    - name: homepage
+      namespace: homepage
+      port: 3000

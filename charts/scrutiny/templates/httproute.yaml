@@ -2,6 +2,11 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: scrutiny
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Management
+    gethomepage.dev/icon: scrutiny.png
+    gethomepage.dev/name: Scrutiny
 spec:
   parentRefs:
   - name: traefik-gateway
