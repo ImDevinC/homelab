@@ -1,0 +1,33 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: controtto-oidc
+spec:
+  plugin:
+    traefik-oidc-auth:
+      Provider:
+        ClientId: urn:k8s:secret:controtto-oidc:client-id
+        ClientSecret: urn:k8s:secret:controtto-oidc:client-secret
+        TokenValidation: IdToken
+        Url: https://login.int.imdevinc.com
+      Scopes:
+      - openid
+      - profile
+      - email
+      Secret: PMYZT3D2J4da20RsSIMMZaArKI6d3pxt
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: controtto-oidc
+  namespace: controtto
+spec:
+  encryptedData:
+    client-id: AgDFsAhY2m4xDOonlZqI8u8qa0fh49G26TQhXxejc8S+y4M5So2R17WGi9VpZp89DD5WWrda92pEq3U8Di4iCRarYMCXuLlgWmQvcYRjNKU+vGfAjdliH57HOA+qZ0i6otwkuojNZLPVBeZ8E7rVNzGuWiHlx9TFbGIL8lRgynG4Kp/87Qc0HM3VzCHFo+O7F1mm0Qw5JG9C6X5CICsKtgOxnPoo8vLAER8GSuAVJJH4KKXSV2kp7szS35ZZdTk/009G1Q9Im1kqj2NkEpA87cqGHOkELYM8whIGlZkJ75VtKL8TPoGtfGwn3tI+5hqER/WHUDJzXqhOb/CJCQC0n73fOjl9EbCDvClqGpRKeb7cnMR/LYVEH/llveVM30p61Q/VcdYYfvW02j0c9l0wT/c5zKTpKpTzeDGgkesRNo4evtV/2D8D2KTsT+rDbCsNfjmMMAzvHbcKu5z27xeGHv4UDJIHhcBquzHKw64CYdiwCEDTsogMTPb+UAB6ZDitHrW+jkDRaGgpVYBICQoSecQldUaZCxJfjIxSoy/K7tFdYwg+K85CEyil/YITmf8wsBj2IPkAZHMp9cC07/j3d/3GHLdy3g5comoHOgHvyvcsiiRF4zaFrMAHnofyv1rhJu89pm/TP8YLd9WgUOKIIAcd0lQw/xSD125m6IApNnSZUDjza+cF/K+r94f7KP449RqcTpxeY2/IW8hN3g+aKfJ4sdM+y2gktMMFkfyovPmxXJFWmb0=
+    client-secret: AgCA/BfvFpQO7KIY8btDHbKMDP20TddL7k1fJgFIMGSghJa22ih3CiUVrgCvh76LvVK8qzA5oWVmw5I4W2LQrI3eAXFyhth1Exw/xIDvO1hx+1HOriG99YjkRBCcQZEb2B0k41wPxCEbZFklFjqL9VmzklwG7yk6YWTCC3Gw4Pa0SorPzcC1pHMfjqDfM2DWijTEAbNy9Vw8sRBg3j+kQPHQRy0sOFd9l0t0a9QocY5FaM7MuHLtNFTPNm4ccrx744SUA66kuI6d01BBcz4Kr6uMDkjzWLgXiFi7s46XGLEcFfC1nbUhQiSqHT4FRzLO5uKMEPudYpP9w9okyNXwch9AUjoht4fFB05srKrQH9e1dj9DYf4VySGXjqvT+nZWouMIrpZRNUYSseYJsyPAKaC11SEm3bOczoBWfs5LUxN1zvwOUphOAx/dRInW/9stXJHh88mFzzueLpY9XSOd5LSwOC+GwbTR/YYWbGH87Pq9a5wX+06uQw05a13Sm1xlG/34R6htWTxGXnoTcRgm5SVx8XXJtQoJSnfoUIiHuhuxUKf+5DAo4j3kGTW9MGecmju2kcfeMtDa11gzluNlUmq69MXoMW1WWf6Wog3BBQpQoTVaJeo+y48vsLKOVpC1ndvQjqPSsHopjFgIFOubL2aoTPEewL7VGZobt1dUknVac/4vtdD4spFIBnyTh90zOuiqRWO7LjoVk5d3w4jfCI9/WxiwrUrpcJ4tDv3Deb1YOw==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: controtto-oidc
+      namespace: controtto

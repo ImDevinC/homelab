@@ -17,4 +17,9 @@ spec:
     - name: controtto
       namespace: controtto
       port: 8000
-
+    filters:
+      - extensionRef:
+          group: traefik.io
+          kind: Middleware
+          name: controtto-oidc
+        type: ExtensionRef
