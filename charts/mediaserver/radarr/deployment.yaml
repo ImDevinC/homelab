@@ -4,6 +4,7 @@ metadata:
   name: radarr
   labels:
     app: radarr
+    app.kubernetes.io/name: radarr
 spec:
   strategy:
     type: Recreate
@@ -11,10 +12,12 @@ spec:
   selector:
     matchLabels:
       app: radarr
+      app.kubernetes.io/name: radarr
   template:
     metadata:
       labels:
         app: radarr
+        app.kubernetes.io/name: radarr
     spec:
       initContainers:
         - name: config-radarr

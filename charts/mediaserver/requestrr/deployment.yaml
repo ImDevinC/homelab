@@ -4,15 +4,18 @@ metadata:
   name: requestrr
   labels:
     app: requestrr
+    app.kubernetes.io/name: requestrr
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: requestrr
+      app.kubernetes.io/name: requestrr
   template:
     metadata:
       labels:
         app: requestrr
+        app.kubernetes.io/name: requestrr
     spec:
       initContainers:
         - name: config-requestrr

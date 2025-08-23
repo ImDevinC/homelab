@@ -4,15 +4,18 @@ metadata:
   name: codex
   labels:
     app: codex
+    app.kubernetes.io/name: codex
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: codex
+      app.kubernetes.io/name: codex
   template:
     metadata:
       labels:
         app: codex
+        app.kubernetes.io/name: codex
     spec:
       initContainers:
       containers:
