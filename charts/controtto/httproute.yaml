@@ -1,0 +1,20 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: controtto
+spec:
+  parentRefs:
+  - name: traefik-gateway
+    namespace: traefik
+  hostnames:
+  - controtto.int.imdevinc.com
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: controtto
+      namespace: controtto
+      port: 8000
+

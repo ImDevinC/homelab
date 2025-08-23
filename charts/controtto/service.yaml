@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: controtto
+  name: controtto
+  namespace: controtto
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+      protocol: TCP
+  selector:
+    service: controtto

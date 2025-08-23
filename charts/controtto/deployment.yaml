@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: controtto
+  name: controtto
+  namespace: controtto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: controtto
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: controtto
+    spec:
+      containers:
+        - image: contre95/controtto
+          name: controtto
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              memory: "250Mi"
+            limits:
+              memory: "500Mi"
+          volumeMounts:
+            - mountPath: /data
+              name: controtto-claim0
+      restartPolicy: Always
+      volumes:
+        - name: controtto-claim0
+          persistentVolumeClaim:
+            claimName: controtto-claim0
