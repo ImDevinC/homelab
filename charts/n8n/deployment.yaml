@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     service: n8n
+    app.kubernetes.io/name: n8n
   name: n8n
   namespace: n8n
 spec:
@@ -10,12 +11,14 @@ spec:
   selector:
     matchLabels:
       service: n8n
+      app.kubernetes.io/name: n8n
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         service: n8n
+        app.kubernetes.io/name: n8n
     spec:
       initContainers:
         - name: volume-permissions

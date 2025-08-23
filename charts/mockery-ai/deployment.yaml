@@ -2,15 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mockery-ai
+  labels:
+    app.kubernetes.io/name: mockery-ai
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: mockery-ai
+      app.kubernetes.io/name: mockery-ai
   template:
     metadata:
       labels:
         app: mockery-ai
+        app.kubernetes.io/name: mockery-ai
     spec:
       containers:
         - name: mockery-ai

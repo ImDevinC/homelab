@@ -2,15 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nutweb
+  labels:
+    app.kubernetes.io/name: nutweb
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: nutweb
+      app.kubernetes.io/name: nutweb
   template:
     metadata:
       labels:
         app: nutweb
+        app.kubernetes.io/name: nutweb
     spec:
       containers:
         - name: nutweb

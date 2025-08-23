@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     service: controtto
+    app.kubernetes.io/name: controtto
   name: controtto
   namespace: controtto
 spec:
@@ -10,12 +11,14 @@ spec:
   selector:
     matchLabels:
       service: controtto
+      app.kubernetes.io/name: controtto
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         service: controtto
+        app.kubernetes.io/name: controtto
     spec:
       containers:
         - image: contre95/controtto
