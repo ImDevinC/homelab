@@ -9,4 +9,4 @@ resources:
   - middleware.yaml
 images:
   - name: contre95/controtto
-    newTag: v1.0.8
+    newTag: v1.0.10
