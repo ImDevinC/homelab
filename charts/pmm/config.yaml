@@ -43,6 +43,11 @@ data:
       playlist_report: false
       verify_ssl: true
       check_nightly: false
+      overlay_artwork_quality: 90
+      overlay_artwork_filetype: webp_lossy
+      playlist_exclude_users:
+      playlist_sync_to_users:
+      show_unfiltered: false
     plex:
       url: http://plex.mediaserver:32400
       token: <<PLEX_SECRET_TOKEN>>
@@ -51,6 +56,7 @@ data:
       clean_bundles: false
       empty_trash: false
       optimize: false
+      verify_ssl:
     tmdb:
       apikey: <<TMDB_TOKEN>>
       language: en
@@ -69,6 +75,8 @@ data:
           delete_collections:
             managed: true
             less: 3
+            ignore_empty_smart_collections: true
+            configured:
           metadata_backup:
             path: /source/movies-backup.yml
             add_blank_entries: true
@@ -93,5 +101,6 @@ data:
       availability: announced
       radarr_path: None
       plex_path: None
+      monitor_existing: false
     playlist_files:
       - repo: /main/config/playlist.yaml
