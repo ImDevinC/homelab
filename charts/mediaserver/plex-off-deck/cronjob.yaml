@@ -25,7 +25,7 @@ spec:
               imagePullPolicy: IfNotPresent
               name: plex-off-deck
               command: [/bin/bash]
-              args: ["-c", "curl -sLO https://raw.githubusercontent.com/blacktwin/JBOPS/refs/heads/master/utility/off_deck.py && pip install requests plexapi && python off_deck.py --playlists Goodnight"]
+              args: ["-c", "curl -sLO https://raw.githubusercontent.com/blacktwin/JBOPS/5af2e6a7ae448ecfc43144664c9d127ef6d59ba5/utility/off_deck.py && pip install requests plexapi && python off_deck.py --playlists Bedtime"]
               volumeMounts:
                 - mountPath: /root/.config/plexapi
                   name: off-deck-config
