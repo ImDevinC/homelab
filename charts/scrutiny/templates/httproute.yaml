@@ -7,6 +7,8 @@ metadata:
     gethomepage.dev/group: Management
     gethomepage.dev/icon: scrutiny.png
     gethomepage.dev/name: Scrutiny
+    gethomepage.dev/widget.type: scrutiny
+    gethomepage.dev/widget.url: https://scrutiny.int.imdevinc.com
 spec:
   parentRefs:
   - name: traefik-gateway
