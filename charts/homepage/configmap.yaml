@@ -12,25 +12,9 @@ data:
   settings.yaml: ""
   custom.css: ""
   custom.js: ""
-  bookmarks.yaml: |
-    - Developer:
-        - Github:
-            - abbr: GH
-              href: https://github.com/
+  bookmarks.yaml: ""
   services.yaml: ""
   widgets.yaml: |
-    - kubernetes:
-        cluster:
-          show: true
-          cpu: true
-          memory: true
-          showLabel: true
-          label: "cluster"
-        nodes:
-          show: false
-          cpu: true
-          memory: true
-          showLabel: true
     - resources:
         backend: resources
         expanded: true
