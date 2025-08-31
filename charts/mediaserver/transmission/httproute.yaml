@@ -19,6 +19,6 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: transmission-peer-tcp
+        - name: transmission
           namespace: mediaserver
-          port: 51413
+          port: 9091
