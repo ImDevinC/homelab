@@ -1,32 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: transmission-peer-udp
+  name: transmission
   labels:
     app: transmission
 spec:
   type: ClusterIP
   ports:
-    - port: 51413
-      targetPort: 51413
-      protocol: UDP
-      name: trans-peer-udp
-  selector:
-    app: transmission
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: transmission-peer-tcp
-  labels:
-    app: transmission
-spec:
-  type: ClusterIP
-  ports:
-    - port: 51413
-      targetPort: 51413
+    - port: 9091
+      targetPort: 9091
       protocol: TCP
-      name: trans-peer-tcp
+      name: http
   selector:
     app: transmission
 
