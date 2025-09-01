@@ -1,0 +1,7 @@
+architecture: standalone
+auth:
+  enabled: false
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
