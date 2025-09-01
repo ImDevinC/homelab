@@ -27,7 +27,7 @@ images:
   - name: docker.io/linuxserver/radarr
     newTag: 5.26.2
   - name: ghcr.io/onedr0p/exportarr
-    newTag: v2.2.0
+    newTag: v2.3.0
   - name: docker.io/linuxserver/plex
     newTag: 1.42.1
   - name: docker.io/linuxserver/overseerr
