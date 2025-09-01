@@ -1,39 +1,38 @@
-crowdsec:
-  config:
-    config.yaml.local: |
-      api:
-        server:
-          auto_registration:
-            enabled: true
-            token: "${REGISTRATION_TOKEN}"
-            allowed_ranges:
-              - "127.0.0.1/32"
-              - "10.0.0.0/8"
-  container_runtime: containerd
-  agent:
-    acquisition:
-      - namespace: nginx
-        podName: ingress-nginx-controller-*
-        program: nginx
-    env:
-      - name: PARSERS
-        value: "crowdsecurity/cri-logs crowdsecurity/geoip-enrich crowdsecurity/sshd-logs"
-      - name: COLLECTIONS
-        value: "crowdsecurity/nginx crowdsecurity/http-cve crowdsecurity/whitelist-good-actors crowdsecurity/iptables crowdsecurity/linux crowdsecurity/base-http-scenarios"
-    metrics:
+config:
+  config.yaml.local: |
+    api:
+      server:
+        auto_registration:
+          enabled: true
+          token: "${REGISTRATION_TOKEN}"
+          allowed_ranges:
+            - "127.0.0.1/32"
+            - "10.0.0.0/8"
+container_runtime: containerd
+agent:
+  acquisition:
+    - namespace: nginx
+      podName: ingress-nginx-controller-*
+      program: nginx
+  env:
+    - name: PARSERS
+      value: "crowdsecurity/cri-logs crowdsecurity/geoip-enrich crowdsecurity/sshd-logs"
+    - name: COLLECTIONS
+      value: "crowdsecurity/nginx crowdsecurity/http-cve crowdsecurity/whitelist-good-actors crowdsecurity/iptables crowdsecurity/linux crowdsecurity/base-http-scenarios"
+  metrics:
+    enabled: true
+    serviceMonitor:
       enabled: true
-      serviceMonitor:
-        enabled: true
-  lapi:
-    dashboard:
-      enabled: false
-    metrics:
+lapi:
+  dashboard:
+    enabled: false
+  metrics:
+    enabled: true
+    serviceMonitor:
       enabled: true
-      serviceMonitor:
-        enabled: true
-    env:
-      - name: BOUNCER_KEY_nginx
-        valueFrom:
-          secretKeyRef:
-            name: crowdsec-api-key
-            key: key
+  env:
+    - name: BOUNCER_KEY_nginx
+      valueFrom:
+        secretKeyRef:
+          name: crowdsec-api-key
+          key: key
