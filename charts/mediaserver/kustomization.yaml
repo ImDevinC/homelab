@@ -17,7 +17,7 @@ resources:
   - recommendarr
 images:
   - name: lscr.io/linuxserver/mylar3
-    newTag: 0.8.2
+    newTag: 0.8.3
   - name: thomst08/requestrr
     newTag: v2.1.8
   - name: docker.io/linuxserver/sabnzbd
