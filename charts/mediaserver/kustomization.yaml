@@ -23,7 +23,7 @@ images:
   - name: docker.io/linuxserver/sabnzbd
     newTag: 4.5.3
   - name: docker.io/linuxserver/tautulli
-    newTag: 2.15.2
+    newTag: 2.15.3
   - name: docker.io/linuxserver/radarr
     newTag: 5.26.2
   - name: ghcr.io/onedr0p/exportarr
