@@ -1,18 +1,17 @@
-cert-manager:
-  config:
-    enableGatewayAPI: true
-  installCRDs: true
-  extraArgs:
-    - --dns01-recursive-nameservers=1.1.1.1:53,9.9.9.9:53
-    - --dns01-recursive-nameservers-only
-  podDnsPolicy: None
-  podDnsConfig:
-    nameservers:
-      - "1.1.1.1"
-      - "9.9.9.9"
-  global:
-    logLevel: 5
-  prometheus:
+config:
+  enableGatewayAPI: true
+installCRDs: true
+extraArgs:
+  - --dns01-recursive-nameservers=1.1.1.1:53,9.9.9.9:53
+  - --dns01-recursive-nameservers-only
+podDnsPolicy: None
+podDnsConfig:
+  nameservers:
+    - "1.1.1.1"
+    - "9.9.9.9"
+global:
+  logLevel: 5
+prometheus:
+  enabled: true
+  servicemonitor:
     enabled: true
-    servicemonitor:
-      enabled: true
