@@ -35,7 +35,7 @@ images:
   - name: docker.io/linuxserver/sonarr
     newTag: 4.0.15
   - name: docker.io/linuxserver/transmission
-    newTag: 4.0.6
+    newTag: 2021.11.18
   - name: docker.io/linuxserver/prowlarr
     newTag: 2.0.2-develop
   - name: mrcas/kapowarr
