@@ -26,12 +26,11 @@ crowdsec:
         enabled: true
   lapi:
     dashboard:
-      enabled: true
+      enabled: false
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
-    resources: {} # Testing to validate this isn't killing the pod
     env:
       - name: BOUNCER_KEY_nginx
         valueFrom:
