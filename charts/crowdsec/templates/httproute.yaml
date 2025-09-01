@@ -19,7 +19,7 @@ spec:
         type: PathPrefix
         value: /
     backendRefs:
-    - name: crowdsec
+    - name: crowdsec-service
       namespace: crowdsec
       port: 3000
 
