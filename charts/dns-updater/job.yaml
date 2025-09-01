@@ -14,7 +14,7 @@ spec:
           restartPolicy: Never
           containers:
             - name: dns-updater
-              image: ghcr.io/imdevinc/dns-updater:0.1.1
+              image: ghcr.io/imdevinc/dns-updater
               args: ["-dir", "/etc/envs"]
               imagePullPolicy: IfNotPresent
               volumeMounts:
