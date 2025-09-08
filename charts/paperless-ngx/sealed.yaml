@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: paperless-db-creds
+  namespace: paperless
+spec:
+  encryptedData:
+    PAPERLESS_DBPASS: AgAxy7Di4U7qzy59vigH8vppn9Y6LYukPD90hXgInTXw3IbjmSqcVQMmO6VtFVltQDc7MAla/OsPXKPlKFb3D9hs96+CrNdBHFKJer7NWcLQPomhOusztTkEtKgLxRTTZ8PCZfvOgLfE4rtx714SarPIJOYh1UUbMmgPdYY6iM8Sqo2G2GMhzcCET6SpoYQufShvWjEj3YKEQhc/7LyCSsXJhgnXxpEd0VUel9wawmmF8hU310eRdp3meg7eG0FPKEVqpJ6dZsCytTdpuVRhCsijzArJxm+zQ4HJ5/OjgUKK8qYIyY10FiUCUlozHqsFEVDuEg3AZgoznRzGbvsridwgjXJFJ8oMkr9H1Y4jkdWkAdZx6ed0LOPUpSLsCqpEw21jqUgbr7+Iz6A+2z8vg+hFmTQ8df0r7ySx5iq0hpEX0jKWEThkEUAZP1JImbvsI0U9VA9s/s+xRt8vOgv4dRMKAwQ5GwedGcHLPm4VF8xbFTJPb+1/SDLC4DSHkuYZ/VoNGpktLIjxVIr8tfTaM9Rx3M5SNtWfX63zQDMHv7Y6XoHh1E7nA9eoOxko8bwuOVi4WgS2ojNpUSjxW7Rr1eYFfvM6YRJ7nwibh2oLRTmheq0XpEyRHQXHy1xFy3WmivrWWf3mnieYMPvcE3f3nvTKOyzQc5xPYSmN/EkEAfV6fm8lV6FAhe9nCb2aQH6eVldwZh1ZvJ7vICy0r6QeU8Hb2TFcFsqB6m/H
+  template:
+    metadata:
+      creationTimestamp: null
+      name: paperless-db-creds
+      namespace: paperless
