@@ -42,6 +42,18 @@ spec:
               value: eng
             - name: PAPERLESS_PORT
               value: "8000"
+            - name: PAPERLESS_OUTPUT_TYPE
+              value: pdfa
+            - name: PAPERLESS_OCR_LANGUAGE
+              value: eng
+            - name: PAPERLESS_OCR_MODE
+              value: skip
+            - name: PAPERLESS_OCR_SKIP_ARCHIVE_FILE
+              value: always
+            - name: PAPERLESS_OCR_CLEAN
+              value: clean
+            - name: PAPERLESS_OCR_COLOR_CONVERSION_STRATEGY
+              value: LeaveColorUnchanged
           envFrom:
             - secretRef:
                 name: paperless-db-creds
@@ -61,16 +73,19 @@ spec:
               name: paperless-claim0
               subPath: data
             - mountPath: /usr/src/paperless/media
-              name: paperless-claim0
+              name: paperless-host
               subPath: media
             - mountPath: /usr/src/paperless/export
-              name: paperless-claim0
+              name: paperless-host
               subPath: export
             - mountPath: /usr/src/paperless/consume
-              name: paperless-claim0
+              name: paperless-host
               subPath: consume
       restartPolicy: Always
       volumes:
         - name: paperless-claim0
           persistentVolumeClaim:
             claimName: paperless-claim0
+        - name: paperless-host
+          hostPath:
+            path: /mnt/media/paperless
