@@ -74,13 +74,13 @@ spec:
               subPath: data
             - mountPath: /usr/src/paperless/media
               name: paperless-host
-              subPath: media
+              subPath: paperless/media
             - mountPath: /usr/src/paperless/export
               name: paperless-host
-              subPath: export
+              subPath: paperless/export
             - mountPath: /usr/src/paperless/consume
               name: paperless-host
-              subPath: consume
+              subPath: paperless/consume
       restartPolicy: Always
       volumes:
         - name: paperless-claim0
@@ -88,4 +88,4 @@ spec:
             claimName: paperless-claim0
         - name: paperless-host
           hostPath:
-            path: /mnt/media/paperless
+            path: /mnt/media
