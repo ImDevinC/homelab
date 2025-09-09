@@ -1,3 +1,7 @@
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    partition: 0
 ingress:
   host: login.int.imdevinc.com
 persistence:
