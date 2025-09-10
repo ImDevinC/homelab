@@ -5,7 +5,6 @@
 (import 'homeassistant/mixin.libsonnet') +
 (import 'kube-state-metrics/mixin.libsonnet') +
 (import 'mediaserver/mixin.libsonnet') +
-(import 'mongodb/mixin.libsonnet') +
 (import 'nvidia/mixin.libsonnet') +
 (import 'pi-hole/mixin.libsonnet') +
 (import 'postgres/mixin.libsonnet') +
