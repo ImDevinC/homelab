@@ -28,6 +28,16 @@ spec:
       - namespace
       - alertname
     sourceMatch:
+      - name: exported_namespace
+        value: ""
+    targetMatch:
+      - name: severity
+        matchType: =~
+        value: '*'
+  - equal:
+      - namespace
+      - alertname
+    sourceMatch:
       - name: severity
         value: critical
     targetMatch:
