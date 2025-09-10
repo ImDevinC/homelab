@@ -67,7 +67,7 @@ spec:
 
   route:
     groupBy:
-    - namespace
+    - exported_namespace
     groupInterval: 5m
     groupWait: 30s
     receiver: pushover
