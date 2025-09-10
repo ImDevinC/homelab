@@ -19,7 +19,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis
+  name: redis-master
   labels:
     app.kubernetes.io/instance: redis
     app.kubernetes.io/name: redis
