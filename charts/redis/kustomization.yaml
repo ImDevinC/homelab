@@ -1,16 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-helmCharts:
-  - name: redis
-    releaseName: redis
-    repo: oci://registry-1.docker.io/bitnamicharts
-    version: 22.0.7
-    valuesFile: values-redis.yaml
-  - name: prometheus-redis-exporter
-    releaseName: prometheus-redis-exporter
-    repo: https://prometheus-community.github.io/helm-charts
-    version: 6.16.0
-    valuesFile: values-exporter.yaml
 namespace: redis
 resources:
+  - configmap.yaml
   - kubeseal.yaml
+  - service.yaml
+  - statefulset.yaml
+images:
+  - name: redis
+    newTag: 8.2.1
