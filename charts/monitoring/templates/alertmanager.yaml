@@ -33,7 +33,7 @@ spec:
     targetMatch:
       - name: severity
         matchType: =~
-        value: '*'
+        value: '.*'
   - equal:
       - namespace
       - alertname
