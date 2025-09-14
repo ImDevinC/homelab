@@ -13,7 +13,7 @@ spec:
         spec:
           restartPolicy: Never
           containers:
-            - name: pmm
+            - name: bl-shifts
               image: ghcr.io/imdevinc/bl-shifts
               imagePullPolicy: IfNotPresent
               env:
