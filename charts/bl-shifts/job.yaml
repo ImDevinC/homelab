@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: bl-shifts
+spec:
+  schedule: "0 * * * *" # Every hour
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: pmm
+              image: ghcr.io/imdevinc/bl-shifts
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: REDIS_ADDR
+                  value: redis-master.redis:6379
+              envFrom:
+                - secretRef:
+                    name: bl-shift-creds
