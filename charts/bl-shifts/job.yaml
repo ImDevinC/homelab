@@ -21,4 +21,4 @@ spec:
                   value: redis-master.redis:6379
               envFrom:
                 - secretRef:
-                    name: bl-shift-creds
+                    name: bl-shifts-creds
