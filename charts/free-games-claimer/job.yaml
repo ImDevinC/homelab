@@ -5,6 +5,7 @@ metadata:
   namespace: free-games-claimer
 spec:
   schedule: "0 12 * * *" # Every day at 1am
+  suspend: true
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
