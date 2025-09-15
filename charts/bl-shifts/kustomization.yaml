@@ -6,4 +6,4 @@ resources:
   - secrets.yaml
 images:
   - name: ghcr.io/imdevinc/bl-shifts
-    newTag: 0.0.2
+    newTag: 0.0.3
