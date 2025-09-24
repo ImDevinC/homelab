@@ -45,6 +45,10 @@ spec:
           - key: cluster
             value: k8s
             action: insert
+      resource:
+        attributes:
+          - key: exported_namespace
+            action: delete
 
     exporters:
       prometheusremotewrite:
@@ -59,7 +63,7 @@ spec:
       pipelines:
         metrics:
           receivers: [prometheus]
-          processors: [attributes/cluster,batch]
+          processors: [attributes/cluster,resource,batch]
           exporters: [prometheusremotewrite]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
