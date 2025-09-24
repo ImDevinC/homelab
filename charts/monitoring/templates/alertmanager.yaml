@@ -61,13 +61,13 @@ spec:
     targetMatch:
       - name: severity
         value: info
-  - sourceMatch:
-      - severity: critical
-        alertname: kube_cronjob_status_true
+  - equal:
+      - namespace
+    sourceMatch:
+      - alertname: KubernetesCronJobSuspended
     targetMatch:
       - severity: warning
-        alertname: free-games-claimer_suspended
-
+      - cronjob: free-games-claimer
   receivers:
   - name: "null"
   - name: pushover
