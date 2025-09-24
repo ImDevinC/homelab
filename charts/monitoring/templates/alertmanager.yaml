@@ -64,10 +64,13 @@ spec:
   - equal:
       - namespace
     sourceMatch:
-      - alertname: KubernetesCronJobSuspended
+      - name: alertname
+        value: KubernetesCronJobSuspended
     targetMatch:
-      - severity: warning
-      - cronjob: free-games-claimer
+      - name: severity
+        value: warning
+      - name: cronjob
+        value: free-games-claimer
   receivers:
   - name: "null"
   - name: pushover
