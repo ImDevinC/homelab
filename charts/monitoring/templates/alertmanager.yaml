@@ -61,6 +61,12 @@ spec:
     targetMatch:
       - name: severity
         value: info
+  - sourceMatch:
+      - severity: critical
+        alertname: kube_cronjob_status_true
+    targetMatch:
+      - severity: warning
+        alertname: free-games-claimer_suspended
 
   receivers:
   - name: "null"
