@@ -61,16 +61,6 @@ spec:
     targetMatch:
       - name: severity
         value: info
-  - equal:
-      - namespace
-    sourceMatch:
-      - name: alertname
-        value: KubernetesCronJobSuspended
-    targetMatch:
-      - name: severity
-        value: warning
-      - name: cronjob
-        value: free-games-claimer
   receivers:
   - name: "null"
   - name: pushover
@@ -86,7 +76,7 @@ spec:
 
   route:
     groupBy:
-    - exported_namespace
+    - namespace
     groupInterval: 5m
     groupWait: 30s
     receiver: pushover
