@@ -61,6 +61,13 @@ spec:
     targetMatch:
       - name: severity
         value: info
+  - equal:
+      - namespace
+      - alertname
+      - cronjob
+    sourceMatch:
+      - name: alertname
+        cronjob: free-games-claimer
   receivers:
   - name: "null"
   - name: pushover
