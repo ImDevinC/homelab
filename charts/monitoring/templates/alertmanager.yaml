@@ -67,7 +67,9 @@ spec:
       - cronjob
     sourceMatch:
       - name: alertname
-        cronjob: free-games-claimer
+        value: KubernetesCronJobSuspended
+      - name: cronjob
+        value: free-games-claimer
   receivers:
   - name: "null"
   - name: pushover
