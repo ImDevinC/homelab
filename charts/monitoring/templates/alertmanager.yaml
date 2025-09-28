@@ -28,16 +28,6 @@ spec:
       - namespace
       - alertname
     sourceMatch:
-      - name: exported_namespace
-        value: ""
-    targetMatch:
-      - name: severity
-        matchType: =~
-        value: '.*'
-  - equal:
-      - namespace
-      - alertname
-    sourceMatch:
       - name: severity
         value: critical
     targetMatch:
@@ -61,15 +51,6 @@ spec:
     targetMatch:
       - name: severity
         value: info
-  - equal:
-      - namespace
-      - alertname
-      - cronjob
-    sourceMatch:
-      - name: alertname
-        value: KubernetesCronjobSuspended
-      - name: cronjob
-        value: free-games-claimer
   receivers:
   - name: "null"
   - name: pushover
@@ -94,7 +75,7 @@ spec:
     - matchers:
       - name: alertname
         matchType: =~
-        value: InfoInhibitor|Watchdog|etcdMembersDown|etcdInsufficientMembers|KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|etcdHighCommitDurations
+        value: InfoInhibitor|Watchdog|etcdMembersDown|etcdInsufficientMembers|KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|etcdHighCommitDurations|KubernetesCronjobSuspended
       receiver: "null"
     - matchers: # These jobs also run on the desktop, and we don't want to alert there
       - name: job
