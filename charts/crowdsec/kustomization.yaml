@@ -9,5 +9,5 @@ helmCharts:
     valuesFile: values.yaml
 namespace: crowdsec
 resources:
-#  - httproute.yaml # Disabling while debugging container stopping
+  - httproute.yaml
   - sealed.yaml

@@ -25,7 +25,7 @@ agent:
       enabled: true
 lapi:
   dashboard:
-    enabled: false
+    enabled: true
   metrics:
     enabled: true
     serviceMonitor:
