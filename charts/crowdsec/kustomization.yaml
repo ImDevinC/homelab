@@ -9,5 +9,4 @@ helmCharts:
     valuesFile: values.yaml
 namespace: crowdsec
 resources:
-  - httproute.yaml
   - sealed.yaml
