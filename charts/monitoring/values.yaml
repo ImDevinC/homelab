@@ -13,7 +13,7 @@ kube-state-metrics:
   prometheusScrape: false
   prometheus:
     monitor:
-      enabled: true
+      enabled: false
       additionalLabels:
         honorLabels: "true"
 prometheus-node-exporter:
