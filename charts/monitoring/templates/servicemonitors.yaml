@@ -27,6 +27,7 @@ spec:
       app.kubernetes.io/name: kube-state-metrics
   endpoints:
     - port: http
+      honorLabels: true
 ---
 # Source: kube-prometheus-stack/charts/prometheus-node-exporter/templates/servicemonitor.yaml
 apiVersion: monitoring.coreos.com/v1
