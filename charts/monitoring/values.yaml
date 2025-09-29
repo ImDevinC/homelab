@@ -15,7 +15,7 @@ kube-state-metrics:
     monitor:
       enabled: true
       additionalLabels:
-        honorLabels: true
+        honorLabels: "true"
 prometheus-node-exporter:
   podLabels:
     jobLabel: node-exporter
