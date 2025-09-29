@@ -6,6 +6,8 @@ ingress:
 
 storage:
   data:
+    labels:
+      backup: "true"
     customVolume: true
     subPath: wallabag/data
     volumes:

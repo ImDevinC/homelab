@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   labels:
     service: controtto-claim0
+    backup: "true"
   name: controtto-claim0
   namespace: controtto
 spec:
