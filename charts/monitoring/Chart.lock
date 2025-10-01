@@ -1,0 +1,18 @@
+dependencies:
+- name: opentelemetry-operator
+  repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+  version: 0.97.0
+- name: grafana-operator
+  repository: https://grafana.github.io/helm-charts
+  version: v5.19.4
+- name: prometheus-operator-crds
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 23.0.0
+- name: kube-state-metrics
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 6.3.0
+- name: prometheus-node-exporter
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 4.48.0
+digest: sha256:509d00f95645e482efbc16cc610f71028d4c38b65c7575b03f7b69437081ef0e
+generated: "2025-09-30T20:37:49.09697622-07:00"
