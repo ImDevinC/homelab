@@ -1,6 +1,6 @@
 clusterDomain: int.imdevinc.com
-podLabels:
-  app.kubernetes.io/name: openwebui
+#podLabels:
+#  app.kubernetes.io/name: openwebui
 ollama:
   enabled: false
   ollamaUrls:
