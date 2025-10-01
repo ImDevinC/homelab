@@ -1,6 +1,6 @@
 dependencies:
 - name: scrutiny
   repository: oci://tccr.io/truecharts
-  version: 13.3.4
-digest: sha256:d654cfde78113170b2f8d9469cad07f3c2677283a628d5235f6539f701b47640
-generated: "2025-09-01T01:20:21.868068953Z"
+  version: 13.7.1
+digest: sha256:68d35ff0291d3f99fa0ba681caa1ce3a680e8cf9fe658a928c0fdd0167d4d0c2
+generated: "2025-10-01T01:10:07.95687772Z"
