@@ -7,6 +7,7 @@ metadata:
     gethomepage.dev/group: Homelab
     gethomepage.dev/icon: chatgpt.png
     gethomepage.dev/name: ChatGPT
+    gethomepage.dev/app: open-webui
 spec:
   parentRefs:
   - name: traefik-gateway
