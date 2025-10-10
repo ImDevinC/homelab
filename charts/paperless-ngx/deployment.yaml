@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: paperless
+    app.kubernetes.io/name: paperless
+  name: paperless
+  namespace: paperless
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: paperless
+      app.kubernetes.io/name: paperless
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: paperless
+        app.kubernetes.io/name: paperless
+    spec:
+      containers:
+        - image: ghcr.io/paperless-ngx/paperless-ngx
+          name: paperless
+          ports:
+            - containerPort: 8000
+          env:
+            - name: PAPERLESS_REDIS
+              value: redis://redis-master.redis:6379
+            - name: PAPERLESS_DBHOST
+              value: postgres.postgres
+            - name: USERMAP_UID
+              value: "1000"
+            - name: USERMAP_GID
+              value: "1000"
+            - name: PAPERLESS_URL
+              value: https://paperless.int.imdevinc.com
+            - name: PAPERLESS_TIME_ZONE
+              value: America/Los_Angeles
+            - name: PAPERLESS_OCR_LANGUAGE
+              value: eng
+            - name: PAPERLESS_PORT
+              value: "8000"
+            - name: PAPERLESS_OUTPUT_TYPE
+              value: pdfa
+            - name: PAPERLESS_OCR_LANGUAGE
+              value: eng
+            - name: PAPERLESS_OCR_MODE
+              value: skip
+            - name: PAPERLESS_OCR_SKIP_ARCHIVE_FILE
+              value: always
+            - name: PAPERLESS_OCR_CLEAN
+              value: clean
+            - name: PAPERLESS_OCR_COLOR_CONVERSION_STRATEGY
+              value: LeaveColorUnchanged
+          envFrom:
+            - secretRef:
+                name: paperless-db-creds
+            #- name: PAPERLESS_TIKA_ENABLED
+            #  value: "1"
+            #- name: PAPERLESS_TIKA_GOTENBERG_ENDPOINT
+            #  value: http://gotenberg.tika:3000
+            #- name: PAPERLESS_TIKA_GOTENBERG_ENDPOINT
+            #  value: http://tika.tika:9998
+          resources:
+            requests:
+              memory: "2048Mi"
+            limits:
+              memory: "8192Mi"
+          volumeMounts:
+            - mountPath: /usr/src/paperless/data
+              name: paperless-claim0
+              subPath: data
+            - mountPath: /usr/src/paperless/media
+              name: paperless-host
+              subPath: paperless/media
+            - mountPath: /usr/src/paperless/export
+              name: paperless-host
+              subPath: paperless/export
+            - mountPath: /usr/src/paperless/consume
+              name: paperless-host
+              subPath: paperless/consume
+      restartPolicy: Always
+      volumes:
+        - name: paperless-claim0
+          persistentVolumeClaim:
+            claimName: paperless-claim0
+        - name: paperless-host
+          hostPath:
+            path: /mnt/media
