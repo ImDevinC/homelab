@@ -8,7 +8,6 @@ spec:
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
-  backoffLimit: 3
   jobTemplate:
     spec:
       template:

@@ -7,7 +7,6 @@ spec:
   schedule: 0 */6 * * *
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
-  backoffLimit: 3
   jobTemplate:
     spec:
       template:
