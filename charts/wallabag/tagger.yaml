@@ -9,15 +9,13 @@ spec:
   failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
-      backoffLimit: 0
-      ttlSecondsAfterFinished: 0
       template:
         spec:
           restartPolicy: Never
           containers:
             - name: wallabag-tagger
               image: ghcr.io/imdevinc/wallabag-tagger:0.1.0
-              imagePullPolicy: Always
+              imagePullPolicy: IfNotPresent
               args: ["tags"]
               envFrom:
                 - secretRef:
@@ -32,4 +30,4 @@ metadata:
 data:
   WT_WALLABAG_URL: https://wallabag.imdevinc.com
   WT_OLLAMA_URL: https://ollama.int.imdevinc.com
-  WT_OLLAMA_MODEL: granite3.3
+  WT_OLLAMA_MODEL: granite3.3:8b
