@@ -54,7 +54,7 @@ spec:
               value: clean
             - name: PAPERLESS_OCR_COLOR_CONVERSION_STRATEGY
               value: LeaveColorUnchanged
-            - name: PAPERLESS_AUTH
+            - name: PAPERLESS_APPS
               value: allauth.socialaccount.providers.openid_connect
           envFrom:
             - secretRef:
