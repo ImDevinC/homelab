@@ -54,15 +54,11 @@ spec:
               value: clean
             - name: PAPERLESS_OCR_COLOR_CONVERSION_STRATEGY
               value: LeaveColorUnchanged
+            - name: PAPERLESS_AUTH
+              value: allauth.socialaccount.providers.openid_connect
           envFrom:
             - secretRef:
                 name: paperless-db-creds
-            #- name: PAPERLESS_TIKA_ENABLED
-            #  value: "1"
-            #- name: PAPERLESS_TIKA_GOTENBERG_ENDPOINT
-            #  value: http://gotenberg.tika:3000
-            #- name: PAPERLESS_TIKA_GOTENBERG_ENDPOINT
-            #  value: http://tika.tika:9998
           resources:
             requests:
               memory: "2048Mi"
