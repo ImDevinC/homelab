@@ -56,6 +56,8 @@ spec:
               value: LeaveColorUnchanged
             - name: PAPERLESS_APPS
               value: allauth.socialaccount.providers.openid_connect
+            - name: PAPERLESS_DISABLE_REGULAR_LOGIN
+              value: "true"
           envFrom:
             - secretRef:
                 name: paperless-db-creds
