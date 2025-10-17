@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: legoai
+    namespace: rustypaste
   project: default
   source:
     path: charts/rustypaste
