@@ -138,5 +138,5 @@ data:
       "application/java-vm",
     ]
     duplicate_files = true
-    # default_expiry = "1M"
+    default_expiry = "1M"
     #delete_expired_files = { enabled = true, interval = "1h" }
