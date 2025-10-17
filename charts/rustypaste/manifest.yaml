@@ -32,7 +32,6 @@ spec:
             - name: config
               mountPath: /app/config.toml
               subPath: config.toml
-              readOnly: true
       volumes:
         - name: config
           configMap:
