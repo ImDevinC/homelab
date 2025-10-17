@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: creds
+  namespace: rustypaste
+spec:
+  encryptedData:
+    AUTH_TOKEN: AgBFJHHTuXcVovLOr2+UjA+el95j7uP7eOu4j2fAjBEd9cGgTk8cJ/e1UQYD1q8tXEdVBkcMSvY15eE0D1XFnfoui/zYg7NSngqKolXkpWClpXL6Em7xcrJk4lsaM5FWq9FHIFy5ZkCiHPcZAwI7OHbKofIbAUmwVoErAaVSiViH2NT6HmbGQhhCvRQnEvtDfFSpAUHc2I1sQJbVoybrTTrlcJJ3GpVEY9EUnb1cl6iXsWw6YjV1odsnA/V1KGJ1D/5hwOcq2TxVmoYUXSsW83vS3UGnTIR8quOkJo+2jviySL6NceztY7wz2oKFDnDTtiRNk8DwubZN3pRbXUXGD5wuduZyWqWcdNCcjKkbOArrQqciMsaW5KCEMsBAnsdXCz5Cqc6ortie8OfFW+AC+coorr/NZrTDRwaebIdC9OSNkDgccGiTEe0o88RAUhZLyT3Z51YHFca5YC+IZO7CecHqMUMkErbYoq9uGdk6i0c7StZEMp1UV59Lm6b0Mg4TLSe1x3wT2llbh8x/rBZSYjnUEkaAhBO4/LAQNPIU694IHZqBK4s1JVerEugcCEbtFTdxn5kJjD8L1DpY1SFC1wuQMASXNCKLlcUBguYLwRFjBivYTASfHJw/7KRF1pRHfNZfo1bU/vXXMRV+q/m7v7J8fSSOb2wRNFIFoIPOBmgYEnZQWzh/rpY3mumDiSeenpcJB+QKWIA0qRNAl4aov1X12dBY9aGK
+  template:
+    metadata:
+      name: creds
+      namespace: rustypaste
