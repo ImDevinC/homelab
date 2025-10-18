@@ -93,7 +93,7 @@ data:
     #address = "127.0.0.1:8000"
     url = "https://files.imdevinc.com"
     #workers=4
-    max_content_length = "1024MB"
+    max_content_length = "149MB" # We have a cloudflare tunnel that limits us to 150MB
     upload_path = "./upload"
     timeout = "30s"
     expose_version = false
