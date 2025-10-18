@@ -29,11 +29,11 @@ spec:
       derivedFields:
         - matcherRegex: "host=(\\S+)"
           name: cloudflared_request_host
-        - matchRegex: "originService=(\\S+)"
+        - matcherRegex: "originService=(\\S+)"
           name: cloudflared_request_origin_service
-        - matchRegex: "path=(\\S+)"
+        - matcherRegex: "path=(\\S+)"
           name: cloudflared_request_path
-        - matchRegex: '"X-Forwarded-For":\["(\S+?)\"]'
+        - matcherRegex: '"X-Forwarded-For":\["(\S+?)\"]'
   instanceSelector:
     matchLabels:
       instance: default
