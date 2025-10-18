@@ -5,7 +5,7 @@ loki-stack:
         pipelineStages:
           - cri: {}
           - match:
-              selector: '{app="ingress-nginx"}'
+              selector: '{app="cloudflared"}'
               stages:
                 - regex:
                     expression: '^(?P<ip>\S+) .*'
