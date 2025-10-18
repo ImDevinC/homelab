@@ -11,4 +11,5 @@
 (import 'redis/mixin.libsonnet') +
 (import 'sealed-secrets/mixin.libsonnet') +
 (import 'speedtest/mixin.libsonnet') +
-(import 'traefik/mixin.libsonnet')
+(import 'traefik/mixin.libsonnet') +
+(import 'cloudflared/mixin.libsonnet')
