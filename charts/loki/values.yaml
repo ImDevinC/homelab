@@ -8,7 +8,7 @@ loki-stack:
               selector: '{app="cloudflared"}'
               stages:
                 - regex:
-                    expression: '^(?P<ip>\S+) .*'
+                    expression: '"X-Forwarded-For":\["(?P<ip>\S*?)"]'
                 - geoip:
                     db: /maxmind/GeoLite2-City.mmdb
                     source: ip
