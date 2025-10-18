@@ -34,6 +34,7 @@ spec:
         - matcherRegex: "path=(\\S+)"
           name: cloudflared_request_path
         - matcherRegex: '"X-Forwarded-For":\["(\S+?)\"]'
+          name: cloudflared_x_forwarded_for
   instanceSelector:
     matchLabels:
       instance: default
