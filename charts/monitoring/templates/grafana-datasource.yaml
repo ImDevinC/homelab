@@ -25,6 +25,15 @@ spec:
     type: loki
     name: loki
     url: http://loki.loki:3100
+    jsonData:
+      derivedFields:
+        - matcherRegex: 'host=(\S+)'
+          name: cloudflared_request_host
+        - matchRegex: 'originService=(\S+)'
+          name: cloudflared_request_origin_service
+        - matchRegex: 'path=(\S+)'
+          name: cloudflared_request_path
+        - matchRegex: '"X-Forwarded-For":\["(\S+?)\"]'
   instanceSelector:
     matchLabels:
       instance: default
