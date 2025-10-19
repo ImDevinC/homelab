@@ -1,13 +1,7 @@
-addressPool:
-  create: true
-  addresses:
-    - 192.168.1.64/26
-
-metallb:
-  speaker:
-    ignoreExcludeLB: true
-  prometheus:
-    namespace: metallb-system
-    serviceAccount: default
-    serviceMonitor:
-      enabled: true
+speaker:
+  ignoreExcludeLB: true
+prometheus:
+  namespace: metallb-system
+  serviceAccount: default
+  serviceMonitor:
+    enabled: true
