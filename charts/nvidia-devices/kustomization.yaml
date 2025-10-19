@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+helmCharts:
+  - name: nvidia-devices-plugin
+    releaseName: nvidia-devices-plugin
+    namespace: nvidia-devices-plugin
+    repo: https://nvidia.github.io/k8s-device-plugin
+    version: 0.17.4
+    valuesFile: values.yaml
+namespace: nvidia-devices-plugin
+resources:
+  - nfd.yaml
