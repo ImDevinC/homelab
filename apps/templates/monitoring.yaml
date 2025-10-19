@@ -4,7 +4,7 @@ metadata:
   name: monitoring
   namespace: argo-cd
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -15,7 +15,7 @@ spec:
     repoURL: git@github.com:ImDevinC/homelab.git
     targetRevision: HEAD
   syncPolicy:
-    #syncOptions:
-    #  - ServerSideApply=true
+    syncOptions:
+      - ServerSideApply=true
     automated:
       prune: true
