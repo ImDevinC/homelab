@@ -1,0 +1,6 @@
+prometheusScrape: false
+prometheus:
+  monitor:
+    enabled: false
+    additionalLabels:
+      honorLabels: "true"
