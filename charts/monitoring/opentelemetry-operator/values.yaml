@@ -1,4 +1,5 @@
 manager:
+  createRbacPermissions: true
   featureGatesMap:
     operator.targetallocator.mtls: true
   collectorImage:
