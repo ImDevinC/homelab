@@ -23,7 +23,7 @@ spec:
       serviceAccountName: imagepullsecret-patcher
       containers:
         - name: imagepullsecret-patcher
-          image: "quay.io/titansoft/imagepullsecret-patcher:v0.14"
+          image: quay.io/titansoft/imagepullsecret-patcher:v0.14
           env:
             - name: CONFIG_FORCE
               value: "true"
@@ -46,7 +46,7 @@ spec:
               memory: 30Mi
       volumes:
         - name: src-dockerconfigjson
-          secret: 
+          secret:
             secretName: dockerauth
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -56,24 +56,24 @@ metadata:
     k8s-app: imagepullsecret-patcher
   name: imagepullsecret-patcher
 rules:
-- apiGroups:
-  - ""
-  resources:
-  - secrets
-  - serviceaccounts
-  verbs:
-  - list
-  - patch
-  - create
-  - get
-  - delete
-- apiGroups:
-  - ""
-  resources:
-  - namespaces
-  verbs:
-  - list
-  - get
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+      - serviceaccounts
+    verbs:
+      - list
+      - patch
+      - create
+      - get
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - namespaces
+    verbs:
+      - list
+      - get
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -87,3 +87,4 @@ subjects:
   - kind: ServiceAccount
     name: imagepullsecret-patcher
     namespace: imagepullsecret-patcher
+
