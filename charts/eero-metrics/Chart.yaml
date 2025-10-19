@@ -1,7 +1,0 @@
-apiVersion: v2
-name: eero-metrics
-version: 1.0.0
-dependencies:
-  - name: eero-metrics
-    version: 0.0.3
-    repository: https://imdevinc.github.io/eero-metrics

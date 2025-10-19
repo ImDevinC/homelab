@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+helmCharts:
+  - name: eero-metrics
+    releaseName: eero-metrics
+    namespace: eero-metrics
+    repo: https://imdevinc.github.io/eero-metrics
+    version: 0.0.3
+    valuesFile: values.yaml
+namespace: eero-metrics
+images:
+  - name: ghcr.io/imdevinc/eero-metrics
+    newTag: 0.1.1
