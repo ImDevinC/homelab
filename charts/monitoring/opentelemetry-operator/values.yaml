@@ -1,7 +1,10 @@
 admissionWebhooks:
+  create: false
   certManager:
     enabled: true
 manager:
+  env:
+    ENABLE_WEBHOOKS: "false"
   featureGatesMap:
     operator.targetallocator.mtls: true
   collectorImage:
