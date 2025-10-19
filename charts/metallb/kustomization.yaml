@@ -3,10 +3,10 @@ kind: Kustomization
 helmCharts:
   - name: metallb
     releaseName: metallb
-    namespace: metallb
+    namespace: metallb-system
     repo: https://metallb.github.io/metallb
     version: 0.15.2
     valuesFile: values.yaml
-namespace: metallb
+namespace: metallb-system
 resources:
   - address-pool.yaml
