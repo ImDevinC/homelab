@@ -1,4 +1,3 @@
-upgradeStrategy: automatic
 admissionWebhooks:
   create: false
 manager:
