@@ -4,7 +4,7 @@ helmCharts:
   - name: opentelemetry-operator
     releaseName: opentelemetry-operator
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
-    version: 0.136.0
+    version: 0.97.0
     valuesFile: values.yaml
 resources:
   - alertmanager-creds.yaml
