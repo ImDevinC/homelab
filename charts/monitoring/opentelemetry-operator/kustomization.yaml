@@ -6,6 +6,7 @@ helmCharts:
     repo: https://open-telemetry.github.io/opentelemetry-helm-charts
     version: 0.97.0
     valuesFile: values.yaml
+    namespace: monitoring
 resources:
   - alertmanager-creds.yaml
   - alertmanager.yaml
@@ -14,3 +15,4 @@ resources:
   - prometheus-operated.yaml
   - prometheus-operator.yaml
   - servicemonitors.yaml
+namespace: monitoring

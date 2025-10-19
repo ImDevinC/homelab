@@ -1,8 +1,4 @@
-#admissionWebhooks:
-#  create: false
 manager:
-  #  env:
-  #    ENABLE_WEBHOOKS: "false"
   featureGatesMap:
     operator.targetallocator.mtls: false
   collectorImage:
