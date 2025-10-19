@@ -1,4 +1,6 @@
-admissionWebhooks.certManager.enabled: true
+admissionWebhooks:
+  certManager:
+    enabled: true
 manager:
   featureGatesMap:
     operator.targetallocator.mtls: true
