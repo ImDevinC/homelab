@@ -6,11 +6,11 @@ metadata:
   name: dns-duration
   namespace: dns-duration
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
-  - name: metrics
-    port: 8080
-    protocol: TCP
-    targetPort: metrics
+    - name: metrics
+      port: 8080
+      protocol: TCP
+      targetPort: metrics
   selector:
     app: dns-duration

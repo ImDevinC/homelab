@@ -6,11 +6,11 @@ metadata:
   name: speedtest
   namespace: speedtest
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
-  - name: metrics
-    port: 8080
-    protocol: TCP
-    targetPort: metrics
+    - name: metrics
+      port: 8080
+      protocol: TCP
+      targetPort: metrics
   selector:
     app: speedtest

@@ -6,11 +6,11 @@ metadata:
   name: dnd-proxy
   namespace: dnd-proxy
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
-  - name: http
-    port: 8080
-    protocol: TCP
-    targetPort: http
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: http
   selector:
     app: dnd-proxy

@@ -6,7 +6,7 @@ metadata:
   name: paperless
   namespace: paperless
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - name: http
       port: 8000

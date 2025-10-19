@@ -6,7 +6,7 @@ metadata:
   name: controtto
   namespace: controtto
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - name: http
       port: 8000
