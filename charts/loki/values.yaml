@@ -1,23 +1,22 @@
-loki-stack:
-  promtail:
-    config:
-      snippets:
-        pipelineStages:
-          - cri: {}
-          - match:
-              selector: '{app="cloudflared"}'
-              stages:
-                - regex:
-                    expression: '"X-Forwarded-For":\["(?P<ip>\S*?)"]'
-                - geoip:
-                    db: /maxmind/GeoLite2-City.mmdb
-                    source: ip
-                    db_type: city
-    extraVolumeMounts:
-      - name: maxmind
-        mountPath: /maxmind/
-        readonly: true
-    extraVolumes:
-      - name: maxmind
-        hostPath:
-          path: /mnt/media/config/maxmind
+promtail:
+  config:
+    snippets:
+      pipelineStages:
+        - cri: {}
+        - match:
+            selector: '{app="cloudflared"}'
+            stages:
+              - regex:
+                  expression: '"X-Forwarded-For":\["(?P<ip>\S*?)"]'
+              - geoip:
+                  db: /maxmind/GeoLite2-City.mmdb
+                  source: ip
+                  db_type: city
+  extraVolumeMounts:
+    - name: maxmind
+      mountPath: /maxmind/
+      readonly: true
+  extraVolumes:
+    - name: maxmind
+      hostPath:
+        path: /mnt/media/config/maxmind
