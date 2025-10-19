@@ -1,63 +1,19 @@
-replicaCount: 1
-
-image:
-  repository: ghcr.io/joeyates/postgis_pgvector
-  pullPolicy: IfNotPresent
-  tag: 17-3.5-v0.8.0
-
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-
-serviceAccount:
-  create: true
-  automount: true
-  annotations: {}
-  name: ""
-
-podAnnotations: {}
-podLabels: {}
-
-podSecurityContext: {}
-
-securityContext: {}
-
-service:
-  type: ClusterIP
-  port: 5432
-
-persistence:
-  storageClassName: hostpath-csi
-  accessModes: [ReadWriteOnce]
-  resources:
-    requests:
-      storage: 5Gi
-
-resources: {}
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
-
-prometheus-postgres-exporter:
-  serviceMonitor:
-    enabled: true
-  config:
-    datasource:
-      host: postgres.postgres
-      user: postgres
-      passwordFile: /creds/credentials
-  extraVolumes:
-    - name: credentials
-      secret:
-        defaultMode: 420
-        secretName: postgres-creds
-        items:
-          - key: pgpass
-            path: credentials
-  extraVolumeMounts:
-    - name: credentials
-      mountPath: /creds
-      readOnly: true
+serviceMonitor:
+  enabled: true
+config:
+  datasource:
+    host: postgres.postgres
+    user: postgres
+    passwordFile: /creds/credentials
+extraVolumes:
+  - name: credentials
+    secret:
+      defaultMode: 420
+      secretName: postgres-creds
+      items:
+        - key: pgpass
+          path: credentials
+extraVolumeMounts:
+  - name: credentials
+    mountPath: /creds
+    readOnly: true
