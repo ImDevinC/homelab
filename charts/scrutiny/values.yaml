@@ -1,12 +1,11 @@
-scrutiny:
-  persistence:
-    config:
-      enabled: true
-      mountPath: /opt/scrutiny/config
-      type: pvc
-      storageClass: hostpath-csi
-    influxdb:
-      enabled: true
-      mountPath: /opt/scrutiny/influxdb
-      type: pvc
-      storageClass: hostpath-csi
+persistence:
+  config:
+    enabled: true
+    mountPath: /opt/scrutiny/config
+    type: pvc
+    storageClass: hostpath-csi
+  influxdb:
+    enabled: true
+    mountPath: /opt/scrutiny/influxdb
+    type: pvc
+    storageClass: hostpath-csi
