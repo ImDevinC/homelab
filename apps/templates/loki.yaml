@@ -14,11 +14,8 @@ spec:
     path: charts/loki
     repoURL: https://github.com/imdevinc/homelab.git
     targetRevision: HEAD
-    helm:
-      skipCrds: true
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
     automated:
       prune: true
-      
