@@ -1,7 +1,5 @@
 admissionWebhooks:
   create: false
-  certManager:
-    enabled: true
 manager:
   env:
     ENABLE_WEBHOOKS: "false"
