@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: umami
+  labels:
+    app: umami
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: umami
+  template:
+    metadata:
+      labels:
+        app: umami
+    spec:
+      containers:
+        - image: ghcr.io/umami-software/umami
+          imagePullPolicy: IfNotPresent
+          name: umami
+          env:
+            - name: DATABASE_TYPE
+              value: postgreslql
+          envFrom:
+            - secretRef:
+                name: creds
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: umami
+  labels:
+    app: umami
+spec:
+  selector:
+    app: umami
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 3000
+      protocol: TCP
+      targetPort: 3000
