@@ -1,6 +1,6 @@
 manager:
   featureGatesMap:
-    operator.targetallocator.mtls: false
+    operator.targetallocator.mtls: true
   collectorImage:
     repository: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib
 admissionWebhooks:
