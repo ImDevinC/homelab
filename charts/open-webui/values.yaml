@@ -17,9 +17,9 @@ persistence:
   existingClaim: open-webui-hp
 extraEnvVars:
   - name: ENABLE_OAUTH_SIGNUP
-    value: 'true'
+    value: "true"
   - name: OAUTH_MERGE_ACCOUNTS_BY_EMAIL
-    value: 'true'
+    value: "true"
   - name: OAUTH_CLIENT_ID
     valueFrom:
       secretKeyRef:
@@ -41,10 +41,19 @@ extraEnvVars:
   - name: DEFAULT_USER_ROLE
     value: user
   - name: OAUTH_ROLE_MANAGEMENT
-    value: 'true'
+    value: "true"
   - name: OAUTH_ALLOWED_ROLES
     value: "OpenwebUI Users,OpenwebUI Admins"
   - name: OAUTH_ADMIN_ROLES
     value: "OpenwebUI Admins"
   - name: OAUTH_ROLES_CLAIM
     value: groups
+volumes:
+  - name: gcp-token
+    secret:
+      secretName: oauth-details
+volumeMounts:
+  container:
+    - name: gcp-token-value
+      mountPath: /app/backend/token.json
+      subPath: gcp-token.json
