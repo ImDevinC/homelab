@@ -6,7 +6,7 @@ spec:
   backend:
     s3:
       bucket: imdevinc-homelab-backups
-      accesskeyIDSecretRef:
+      accessKeyIDSecretRef:
         name: s3-credentials
         key: username
       secretAccessKeySecretRef:
