@@ -54,6 +54,6 @@ volumes:
       secretName: oauth-details
 volumeMounts:
   container:
-    - name: gcp-token-value
+    - name: gcp-token
       mountPath: /app/backend/token.json
       subPath: gcp-token.json
