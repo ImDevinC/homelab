@@ -1,0 +1,26 @@
+apiVersion: k8up.io/v1
+kind: Schedule
+metadata:
+  name: scheduled-backup
+spec:
+  backend:
+    s3:
+      endpoint: ""
+      bucket: ""
+      accesskeyIDSecretRef:
+        name: s3-credentials
+        key: username
+      secretAccessKeySecretRef:
+        name: s3-credentials
+        key: password
+  backup:
+    schedule: 0 0 * * *
+    failedJobsHistoryLimit: 2
+    successfulJobsHistoryLimit: 2
+  check:
+    schedule: 0 2 * * *
+  prune:
+    schedule: 0 12 1 * *
+    retention:
+      keepLast: 5
+      keepDaily: 14

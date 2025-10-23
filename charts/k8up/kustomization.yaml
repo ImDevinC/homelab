@@ -11,3 +11,5 @@ namespace: k8up
 resources:
   - namespace.yaml
   - ./crds
+  - sealed.yaml
+  - schedule.yaml
