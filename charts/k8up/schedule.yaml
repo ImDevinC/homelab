@@ -5,8 +5,7 @@ metadata:
 spec:
   backend:
     s3:
-      endpoint: ""
-      bucket: ""
+      bucket: imdevinc-homelab-backups
       accesskeyIDSecretRef:
         name: s3-credentials
         key: username
