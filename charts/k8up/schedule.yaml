@@ -8,10 +8,10 @@ spec:
       bucket: imdevinc-homelab-backups
       accessKeyIDSecretRef:
         name: s3-credentials
-        key: username
+        key: accessKeyID
       secretAccessKeySecretRef:
         name: s3-credentials
-        key: password
+        key: accessKeySecret
   backup:
     schedule: 0 0 * * *
     failedJobsHistoryLimit: 2
