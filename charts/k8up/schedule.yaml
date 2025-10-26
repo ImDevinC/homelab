@@ -8,7 +8,7 @@ spec:
       bucket: imdevinc-homelab-backups
       accessKeyIDSecretRef:
         name: s3-credentials
-        key: accessKeyID
+        key: accessKeyId
       secretAccessKeySecretRef:
         name: s3-credentials
         key: accessKeySecret
