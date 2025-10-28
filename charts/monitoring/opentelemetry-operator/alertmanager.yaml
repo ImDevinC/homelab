@@ -75,7 +75,7 @@ spec:
     - matchers:
       - name: alertname
         matchType: =~
-        value: InfoInhibitor|Watchdog|etcdMembersDown|etcdInsufficientMembers|KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|etcdHighCommitDurations|KubernetesCronjobSuspended
+        value: InfoInhibitor|Watchdog|etcdMembersDown|etcdInsufficientMembers|KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|etcdHighCommitDurations|KubernetesCronjobSuspended|SenseEnergyMissing
       receiver: "null"
     - matchers: # These jobs also run on the desktop, and we don't want to alert there
       - name: job
