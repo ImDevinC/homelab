@@ -8,4 +8,4 @@ resources:
   - statefulset.yaml
 images:
   - name: redis
-    newTag: 8.2.1
+    newTag: 8.2.2
