@@ -19,7 +19,7 @@ images:
   - name: thomst08/requestrr
     newTag: v2.1.9
   - name: docker.io/linuxserver/sabnzbd
-    newTag: 4.5.3
+    newTag: 4.5.5
   - name: docker.io/linuxserver/tautulli
     newTag: 2.16.0
   - name: docker.io/linuxserver/radarr
