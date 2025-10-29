@@ -5,7 +5,7 @@ helmCharts:
     releaseName: scrutiny
     namespace: scrutiny
     repo: oci://tccr.io/truecharts
-    version: 13.7.1
+    version: 13.11.1
     valuesFile: values.yaml
 namespace: scrutiny
 resources:
