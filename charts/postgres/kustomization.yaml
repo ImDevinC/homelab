@@ -5,7 +5,7 @@ helmCharts:
     releaseName: prometheus-postgres-exporter
     namespace: postgres
     repo: https://prometheus-community.github.io/helm-charts
-    version: 7.2.1
+    version: 7.3.0
     valuesFile: values.yaml
 namespace: postgres
 resources:
