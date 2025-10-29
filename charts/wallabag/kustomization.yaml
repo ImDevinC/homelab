@@ -13,6 +13,6 @@ resources:
   - sealed.yaml
 images:
   - name: wallabag/wallabag
-    newTag: 2.6.13
+    newTag: 2.6.14
   - name: ghcr.io/imdevinc/wallabag-tagger
     newTag: 0.1.1
