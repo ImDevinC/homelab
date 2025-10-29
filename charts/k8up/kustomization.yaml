@@ -12,4 +12,4 @@ resources:
   - namespace.yaml
   - ./crds
   - sealed.yaml
-  - schedule.yaml
+#  - schedule.yaml
