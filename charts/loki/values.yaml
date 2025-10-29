@@ -1,3 +1,5 @@
+loki:
+  volume_enabled: true
 promtail:
   config:
     snippets:
