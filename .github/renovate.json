@@ -1,10 +1,21 @@
 {
+  "username": "renovate",
   "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
+  "onboarding": false,
+  "platform": "github",
+  "prConcurrentLimit": 0,
+  "prHourlyLimit": 0,
+  "extends": [
+    "config:recommended"
+  ],
   "labels": [
     "renovate"
   ],
   "assignees": [
     "ImDevinC"
+  ],
+  "repositories": [
+    "ImDevinC/homelab"
   ],
   "packageRules": [
     {
