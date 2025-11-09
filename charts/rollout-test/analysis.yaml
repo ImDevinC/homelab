@@ -14,7 +14,7 @@ spec:
           address: http://prometheus-operated.monitoring:9090
           query: >+
             sum(
-              rate(traefik_service_requests_total{code!~4-5].*", exported_service="{{args.service}}"}[5m]))
+              rate(traefik_service_requests_total{code!~"[4-5].*", exported_service="{{args.service}}"}[5m]))
               /
               sum(rate(traefik_service_requests_total{exported_service="{{args.service}}"}[5m])
             )
