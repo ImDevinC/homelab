@@ -12,3 +12,4 @@ resources:
   - creds.yaml
   - httproute.yaml
   - sealed.yaml
+  - rollouts/
