@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stable-rollout
+  namespace: rollouts-demo
+spec:
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: http
+  selector:
+    app: rollouts-demo
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: canary-rollout
+  namespace: rollouts-demo
+spec:
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: http
+  selector:
+    app: rollouts-demo
+  type: ClusterIP
