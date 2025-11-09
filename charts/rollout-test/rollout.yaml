@@ -10,6 +10,11 @@ spec:
       app: rollouts-demo
   strategy:
     canary:
+      analysis:
+        templateName: success-rate
+        args:
+          - name: service
+            value: rollouts-demo-canary-rollout-8080@kubernetescrd
       canaryService: canary-rollout
       stableService: stable-rollout
       trafficRouting:
