@@ -20,6 +20,15 @@ spec:
       trafficRouting:
         traefik:
           weightedTraefikServiceName: bluegreen-demo
+      steps:
+        - setWeight: 20
+        - pause: { duration: 5m }
+        - setWeight: 40
+        - pause: { duration: 5m }
+        - setWeight: 60
+        - pause: { duration: 5m }
+        - setWeight: 80
+        - pause: { duration: 5m }
   template:
     metadata:
       labels:
