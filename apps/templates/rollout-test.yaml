@@ -1,19 +1,19 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: rollout-test
-  namespace: argo-cd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: rollout-test
-  project: default
-  source:
-    path: charts/rollout-test
-    repoURL: git@github.com:ImDevinC/homelab.git
-    targetRevision: HEAD
-  syncPolicy:
-    automated:
-      prune: true
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: rollout-test
+#  namespace: argo-cd
+#  finalizers:
+#    - resources-finalizer.argocd.argoproj.io
+#spec:
+#  destination:
+#    server: https://kubernetes.default.svc
+#    namespace: rollout-test
+#  project: default
+#  source:
+#    path: charts/rollout-test
+#    repoURL: git@github.com:ImDevinC/homelab.git
+#    targetRevision: HEAD
+#  syncPolicy:
+#    automated:
+#      prune: true
