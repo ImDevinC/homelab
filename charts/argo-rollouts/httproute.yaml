@@ -6,13 +6,13 @@ metadata:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Management
     gethomepage.dev/icon: argo-cd.png
-    gethomepage.dev/name: ArgoCD Rollouts
+    gethomepage.dev/name: Argo Rollouts
 spec:
   parentRefs:
   - name: traefik-gateway
     namespace: traefik
   hostnames:
-  - argocd-rollouts.int.imdevinc.com
+  - argo-rollouts.int.imdevinc.com
   rules:
   - matches:
     - path:
@@ -20,5 +20,5 @@ spec:
         value: /
     backendRefs:
     - name: argo-rollouts-dashboard
-      namespace: argo-cd
+      namespace: argo-rollouts
       port: 3100
