@@ -109,7 +109,5 @@ data:
       service: http://rustypaste.rustypaste:8000
     - hostname: umami.imdevinc.com
       service: http://umami.umami:3000
-    - hostname: wakapi.imdevinc.com
-      service: http://wakapi.wakapi:3000
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
