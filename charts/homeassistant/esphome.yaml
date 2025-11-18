@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -23,6 +22,9 @@ spec:
             - name: http
               containerPort: 6052
               protocol: TCP
+            - name: api
+              containerPort: 6053
+              protocol: TCP
           volumeMounts:
             - mountPath: /config
               name: config
@@ -45,6 +47,10 @@ spec:
       targetPort: 6052
       protocol: TCP
       name: http
+    - port: 6053
+      targetPort: 6053
+      protocol: TCP
+      name: api
   selector:
     app: esphome
 ---
@@ -54,17 +60,16 @@ metadata:
   name: esphome
 spec:
   parentRefs:
-  - name: traefik-gateway
-    namespace: traefik
+    - name: traefik-gateway
+      namespace: traefik
   hostnames:
-  - esphome.int.imdevinc.com
+    - esphome.int.imdevinc.com
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /
-    backendRefs:
-    - name: esphome
-      namespace: homeassistant
-      port: 6052
-
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: esphome
+          namespace: homeassistant
+          port: 6052
