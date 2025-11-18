@@ -9,6 +9,7 @@ helmCharts:
     version: 13.4.2
     valuesFile: values.yaml
 resources:
+  - esphome.yaml
   - sealed.yaml
   - zwave.yaml
 images:
