@@ -10,4 +10,4 @@ resources:
   - serviceaccount.yaml
 images:
   - name: ghcr.io/gethomepage/homepage
-    newTag: v1.5.0
+    newTag: v1.7.0
