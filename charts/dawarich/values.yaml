@@ -4,6 +4,7 @@ keybase:
 env:
   timeZone: "America/Los_Angeles"
   distanceUnit: mi
+  RAILS_LOG_LEVEL: debug
 
 dawarich:
   hosts:
