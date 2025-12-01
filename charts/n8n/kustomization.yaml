@@ -9,4 +9,4 @@ resources:
   - httproute.yaml
 images:
   - name: n8nio/n8n
-    newTag: 1.118.1
+    newTag: 1.122.4
