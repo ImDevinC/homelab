@@ -31,7 +31,7 @@ images:
   - name: docker.io/linuxserver/overseerr
     newTag: 1.34.0
   - name: docker.io/linuxserver/sonarr
-    newTag: 4.0.15
+    newTag: 4.0.16
   - name: docker.io/linuxserver/transmission
     newTag: 2021.11.18
   - name: docker.io/linuxserver/prowlarr
