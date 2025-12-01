@@ -9,4 +9,4 @@ resources:
   - sealed.yaml
 images:
   - name: ghcr.io/paperless-ngx/paperless-ngx
-    newTag: 2.19.3
+    newTag: 2.20.0
