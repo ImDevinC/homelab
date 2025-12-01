@@ -5,7 +5,7 @@ helmCharts:
     releaseName: dawarich
     namespace: dawarich
     repo: https://charts.cogitri.dev
-    version: 1.0.4
+    version: 1.0.6
     valuesFile: values.yaml
 namespace: dawarich
 resources:
