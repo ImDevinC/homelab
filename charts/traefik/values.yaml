@@ -46,6 +46,9 @@ experimental:
     traefik-oidc-auth:
       moduleName: "github.com/sevensolutions/traefik-oidc-auth"
       version: "v0.11.0"
+    traefik-umami-plugin:
+      moduleName: github.com/1cedsoda/traefik-umami-plugin
+      version: v1.0.2
 metrics:
   prometheus:
     service:
