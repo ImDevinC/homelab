@@ -1,0 +1,12 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: btc-tracker
+  namespace: btc-tracker
+spec:
+  encryptedData:
+    NEXTAUTH_SECRET: AgAkq9IrQiYKCNSs6KMjIm+c7fV5aXStqRWIO6mXpahVdYIAgibLXn3UWhOeSsuLMRWiu45PCS6cwXZ888hjrV9/DucMqodERj5jti9fSj4zMczMrOKvDthKfZIRd/1kLHzlMhruPIabIC5vUtpRTmPkjzgiVZMeTMk17N0qLvxJME/EL4pY8KuUWbepFCorWAaXaPOJVHIJowkZnPnLanP5aHfrXKj5TGcTChI7e5Js7NwkV6bSGBUjbZU77tMfx2eQhb5818Pv5eWOKssLkaJj+xd5iK0tRAPK/f1eeRfU+O02Oknw9d/eHnkHwkbrqnmosRwxMQD+WPtDAB8bavCdKa/b9BK3FM+WXKLKLW/8rDoXEahw9JPL4IbPHOBzMGmELJ5Rvekqo1xYZYdEUcSowC0FIA1DXim9U2hlTvOHz7yebR6lktKTaG57vcb3Pyz5Dkcoz5lrNoCCv9SF2Z00vgy6ca5UvXD3z/ISVzBEL9QsTIsCrKxrBC4Z2UKprdKMy/ALYpaE3BhoOX5tRt8EjCS9tra8SgeFXqxtmoRKMnMByqglZS28PGK0hHxROJ2m3tLkpUo/aE54+zX2t7NWSQY5ES5WI02kYbFTNUAXUZ0ZLL0l21/EJQqvL7e/pZrRmRcuEMko6PyBtGNq8m3pMUi5LyllFOVcpAq6Gs+0v/d49fhgRP/6vAGe98ZHemfeJIeSie0oFgPzvAHj42u3rPwz7Vr9Lrg=
+  template:
+    metadata:
+      name: btc-tracker
+      namespace: btc-tracker

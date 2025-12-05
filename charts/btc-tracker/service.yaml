@@ -1,0 +1,93 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: btc-tracker
+  name: btc-tracker
+spec:
+  ports:
+  - name: http
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    service: btc-tracker
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Finance
+    gethomepage.dev/icon: bitcoin.png
+    gethomepage.dev/name: BTC Tracker
+  name: btc-tracker
+spec:
+  hostnames:
+  - btc.int.imdevinc.com
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: traefik-gateway
+    namespace: traefik
+  rules:
+  - backendRefs:
+    - group: ""
+      kind: Service
+      name: btc-tracker
+      namespace: btc-tracker
+      port: 3000
+      weight: 1
+    matches:
+    - path:
+        type: PathPrefix
+        value: /
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: btc-tracker
+    service: btc-tracker
+  name: btc-tracker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: btc-tracker
+      service: btc-tracker
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: btc-tracker
+        service: btc-tracker
+    spec:
+      containers:
+      - env:
+        - name: NODE_ENV
+          value: production
+        - name: PUID
+          value: "1000"
+        - name: GUID
+          value: "1000"
+        - name: DATABASE_URL
+          value: file:/app/data/bitcoin-tracker.db
+        - name: NEXTAUTH_URL
+          value: https://btc.int.imdevinc.com
+        envFrom:
+        - secretRef:
+            name: btc-tracker
+        image: thewilqq/btc-tracker
+        imagePullPolicy: IfNotPresent
+        name: btc-tracker
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /app/data
+          name: data
+      restartPolicy: Always
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: data
