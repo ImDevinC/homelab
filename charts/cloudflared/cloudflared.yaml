@@ -97,8 +97,6 @@ data:
     # The first rule proxies traffic to the httpbin sample Service defined in app.yaml
     - hostname: homeassistant.imdevinc.com
       service: http://homeassistant-home-assistant.homeassistant:8123
-    - hostname: remote.imdevinc.com
-      service: http://stream-notifier.stream-notifier:7000
     - hostname: wallabag.imdevinc.com
       service: http://wallabag.wallabag:80
     - hostname: dnd-proxy.imdevinc.com
