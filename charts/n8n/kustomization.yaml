@@ -9,4 +9,5 @@ resources:
   - httproute.yaml
 images:
   - name: n8nio/n8n
-    newTag: 1.122.4
+    newName: ghcr.io/imdevinc/n8n
+    newTag: v0.1.0
