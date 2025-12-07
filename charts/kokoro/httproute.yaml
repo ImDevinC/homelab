@@ -5,7 +5,7 @@ metadata:
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Media
-    gethomepage.dev/icon: kokoro.png
+    gethomepage.dev/icon: kokoro-web
     gethomepage.dev/name: kokoro
 spec:
   parentRefs:
