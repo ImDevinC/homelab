@@ -10,4 +10,4 @@ resources:
 images:
   - name: n8nio/n8n
     newName: ghcr.io/imdevinc/n8n
-    newTag: v0.1.0
+    newTag: 0.1.0
