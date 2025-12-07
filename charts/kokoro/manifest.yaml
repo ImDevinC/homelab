@@ -9,15 +9,18 @@ metadata:
   name: kokoro
   labels:
     app: kokoro
+    app.kubernetes.io/name: kokoro
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: kokoro
+      app.kubernetes.io/name: kokoro
   template:
     metadata:
       labels:
         app: kokoro
+        app.kubernetes.io/name: kokoro
     spec:
       containers:
         - image: ghcr.io/eduardolat/kokoro-web
