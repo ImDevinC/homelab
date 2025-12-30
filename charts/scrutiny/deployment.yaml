@@ -1,0 +1,158 @@
+# Originally generated from truecharts helm chart
+# which is now deprecated
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    app.kubernetes.io/name: scrutiny
+  name: scrutiny
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: scrutiny
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: scrutiny
+    spec:
+      containers:
+        - env:
+            - name: TZ
+              value: UTC
+            - name: UMASK
+              value: "0022"
+            - name: UMASK_SET
+              value: "0022"
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: void
+            - name: PUID
+              value: "568"
+            - name: USER_ID
+              value: "568"
+            - name: UID
+              value: "568"
+            - name: PGID
+              value: "568"
+            - name: GROUP_ID
+              value: "568"
+            - name: GID
+              value: "568"
+          image: ghcr.io/analogj/scrutiny:v0.8.1-omnibus@sha256:66a65d1d7f2bf330a55e0bb073a3b2496a7b61dc6414c8c53550bc0c3f6885dd
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /api/health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 12
+            periodSeconds: 15
+            successThreshold: 1
+            timeoutSeconds: 5
+          name: scrutiny
+          ports:
+            - containerPort: 8080
+              name: main
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 4
+            httpGet:
+              path: /api/health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 12
+            successThreshold: 2
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 1500m
+              memory: 2400Mi
+            requests:
+              cpu: 75m
+              memory: 200Mi
+          securityContext:
+            allowPrivilegeEscalation: true
+            capabilities:
+              add:
+                - SYS_RAWIO
+                - SYS_ADMIN
+                - CHOWN
+                - SETUID
+                - SETGID
+                - FOWNER
+                - DAC_OVERRIDE
+              drop:
+                - ALL
+            privileged: true
+            readOnlyRootFilesystem: false
+            runAsGroup: 0
+            runAsNonRoot: false
+            runAsUser: 0
+            seccompProfile:
+              type: RuntimeDefault
+          startupProbe:
+            failureThreshold: 60
+            httpGet:
+              path: /api/health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 3
+          volumeMounts:
+            - mountPath: /opt/scrutiny/config
+              name: config
+            - mountPath: /dev/shm
+              name: devshm
+            - mountPath: /opt/scrutiny/influxdb
+              name: influxdb
+            - mountPath: /shared
+              name: shared
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /run/udev
+              name: udev
+              readOnly: true
+            - mountPath: /var/logs
+              name: varlogs
+            - mountPath: /var/run
+              name: varrun
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups:
+          - 568
+      volumes:
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 2400Mi
+          name: devshm
+        - emptyDir: {}
+          name: shared
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 2400Mi
+          name: tmp
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 2400Mi
+          name: varlogs
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 2400Mi
+          name: varrun
+        - hostPath:
+            path: /run/udev
+            type: ""
+          name: udev
+        - name: config
+          persistentVolumeClaim:
+            claimName: scrutiny-config
+        - name: influxdb
+          persistentVolumeClaim:
+            claimName: scrutiny-influxdb
