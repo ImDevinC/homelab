@@ -49,6 +49,9 @@ experimental:
     traefik-umami-plugin:
       moduleName: github.com/1cedsoda/traefik-umami-plugin
       version: v1.0.2
+    k8s-secret-header:
+      moduleName: github.com/ImDevinC/traefik-k8s-secret-header
+      version: v1.0.0
 metrics:
   prometheus:
     service:
