@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: config
 data:
-  config.yml: |
+  config.yaml: |
     base_url: "https://rss.int.imdevinc.com"
     
     server:
