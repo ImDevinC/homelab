@@ -15,4 +15,4 @@ images:
   - name: wallabag/wallabag
     newTag: 2.6.14
   - name: ghcr.io/imdevinc/wallabag-tagger
-    newTag: 0.1.1
+    newTag: 0.2.1
