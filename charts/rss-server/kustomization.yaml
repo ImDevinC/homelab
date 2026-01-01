@@ -4,6 +4,7 @@ namespace: rss-server
 resources:
   - manifest.yaml
   - httproute.yaml
+  - configmap.yaml
 images:
   - name: ghcr.io/imdevinc/rss-server
-    newTag: latest
+    newTag: 0.0.2

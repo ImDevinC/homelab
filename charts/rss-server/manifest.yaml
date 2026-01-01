@@ -39,10 +39,16 @@ spec:
           volumeMounts:
             - name: rss-data
               mountPath: /app/data
+            - name: config
+              mountPath: /app/config.yaml
+              subPath: config.yaml
       volumes:
         - name: rss-data
           persistentVolumeClaim:
             claimName: rss-data
+        - name: config
+          configMap:
+            name: config
 ---
 apiVersion: v1
 kind: Service
