@@ -6,4 +6,5 @@ helmCharts:
     namespace: dcgm-exporter
     repo: https://nvidia.github.io/dcgm-exporter/helm-charts
     version: 4.7.1
+    valuesFile: values.yaml
 namespace: dcgm-exporter
