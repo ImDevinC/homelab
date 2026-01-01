@@ -7,4 +7,4 @@ resources:
   - service.yaml
 images:
   - name: thewilqq/btc-tracker
-    newTag: v0.6.6
+    newTag: v0.6.7
