@@ -4,7 +4,7 @@ helmCharts:
   - name: grafana-operator
     releaseName: grafana-operator
     repo: https://grafana.github.io/helm-charts
-    version: v5.20.0
+    version: 5.21.3
     valuesFile: values.yaml
 resources:
   - dashboards.yaml
