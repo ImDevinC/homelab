@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rss-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rss-server
+  labels:
+    app: rss-server
+    app.kubernetes.io/name: rss-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rss-server
+      app.kubernetes.io/name: rss-server
+  template:
+    metadata:
+      labels:
+        app: rss-server
+        app.kubernetes.io/name: rss-server
+    spec:
+      containers:
+        - image: ghcr.io/imdevinc/rss-server
+          imagePullPolicy: IfNotPresent
+          name: rss-server
+          env:
+            - name: PORT
+              value: "8080"
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: rss-data
+              mountPath: /app/data
+      volumes:
+        - name: rss-data
+          persistentVolumeClaim:
+            claimName: rss-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rss-server
+  labels:
+    app: rss-server
+spec:
+  selector:
+    app: rss-server
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rss-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: hostpath-csi

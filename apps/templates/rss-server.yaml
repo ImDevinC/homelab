@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rss-server
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rss-server
+  project: default
+  source:
+    path: charts/rss-server
+    repoURL: git@github.com:ImDevinC/homelab.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
