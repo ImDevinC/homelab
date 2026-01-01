@@ -18,4 +18,4 @@ images:
   - name: docker.io/zwavejs/zwave-js-ui
     newTag: 11.9.1
   - name: ghcr.io/esphome/esphome
-    newTag: 2025.11.2
+    newTag: 2025.12.4
