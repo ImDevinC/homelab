@@ -22,6 +22,9 @@ spec:
         app: rss-server
         app.kubernetes.io/name: rss-server
     spec:
+      securityContext:
+        fsGroup: 101
+        fsGroupChangePolicy: OnRootMismatch
       containers:
         - image: ghcr.io/imdevinc/rss-server
           imagePullPolicy: IfNotPresent
