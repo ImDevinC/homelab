@@ -97,7 +97,7 @@ data:
     # The first rule proxies traffic to the httpbin sample Service defined in app.yaml
     - hostname: homeassistant.imdevinc.com
       service: http://homeassistant-home-assistant.homeassistant:8123
-    - hostname: obsidian-livesync.imdevinc.com
+    - hostname: couchdb.imdevinc.com
       service: http://couchdb-svc-couchdb.couchdb:5984
     - hostname: wallabag.imdevinc.com
       service: http://wallabag.wallabag:80
