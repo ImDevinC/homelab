@@ -1,0 +1,30 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: comfyui
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Homelab
+    gethomepage.dev/icon: comfy-ui.png
+    gethomepage.dev/name: ComfyUI
+    gethomepage.dev/pod-selector: app=comfyui
+spec:
+  hostnames:
+    - comfyui.int.imdevinc.com
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: traefik-gateway
+      namespace: traefik
+  rules:
+    - backendRefs:
+        - group: ""
+          kind: Service
+          name: comfyui
+          namespace: comfyui
+          port: 8188
+          weight: 1
+      matches:
+        - path:
+            type: PathPrefix
+            value: /

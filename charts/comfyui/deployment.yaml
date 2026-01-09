@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comfyui
+  labels:
+    app: comfyui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comfyui
+  template:
+    metadata:
+      labels:
+        app: comfyui
+    spec:
+      containers:
+        - name: comfyui
+          # Update this to your image registry and tag
+          image: comfyui:latest
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - python
+            - ./main.py
+            - --listen
+            - 0.0.0.0
+            - --multi-user
+
+          ports:
+            - containerPort: 8188
+              name: http
+              protocol: TCP
+
+          env:
+            - name: UID
+              value: "1000"
+            - name: GID
+              value: "1000"
+            - name: PIP_EXTRA_PACKAGES
+              value: ""
+
+          volumeMounts:
+            - name: comfyui
+              mountPath: /comfyui/custom_nodes
+              subPath: custom_nodes
+            - name: comfyui
+              mountPath: /comfyui/models
+              subPath: models
+            - name: comfyui
+              mountPath: /comfyui/workloads
+              subPath: workloads
+            - name: comfyui
+              mountPath: /comfyui/user
+              subPath: user
+
+          startupProbe:
+            httpGet:
+              path: /
+              port: 8188
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 30
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8188
+              scheme: HTTP
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8188
+              scheme: HTTP
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+
+          resources:
+            limits:
+              nvidia.com/gpu: 1
+            requests:
+              memory: "16Gi"
+              nvidia.com/gpu: 1
+
+      volumes:
+        - name: comfyui
+          persistentVolumeClaim:
+            claimName: comfyui
