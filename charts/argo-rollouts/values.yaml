@@ -1,6 +1,8 @@
 controller:
+  replicas: 0
   extraArgs:
     - --traefik-api-group=traefik.io
     - --traefik-api-version=traefik.io/v1alpha1
 dashboard:
   enabled: true
+  replicas: 0
