@@ -1,5 +1,0 @@
-metrics:
-  grafanaDashboard:
-    enabled: true
-  prometheusRule:
-    enabled: true
