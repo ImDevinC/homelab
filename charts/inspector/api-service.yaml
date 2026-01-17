@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: inspector-api
+  namespace: inspector
+  labels:
+    app: inspector
+    component: api
+spec:
+  type: LoadBalancer
+
+  # Select pods from api deployment
+  selector:
+    app: inspector
+    component: api
+
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+  # Session affinity to route requests from same client to same pod
+  # This helps with WebSocket connections and session state
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800 # 3 hours

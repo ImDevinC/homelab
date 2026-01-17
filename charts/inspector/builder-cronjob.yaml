@@ -1,0 +1,123 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: inspector-builder
+  namespace: inspector
+  labels:
+    app: inspector
+    component: builder
+spec:
+  # Run every 30 minutes
+  schedule: "*/30 * * * *"
+  
+  # Keep last 3 successful and 1 failed job for history
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  
+  # Don't allow concurrent builds
+  concurrencyPolicy: Forbid
+  
+  jobTemplate:
+    metadata:
+      labels:
+        app: inspector
+        component: builder
+    spec:
+      template:
+        metadata:
+          labels:
+            app: inspector
+            component: builder
+        spec:
+          restartPolicy: OnFailure
+          
+          # Service account for builder (if needed for future RBAC)
+          serviceAccountName: default
+          
+          containers:
+          - name: builder
+            # TODO: Update with actual image after building and pushing
+            # For now, using placeholder - build with: docker build -f Dockerfile.builder -t ghcr.io/imdevinc/inspector-builder:latest .
+            image: ghcr.io/imdevinc/inspector-builder:latest
+            imagePullPolicy: Always
+            
+            # Run builder for all repositories
+            args: ["-config", "/app/config/repositories.yaml"]
+            
+            env:
+            # GitHub credentials for cloning private repos
+            - name: GIT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: github-credentials
+                  key: docker-username
+            - name: GIT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: github-credentials
+                  key: github-token
+            
+            # Configure git to use credentials
+            - name: GIT_TERMINAL_PROMPT
+              value: "0"
+            
+            volumeMounts:
+            # Mount docker socket to build and push images
+            - name: docker-socket
+              mountPath: /var/run/docker.sock
+            
+            # Mount docker config for authentication
+            - name: docker-config
+              mountPath: /root/.docker
+            
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "500m"
+              limits:
+                memory: "2Gi"
+                cpu: "2000m"
+          
+          # Init container to configure docker authentication
+          initContainers:
+          - name: docker-config
+            image: alpine:3.19
+            command:
+            - sh
+            - -c
+            - |
+              mkdir -p /docker-config
+              cat > /docker-config/config.json <<EOF
+              {
+                "auths": {
+                  "ghcr.io": {
+                    "auth": "$(echo -n ${DOCKER_USERNAME}:${DOCKER_PASSWORD} | base64)"
+                  }
+                }
+              }
+              EOF
+            env:
+            - name: DOCKER_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: github-credentials
+                  key: docker-username
+            - name: DOCKER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: github-credentials
+                  key: docker-password
+            volumeMounts:
+            - name: docker-config
+              mountPath: /docker-config
+          
+          volumes:
+          # Docker socket for building images
+          - name: docker-socket
+            hostPath:
+              path: /var/run/docker.sock
+              type: Socket
+          
+          # Docker config for authentication
+          - name: docker-config
+            emptyDir: {}

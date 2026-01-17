@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inspector-api
+  namespace: inspector
+  labels:
+    app: inspector
+    component: api
+spec:
+  # High availability with 2 replicas
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: inspector
+      component: api
+
+  template:
+    metadata:
+      labels:
+        app: inspector
+        component: api
+    spec:
+      # Service account for API (if needed for future RBAC)
+      serviceAccountName: default
+
+      containers:
+        - name: api
+          image: ghcr.io/imdevinc/inspector-api:latest
+          imagePullPolicy: IfNotPresent
+
+          # Pass configuration file paths via command-line flags
+          args:
+            - "--auth-config=/config/secrets/auth.yaml"
+            - "--repo-config=/config/repositories.yaml"
+            - "--github-config=/config/secrets/github.yaml"
+            - "--port=8080"
+            - "--namespace=inspector"
+            - "--registry=ghcr.io/imdevinc"
+
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+
+          envFrom:
+            - secretRef:
+                name: oidc-creds
+
+          env:
+            - name: POCKETID_ISSUER_URL
+              value: https://login.int.imdevinc.com
+            - name: POCKETID_REDIRECT_URL
+              value: https://inspector.int.imdevinc.com/auth/callback/pocketid
+            - name: API_BASE_URL
+              value: https://inspector.int.imdevinc.com
+
+          # Liveness probe - checks if container is alive
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+
+          # Readiness probe - checks if container is ready to serve traffic
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+
+          volumeMounts:
+            # Mount ConfigMap for non-sensitive config
+            - name: config
+              mountPath: /config
+              readOnly: true
+
+            # Mount Secret for sensitive config
+            - name: secrets
+              mountPath: /config/secrets
+              readOnly: true
+
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+
+      volumes:
+        # ConfigMap volume for repositories.yaml
+        - name: config
+          configMap:
+            name: inspector-api-config
+
+        # Secret volume for auth.yaml and github.yaml
+        - name: secrets
+          secret:
+            secretName: inspector-api-secrets
