@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mealie
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mealie
+  project: default
+  source:
+    path: charts/mealie
+    repoURL: https://github.com/imdevinc/homelab.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true

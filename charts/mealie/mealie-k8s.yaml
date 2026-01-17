@@ -1,0 +1,129 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mealie
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mealie-data
+  namespace: mealie
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mealie
+  namespace: mealie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mealie
+  template:
+    metadata:
+      labels:
+        app: mealie
+    spec:
+      containers:
+        - name: mealie
+          image: ghcr.io/mealie-recipes/mealie:v3.9.2
+          ports:
+            - containerPort: 9000
+              name: http
+          env:
+            - name: ALLOW_SIGNUP
+              value: "False"
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "America/Los_Angeles"
+            - name: BASE_URL
+              value: "https://mealie.int.imdevinc.com"
+            - name: OIDC_AUTH_ENABLED
+              value: "True"
+            - name: OIDC_SIGNUP_ENABLED
+              value: "true"
+            - name: OIDC_CONFIGURATION_URL
+              value: https://login.int.imdevinc.com/.well-known/openid-configuration
+            - name: OIDC_PROVIDER_NAME
+              value: PocketID
+            - name: OIDC_AUTO_REDIRECT
+              value: "True"
+            - name: OIDC_REMEMBER_ME
+              value: "True"
+          envFrom:
+            - secretRef:
+                name: oidc-creds
+          resources:
+            limits:
+              memory: 1000Mi
+            requests:
+              memory: 500Mi
+              cpu: 100m
+          volumeMounts:
+            - name: mealie-data
+              mountPath: /app/data/
+      volumes:
+        - name: mealie-data
+          persistentVolumeClaim:
+            claimName: mealie-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mealie
+  namespace: mealie
+spec:
+  selector:
+    app: mealie
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+      name: http
+  type: ClusterIP
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: mealie
+  namespace: mealie
+spec:
+  hostnames:
+    - mealie.int.imdevinc.com
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: traefik-gateway
+      namespace: traefik
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: mealie
+          port: 9000
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: oidc-creds
+  namespace: mealie
+spec:
+  encryptedData:
+    OIDC_CLIENT_ID: AgBiSFdTVNIPmMysLMd/16lGMWErWc41IzvGTeBz5hAubcJD8QeWTXeXWmJKORio/X5XhOeDgpkkrnuz3xTNNys8rlJSrD65VRdTVcfKaEsZAb9fZlV1GAGDzdZY+CWrG5KbWAAsOxxSDUygSI0zd6AoBY+nwAXszvgh3f/wjDRIVCZ6abxz10dlSvtNwhXHdG4UpahmP6yRlMpUoQ06PG0dCa86F4RrQv9JnT4PcggD5ZspU3Dq7Jwi6bDY2C47cOSMb55HyAe1EM5U5ZxrIiZX0+YUfCVCNSSAL1fjHoMTw4f8X0KaZ50K7xUr6LPwj2bIQ7JxoifPiyMkcAuyLMI/YoPjiXiT5nQ+wXVlvUrZUEHaFcPG2WvjEZorLRbYdmF0YAzRi3IrjMRjLh0F8IzrIrbH6A0ImICuhOdkKL3UCkumk7R9WEiCCsqqqTw5SNRxdjxP25oiTsA5JJbZ3s8AYrDmkL5Hpo0vsWbmawWsU2HxQeC4g/n59Txy7y7SPbUP3wTMz+O/aSEbpdl801M3ENnzXG+Fwtt4l5oPdhuQevsVtWAv5uLCiHKEMuwy4nu+N5AJhaQzZT/EHouOvgk7UeYCgVnfwPCYf0dKC9gMoYqVWFhXqSbxw/YvS6eEFY4AaORl0mZC4TAyHi0LKeKYxEZhDe4gV74Qg7jfbsFRL6jnFdZs1KVdRXJ4Pr6hADe2EaY+1mhpFz+NWjP1zPwZt38c7iKlk8dGRqkyCBKktxSf28E=
+    OIDC_CLIENT_SECRET: AgBsag2cFVTR0hDudVorHMBXCIimL5GmUxqevUATRYFhdAAk1eOGGEqtk93wwtWksWamVL3wuTuJpVmFSaMK++CAwoS3oyAzFRH3nbixRxJgpFg6pvfScw9Jn+0lkknfMDTkSjRx6iXbR0MfKuGYyCj+cLiSjKPuNTnyFPJA9RpD5DIdRfD+8UQH031n4WW5BZihCTHbnq0NVGhHUd+8a6/tXaXtn2x3cr4k1wtXBM9c2Z6n5HMGJqNZzoGYDRSUdfwy4h82PnCa40kaEfMJ8KqKJvHMKWZM2lRg/AC+NdWsQmaaseBnasFf6cNmsHuap3hhExhB9lc+tAJXoWlFaip14D/naVo7ySUu+purxTSA06an8NZZnCd5L1rGihhlvTzB4jRXl59xJXUD0yxzxtCpb48loszHiQAhv8cyBO8anIsUJ3V+LOFz61nZyVyEgvXsnr8U8wVo3QB7LSuloh5LeC1IR6LYOgCs/yUKRGX6ulvpefqajQyV5ZNJgOy76krRVpMPx8lojkuufbqMueljOTwF+f3cAuQ4xTWl1p96Kiw/8MrTxtobEd+atOipc1DOtPVeRGz/1Ic87Kvujy7CPXifBSN52ugzSySiFgSY/JWz7P538gscC2Y4zHcBtK4sPrYRfSTCUiUeNyIX4M6/9Lwf9bnH4DedAU0ThXWZN/1HPwt7ajBLnt3krs9w+xXD3Hn36drKLcJw7Ovp9oHBKI8vIBzZRNAXNgLwXGPk7Q==
+  template:
+    metadata:
+      name: oidc-creds
+      namespace: mealie
