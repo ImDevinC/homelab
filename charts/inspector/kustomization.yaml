@@ -7,9 +7,15 @@ resources:
   - api-oidc.yaml
   - api-secrets.yaml
   - api-service.yaml
+  - builder-cronjob.yaml
   - github-credentials.yaml
-  - namespace.yaml
   - httproute.yaml
+  - namespace.yaml
+  - rbac.yaml
 images:
   - name: ghcr.io/imdevinc/inspector-api
-    newTag: v0.0.1
+    newTag: v0.0.4
+  - name: ghcr.io/imdevinc/inspector-builder
+    newTag: v0.0.5
+  - name: ghcr.io/imdevinc/inspector-session
+    newTag: v0.0.5
