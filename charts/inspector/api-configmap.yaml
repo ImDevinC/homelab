@@ -10,25 +10,24 @@ data:
   repositories.yaml: |
     # Repository Configuration
     # This file defines repositories that can be used for background agent sessions
-    
+
     repositories:
-      - name: example-go-service
-        description: Example Go microservice with REST API
-        github_url: https://github.com/example/go-service
+      - name: fifa-bot
+        description: fifa-bot
+        github_url: https://github.com/ImDevinC/fifa-bot
         build_commands:
           - go mod download
-          - go build -o /app/service ./cmd/service
+          - go build -o /app/service ./cmd/
       
-      - name: example-typescript-app
-        description: Example TypeScript/Node.js application
-        github_url: https://github.com/example/typescript-app
+      - name: go-fifa
+        description: Fifa library
+        github_url: https://github.com/ImDevinC/go-fifa
         build_commands:
-          - npm install
-          - npm run build
+          - go mod download
       
-      - name: example-python-api
-        description: Example Python API with FastAPI
-        github_url: https://github.com/example/python-api
+      - name: notion-oc
+        description: A command-line utility for interacting with the Notion API
+        github_url: https://github.com/ImDevinC/notion-oc
         build_commands:
-          - pip install -r requirements.txt
-          - python -m pytest
+          - go mod download
+          - go build -o /app/notion-oc ./cmd/notion-oc

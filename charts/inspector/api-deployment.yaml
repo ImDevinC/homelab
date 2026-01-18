@@ -22,7 +22,7 @@ spec:
         component: api
     spec:
       # Service account for API (if needed for future RBAC)
-      serviceAccountName: default
+      serviceAccountName: inspector-api
 
       containers:
         - name: api
