@@ -6,4 +6,4 @@ resources:
   - sealed.yaml
 images:
   - name: ghcr.io/imdevinc/macro-track-server
-    newTag: 1.0.0
+    newTag: 1.1.0
