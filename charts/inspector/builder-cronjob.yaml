@@ -35,6 +35,32 @@ spec:
           serviceAccountName: default
           
           containers:
+          # Docker-in-Docker sidecar container
+          - name: dind
+            image: docker:27-dind
+            securityContext:
+              privileged: true
+            env:
+            # Use overlay2 storage driver for better performance
+            - name: DOCKER_DRIVER
+              value: overlay2
+            # Store docker data in emptyDir volume
+            - name: DOCKER_TLS_CERTDIR
+              value: ""
+            volumeMounts:
+            - name: docker-storage
+              mountPath: /var/lib/docker
+            - name: docker-socket
+              mountPath: /var/run
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "500m"
+              limits:
+                memory: "1Gi"
+                cpu: "1000m"
+          
+          # Builder container
           - name: builder
             # TODO: Update with actual image after building and pushing
             # For now, using placeholder - build with: docker build -f Dockerfile.builder -t ghcr.io/imdevinc/inspector-builder:latest .
@@ -61,10 +87,14 @@ spec:
             - name: GIT_TERMINAL_PROMPT
               value: "0"
             
+            # Point to DinD socket
+            - name: DOCKER_HOST
+              value: unix:///var/run/docker.sock
+            
             volumeMounts:
-            # Mount docker socket to build and push images
+            # Mount docker socket from DinD sidecar
             - name: docker-socket
-              mountPath: /var/run/docker.sock
+              mountPath: /var/run
             
             # Mount docker config for authentication
             - name: docker-config
@@ -112,11 +142,13 @@ spec:
               mountPath: /docker-config
           
           volumes:
-          # Docker socket for building images
+          # Shared docker socket between DinD and builder
           - name: docker-socket
-            hostPath:
-              path: /var/run/docker.sock
-              type: Socket
+            emptyDir: {}
+          
+          # Docker storage for DinD daemon
+          - name: docker-storage
+            emptyDir: {}
           
           # Docker config for authentication
           - name: docker-config
