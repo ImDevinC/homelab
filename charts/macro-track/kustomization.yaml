@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: macro-track
+resources:
+  - manifest.yaml
+  - sealed.yaml
+images:
+  - name: ghcr.io/imdevinc/macro-track-server
+    newTag: 1.0.0
