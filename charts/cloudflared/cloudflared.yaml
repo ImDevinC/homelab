@@ -109,5 +109,7 @@ data:
       service: http://rustypaste.rustypaste:8000
     - hostname: umami.imdevinc.com
       service: http://umami.umami:3000
+    - hostname: macrotrack.imdevinc.com
+      service: http://macro-track.macro-track:8080
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
