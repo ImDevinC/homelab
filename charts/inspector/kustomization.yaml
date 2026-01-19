@@ -7,8 +7,8 @@ resources:
   - api-oidc.yaml
   - api-secrets.yaml
   - api-service.yaml
-  #  - builder-cronjob.yaml
-  - github-credentials.yaml
+  - builder-cronjob.yaml
+  - builder-secret.yaml
   - httproute.yaml
   - namespace.yaml
   - rbac.yaml

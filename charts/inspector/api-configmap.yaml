@@ -12,22 +12,9 @@ data:
     # This file defines repositories that can be used for background agent sessions
 
     repositories:
-      - name: fifa-bot
-        description: fifa-bot
-        github_url: https://github.com/ImDevinC/fifa-bot
+      - name: macro-track-server
+        description: MacroTrack server
+        github_url: https://github.com/ImDevinC/macro-track-server
         build_commands:
           - go mod download
-          - go build -o /app/service ./cmd/
-      
-      - name: go-fifa
-        description: Fifa library
-        github_url: https://github.com/ImDevinC/go-fifa
-        build_commands:
-          - go mod download
-      
-      - name: notion-oc
-        description: A command-line utility for interacting with the Notion API
-        github_url: https://github.com/ImDevinC/notion-oc
-        build_commands:
-          - go mod download
-          - go build -o /app/notion-oc ./cmd/notion-oc
+          - go build -o /app/server ./cmd/server/main.go
