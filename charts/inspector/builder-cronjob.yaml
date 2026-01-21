@@ -36,31 +36,6 @@ spec:
           serviceAccountName: default
 
           containers:
-            # Docker-in-Docker sidecar container
-            - name: dind
-              image: docker:27-dind
-              securityContext:
-                privileged: true
-              env:
-                # Use overlay2 storage driver for better performance
-                - name: DOCKER_DRIVER
-                  value: overlay2
-                # Store docker data in emptyDir volume
-                - name: DOCKER_TLS_CERTDIR
-                  value: ""
-              volumeMounts:
-                - name: docker-storage
-                  mountPath: /var/lib/docker
-                - name: docker-socket
-                  mountPath: /var/run
-              resources:
-                requests:
-                  memory: "512Mi"
-                  cpu: "500m"
-                limits:
-                  memory: "1Gi"
-                  cpu: "1000m"
-
             # Builder container
             - name: builder
               image: ghcr.io/imdevinc/inspector-builder:latest
@@ -118,6 +93,33 @@ spec:
 
           # Init container to configure docker authentication
           initContainers:
+            # Docker-in-Docker sidecar container
+            - name: dind
+              image: docker:27-dind
+              restartPolicy: Always
+              securityContext:
+                privileged: true
+              env:
+                # Use overlay2 storage driver for better performance
+                - name: DOCKER_DRIVER
+                  value: overlay2
+                # Store docker data in emptyDir volume
+                - name: DOCKER_TLS_CERTDIR
+                  value: ""
+              volumeMounts:
+                - name: docker-storage
+                  mountPath: /var/lib/docker
+                - name: docker-socket
+                  mountPath: /var/run
+              resources:
+                requests:
+                  memory: "512Mi"
+                  cpu: "500m"
+                limits:
+                  memory: "1Gi"
+                  cpu: "1000m"
+
+            # Configure docker authentication
             - name: docker-config
               image: alpine:3.19
               command:

@@ -12,10 +12,14 @@ This directory contains Kubernetes manifests for deploying the Inspector system.
 
 ### Prerequisites
 
-1. A Kubernetes cluster with kubectl configured
-2. Docker daemon running on cluster nodes (for building images)
+1. A Kubernetes cluster with kubectl configured (version 1.28+ required for sidecar support)
+2. Docker daemon running via DinD sidecar (automatically managed)
 3. GitHub Personal Access Token with `repo` scope
 4. Docker registry credentials (GHCR or other)
+
+### Architecture
+
+The builder CronJob uses Kubernetes native sidecar containers (init containers with `restartPolicy: Always`). The Docker-in-Docker (DinD) container runs as a sidecar that automatically terminates when the main builder container completes, ensuring the entire pod shuts down cleanly after each build.
 
 ### Setup
 
