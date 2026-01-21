@@ -16,5 +16,10 @@ data:
         description: MacroTrack server
         github_url: https://github.com/ImDevinC/macro-track-server
         build_commands:
-          - go mod download
-          - go build -o /app/server ./cmd/server/main.go
+          - apk add jq
+          - wget https://go.dev/dl/go1.25.5.linux-amd64.tar.gz
+          - tar -C /usr/local -xzf go1.25.5.linux-amd64.tar.gz
+          - export PATH=$PATH:/usr/local/go/bin
+          - rm go1.25.5.linux-amd64.tar.gz
+          - /usr/local/go/bin/go mod download
+          - /usr/local/go/bin/go build -o /app/server ./cmd/server/main.go
