@@ -14,8 +14,8 @@ resources:
   - rbac.yaml
 images:
   - name: ghcr.io/imdevinc/inspector-api
-    newTag: v0.0.6
+    newTag: v0.0.11
   - name: ghcr.io/imdevinc/inspector-builder
-    newTag: v0.0.9
+    newTag: v0.0.10
   - name: ghcr.io/imdevinc/inspector-session
-    newTag: v0.0.8
+    newTag: v0.0.13
