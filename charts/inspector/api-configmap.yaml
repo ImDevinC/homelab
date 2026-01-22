@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: inspector-api-config
+  namespace: inspector
+  labels:
+    app: inspector
+    component: api
+data:
+  repositories.yaml: |
+    # Repository Configuration
+    # This file defines repositories that can be used for background agent sessions
+
+    repositories:
+      - name: macro-track-server
+        description: MacroTrack server
+        github_url: https://github.com/ImDevinC/macro-track-server
+        build_commands:
+          - apk add jq
+          - wget https://go.dev/dl/go1.25.5.linux-amd64.tar.gz
+          - tar -C /usr/local -xzf go1.25.5.linux-amd64.tar.gz
+          - export PATH=$PATH:/usr/local/go/bin
+          - rm go1.25.5.linux-amd64.tar.gz
+          - /usr/local/go/bin/go mod download
+          - /usr/local/go/bin/go build -o /app/server ./cmd/server/main.go

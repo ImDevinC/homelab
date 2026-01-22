@@ -1,0 +1,169 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: inspector-builder
+  namespace: inspector
+  labels:
+    app: inspector
+    component: builder
+spec:
+  # Run every 30 minutes
+  schedule: "*/30 * * * *"
+  suspend: true
+
+  # Keep last 3 successful and 1 failed job for history
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+
+  # Don't allow concurrent builds
+  concurrencyPolicy: Forbid
+
+  jobTemplate:
+    metadata:
+      labels:
+        app: inspector
+        component: builder
+    spec:
+      template:
+        metadata:
+          labels:
+            app: inspector
+            component: builder
+        spec:
+          restartPolicy: OnFailure
+
+          # Service account for builder (if needed for future RBAC)
+          serviceAccountName: default
+
+          containers:
+            # Builder container
+            - name: builder
+              image: ghcr.io/imdevinc/inspector-builder:latest
+              imagePullPolicy: Always
+
+              command: ["builder"]
+              args: ["-config", "/config/repositories.yaml"]
+
+              env:
+                # GitHub credentials for cloning private repos
+                - name: GIT_USERNAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: github-credentials
+                      key: docker-username
+                - name: GIT_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: github-credentials
+                      key: github-token
+                - name: GITHUB_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: github-credentials
+                      key: github-token
+
+                # Configure git to use credentials
+                - name: GIT_TERMINAL_PROMPT
+                  value: "0"
+
+                # Point to DinD socket
+                - name: DOCKER_HOST
+                  value: unix:///var/run/docker.sock
+
+              volumeMounts:
+                # Mount docker socket from DinD sidecar
+                - name: docker-socket
+                  mountPath: /var/run
+
+                # Mount docker config for authentication
+                - name: docker-config
+                  mountPath: /root/.docker
+
+                - name: config
+                  mountPath: /config
+                  readOnly: true
+
+              resources:
+                requests:
+                  memory: "512Mi"
+                  cpu: "500m"
+                limits:
+                  memory: "2Gi"
+                  cpu: "2000m"
+
+          # Init container to configure docker authentication
+          initContainers:
+            # Docker-in-Docker sidecar container
+            - name: dind
+              image: docker:27-dind
+              restartPolicy: Always
+              securityContext:
+                privileged: true
+              env:
+                # Use overlay2 storage driver for better performance
+                - name: DOCKER_DRIVER
+                  value: overlay2
+                # Store docker data in emptyDir volume
+                - name: DOCKER_TLS_CERTDIR
+                  value: ""
+              volumeMounts:
+                - name: docker-storage
+                  mountPath: /var/lib/docker
+                - name: docker-socket
+                  mountPath: /var/run
+              resources:
+                requests:
+                  memory: "512Mi"
+                  cpu: "500m"
+                limits:
+                  memory: "1Gi"
+                  cpu: "1000m"
+
+            # Configure docker authentication
+            - name: docker-config
+              image: alpine:3.19
+              command:
+                - sh
+                - -c
+                - |
+                  mkdir -p /docker-config
+                  cat > /docker-config/config.json <<EOF
+                  {
+                    "auths": {
+                      "ghcr.io": {
+                        "auth": "$(echo -n ${DOCKER_USERNAME}:${DOCKER_PASSWORD} | base64)"
+                      }
+                    }
+                  }
+                  EOF
+              env:
+                - name: DOCKER_USERNAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: github-credentials
+                      key: docker-username
+                - name: DOCKER_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: github-credentials
+                      key: docker-password
+              volumeMounts:
+                - name: docker-config
+                  mountPath: /docker-config
+
+          volumes:
+            # Shared docker socket between DinD and builder
+            - name: docker-socket
+              emptyDir: {}
+
+            # Docker storage for DinD daemon
+            - name: docker-storage
+              emptyDir: {}
+
+            # Docker config for authentication
+            - name: docker-config
+              emptyDir: {}
+
+            - name: config
+              configMap:
+                name: inspector-api-config

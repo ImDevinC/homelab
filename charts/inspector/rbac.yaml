@@ -1,0 +1,55 @@
+---
+# ServiceAccount for the API server to manage session pods and PVCs
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: inspector-api
+  namespace: inspector
+  labels:
+    app: inspector
+    component: api
+
+---
+# Role with permissions to manage pods and PVCs for sessions
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: inspector-api-role
+  namespace: inspector
+  labels:
+    app: inspector
+    component: api
+rules:
+  # Pod permissions for session management
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "get", "list", "delete", "watch"]
+  
+  # Pod logs access for debugging and monitoring
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get"]
+  
+  # PVC permissions for session storage
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["create", "get", "list", "delete", "watch"]
+
+---
+# RoleBinding connecting the ServiceAccount to the Role
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: inspector-api-binding
+  namespace: inspector
+  labels:
+    app: inspector
+    component: api
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: inspector-api-role
+subjects:
+  - kind: ServiceAccount
+    name: inspector-api
+    namespace: inspector
