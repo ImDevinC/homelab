@@ -54,6 +54,8 @@ spec:
               value: https://inspector.int.imdevinc.com/auth/callback/pocketid
             - name: API_BASE_URL
               value: https://inspector.int.imdevinc.com
+            - name: REDIS_URL
+              value: redis://redis-master.redis:6379
 
           # Liveness probe - checks if container is alive
           livenessProbe:

@@ -22,4 +22,13 @@ data:
           - export PATH=$PATH:/usr/local/go/bin
           - rm go1.25.5.linux-amd64.tar.gz
           - /usr/local/go/bin/go mod download
-          - /usr/local/go/bin/go build -o /app/server ./cmd/server/main.go
+      - name: inspector
+        description: Inspector
+        github_url: https://github.com/ImDevinC/inspector
+        build_commands:
+          - apk add jq
+          - wget https://go.dev/dl/go1.25.5.linux-amd64.tar.gz
+          - tar -C /usr/local -xzf go1.25.5.linux-amd64.tar.gz
+          - export PATH=$PATH:/usr/local/go/bin
+          - rm go1.25.5.linux-amd64.tar.gz
+          - /usr/local/go/bin/go mod download
