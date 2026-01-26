@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: hf-token
+  namespace: hunyuan3d
+spec:
+  encryptedData:
+    token: AgCvHwc5C6zW2ri0yzf5VMQRqCeAcPKkD2bS7IJN8cHRFlOGV67kYWOjsSSQ9uaDvuekeKy7gI6wovHuRYFDCZ62iJ+r1/3CuMwlE9vEE1OYGxwuMQM3jvAVIXnaaIDBKZUNxRIQXtEr2/nL+rAeHhghBw9h/2hc/taSuMA1q2efeei2TkZKJ7hmUnRnSt5lRWwhkdYrdFOx+udeBkwQKWPR223CKu7P8a/FA2zJk7HsrmmD0ylmrLVmnnJX/JemgawLYvAkQjYh33Poe2xNA+eSpfcIk6Sa+mp+g3AmndrgJy2zsKLsvz2DhlTt3QO+EgotXmtm6ceq5eOqPO5DwGSYY9fSOVWZQayNoS3japb0hBd2atvLCztpGDNyb2IOByQDhxZqMFSX+SXXwKUpjxM0NbHkrhgrUdugmuwjyqLDa8U6t12upEHD+oAKS7Vu0ZWIRoLq/+GMZ23gu14MF+2x8j1GzZ6A0cm3qNzJDh3Oz/KxP3Gq1tgZQ8m8hF5cMDfHOBP5/cahDIHBYgTAKGeGL5+zrpnUwTF+t+UcZ41wD4rYThnzhw0kepLKNg9SmgsRM7bAUPwJHLCuj1JPpYkA/003QPavvecbBVEB7Xb98E6SZz4VUWp1vowN/gCOcpknSPOgRELOOykYFQNk+X0I2pqUtNJs1vsuF39hy6MwdqquY3qGSP+sLK8NIx84G671zAlUgEDQ/H0UX58+f4mxvf15B5ojLO5ifxpiO8qYwJfUt9MZ
+  template:
+    metadata:
+      name: hf-token
+      namespace: hunyuan3d
