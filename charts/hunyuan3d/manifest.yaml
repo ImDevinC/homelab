@@ -30,7 +30,7 @@ metadata:
   labels:
     app: hunyuan3d
 spec:
-  replicas: 1
+  replicas: 0
   strategy:
     type: Recreate # Use Recreate for GPU workloads
   selector:
