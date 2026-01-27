@@ -7,4 +7,4 @@ resources:
 images:
   - name: hunyuan3d:latest
     newName: ghcr.io/imdevinc/hunyuan3d
-    newTag: latest
+    newTag: sha-df90efe
