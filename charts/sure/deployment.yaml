@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: sure
+    service: sure
+  name: sure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sure
+      service: sure
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sure
+        service: sure
+    spec:
+      containers:
+        - env:
+            - name: SELF_HOSTED
+              value: "true"
+            - name: AUTH_LOCAL_LOGIN_ENABLED
+              value: "false"
+            - name: AUTH_LOCAL_ADMIN_OVERRIDE_ENABLED
+              value: "false"
+            - name: AUTH_JIT_MODE
+              value: link_only
+            - name: ALLOWED_OIDC_DOMAINS
+              value: imdevinc.com
+          envFrom:
+            - secretRef:
+                name: sure
+          image: ghcr.io/we-promise/sure
+          imagePullPolicy: IfNotPresent
+          name: sure
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /rails/storage
+              name: data
+      restartPolicy: Always
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: sure
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: sure-worker
+    service: sure-worker
+  name: sure-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sure-worker
+      service: sure-worker
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sure-worker
+        service: sure-worker
+    spec:
+      containers:
+        - env:
+            - name: SELF_HOSTED
+              value: "true"
+          envFrom:
+            - secretRef:
+                name: sure
+          image: ghcr.io/we-promise/sure
+          imagePullPolicy: IfNotPresent
+          args: ["bundle", "exec", "sidekiq"]
+          name: worker
+          volumeMounts:
+            - mountPath: /rails/storage
+              name: data
+      restartPolicy: Always
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: sure

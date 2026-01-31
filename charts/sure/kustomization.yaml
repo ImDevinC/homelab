@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: sure
+resources:
+  - deployment.yaml
+  - httproute.yaml
+  - namespace.yaml
+  - pvc.yaml
+  - service.yaml
+  - sealed.yaml
+images:
+  - name: ghcr.io/we-promise/sure
+    newTag: stable
