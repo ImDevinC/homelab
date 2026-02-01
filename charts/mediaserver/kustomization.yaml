@@ -39,6 +39,6 @@ images:
   - name: mrcas/kapowarr
     newTag: v1.2.0
   - name: ajslater/codex
-    newTag: 1.8.22
+    newTag: 1.9.14
   - name: tannermiddleton/recommendarr:latest
     newTag: v1.4.4
