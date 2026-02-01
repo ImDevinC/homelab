@@ -1,4 +1,4 @@
-globalArguments:
+additionalArguments:
   - "--api.insecure"
 logs:
   general:
@@ -34,13 +34,15 @@ service:
     externalTrafficPolicy: Local
 ports:
   websecure:
-    middlewares:
-      - traefik-ipallowlist@kubernetescrd
+    http:
+      middlewares:
+        - traefik-ipallowlist@kubernetescrd
   web:
-    redirections:
-      entryPoint:
-        scheme: https
-        to: websecure
+    http:
+      redirections:
+        entryPoint:
+          scheme: https
+          to: websecure
 experimental:
   plugins:
     traefik-oidc-auth:
