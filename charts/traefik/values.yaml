@@ -51,6 +51,7 @@ experimental:
       version: v1.0.2
 metrics:
   prometheus:
+    disableAPICheck: true
     service:
       enabled: true
     serviceMonitor:
