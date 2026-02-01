@@ -5,7 +5,7 @@ helmCharts:
     releaseName: traefik-crds
     namespace: traefik
     repo: https://traefik.github.io/charts
-    version: 1.13.0
+    version: 1.14.0
   - name: traefik
     releaseName: traefik
     namespace: traefik
