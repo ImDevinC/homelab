@@ -1,0 +1,26 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: job-ops
+  namespace: job-ops
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Homelab
+    gethomepage.dev/icon: briefcase.png
+    gethomepage.dev/name: JobOps
+    gethomepage.dev/description: AI-powered job search pipeline
+spec:
+  parentRefs:
+    - name: traefik-gateway
+      namespace: traefik
+  hostnames:
+    - jobops.int.imdevinc.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: job-ops
+          namespace: job-ops
+          port: 3001

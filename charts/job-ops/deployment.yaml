@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: job-ops
+    app.kubernetes.io/name: job-ops
+  name: job-ops
+  namespace: job-ops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: job-ops
+      app.kubernetes.io/name: job-ops
+  template:
+    metadata:
+      labels:
+        service: job-ops
+        app.kubernetes.io/name: job-ops
+    spec:
+      containers:
+        - name: job-ops
+          image: ghcr.io/dakheera47/job-ops:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: "3001"
+            - name: PYTHON_PATH
+              value: /usr/bin/python3
+            - name: DATA_DIR
+              value: /app/data
+          envFrom:
+            - secretRef:
+                name: job-ops-secret
+          ports:
+            - containerPort: 3001
+              protocol: TCP
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3001
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3001
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+      restartPolicy: Always
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: job-ops-data
