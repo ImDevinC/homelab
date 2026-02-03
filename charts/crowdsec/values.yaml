@@ -36,3 +36,8 @@ lapi:
         secretKeyRef:
           name: crowdsec-api-key
           key: key
+secrets:
+  externalSecret:
+    name: crowdsec-lapi-secrets
+    csLapiSecretKey: csLapiSecret
+    registrationTokenkey: registrationToken

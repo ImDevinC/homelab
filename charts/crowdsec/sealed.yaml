@@ -13,3 +13,22 @@ spec:
       creationTimestamp: null
       name: crowdsec-api-key
       namespace: crowdsec
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: crowdsec-lapi-secrets
+  namespace: crowdsec
+spec:
+  encryptedData:
+    csLapiSecret: AgAr3dHY2+vLqADUtbsAzbKJ3oAb39USDNsT+EoIcjtq7veNFF7zGyw4sIUmjoDKt1u82eK4yngkOK7W7mS+NM9lO72SUYWaRmqPOpITF0B+nUGt8Q89TvFkE10o3JqiSO7SJdD4sl37SjbgeJErLm/XwyNY0cJDvvExeH0guGEZ/dGKh0qgzkeS5DKHW/YP8Us9HE4CSk4bnn9MMBMxjjODHve13Q6GgvNQImIE/SwxYNF1mEbEXsRdmDJyL+xaFT+VZdIPrnhgLR5TfIAQhI00Qy2hB9G90n26MALdKS/RcuGnTK4hHn2nvPyA+SaqrLNywDy1uHg7rxGGtcJXFUyXLiwWq9YJjq8gDPaOkHrg/DSJjRcj0O4W36S1kSKADDYBYYU4lQj5r2MS9BSe5Jb4Chq8bWQ7akFomIYeEFYiFfJi8dOk62u4wo3Al25PZ8dLxkAG2C3bBxZkwWHJta69yscyEW2pRmfRelZ2weHqKNxmaLuoPKUZ94glFlQRtjgl0z985G/PzBmd1xs8ehXfJDac8k/HBJYBFMweviL1kVUTsdRmHCPAqGvcrjihgMQAX48Lbe+9qLo/elzMVRAd5V9gwNT4O4MRgME4/J2Jt9ZII1VEeFKCD2JCjQIbj32okn+XpwJ5OxhWs7ku8MMyDxkWPWZMaZPrvubQDF8B7g1j9FVua07Vz5L2UN+YGnlnM2TJbn2nIa/VbwlV2qSPLhOyQQbcdqbcfAN6nORHBSJeIpV316Gzcx5RBj04yPkWgaUD0IYKNta6ovBBKbYY
+    registrationToken: AgA3j2GtHOB2genntMSpKifzDYj4GGexsjjehVR95EfxyHot1BadLfFlNavNY5S3omI+iT2N0ih3SBvMBjsYPhe1oIbHr51jMTR1kkCEvrvgPqGhsD2snRt/+CM6tXny2nLafAI0+fvuP838NG7cLckK/ypw5snFmJWWCBIhaWDTvt+8LO9EzWKQasa41lzimg0Kp1lrDqa6NxhdqUSjJ1OzkAYPmdo3EP7I+6YkzmkDDgQybFYKJAb7SmPqfD4VWuXadtYhG1x2xf6IefB1KF6VT7b7LS8zjQnjchffSk+LpqgtKwA3rMEY0ty3ykk4KLa1cJNb/k1oSbXajKCNkLUWorqwZs7+3Vrdac0vAov52vHDFQTRJZDSYqYndvBjMrHDTW4mPu4+1Q60ObL463eqFtub37iVcdiE1DKUO8vB30SYQ3XTOn1ZVwbyLtKprwllesCa7dv+JVrzRQ1HR9MW0xyLvWwJ+aKFEuw+S+B1GvjrHbnZKdge1Xhi2x3RuVmwd+GpxIimOJE3rPxMQ5Tutg9Gp7x9r6Z8FxCY5Tg5as3kd7qdjItVtzDFXo5UEDWkAZ8C0I65vwmce5ryXPFcU7SLNiqcfVLBCkPaZPI3coEkOGhQ3mFWGU6O0pUKhrqn576MLzhGJ7T0JEabYs66KgUbF9GJrck8AX1s5HzEhoEvKscz/zMHx1TcamfE6jTMJguGKoXWeE6h+WXPdMv5+MVt2RKDzVGSpYRHb/39arW6o58sEa8tDjIljkco00o=
+  template:
+    metadata:
+      labels:
+        k8s-app: crowdsec
+        type: lapi
+        version: v1
+      name: crowdsec-lapi-secrets
+      namespace: crowdsec
+    type: Opaque
