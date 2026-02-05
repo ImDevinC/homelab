@@ -48,6 +48,8 @@ extraEnvVars:
     value: "OpenwebUI Admins"
   - name: OAUTH_ROLES_CLAIM
     value: groups
+  - name: CHAT_STREAM_RESPONSE_CHUNK_MAX_BUFFER_SIZE
+    value: "20971520"
 volumes:
   - name: gcp-token
     secret:
