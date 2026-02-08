@@ -10,4 +10,4 @@ resources:
   - sealed.yaml
 images:
   - name: ghcr.io/dakheera47/job-ops
-    newTag: v0.1.12
+    newTag: v0.1.14
