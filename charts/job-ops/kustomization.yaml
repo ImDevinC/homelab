@@ -8,6 +8,7 @@ resources:
   - httproute.yaml
   - pvc.yaml
   - sealed.yaml
+  - configmap.yaml
 images:
   - name: ghcr.io/dakheera47/job-ops
     newTag: v0.1.14

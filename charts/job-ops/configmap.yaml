@@ -1,0 +1,17 @@
+apiVersion: v1
+data:
+  MODEL: google/gemini-3-flash-preview
+  LLM_PROVIDER: openrouter
+  JOBSPY_SEARCH_TERMS: "site reliability engineer|devops|observability"
+  JOBSPY_LOCATION: United States
+  JOBSPY_RESULTS_WANTED: "200"
+  JOBSPY_HOURS_OLD: "72"
+  JOBSPY_COUNTRY_INDEED: United States
+  JOBSPY_LINKEDIN_FETCH_DESCRIPTION: "1"
+  JOBSPY_IS_REMOTE: "1"
+  PENALIZE_MISSING_SALARY: "1"
+  MISSING_SALARY_PENALTY: "10"
+kind: ConfigMap
+metadata:
+  name: jobops
+  namespace: job-ops

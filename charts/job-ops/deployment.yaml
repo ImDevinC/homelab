@@ -32,6 +32,8 @@ spec:
             - name: DATA_DIR
               value: /app/data
           envFrom:
+            - configMapRef:
+                name: jobobs
             - secretRef:
                 name: job-ops-secret
           ports:
