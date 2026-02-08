@@ -33,7 +33,7 @@ spec:
               value: /app/data
           envFrom:
             - configMapRef:
-                name: jobobs
+                name: job-ops
             - secretRef:
                 name: job-ops-secret
           ports:

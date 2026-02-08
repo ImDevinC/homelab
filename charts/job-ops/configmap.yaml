@@ -13,5 +13,5 @@ data:
   MISSING_SALARY_PENALTY: "10"
 kind: ConfigMap
 metadata:
-  name: jobops
+  name: job-ops
   namespace: job-ops
