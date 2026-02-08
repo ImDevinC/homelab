@@ -7,3 +7,4 @@ resources:
   - kube-state-metrics
   - opentelemetry-operator
   - prometheus-node-exporter
+  - victoria-metrics

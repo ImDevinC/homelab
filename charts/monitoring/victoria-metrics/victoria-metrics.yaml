@@ -1,0 +1,148 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: victoria-metrics
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: victoria-metrics
+rules:
+- apiGroups: [""]
+  resources:
+  - nodes
+  - nodes/metrics
+  - services
+  - endpoints
+  - pods
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: victoria-metrics
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: victoria-metrics
+subjects:
+- kind: ServiceAccount
+  name: victoria-metrics
+  namespace: monitoring
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: victoria-metrics
+  labels:
+    app: victoria-metrics
+spec:
+  serviceName: victoria-metrics
+  replicas: 1
+  selector:
+    matchLabels:
+      app: victoria-metrics
+  template:
+    metadata:
+      labels:
+        app: victoria-metrics
+    spec:
+      serviceAccountName: victoria-metrics
+      securityContext:
+        fsGroup: 2000
+        runAsUser: 1000
+        runAsNonRoot: true
+      containers:
+      - name: victoria-metrics
+        image: victoriametrics/victoria-metrics:latest
+        imagePullPolicy: IfNotPresent
+        args:
+          - -storageDataPath=/storage
+          - -retentionPeriod=6  # 6 months = 180 days
+          - -httpListenAddr=:8428
+          - -promscrape.streamParse=true
+          - -search.maxQueryDuration=60s
+          - -search.maxConcurrentRequests=12
+        ports:
+        - containerPort: 8428
+          name: http
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 15
+        resources:
+          requests:
+            cpu: 100m
+            memory: 512Mi
+          limits:
+            cpu: 1000m
+            memory: 2Gi
+        volumeMounts:
+        - name: storage
+          mountPath: /storage
+  volumeClaimTemplates:
+  - metadata:
+      name: storage
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: hostpath-csi
+      resources:
+        requests:
+          storage: 50Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: victoria-metrics
+  labels:
+    app: victoria-metrics
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8428
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: victoria-metrics
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: victoria-metrics
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Management
+    gethomepage.dev/icon: victoriametrics.png
+    gethomepage.dev/name: VictoriaMetrics
+spec:
+  parentRefs:
+  - name: traefik-gateway
+    namespace: traefik
+    group: gateway.networking.k8s.io
+    kind: Gateway
+  hostnames:
+  - victoria-metrics.int.imdevinc.com
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: victoria-metrics
+      namespace: monitoring
+      port: 8428
+      group: ''
+      kind: Service
+      weight: 1

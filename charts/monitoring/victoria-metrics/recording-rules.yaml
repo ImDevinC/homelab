@@ -1,0 +1,44 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: downsampling-rules
+  labels:
+    prometheus: prometheus
+    role: alert-rules
+spec:
+  groups:
+  # 1 hour aggregation - for 30-90 day queries
+  # Preserves entity and friendly_name labels so you can filter by device
+  - name: downsample-1h
+    interval: 1h
+    limit: 10000  # Prevent runaway cardinality
+    rules:
+    # Home Assistant power metrics - captures all *_power_w sensors
+    - record: homeassistant:power:avg1h
+      expr: avg_over_time({__name__=~"homeassistant_sensor_.*_power_w"}[1h]) by (entity, friendly_name)
+    
+    # Add more metric patterns here as needed, for example:
+    # Temperature sensors
+    # - record: homeassistant:temperature:avg1h
+    #   expr: avg_over_time({__name__=~"homeassistant_sensor_.*_temperature_c"}[1h]) by (entity, friendly_name)
+    
+    # Humidity sensors
+    # - record: homeassistant:humidity:avg1h
+    #   expr: avg_over_time({__name__=~"homeassistant_sensor_.*_humidity_percent"}[1h]) by (entity, friendly_name)
+  
+  # 1 day aggregation - for 90-150 day queries
+  - name: downsample-1d
+    interval: 1d
+    limit: 10000
+    rules:
+    - record: homeassistant:power:avg1d
+      expr: avg_over_time({__name__=~"homeassistant_sensor_.*_power_w"}[1d]) by (entity, friendly_name)
+  
+  # 1 week aggregation - for 150-180 day queries
+  - name: downsample-1w
+    interval: 1w
+    limit: 10000
+    rules:
+    - record: homeassistant:power:avg1w
+      expr: avg_over_time({__name__=~"homeassistant_sensor_.*_power_w"}[1w]) by (entity, friendly_name)

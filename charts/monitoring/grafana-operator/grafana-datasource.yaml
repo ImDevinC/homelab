@@ -1,6 +1,25 @@
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
+  name: victoria-metrics
+spec:
+  datasource:
+    access: proxy
+    type: prometheus
+    isDefault: true
+    jsonData:
+      timeInterval: 5s
+      tlsSkipVerify: true
+      httpMethod: POST
+    name: VictoriaMetrics
+    url: http://victoria-metrics.monitoring.svc.cluster.local:8428
+  instanceSelector:
+    matchLabels:
+      instance: default
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
   name: prometheus
 spec:
   datasource:
@@ -9,7 +28,7 @@ spec:
     jsonData:
       timeInterval: 5s
       tlsSkipVerify: true
-    name: prometheus
+    name: Prometheus
     url: http://prometheus-operated:9090
   instanceSelector:
     matchLabels:

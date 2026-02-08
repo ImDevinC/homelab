@@ -1,2 +1,2 @@
 charts/monitoring/manifests/
-charts/*/charts/
+charts/**/charts/
