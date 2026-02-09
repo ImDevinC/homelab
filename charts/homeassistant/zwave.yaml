@@ -64,3 +64,23 @@ spec:
       name: websocket
   selector:
     app: zwavejsui
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: zwavejsui
+spec:
+  parentRefs:
+    - name: traefik-gateway
+      namespace: traefik
+  hostnames:
+    - zwavejs.int.imdevinc.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: zwavejsui
+          namespace: homeassistant
+          port: 8091
