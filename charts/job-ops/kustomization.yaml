@@ -11,4 +11,4 @@ resources:
   - configmap.yaml
 images:
   - name: ghcr.io/dakheera47/job-ops
-    newTag: v0.1.16
+    newTag: v0.1.15
