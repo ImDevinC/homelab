@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 21,
+  "id": 22,
   "links": [],
   "panels": [
     {
@@ -83,12 +83,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 10,
         "w": 12,
         "x": 0,
         "y": 0
       },
-      "id": 3,
+      "id": 2,
       "options": {
         "legend": {
           "calcs": [],
@@ -229,172 +229,6 @@
       ],
       "title": "Energy Overview",
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
-      },
-      "description": "Subtracts values that aren't properly subtracted",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "bars",
-            "fillOpacity": 100,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "normal"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "watth"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 12,
-        "x": 0,
-        "y": 8
-      },
-      "id": 2,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "11.3.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "sum(homeassistant_sensor_power_w{friendly_name=\"Other Power\"}) by (friendly_name)",
-          "fullMetaSearch": false,
-          "hide": true,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
-          },
-          "editorMode": "code",
-          "expr": "sum(homeassistant_sensor_power_w{friendly_name=\"Desktop Current consumption\"})",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
-          },
-          "editorMode": "code",
-          "expr": "sum(homeassistant_sensor_power_w{friendly_name=\"Server Current consumption\"})",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A-$B-$C",
-          "hide": false,
-          "refId": "D",
-          "type": "math"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
-          },
-          "editorMode": "code",
-          "expr": "sum(homeassistant_sensor_power_w{friendly_name!~\".*\\\\[W\\\\]$\", entity!~\".*_battery_power$\", entity!=\"sensor.filter_pump_power\",entity!=\"sensor.energy_usage\",entity!=\"sensor.energy_production\",entity!=\"sensor.power_production_now\",entity!=\"sensor.solar_power\",entity!=\"sensor.cyberpower_nominal_real_power\"})",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "E"
-        }
-      ],
-      "title": "Other Power Consumption",
-      "transformations": [
-        {
-          "id": "configFromData",
-          "options": {
-            "configRefId": "E",
-            "mappings": [
-              {
-                "fieldName": "sum(homeassistant_sensor_power_w{friendly_name!~\".*\\\\[W\\\\]$\", entity!~\".*_battery_power$\", entity!=\"sensor.filter_pump_power\",entity!=\"sensor.energy_usage\",entity!=\"sensor.energy_production\",entity!=\"sensor.power_production_now\",entity!=\"sensor.solar_power\",entity!=\"sensor.cyberpower_nominal_real_power\"})",
-                "handlerKey": "max",
-                "reducerId": "max"
-              }
-            ]
-          }
-        }
-      ],
-      "type": "timeseries"
     }
   ],
   "preload": false,
@@ -412,6 +246,6 @@
   "timezone": "",
   "title": "Power Usage",
   "uid": "eb3ba285-c6fe-4da7-ae42-a5870941efcd",
-  "version": 6,
+  "version": 1,
   "weekStart": ""
 }
