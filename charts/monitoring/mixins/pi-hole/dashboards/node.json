@@ -43,7 +43,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -103,7 +103,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "builder",
           "expr": "rpi_temperature_f",
@@ -119,7 +119,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -210,7 +210,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "max_over_time(rpi_temperature_f[$__interval])",
@@ -239,7 +239,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -293,7 +293,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "builder",
           "expr": "rpi_voltage",
@@ -308,7 +308,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -377,7 +377,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "builder",
           "expr": "rpi_power_state",
@@ -393,7 +393,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -477,7 +477,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "avg_over_time(rpi_voltage[$__interval])",
@@ -492,7 +492,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -576,7 +576,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "builder",
           "expr": "rpi_power_state",
@@ -605,7 +605,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -660,7 +660,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "builder",
           "expr": "rpi_clock_rate_measured_hz",
@@ -676,7 +676,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -760,7 +760,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "avg_over_time(rpi_clock_rate_measured_hz[$__interval])",

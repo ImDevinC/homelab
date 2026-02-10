@@ -30,7 +30,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -87,7 +87,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "internet_speed_monitor_download_speed{host=\"$host\"}",
@@ -102,7 +102,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -159,7 +159,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "internet_speed_monitor_upload_speed{host=\"$host\"}",
@@ -174,7 +174,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -231,7 +231,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "internet_speed_monitor_latency{host=\"$host\"}",
@@ -246,7 +246,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -303,7 +303,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "internet_speed_monitor_jitter{host=\"$host\"}",
@@ -318,7 +318,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -401,7 +401,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "internet_speed_monitor_download_speed{host=\"$host\"}",
@@ -412,7 +412,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "internet_speed_monitor_upload_speed{host=\"$host\"}",
@@ -428,7 +428,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -511,7 +511,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "internet_speed_monitor_latency{host=\"$host\"}",
@@ -522,7 +522,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "internet_speed_monitor_jitter{host=\"$host\"}",
@@ -548,7 +548,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
         },
         "definition": "label_values(internet_speed_monitor_download_speed,host)",
         "includeAll": false,

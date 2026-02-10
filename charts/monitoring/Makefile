@@ -18,7 +18,7 @@ dashboards: mixins/mixin.libsonnet
 		content=`cat $${file} | gzip | base64 -w0` ;\
 		content=$${content} cmName=$${cmName} yq e -n '.apiVersion = "grafana.integreatly.org/v1beta1" | .kind = "GrafanaDashboard" | .metadata.name = strenv(cmName) | .spec.instanceSelector.matchLabels.instance = "default" | .spec.gzipJson = strenv(content) | .spec.folder = "General"' > manifests/dashboards/$${baseFile}-dashboard.yaml ;\
 	done
-	echo -e "# DO NOT EDIT\n# THIS FILE IS GENERATED AUTOMATICALLY AND ANY CHANGES WILL BE OVERWRITTEN" > opentelemetry-operator/dashboards.yaml
-	yq eval-all "." manifests/dashboards/*.yaml >> opentelemetry-operator/dashboards.yaml
+	echo -e "# DO NOT EDIT\n# THIS FILE IS GENERATED AUTOMATICALLY AND ANY CHANGES WILL BE OVERWRITTEN" > grafana-operator/dashboards.yaml
+	yq eval-all "." manifests/dashboards/*.yaml >> grafana-operator/dashboards.yaml
 
 all: clean alerts dashboards

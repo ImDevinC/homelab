@@ -30,7 +30,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -94,7 +94,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -108,7 +108,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -123,7 +123,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -195,7 +195,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -277,7 +277,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -296,7 +296,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -378,7 +378,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -396,7 +396,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -478,7 +478,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -496,7 +496,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -578,7 +578,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -596,7 +596,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -675,7 +675,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -693,7 +693,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -772,7 +772,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -815,7 +815,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
         },
         "definition": "f2b_up",
         "description": "Select which instance(s) to show",

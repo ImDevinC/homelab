@@ -27,7 +27,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -112,7 +112,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "expr": "DCGM_FI_DEV_GPU_TEMP{exported_container=~\"${container}\", modelName=~\"${gpu}\"}",
           "instant": false,
@@ -127,7 +127,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -185,7 +185,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "expr": "avg(DCGM_FI_DEV_GPU_TEMP{exported_container=~\"${container}\", modelName=~\"${gpu}\"})",
           "interval": "",
@@ -199,7 +199,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -285,7 +285,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "expr": "DCGM_FI_DEV_POWER_USAGE{exported_container=~\"${container}\", modelName=~\"${gpu}\"}",
           "interval": "",
@@ -299,7 +299,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -357,7 +357,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "expr": "sum(DCGM_FI_DEV_POWER_USAGE{exported_container=~\"${container}\", modelName=~\"${gpu}\"})",
           "interval": "",
@@ -371,7 +371,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -457,7 +457,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "expr": "DCGM_FI_DEV_SM_CLOCK{exported_container=~\"${container}\", modelName=~\"${gpu}\"} * 1000000",
           "format": "time_series",
@@ -473,7 +473,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -560,7 +560,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "expr": "DCGM_FI_DEV_GPU_UTIL{exported_container=~\"${container}\", modelName=~\"${gpu}\"}",
           "interval": "",
@@ -574,7 +574,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -661,7 +661,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "expr": "DCGM_FI_PROF_PIPE_TENSOR_ACTIVE{exported_container=~\"${container}\", modelName=~\"${gpu}\"}",
           "interval": "",
@@ -675,7 +675,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -759,7 +759,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "expr": "DCGM_FI_DEV_FB_USED{exported_container=~\"${container}\", modelName=~\"${gpu}\"}",
           "interval": "",
@@ -788,7 +788,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
         },
         "definition": "label_values(DCGM_FI_DEV_GPU_TEMP,exported_container)",
         "hide": 0,
@@ -822,7 +822,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
         },
         "definition": "label_values(DCGM_FI_DEV_GPU_TEMP,modelName)",
         "hide": 0,

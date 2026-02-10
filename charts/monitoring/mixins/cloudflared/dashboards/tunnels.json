@@ -455,7 +455,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -537,7 +537,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "builder",
           "expr": "cloudflared_tunnel_ha_connections",
@@ -552,7 +552,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "Concurrent requests proxied through each tunnel",
       "fieldConfig": {
@@ -635,7 +635,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "builder",
           "expr": "cloudflared_tunnel_concurrent_requests_per_tunnel",
@@ -650,7 +650,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -732,7 +732,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -752,7 +752,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -834,7 +834,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -854,7 +854,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -936,7 +936,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "builder",
           "expr": "changes(cloudflared_orchestration_config_version[$__interval])",
@@ -952,7 +952,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -1038,7 +1038,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "47845905-6be0-44fd-ba5e-05ea5be51b98"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "disableTextWrap": false,
           "editorMode": "builder",

@@ -38,7 +38,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -88,7 +88,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -106,7 +106,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -158,7 +158,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "(process_start_time_seconds{machine=\"$machine\"})*1000",
@@ -174,7 +174,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -225,7 +225,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -242,7 +242,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -293,7 +293,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -310,7 +310,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -361,7 +361,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -378,7 +378,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -429,7 +429,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -446,7 +446,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -497,7 +497,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -514,7 +514,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -565,7 +565,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -582,7 +582,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -644,7 +644,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -675,7 +675,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -773,7 +773,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -788,7 +788,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -803,7 +803,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -818,7 +818,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -833,7 +833,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -913,7 +913,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -979,7 +979,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -993,7 +993,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1040,7 +1040,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -1095,7 +1095,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1142,7 +1142,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -1195,7 +1195,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1230,7 +1230,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -1303,7 +1303,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1345,7 +1345,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -1408,7 +1408,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1449,7 +1449,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -1502,7 +1502,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1545,7 +1545,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -1599,7 +1599,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1614,7 +1614,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1665,7 +1665,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -1730,7 +1730,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1792,7 +1792,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -1868,7 +1868,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1883,7 +1883,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1899,7 +1899,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1957,7 +1957,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -2043,7 +2043,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2058,7 +2058,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2073,7 +2073,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2088,7 +2088,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2103,7 +2103,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2179,7 +2179,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -2255,7 +2255,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2270,7 +2270,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2354,7 +2354,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -2442,7 +2442,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "rate(process_cpu_seconds_total{machine=\"$machine\"}[$__interval])*100",
@@ -2458,7 +2458,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "description": "",
       "fieldConfig": {
@@ -2546,7 +2546,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "process_resident_memory_bytes{machine=\"$machine\"}",
@@ -2562,7 +2562,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
       },
       "fieldConfig": {
         "defaults": {
@@ -2681,7 +2681,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2695,7 +2695,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "sum(rate(cs_parser_hits_ok_total{machine=\"$machine\"} [$__interval]))",
@@ -2708,7 +2708,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "sum(rate(cs_parser_hits_ko_total{machine=\"$machine\"} [$__interval]))",
@@ -2721,7 +2721,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "sum(rate(cs_node_wl_hits_ok_total{machine=\"$machine\"} [$__interval]))",
@@ -2734,7 +2734,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
           },
           "editorMode": "code",
           "expr": "sum(rate(cs_bucket_poured_total{machine=\"$machine\"} [$__interval]))",
@@ -2764,7 +2764,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
         },
         "definition": "label_values(cs_appsec_reqs_total,appsec_engine)",
         "hide": 2,
@@ -2787,7 +2787,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "2b0f7cdc-ba16-4ae1-b442-790fca41fea2"
         },
         "definition": "label_values(cs_info,machine)",
         "includeAll": false,
