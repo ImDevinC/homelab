@@ -73,14 +73,6 @@ spec:
             - mountPath: /anime
               name: mediaserver-volume
               subPath: media/anime
-          securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
-            fsGroup: 1000
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
           resources:
             requests:
               cpu: "500m"
