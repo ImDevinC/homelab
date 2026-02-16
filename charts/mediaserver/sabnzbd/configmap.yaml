@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
-  init-sabnzbd.sh: |
-    #!/bin/bash
+  init.sh: |
+    #!/bin/sh
     echo "### Initializing config ###"
     if [ ! -f /sabnzbd-config/sabnzbd.ini ]; then
       cp -n /init-sabnzbd/sabnzbd.ini /sabnzbd-config/sabnzbd.ini

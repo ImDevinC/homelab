@@ -20,13 +20,17 @@ spec:
       initContainers:
       containers:
         - name: codex
-          image: ajslater/codex
+          image: ajslater/codex:1.9.14
           imagePullPolicy: IfNotPresent
           readinessProbe:
             tcpSocket:
-              port: 9810
+              port: 5656
             initialDelaySeconds: 10
-            periodSeconds: 20
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
           ports:
             - name: http
               containerPort: 5656

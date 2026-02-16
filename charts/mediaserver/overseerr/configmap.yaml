@@ -150,7 +150,7 @@ data:
       }
       }
   init-overseerr.sh: |
-    #!/bin/bash
+    #!/bin/sh
     echo "### Initializing config"
     if [ ! -f /overseerr-config/settings.json ]; then
       cp -n /init-overseerr/settings.json /overseerr-config/settings.json

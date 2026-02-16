@@ -107,7 +107,7 @@ data:
       "Version": "2.1.0"
     }
   init-requestrr.sh: |
-    #!/bin/bash
+    #!/bin/sh
     echo "### Initializing config"
     if [ ! -f /requestrr-config/settings.json ]; then
       cp -n /init-requestrr/settings.json /requestrr-config/settings.json

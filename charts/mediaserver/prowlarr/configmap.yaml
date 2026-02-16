@@ -5,7 +5,7 @@ data:
       <UrlBase>/prowlarr</UrlBase>
     </Config>
   init-prowlarr.sh: |
-    #!/bin/bash
+    #!/bin/sh
     echo "### Initializing config ###"
     if [ ! -f /prowlarr-config/config.xml ]; then
       cp -n /init-prowlarr/config.xml /prowlarr-config/config.xml

@@ -5,7 +5,7 @@ data:
       <UrlBase>/radarr</UrlBase>
     </Config>
   init-radarr.sh: |
-    #!/bin/bash
+    #!/bin/sh
     echo "### Initializing config ###"
     if [ ! -f /radarr-config/config.xml ]; then
       cp -n /init-radarr/config.xml /radarr-config/config.xml

@@ -20,13 +20,17 @@ spec:
       initContainers:
       containers:
         - name: kapowarr
-          image: mrcas/kapowarr
+          image: mrcas/kapowarr:v1.2.0
           imagePullPolicy: IfNotPresent
           readinessProbe:
             tcpSocket:
               port: 5656
             initialDelaySeconds: 10
-            periodSeconds: 20
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
           ports:
             - name: http
               containerPort: 5656

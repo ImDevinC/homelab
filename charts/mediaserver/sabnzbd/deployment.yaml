@@ -19,7 +19,7 @@ spec:
     spec:
       initContainers:
         - name: config-sabnzbd
-          image: docker.io/ubuntu:groovy
+          image: docker.io/busybox:stable
           command: ["/init-sabnzbd/init-sabnzbd.sh"]
           volumeMounts:
             - mountPath: /init-sabnzbd
@@ -37,13 +37,17 @@ spec:
               value: "1000"
             - name: PUID
               value: "1000"
-          image: "docker.io/linuxserver/sabnzbd:latest"
+          image: "docker.io/linuxserver/sabnzbd:4.5.5"
           imagePullPolicy: IfNotPresent
           readinessProbe:
             tcpSocket:
               port: 8080
             initialDelaySeconds: 5
-            periodSeconds: 10
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
           ports:
             - name: sabnzbd-http
               containerPort: 8080

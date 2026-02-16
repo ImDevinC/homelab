@@ -21,7 +21,7 @@ spec:
     spec:
       initContainers:
         - name: config-radarr
-          image: docker.io/ubuntu:groovy
+          image: docker.io/busybox:stable
           command: ["/init-radarr/init-radarr.sh"]
           volumeMounts:
             - mountPath: /init-radarr
@@ -34,7 +34,7 @@ spec:
             runAsGroup: 1000
       containers:
         - name: metrics
-          image: "ghcr.io/onedr0p/exportarr:v1.0.0"
+          image: "ghcr.io/onedr0p/exportarr:v2.3.0"
           imagePullPolicy: IfNotPresent
           args:
             - radarr
@@ -56,26 +56,34 @@ spec:
               path: /healthz
               port: monitoring
             failureThreshold: 5
-            periodSeconds: 10
+            periodSeconds: 30
           readinessProbe:
             httpGet:
               path: /healthz
               port: monitoring
             failureThreshold: 5
-            periodSeconds: 10
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
         - name: radarr
           env:
             - name: PGID
               value: "1000"
             - name: PUID
               value: "1000"
-          image: "docker.io/linuxserver/radarr:latest"
+          image: "docker.io/linuxserver/radarr:6.0.4"
           imagePullPolicy: IfNotPresent
           readinessProbe:
             tcpSocket:
               port: 7878
             initialDelaySeconds: 10
-            periodSeconds: 20
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
           ports:
             - name: radarr-port
               containerPort: 7878

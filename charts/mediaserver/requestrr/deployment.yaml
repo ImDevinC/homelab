@@ -19,7 +19,7 @@ spec:
     spec:
       initContainers:
         - name: config-requestrr
-          image: docker.io/ubuntu:groovy
+          image: docker.io/busybox:stable
           command: ["/init-requestrr/init-requestrr.sh"]
           volumeMounts:
             - mountPath: /init-requestrr
@@ -37,13 +37,17 @@ spec:
               value: "1000"
             - name: PUID
               value: "1000"
-          image: "thomst08/requestrr:latest"
+          image: "thomst08/requestrr:v2.1.9"
           imagePullPolicy: IfNotPresent
           readinessProbe:
             tcpSocket:
               port: 4545
             initialDelaySeconds: 10
-            periodSeconds: 20
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 50m
+              memory: 256Mi
           ports:
             - name: requestrr-port
               containerPort: 4545

@@ -5,7 +5,7 @@ data:
       <UrlBase>/sonarr</UrlBase>
     </Config>
   init-sonarr.sh: |
-    #!/bin/bash
+    #!/bin/sh
     echo "### Initializing config ###"
     if [ ! -f /sonarr-config/config.xml ]; then
       cp -n /init-sonarr/config.xml /sonarr-config/config.xml

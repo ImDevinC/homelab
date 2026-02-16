@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
-  init-transmission.sh: |
-    #!/bin/bash
+  init.sh: |
+    #!/bin/sh
     echo "### Initializing config ###"
     if [ ! -f /transmission-config/settings.json ]; then
       cp -n /init-transmission/settings.json /transmission-config/settings.json

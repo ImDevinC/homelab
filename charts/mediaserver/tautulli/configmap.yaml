@@ -5,7 +5,7 @@ data:
     http_root = /tautulli
     launch_browser = 0
   init-tautulli.sh: |
-    #!/bin/bash
+    #!/bin/sh
     echo "### Initializing config"
     if [ ! -f /tautulli-config/config.ini ]; then
       cp -n /init-tautulli/config.ini /tautulli-config/config.ini
