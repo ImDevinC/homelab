@@ -29,13 +29,33 @@ spec:
               value: "1000"
             - name: PUID
               value: "1000"
-          image: "docker.io/linuxserver/plex:1.41.5"
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: "all"
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: "compute,video,utility"
+          image: "docker.io/linuxserver/plex:1.43.0"
           imagePullPolicy: IfNotPresent
-          readinessProbe:
-            tcpSocket:
+          startupProbe:
+            httpGet:
+              path: /identity
               port: 32400
-            initialDelaySeconds: 20
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: /identity
+              port: 32400
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /identity
+              port: 32400
             periodSeconds: 15
+            timeoutSeconds: 3
+            failureThreshold: 2
           ports:
             - name: plex-port
               containerPort: 32400
@@ -53,6 +73,17 @@ spec:
             - mountPath: /anime
               name: mediaserver-volume
               subPath: media/anime
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
             limits:
               nvidia.com/gpu: 1
