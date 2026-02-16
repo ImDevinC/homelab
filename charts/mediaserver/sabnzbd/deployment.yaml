@@ -20,7 +20,7 @@ spec:
       initContainers:
         - name: config-sabnzbd
           image: docker.io/busybox:stable
-          command: ["/init-sabnzbd/init-sabnzbd.sh"]
+          command: ["/init-sabnzbd/init.sh"]
           volumeMounts:
             - mountPath: /init-sabnzbd
               name: init-files-sabnzbd

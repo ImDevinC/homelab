@@ -20,7 +20,7 @@ spec:
       initContainers:
         - name: config-transmission
           image: docker.io/busybox:stable
-          command: ["/init-transmission/init-transmission.sh"]
+          command: ["/init-transmission/init.sh"]
           volumeMounts:
             - mountPath: /init-transmission
               name: init-files-transmission
