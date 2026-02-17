@@ -19,3 +19,6 @@ images:
     newTag: v0.0.15
   - name: ghcr.io/imdevinc/inspector-session
     newTag: v0.0.18
+replicas:
+  - name: inspector-api
+    count: 0
