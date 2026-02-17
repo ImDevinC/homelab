@@ -87,3 +87,12 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - Chart renders as StatefulSet with single pod (10m CPU, 128Mi memory)
   - Used `helm show values` to discover correct values structure when top-level key didn't work
   - Verified with `kustomize build --enable-helm` that resources apply correctly
+
+## Task - resources-dawarich
+- Added resource requests to both dawarich namespace pods via values.yaml
+- Files changed: `/home/devin/Projects/homelab/charts/dawarich/values.yaml:10-17`
+- **Learnings:**
+  - dawarich chart (cogitri/dawarich) uses separate keys: `dawarich.resources` and `sidekiq.resources`
+  - Both deployments render correctly: dawarich (10m, 640Mi), sidekiq (10m, 384Mi)
+  - Chart follows standard Helm pattern with top-level component keys
+  - Verified with `kustomize build --enable-helm` that both deployments have resource requests

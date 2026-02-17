@@ -76,7 +76,7 @@
         "Create git branch resource-requests/dawarich",
         "Commit changes locally"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "resources-loki",

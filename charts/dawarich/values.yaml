@@ -9,6 +9,16 @@ env:
 dawarich:
   hosts:
     - dawarich.int.imdevinc.com
+  resources:
+    requests:
+      cpu: 10m
+      memory: 640Mi
+
+sidekiq:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 384Mi
 
 postgresql:
   enabled: false
