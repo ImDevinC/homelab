@@ -3,6 +3,10 @@ clusterSize: 1
 persistentVolume:
   enabled: true
   storageClass: hostpath-csi
+resources:
+  requests:
+    cpu: 20m
+    memory: 256Mi
 couchdbConfig:
   couchdb:
     single_node: true
