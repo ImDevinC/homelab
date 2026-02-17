@@ -176,3 +176,12 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - Renders as Deployment with 10m CPU, 256Mi memory
   - Verified with `kubectl apply --dry-run=client`
 
+## Task - resources-umami
+- Added resource requests to umami Deployment
+- Files changed: `/home/devin/Projects/homelab/charts/umami/manifest.yaml:31-34`
+- **Learnings:**
+  - umami is a raw Deployment manifest (not Helm)
+  - Added `resources.requests` directly under container spec
+  - Renders as Deployment with 10m CPU, 384Mi memory
+  - Verified with `kubectl apply --dry-run=client` and `kustomize build`
+
