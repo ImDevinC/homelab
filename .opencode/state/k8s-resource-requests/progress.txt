@@ -1,0 +1,34 @@
+# Progress Log
+PRD: k8s-resource-requests
+Started: 2026-02-16
+
+## Codebase Patterns
+
+**Helm Values Pattern**: For Helm-managed charts, resource requests are added directly to the top-level component keys in `values.yaml`:
+```yaml
+componentName:
+  resources:
+    requests:
+      cpu: <amount>
+      memory: <amount>
+```
+Common component names: `server`, `repoServer`, `controller`, `redis`, `applicationSet`, `notifications`
+
+---
+<!-- Task logs below - APPEND ONLY -->
+
+## Task - resources-argo-cd
+- Added resource requests to all 6 argo-cd components via values.yaml
+- Files changed: `/home/devin/Projects/homelab/charts/argo-cd/values.yaml:22-66`
+- **Learnings:** 
+  - Argo CD Helm chart uses top-level keys for each component (server, repoServer, controller, redis, applicationSet, notifications)
+  - Branch naming follows pattern: `k8s-resource-requests/<task-id>`
+  - YAML syntax validation passes with python yaml.safe_load
+
+## Task - resources-traefik
+- Added resource requests to traefik deployment via values.yaml
+- Files changed: `/home/devin/Projects/homelab/charts/traefik/values.yaml:61-64`
+- **Learnings:** 
+  - Traefik uses a simple top-level `resources` key in values.yaml
+  - Verified with `kustomize build --enable-helm` that resources apply correctly to Deployment
+  - Resources show in container spec as expected (20m CPU, 256Mi memory)
