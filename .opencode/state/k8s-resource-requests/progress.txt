@@ -148,3 +148,12 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - Renders as Deployment with 10m CPU, 128Mi memory
   - Verified with `kustomize build --enable-helm` and `kubectl apply --dry-run=client`
 
+## Task - resources-speedtest
+- Added resource requests to speedtest Deployment
+- Files changed: `/home/devin/Projects/homelab/charts/speedtest/deployment.yaml:19-22`
+- **Learnings:**
+  - speedtest is a raw Deployment manifest (not Helm)
+  - Added `resources.requests` directly under container spec
+  - Renders as Deployment with 10m CPU, 128Mi memory
+  - Verified with `kubectl apply --dry-run=client`
+

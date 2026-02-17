@@ -153,7 +153,7 @@
         "Create git branch resource-requests/speedtest",
         "Commit changes locally"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "resources-kube-system",
