@@ -57,3 +57,13 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - homeassistant uses mixed approach: Helm chart for main app, raw manifests for esphome/zwavejsui
   - Raw manifests need resources added in container spec directly (after imagePullPolicy, before ports/readinessProbe)
   - Verified all 3 pods have resources via `kustomize build --enable-helm` output
+
+## Task - resources-postgres
+- Added resource requests to postgres deployment and prometheus-postgres-exporter
+- Files changed:
+  - `/home/devin/Projects/homelab/charts/postgres/manifest.yaml:67-71` (postgres: 10m CPU, 384Mi)
+  - `/home/devin/Projects/homelab/charts/postgres/values.yaml:3-6` (postgres-exporter: 10m CPU, 128Mi)
+- **Learnings:**
+  - postgres uses hybrid: raw manifest for main DB, Helm chart (prometheus-postgres-exporter) for metrics
+  - Exporter uses simple top-level `resources` key in values.yaml
+  - Verified with `kustomize build --enable-helm` that both pods get resource requests

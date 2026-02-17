@@ -43,7 +43,7 @@
         "Create git branch resource-requests/postgres",
         "Commit changes locally"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "resources-open-webui",
