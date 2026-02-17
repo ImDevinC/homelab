@@ -195,3 +195,13 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - Renders as Deployment with 10m CPU, 256Mi memory
   - Verified with `kubectl apply --dry-run=client` and `kustomize build`
 
+## Task - resources-sure
+- Added resource requests to both sure namespace deployments
+- Files changed: `/home/devin/Projects/homelab/charts/sure/deployment.yaml:41-44,79-82`
+- **Learnings:**
+  - sure is a raw manifest with 2 Deployments in single file (not Helm)
+  - sure deployment: main Rails app (10m CPU, 640Mi memory)
+  - sure-worker deployment: Sidekiq worker process (10m CPU, 640Mi memory)
+  - Both share same PVC for /rails/storage
+  - Verified with `kubectl apply --dry-run=client`
+
