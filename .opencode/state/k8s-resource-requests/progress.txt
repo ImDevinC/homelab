@@ -67,3 +67,12 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - postgres uses hybrid: raw manifest for main DB, Helm chart (prometheus-postgres-exporter) for metrics
   - Exporter uses simple top-level `resources` key in values.yaml
   - Verified with `kustomize build --enable-helm` that both pods get resource requests
+
+## Task - resources-open-webui
+- Added resource requests to all 3 open-webui namespace pods via values.yaml
+- Files changed: `/home/devin/Projects/homelab/charts/open-webui/values.yaml:4-22`
+- **Learnings:**
+  - open-webui uses Helm chart with top-level `resources`, `pipelines.resources`, and `tika.resources` keys
+  - All three pods (open-webui, pipelines, tika) get resources: open-webui (10m, 1024Mi), pipelines (10m, 128Mi), tika (10m, 384Mi)
+  - tika already had resource limits; we added requests below them
+  - Verified with `kustomize build --enable-helm` that all 3 deployments have resource requests

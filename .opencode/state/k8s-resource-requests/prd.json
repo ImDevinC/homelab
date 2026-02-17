@@ -54,7 +54,7 @@
         "Create git branch resource-requests/open-webui",
         "Commit changes locally"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "resources-pocket-id",

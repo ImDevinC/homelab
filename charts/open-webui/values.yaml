@@ -1,12 +1,25 @@
 clusterDomain: int.imdevinc.com
 #podLabels:
 #  app.kubernetes.io/name: openwebui
+resources:
+  requests:
+    cpu: 10m
+    memory: 1024Mi
+pipelines:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 128Mi
 ollama:
   enabled: false
   ollamaUrls:
     - http://ollama.ollama:11434
 tika:
   enabled: true
+  resources:
+    requests:
+      cpu: 10m
+      memory: 384Mi
 websocket:
   enabled: true
   url: redis://redis-master.redis:6379
