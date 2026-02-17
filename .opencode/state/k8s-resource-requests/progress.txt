@@ -14,6 +14,20 @@ componentName:
 ```
 Common component names: `server`, `repoServer`, `controller`, `redis`, `applicationSet`, `notifications`
 
+**Raw Manifest Pattern**: For raw k8s manifests (non-Helm), add resources in the container spec:
+```yaml
+containers:
+  - name: container-name
+    image: ...
+    imagePullPolicy: ...
+    resources:
+      requests:
+        cpu: <amount>
+        memory: <amount>
+    ports: ...  # or readinessProbe/volumeMounts/etc
+```
+Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts`
+
 ---
 <!-- Task logs below - APPEND ONLY -->
 
@@ -32,3 +46,14 @@ Common component names: `server`, `repoServer`, `controller`, `redis`, `applicat
   - Traefik uses a simple top-level `resources` key in values.yaml
   - Verified with `kustomize build --enable-helm` that resources apply correctly to Deployment
   - Resources show in container spec as expected (20m CPU, 256Mi memory)
+
+## Task - resources-homeassistant
+- Added resource requests to all 3 homeassistant namespace pods
+- Files changed:
+  - `/home/devin/Projects/homelab/charts/homeassistant/values.yaml:7-10` (home-assistant: 20m CPU, 1408Mi)
+  - `/home/devin/Projects/homelab/charts/homeassistant/esphome.yaml:21-24` (esphome: 10m CPU, 128Mi)
+  - `/home/devin/Projects/homelab/charts/homeassistant/zwave.yaml:21-24` (zwavejsui: 20m CPU, 256Mi)
+- **Learnings:**
+  - homeassistant uses mixed approach: Helm chart for main app, raw manifests for esphome/zwavejsui
+  - Raw manifests need resources added in container spec directly (after imagePullPolicy, before ports/readinessProbe)
+  - Verified all 3 pods have resources via `kustomize build --enable-helm` output

@@ -32,7 +32,7 @@
         "Create git branch resource-requests/homeassistant",
         "Commit changes locally"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "resources-postgres",

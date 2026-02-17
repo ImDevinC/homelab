@@ -18,6 +18,10 @@ spec:
         - name: esphome
           image: ghcr.io/esphome/esphome
           imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
           ports:
             - name: http
               containerPort: 6052

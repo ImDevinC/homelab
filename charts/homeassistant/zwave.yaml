@@ -18,6 +18,10 @@ spec:
         - name: zwavejsui
           image: docker.io/zwavejs/zwave-js-ui
           imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 20m
+              memory: 256Mi
           readinessProbe:
             failureThreshold: 3
             periodSeconds: 10

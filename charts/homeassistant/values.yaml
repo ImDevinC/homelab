@@ -4,6 +4,10 @@ metrics:
     bearerTokenSecret:
       name: homeassistant-metrics-token
       key: token
+resources:
+  requests:
+    cpu: 20m
+    memory: 1408Mi
 persistence:
   config:
     enabled: true
