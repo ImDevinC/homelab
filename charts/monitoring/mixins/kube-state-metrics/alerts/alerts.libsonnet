@@ -342,6 +342,22 @@
         },
       },
       {
+        alert: 'KubernetesContainerRestartingFrequently',
+        expr: 'increase(kube_pod_container_status_restarts_total[10m]) >= 3',
+        'for': '0m',
+        labels: {
+          severity: 'warning',
+        },
+        annotations: {
+          summary: 'Kubernetes container restarting frequently ({{ $labels.namespace }}/{{ $labels.pod }}:{{ $labels.container }})',
+          description: |||
+            Container {{ $labels.container }} in pod {{ $labels.namespace }}/{{ $labels.pod }} has restarted {{ $value }} times in the last 10 minutes.
+              VALUE = {{ $value }}
+              LABELS = {{ $labels }}
+          |||,
+        },
+      },
+      {
         alert: 'KubernetesReplicasetReplicasMismatch',
         expr: 'kube_replicaset_spec_replicas != kube_replicaset_status_ready_replicas',
         'for': '10m',
