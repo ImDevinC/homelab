@@ -119,3 +119,13 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - Deployment: 10m CPU, 256Mi memory
   - CronJob: 10m CPU, 128Mi memory
   - Verified both resources with `kustomize build --enable-helm | kubectl apply --dry-run=client`
+
+## Task - resources-cert-manager
+- Added resource requests to all 3 cert-manager namespace pods via values.yaml
+- Files changed: `/home/devin/Projects/homelab/charts/cert-manager/values.yaml:11-23`
+- **Learnings:**
+  - cert-manager v1.19.2 chart has 3 deployments: controller, webhook, cainjector
+  - Top-level `resources:` key controls controller (10m CPU, 256Mi memory)
+  - `webhook.resources:` key controls webhook (10m CPU, 128Mi memory)
+  - `cainjector.resources:` key controls cainjector (10m CPU, 256Mi memory)
+  - Verified with `kustomize build --enable-helm` and `kubectl apply --dry-run=client`
