@@ -164,7 +164,7 @@
         "Create git branch resource-requests/kube-system",
         "Commit changes locally"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "resources-homepage",

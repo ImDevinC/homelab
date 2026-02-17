@@ -157,3 +157,13 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - Renders as Deployment with 10m CPU, 128Mi memory
   - Verified with `kubectl apply --dry-run=client`
 
+## Task - resources-kube-system
+- Added resource requests to sealed-secrets-controller via Argo CD Application
+- Files changed: `/home/devin/Projects/homelab/apps/templates/sealedsecrets.yaml:20-23`
+- **Learnings:**
+  - sealed-secrets is deployed via Argo CD Application (not direct Helm)
+  - Uses Bitnami sealed-secrets chart version 2.7.3
+  - Resource requests added to `helm.values` section in ArgoCD Application manifest
+  - Renders as Deployment with 10m CPU, 128Mi memory
+  - Verified with `kubectl apply --dry-run=client`
+
