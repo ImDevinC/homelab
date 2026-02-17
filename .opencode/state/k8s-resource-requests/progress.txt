@@ -96,3 +96,26 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - Both deployments render correctly: dawarich (10m, 640Mi), sidekiq (10m, 384Mi)
   - Chart follows standard Helm pattern with top-level component keys
   - Verified with `kustomize build --enable-helm` that both deployments have resource requests
+
+## Task - resources-loki
+- Added resource requests to loki and promtail pods
+
+## Task - resources-couchdb
+- Added resource requests to couchdb pod
+- **Learnings:**
+  - couchdb uses helm chart couchdb-4.6.3
+  - Added `resources.requests` top-level key in parent values.yaml
+  - Renders as StatefulSet with 20m CPU, 256Mi memory
+  - Verified with `kustomize build --enable-helm` that resource requests render correctly
+
+## Task - resources-wallabag
+- Added resource requests to wallabag deployment and cronjob
+- Files changed:
+  - `/home/devin/Projects/homelab/charts/wallabag/values.yaml:4-7` (deployment)
+  - `/home/devin/Projects/homelab/charts/wallabag/tagger.yaml:20-23` (cronjob)
+- **Learnings:**
+  - wallabag uses helm chart wallabag-0.1.1 for main deployment
+  - wallabag-tagger is a separate raw CronJob manifest (runs daily at 1am)
+  - Deployment: 10m CPU, 256Mi memory
+  - CronJob: 10m CPU, 128Mi memory
+  - Verified both resources with `kustomize build --enable-helm | kubectl apply --dry-run=client`

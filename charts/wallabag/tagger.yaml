@@ -17,6 +17,10 @@ spec:
               image: ghcr.io/imdevinc/wallabag-tagger:0.1.0
               imagePullPolicy: IfNotPresent
               args: ["tags"]
+              resources:
+                requests:
+                  cpu: 10m
+                  memory: 128Mi
               envFrom:
                 - secretRef:
                     name: wallabag-tagger-creds

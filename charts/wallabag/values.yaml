@@ -1,6 +1,11 @@
 domainName: https://wallabag.imdevinc.com
 userRegistration: false
 
+resources:
+  requests:
+    cpu: 10m
+    memory: 256Mi
+
 ingress:
   enabled: false
 
