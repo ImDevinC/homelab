@@ -185,3 +185,13 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - Renders as Deployment with 10m CPU, 384Mi memory
   - Verified with `kubectl apply --dry-run=client` and `kustomize build`
 
+## Task - resources-btc-tracker
+- Added resource requests to btc-tracker Deployment
+- Files changed: `/home/devin/Projects/homelab/charts/btc-tracker/service.yaml:86-89`
+- **Learnings:**
+  - btc-tracker is a raw Deployment manifest included in service.yaml (not Helm)
+  - Deployment, Service, and HTTPRoute all defined in single service.yaml file
+  - Added `resources.requests` directly under container spec
+  - Renders as Deployment with 10m CPU, 256Mi memory
+  - Verified with `kubectl apply --dry-run=client` and `kustomize build`
+

@@ -83,6 +83,10 @@ spec:
         ports:
         - containerPort: 3000
           protocol: TCP
+        resources:
+          requests:
+            cpu: 10m
+            memory: 256Mi
         volumeMounts:
         - mountPath: /app/data
           name: data
