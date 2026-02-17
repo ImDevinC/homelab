@@ -29,6 +29,10 @@ spec:
         - image: ghcr.io/imdevinc/rss-server
           imagePullPolicy: IfNotPresent
           name: rss-server
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
           env:
             - name: PORT
               value: "8080"

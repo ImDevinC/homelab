@@ -219,7 +219,7 @@
         "Create git branch resource-requests/rss-server",
         "Commit changes locally"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "resources-scrutiny",

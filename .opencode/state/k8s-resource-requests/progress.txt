@@ -205,3 +205,12 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - Both share same PVC for /rails/storage
   - Verified with `kubectl apply --dry-run=client`
 
+## Task - resources-rss-server
+- Added resource requests to rss-server Deployment
+- Files changed: `/home/devin/Projects/homelab/charts/rss-server/manifest.yaml:32-35`
+- **Learnings:**
+  - rss-server is a raw Deployment manifest (not Helm)
+  - Added `resources.requests` directly under container spec
+  - Renders as Deployment with 10m CPU, 128Mi memory
+  - Verified with `kubectl apply --dry-run=client` and `kustomize build`
+
