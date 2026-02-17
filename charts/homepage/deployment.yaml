@@ -29,6 +29,10 @@ spec:
           env:
             - name: HOMEPAGE_ALLOWED_HOSTS
               value: homepage.int.imdevinc.com
+          resources:
+            requests:
+              cpu: 10m
+              memory: 256Mi
           ports:
             - name: http
               containerPort: 3000

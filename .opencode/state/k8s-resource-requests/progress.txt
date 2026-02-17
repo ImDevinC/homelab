@@ -167,3 +167,12 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - Renders as Deployment with 10m CPU, 128Mi memory
   - Verified with `kubectl apply --dry-run=client`
 
+## Task - resources-homepage
+- Added resource requests to homepage Deployment
+- Files changed: `/home/devin/Projects/homelab/charts/homepage/deployment.yaml:32-35`
+- **Learnings:**
+  - homepage is a raw Deployment manifest (not Helm)
+  - Added `resources.requests` directly under container spec
+  - Renders as Deployment with 10m CPU, 256Mi memory
+  - Verified with `kubectl apply --dry-run=client`
+

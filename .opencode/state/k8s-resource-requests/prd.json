@@ -175,7 +175,7 @@
         "Create git branch resource-requests/homepage",
         "Commit changes locally"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "resources-umami",
