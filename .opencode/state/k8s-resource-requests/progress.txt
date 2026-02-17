@@ -138,3 +138,13 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - Has 2 replicas for HA
   - Each pod: 10m CPU, 128Mi memory
   - Verified with `kubectl apply --dry-run=client`
+
+## Task - resources-external-dns
+- Added resource requests to external-dns Deployment via values.yaml
+- Files changed: `/home/devin/Projects/homelab/charts/external-dns/values.yaml:18-22`
+- **Learnings:**
+  - external-dns uses helm chart external-dns-1.20.0
+  - Added top-level `resources.requests` key in values.yaml
+  - Renders as Deployment with 10m CPU, 128Mi memory
+  - Verified with `kustomize build --enable-helm` and `kubectl apply --dry-run=client`
+

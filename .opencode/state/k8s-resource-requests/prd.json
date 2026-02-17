@@ -142,7 +142,7 @@
         "Create git branch resource-requests/external-dns",
         "Commit changes locally"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "resources-speedtest",
