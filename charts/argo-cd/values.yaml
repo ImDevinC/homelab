@@ -28,6 +28,10 @@ server:
       enabled: true
   secret:
     create: false
+  resources:
+    requests:
+      cpu: 10m
+      memory: 256Mi
 repoServer:
   env:
     - name: ARGOCD_GPG_ENABLED
@@ -35,3 +39,27 @@ repoServer:
   containerSecurityContext:
     seccompProfile:
       type: Unconfined
+  resources:
+    requests:
+      cpu: 10m
+      memory: 512Mi
+controller:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 1Gi
+redis:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 128Mi
+applicationSet:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 128Mi
+notifications:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 128Mi
