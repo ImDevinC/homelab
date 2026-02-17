@@ -129,3 +129,12 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - `webhook.resources:` key controls webhook (10m CPU, 128Mi memory)
   - `cainjector.resources:` key controls cainjector (10m CPU, 256Mi memory)
   - Verified with `kustomize build --enable-helm` and `kubectl apply --dry-run=client`
+
+## Task - resources-cloudflared
+- Added resource requests to cloudflared Deployment (2 replicas)
+- Files changed: `/home/devin/Projects/homelab/charts/cloudflared/cloudflared.yaml:41-44`
+- **Learnings:**
+  - cloudflared is a raw Deployment manifest (not Helm)
+  - Has 2 replicas for HA
+  - Each pod: 10m CPU, 128Mi memory
+  - Verified with `kubectl apply --dry-run=client`
