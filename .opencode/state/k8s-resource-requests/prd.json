@@ -65,7 +65,7 @@
         "Create git branch resource-requests/pocket-id",
         "Commit changes locally"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "resources-dawarich",

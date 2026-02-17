@@ -1,6 +1,11 @@
 updateStrategy:
   rollingUpdate:
     maxUnavailable: null
+pocketID:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 128Mi
 ingress:
   host: login.int.imdevinc.com
 persistence:

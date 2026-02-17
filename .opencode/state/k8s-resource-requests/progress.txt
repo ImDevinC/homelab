@@ -14,6 +14,8 @@ componentName:
 ```
 Common component names: `server`, `repoServer`, `controller`, `redis`, `applicationSet`, `notifications`
 
+**Discovering Helm Chart Structure**: If top-level `resources` doesn't work, use `helm show values <repo>/<chart> --version <version>` to find the correct nested key structure (e.g., `pocketID.resources`, `pipelines.resources`)
+
 **Raw Manifest Pattern**: For raw k8s manifests (non-Helm), add resources in the container spec:
 ```yaml
 containers:
@@ -76,3 +78,12 @@ Position: after `imagePullPolicy`, before `ports`/`readinessProbe`/`volumeMounts
   - All three pods (open-webui, pipelines, tika) get resources: open-webui (10m, 1024Mi), pipelines (10m, 128Mi), tika (10m, 384Mi)
   - tika already had resource limits; we added requests below them
   - Verified with `kustomize build --enable-helm` that all 3 deployments have resource requests
+
+## Task - resources-pocket-id
+- Added resource requests to pocket-id StatefulSet via values.yaml
+- Files changed: `/home/devin/Projects/homelab/charts/pocket-id/values.yaml:4-7`
+- **Learnings:**
+  - pocket-id (anza-labs chart) uses nested `pocketID.resources` key, not top-level `resources`
+  - Chart renders as StatefulSet with single pod (10m CPU, 128Mi memory)
+  - Used `helm show values` to discover correct values structure when top-level key didn't work
+  - Verified with `kustomize build --enable-helm` that resources apply correctly
