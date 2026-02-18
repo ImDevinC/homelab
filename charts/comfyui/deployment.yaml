@@ -14,6 +14,10 @@ spec:
       labels:
         app: comfyui
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
         - name: comfyui
           # Update this to your image registry and tag
