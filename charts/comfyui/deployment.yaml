@@ -41,19 +41,19 @@ spec:
             - name: PIP_EXTRA_PACKAGES
               value: ""
 
-          volumeMounts:
-            - name: comfyui
-              mountPath: /comfyui/custom_nodes
-              subPath: custom_nodes
-            - name: comfyui
-              mountPath: /comfyui/models
-              subPath: models
-            - name: comfyui
-              mountPath: /comfyui/workloads
-              subPath: workloads
-            - name: comfyui
-              mountPath: /comfyui/user
-              subPath: user
+          #          volumeMounts:
+          #            - name: comfyui
+          #              mountPath: /comfyui/custom_nodes
+          #              subPath: custom_nodes
+          #            - name: comfyui
+          #              mountPath: /comfyui/models
+          #              subPath: models
+          #            - name: comfyui
+          #              mountPath: /comfyui/workloads
+          #              subPath: workloads
+          #            - name: comfyui
+          #              mountPath: /comfyui/user
+          #              subPath: user
 
           #          startupProbe:
           #            httpGet:
