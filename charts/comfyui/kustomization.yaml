@@ -10,7 +10,7 @@ resources:
 images:
   - name: comfyui
     newName: ghcr.io/imdevinc/comfyui
-    newTag: sha-df90efe
+    newTag: sha-215cc55
 replicas:
   - name: comfyui
     count: 1

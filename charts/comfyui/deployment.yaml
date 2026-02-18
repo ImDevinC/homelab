@@ -14,22 +14,17 @@ spec:
       labels:
         app: comfyui
     spec:
-#      securityContext:
-#        runAsUser: 1000
-#        runAsGroup: 1000
-#        fsGroup: 1000
       containers:
         - name: comfyui
-          # Update this to your image registry and tag
           image: comfyui:latest
           imagePullPolicy: IfNotPresent
 
-#          command:
-#            - python
-#            - ./main.py
-#            - --listen
-#            - 0.0.0.0
-#            - --multi-user
+          args:
+            #- python
+            #- ./main.py
+            - --listen
+            - 0.0.0.0
+            - --multi-user
 
           ports:
             - containerPort: 8188
