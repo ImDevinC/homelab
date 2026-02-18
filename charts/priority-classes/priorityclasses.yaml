@@ -2,11 +2,11 @@
 apiVersion: scheduling.k8s.io/v1
 kind: PriorityClass
 metadata:
-  name: system-required
-value: 2000000000
+  name: infrastructure-critical
+value: 1000000000
 globalDefault: false
 preemptionPolicy: PreemptLowerPriority
-description: "System-critical infrastructure components (MetalLB, storage provisioner)"
+description: "Infrastructure-critical components (MetalLB, storage provisioner)"
 ---
 apiVersion: scheduling.k8s.io/v1
 kind: PriorityClass
