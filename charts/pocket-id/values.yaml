@@ -12,3 +12,4 @@ persistence:
   data:
     enabled: true
     storageClass: hostpath-csi
+priorityClassName: important

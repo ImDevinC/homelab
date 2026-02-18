@@ -4,3 +4,4 @@ prometheus:
     enabled: false
     additionalLabels:
       honorLabels: "true"
+priorityClassName: important

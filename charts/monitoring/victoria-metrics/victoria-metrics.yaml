@@ -49,6 +49,7 @@ spec:
         app: victoria-metrics
     spec:
       serviceAccountName: victoria-metrics
+      priorityClassName: important
       securityContext:
         fsGroup: 2000
         runAsUser: 1000

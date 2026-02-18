@@ -6,3 +6,4 @@ manager:
 admissionWebhooks:
   certManager:
     enabled: true
+priorityClassName: important

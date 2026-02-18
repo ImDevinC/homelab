@@ -8,3 +8,4 @@ service:
   portName: http-metrics
   labels:
     jobLabel: node-exporter
+priorityClassName: important

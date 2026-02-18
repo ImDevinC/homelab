@@ -62,3 +62,4 @@ resources:
   requests:
     cpu: 20m
     memory: 256Mi
+priorityClassName: critical

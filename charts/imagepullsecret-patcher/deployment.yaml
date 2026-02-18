@@ -21,6 +21,7 @@ spec:
     spec:
       automountServiceAccountToken: true
       serviceAccountName: imagepullsecret-patcher
+      priorityClassName: critical
       containers:
         - name: imagepullsecret-patcher
           image: quay.io/titansoft/imagepullsecret-patcher:v0.14

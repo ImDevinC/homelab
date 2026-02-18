@@ -22,6 +22,7 @@ spec:
         prometheus.io/port: "9121"
         prometheus.io/scrape: "true"
     spec:
+      priorityClassName: important
       terminationGracePeriodSeconds: 30
       containers:
         - name: redis

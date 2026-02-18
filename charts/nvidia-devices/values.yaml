@@ -4,3 +4,4 @@ gfd:
   enabled: true
 config:
   name: nvidia-plugin-config
+priorityClassName: critical

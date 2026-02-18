@@ -2000,6 +2000,7 @@ spec:
         prometheus.hostpathprovisioner.kubevirt.io: "true"
     spec:
       serviceAccountName: hostpath-provisioner-operator
+      priorityClassName: infrastructure-critical
       containers:
         - name: hostpath-provisioner-operator
           ports:

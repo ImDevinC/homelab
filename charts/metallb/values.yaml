@@ -1,5 +1,8 @@
 speaker:
   ignoreExcludeLB: true
+  priorityClassName: infrastructure-critical
+controller:
+  priorityClassName: infrastructure-critical
 prometheus:
   namespace: metallb-system
   serviceAccount: default

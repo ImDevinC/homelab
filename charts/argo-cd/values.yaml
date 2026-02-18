@@ -20,6 +20,7 @@ configs:
       requestedCopes: ["openid", "profile", "email", "groups"]
       requestedIDTokenClaims: {"groups": {"essential": true}}
 server:
+  priorityClassName: important
   extraArgs:
     - --insecure
   metrics:
@@ -33,6 +34,7 @@ server:
       cpu: 10m
       memory: 256Mi
 repoServer:
+  priorityClassName: important
   env:
     - name: ARGOCD_GPG_ENABLED
       value: 'false'
@@ -44,6 +46,7 @@ repoServer:
       cpu: 10m
       memory: 512Mi
 controller:
+  priorityClassName: important
   resources:
     requests:
       cpu: 50m
@@ -54,11 +57,13 @@ redis:
       cpu: 10m
       memory: 128Mi
 applicationSet:
+  priorityClassName: important
   resources:
     requests:
       cpu: 10m
       memory: 128Mi
 notifications:
+  priorityClassName: important
   resources:
     requests:
       cpu: 10m

@@ -60,6 +60,7 @@ spec:
         app.kubernetes.io/instance: postgres
     spec:
       serviceAccountName: postgres
+      priorityClassName: important
       containers:
         - name: postgres
           image: "ghcr.io/joeyates/postgis_pgvector:17-3.5-v0.8.0"
