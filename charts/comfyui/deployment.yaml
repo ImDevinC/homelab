@@ -63,7 +63,7 @@ spec:
               path: /
               port: 8188
               scheme: HTTP
-            initialDelaySeconds: 60
+            initialDelaySeconds: 300 # Need to wait awhile for plugin initialization, etc
             periodSeconds: 5
             timeoutSeconds: 3
             successThreshold: 1
