@@ -91,7 +91,7 @@ spec:
             limits:
               nvidia.com/gpu: 1
             requests:
-              memory: "16Gi"
+              memory: "8Gi"
               nvidia.com/gpu: 1
 
       volumes:
