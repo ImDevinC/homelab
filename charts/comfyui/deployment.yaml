@@ -17,7 +17,7 @@ spec:
         app: comfyui
     spec:
       containers:
-        - name: comfyui
+        - name: comfyui2
           image: comfyui:latest
           imagePullPolicy: IfNotPresent
 
