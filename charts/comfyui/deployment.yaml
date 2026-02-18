@@ -20,8 +20,8 @@ spec:
           imagePullPolicy: IfNotPresent
 
           args:
-            #- python
-            #- ./main.py
+            - python
+            - ./main.py
             - --listen
             - 0.0.0.0
             - --multi-user
