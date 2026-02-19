@@ -36,7 +36,7 @@ ports:
   websecure:
     http:
       middlewares:
-        - traefik-ipallowlist@kubernetescrd
+        - ipallowlist@kubernetescrd
   web:
     http:
       redirections:
