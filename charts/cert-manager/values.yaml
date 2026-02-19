@@ -1,4 +1,3 @@
-priorityClassName: important
 config:
   enableGatewayAPI: true
 installCRDs: true
@@ -15,18 +14,17 @@ resources:
     cpu: 10m
     memory: 256Mi
 webhook:
-  priorityClassName: important
   resources:
     requests:
       cpu: 10m
       memory: 128Mi
 cainjector:
-  priorityClassName: important
   resources:
     requests:
       cpu: 10m
       memory: 256Mi
 global:
+  priorityClassName: important
   logLevel: 5
   leaderElection:
     namespace: cert-manager
