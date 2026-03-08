@@ -1,0 +1,104 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: dropmind
+  name: dropmind
+spec:
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    service: dropmind
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Homelab
+    gethomepage.dev/icon: bitcoin.png
+    gethomepage.dev/name: Dropmind
+  name: dropmind
+spec:
+  hostnames:
+    - dropmind.int.imdevinc.com
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: traefik-gateway
+      namespace: traefik
+  rules:
+    - backendRefs:
+        - group: ""
+          kind: Service
+          name: dropmind
+          namespace: dropmind
+          port: 8080
+          weight: 1
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: dropmind
+    service: dropmind
+  name: dropmind
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dropmind
+      service: dropmind
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: dropmind
+        service: dropmind
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: dropmind
+          envFrom:
+            - secretRef:
+                name: dropmind-secrets
+          image: ghcr.io/imdevinc/dropmind
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 10m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /app/data
+              name: data
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+      restartPolicy: Always
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data
+  labels:
+    app: dropmind
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
