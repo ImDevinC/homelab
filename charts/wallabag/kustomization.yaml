@@ -11,6 +11,8 @@ namespace: wallabag
 resources:
   - tagger.yaml
   - sealed.yaml
+patches:
+  - path: deployment-startup-probe.yaml
 images:
   - name: wallabag/wallabag
     newTag: 2.6.14
