@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: convex-backend
+  labels:
+    app: convex-backend
+    app.kubernetes.io/name: convex-backend
+    app.kubernetes.io/component: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: convex-backend
+      app.kubernetes.io/name: convex-backend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: convex-backend
+        app.kubernetes.io/name: convex-backend
+        app.kubernetes.io/component: backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/get-convex/convex-backend
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3210
+              protocol: TCP
+            - name: site-proxy
+              containerPort: 3211
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: convex-secrets
+          env:
+            - name: CONVEX_CLOUD_ORIGIN
+              value: "https://convex.int.imdevinc.com"
+            - name: CONVEX_SITE_ORIGIN
+              value: "https://convex.int.imdevinc.com:3211"
+            - name: DO_NOT_REQUIRE_SSL
+              value: "true"
+            - name: DISABLE_BEACON
+              value: "true"
+            - name: DISABLE_METRICS_ENDPOINT
+              value: "false"
+            - name: RUST_LOG
+              value: "info"
+            - name: DOCUMENT_RETENTION_DELAY
+              value: "172800"
+            - name: APPLICATION_MAX_CONCURRENT_MUTATIONS
+              value: "16"
+            - name: APPLICATION_MAX_CONCURRENT_NODE_ACTIONS
+              value: "16"
+            - name: APPLICATION_MAX_CONCURRENT_QUERIES
+              value: "16"
+            - name: APPLICATION_MAX_CONCURRENT_V8_ACTIONS
+              value: "16"
+          volumeMounts:
+            - name: convex-data
+              mountPath: /convex/data
+          livenessProbe:
+            httpGet:
+              path: /version
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /version
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 1Gi
+      volumes:
+        - name: convex-data
+          persistentVolumeClaim:
+            claimName: convex-data
+      terminationGracePeriodSeconds: 10
