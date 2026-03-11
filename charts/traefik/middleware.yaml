@@ -40,3 +40,33 @@ spec:
         ClientSecret: urn:k8s:secret:mediaserver-oidc:client-secret
         TokenValidation: IdToken
       Scopes: [openid, profile, email, groups]
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: agent-dashboard-oidc
+  namespace: traefik
+spec:
+  plugin:
+    traefik-oidc-auth:
+      Provider:
+        Url: https://login.int.imdevinc.com
+        ClientId: urn:k8s:secret:agent-dashboard-oidc:client-id
+        ClientSecret: urn:k8s:secret:agent-dashboard-oidc:client-secret
+        TokenValidation: IdToken
+      Scopes: [openid, profile, email, groups]
+---
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: agent-dashboard-oidc
+  namespace: traefik
+spec:
+  encryptedData:
+    client-id: AgA9E6tLYIZj2F37oAZMuG2MBRvtyq5J1Z7wZ5dFwd3YXzKmRKEaUimWQvRsjFVJtJlaX13HSGckARjOT+dw8SlgrcNgUWnNfgxE68xghrowd2qnrE6ztCNsz0g0SAG+zXO/vyNmf9vfX1xdSHHVKeCUXBOW28k6QH9x+VwoywLq/jgbmPfot1oWPjDYYMkDYRvcmw4V7R19TTJysh7gQfJ0GZm/H8aq9E5MEBQ76nZNz+PnyA9VGhkmEdNIdv5AFpZm1bZibcjP7gqwtg17qz448hgh3WloVApiycfzBDkvtFTdnAGayqVFDuWrpNtZnhkCeYclWXRbyMr8EynatPGGEUuIz7IiA9e6jW2rEVajf7HTcv0a5qbwG7I/IeazVpsKCBu4i5ESH/6Apky2SwiXe3v5YKuKeOavMFXmmcJazn2flCg7jkUD4Ui6XCH/RB7YgS6w8VHpZcrftkIrsVFbDafc/dKyMwAu0nukXrzlw4tRhjL54D81LY2lFBiIRLag4sals3t10+LVO2BgrVHmo+UqwDdkLwqac+B5vvItE7HWwvqwWtyIkwz9UNDzNHerO/QdKTeE4JgDSCFzjiYcq3ZZSlQFzm5/x3zM2NedYNLT6cPJM1p8WQOpFwmXUnUyG2o1hVLlgcjax4E7zbsM+NJM49yclEGtyk06zDPMGJYqYS8Y7RxWZWTqqdjtBXGc6egSZM3NxlkYE2SYZK/HSKm4iFDPZGRax+AMtuy8JkLaEUE=
+    client-secret: AgCENDxs86Kl5YTLCA8YYyq1evsVO2DXlRB90a+q+is/otWRbwWKsMLR02nwyq3cQ6W2E6yVBWF95A5Hr/zzM0AOlmgVvGJqnVsFQrDqphqM9mxGfAChFWQbP0Z0AFGMEqJueZXHgiNzpQVC0Kv2DohBTEe/uQrO1kuwB0LOkgVSzr4+gMZFF+1Fv+5INRu70ckUxRqB6uUpUHrR3XTpjeQUtaxL4cIq3QuHjBGmVp4NySBO4Ay1ecreFvjNitW2YMfwtmw6ndY+QaWHcj84SCbjnQsYzpSb9KyGfX0dREZ9BaM61e7kTBiLxT/rJqxx1tQkEIr8Nmg5A4lytr3DzK9L6nPqcce3vHzTKeLWo2JdpW9eJFn7w6V58nFH5RTy7pP+H8UlDbniVRiYmvf57ir4Q3d0BQpc9ieVE1e4p78Ec62u24913q/Y2/C9FaeAnldUce0oeiwFtojuAyJFawY1WvQEWPtI5c3ZNnsPVa5bPECfI+21y75uQjBnC0GeTi+Skd/aO3cC7SroTiIEiULtLE2YN26RSH86ctdIdJhky1iLMxwcTXrGzE15+czCHMz2UPAYEY0UV4eP5CJTm7dsZE+xPGU6eVpv5d5CkgFJdJ99Q40VHBwH7Mm1WYAWqj9AtBb3Z/eulSkcnqPq3irTiglJNUfobZiYLBKnSySWdrtN26J/dg9UJxajWC6svj1TnmKK8Z4c6/DDrzDh8FIjYyIO44HPGN3OsV5ggzJZFQ==
+  template:
+    metadata:
+      name: agent-dashboard-oidc
+      namespace: traefik
