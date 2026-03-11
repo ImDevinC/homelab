@@ -3,6 +3,7 @@ kind: CronJob
 metadata:
   name: bl-shifts
 spec:
+  suspend: true
   schedule: "0 * * * *" # Every hour
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1

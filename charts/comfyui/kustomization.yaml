@@ -13,4 +13,4 @@ images:
     newTag: sha-6d10a7a
 replicas:
   - name: comfyui
-    count: 1
+    count: 0
