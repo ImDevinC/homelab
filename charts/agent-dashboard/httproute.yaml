@@ -1,0 +1,24 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: agent-dashboard
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Management
+    gethomepage.dev/icon: argo-cd.png
+    gethomepage.dev/name: Agent Dashboard
+spec:
+  parentRefs:
+  - name: traefik-gateway
+    namespace: traefik
+  hostnames:
+  - agents.int.imdevinc.com
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: agent-dashboard
+      namespace: agent-dashboard
+      port: 80
