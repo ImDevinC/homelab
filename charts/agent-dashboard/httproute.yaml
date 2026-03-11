@@ -27,7 +27,7 @@ spec:
         extensionRef:
           group: traefik.io
           kind: Middleware
-          name: agent-dashboard-oidc@traefik
+          name: agent-dashboard-oidc
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
