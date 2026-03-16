@@ -36,5 +36,5 @@ spec:
               memory: 128Mi
           ports:
             - name: http
-              containerPort: 5656
+              containerPort: 8191
               protocol: TCP

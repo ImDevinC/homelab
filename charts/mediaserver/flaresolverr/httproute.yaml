@@ -21,4 +21,4 @@ spec:
       backendRefs:
         - name: flaresolverr
           namespace: mediaserver
-          port: 5656
+          port: 8191
