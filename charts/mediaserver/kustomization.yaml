@@ -15,6 +15,7 @@ resources:
   - tautulli
   - transmission
   - recommendarr
+  - flaresolverr
 images:
   - name: thomst08/requestrr
     newTag: v2.1.9
@@ -42,3 +43,5 @@ images:
     newTag: 1.9.21
   - name: tannermiddleton/recommendarr:latest
     newTag: v1.4.4
+  - name: ghcr.io/flaresolverr/flaresolverr
+    newTag: v3.4.6

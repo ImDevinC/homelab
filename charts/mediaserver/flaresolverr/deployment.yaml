@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaresolverr
+  labels:
+    app: flaresolverr
+    app.kubernetes.io/name: flaresolverr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flaresolverr
+      app.kubernetes.io/name: flaresolverr
+  template:
+    metadata:
+      labels:
+        app: flaresolverr
+        app.kubernetes.io/name: flaresolverr
+    spec:
+      initContainers:
+      containers:
+        - name: flaresolverr
+          image: ghcr.io/flaresolverr/flaresolverr:v1.2.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: LOG_LEVEL
+              value: info
+          readinessProbe:
+            tcpSocket:
+              port: 8191
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+          ports:
+            - name: http
+              containerPort: 5656
+              protocol: TCP
