@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: minions
+resources:
+  - deployments.yaml
+  - sealed.yaml
+  - httproute.yaml
+  - rbac.yaml
+  - configmap.yaml
+  #  - namespace.yaml
+  #  - network-policies.yaml
+images:
+  - name: ghcr.io/imdevinc/minions/orchestrator
+    newTag: v1.4.1
+  - name: ghcr.io/imdevinc/minions/discord-bot
+    newTag: bot-v1.1.0
+  - name: ghcr.io/imdevinc/minions/control-panel
+    newTag: panel-v1.1.0

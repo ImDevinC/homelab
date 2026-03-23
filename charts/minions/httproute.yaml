@@ -1,0 +1,24 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: control-panel
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Minions
+    gethomepage.dev/icon: argo-cd.png
+    gethomepage.dev/name: Control Panel
+spec:
+  parentRefs:
+    - name: traefik-gateway
+      namespace: traefik
+  hostnames:
+    - minions.int.imdevinc.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: control-panel
+          namespace: minions
+          port: 3000
