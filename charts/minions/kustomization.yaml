@@ -10,8 +10,8 @@ resources:
   - namespace.yaml
 images:
   - name: ghcr.io/imdevinc/minions/orchestrator
-    newTag: v1.7.0
+    newTag: v1.9.0
   - name: ghcr.io/imdevinc/minions/discord-bot
     newTag: bot-v1.3.0
   - name: ghcr.io/imdevinc/minions/control-panel
-    newTag: panel-v1.2.0
+    newTag: panel-v1.5.0

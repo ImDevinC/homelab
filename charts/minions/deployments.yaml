@@ -19,7 +19,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: orchestrator
   strategy:
-    type: Recreate  # single replica, avoid dual-writer issues during rollout
+    type: Recreate # single replica, avoid dual-writer issues during rollout
   template:
     metadata:
       labels:
@@ -90,7 +90,7 @@ spec:
               value: "http://orchestrator.minions.svc.cluster.local:8080"
             # Default model for minion creation (when client doesn't specify)
             - name: DEFAULT_MODEL
-              value: "anthropic/claude-sonnet-4.5"
+              value: "openai/gpt-5.3-codex"
           envFrom:
             # DATABASE_URL
             - secretRef:
@@ -177,7 +177,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: discord-bot
   strategy:
-    type: Recreate  # single replica, Discord gateway doesn't support dual connections well
+    type: Recreate # single replica, Discord gateway doesn't support dual connections well
   template:
     metadata:
       labels:
@@ -315,6 +315,8 @@ spec:
             # Orchestrator API endpoint for server-side requests
             - name: ORCHESTRATOR_URL
               value: "http://orchestrator.minions.svc.cluster.local:8080"
+            - name: NEXT_PUBLIC_DEBUG_SSE
+              value: "true"
           envFrom:
             # NEXTAUTH_SECRET, NEXTAUTH_URL (if using next-auth)
             - secretRef:
@@ -348,7 +350,7 @@ spec:
             failureThreshold: 3
           securityContext:
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: false  # Next.js needs to write to .next/cache
+            readOnlyRootFilesystem: false # Next.js needs to write to .next/cache
             capabilities:
               drop:
                 - ALL
