@@ -7,11 +7,10 @@ resources:
   - httproute.yaml
   - rbac.yaml
   - configmap.yaml
-  #  - namespace.yaml
-  #  - network-policies.yaml
+  - namespace.yaml
 images:
   - name: ghcr.io/imdevinc/minions/orchestrator
-    newTag: v1.4.1
+    newTag: v1.5.1
   - name: ghcr.io/imdevinc/minions/discord-bot
     newTag: bot-v1.1.0
   - name: ghcr.io/imdevinc/minions/control-panel
