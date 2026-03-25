@@ -307,10 +307,10 @@ spec:
         - "alert": "KubernetesContainerRestartingFrequently"
           "annotations":
             "description": |
-              Container {{`{{ $labels.container }}`}} in pod {{`{{ $labels.namespace }}`}}/{{`{{ $labels.pod }}`}} has restarted {{`{{ $value }}`}} times in the last 10 minutes.
-                VALUE = {{`{{ $value }}`}}
-                LABELS = {{`{{ $labels }}`}}
-            "summary": "Kubernetes container restarting frequently ({{`{{ $labels.namespace }}`}}/{{`{{ $labels.pod }}`}}:{{`{{ $labels.container }}`}})"
+              Container {{ $labels.container }} in pod {{ $labels.namespace }}/{{ $labels.pod }} has restarted {{ $value }} times in the last 10 minutes.
+                VALUE = {{ $value }}
+                LABELS = {{ $labels }}
+            "summary": "Kubernetes container restarting frequently ({{ $labels.namespace }}/{{ $labels.pod }}:{{ $labels.container }})"
           "expr": "increase(kube_pod_container_status_restarts_total[10m]) >= 3"
           "for": "0m"
           "labels":

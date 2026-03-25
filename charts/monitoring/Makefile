@@ -6,7 +6,6 @@ alerts: mixins/mixin.libsonnet
 	jsonnet -S mixins/alerts.jsonnet > manifests/$@.yaml
 	echo -e "# DO NOT EDIT\n# THIS FILE IS GENERATED AUTOMATICALLY AND ANY CHANGES WILL BE OVERWRITTEN" > opentelemetry-operator/alerts.yaml
 	yq e -n '.apiVersion = "monitoring.coreos.com/v1" | .kind = "PrometheusRule" | .metadata.name = "generated-rules" | .spec = load("manifests/alerts.yaml")' >> opentelemetry-operator/alerts.yaml
-	sed -i 's/\({{\|}}\)/\1`\1/g' opentelemetry-operator/alerts.yaml
 
 dashboards: mixins/mixin.libsonnet
 	@mkdir -p manifests
