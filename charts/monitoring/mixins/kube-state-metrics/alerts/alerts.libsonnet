@@ -349,11 +349,11 @@
           severity: 'warning',
         },
         annotations: {
-          summary: 'Kubernetes container restarting frequently ({{ $labels.namespace }}/{{ $labels.pod }}:{{ $labels.container }})',
+          summary: 'Kubernetes container restarting frequently ({{`{{ $labels.namespace }}`}}/{{`{{ $labels.pod }}`}}:{{`{{ $labels.container }}`}})',
           description: |||
-            Container {{ $labels.container }} in pod {{ $labels.namespace }}/{{ $labels.pod }} has restarted {{ $value }} times in the last 10 minutes.
-              VALUE = {{ $value }}
-              LABELS = {{ $labels }}
+            Container {{`{{ $labels.container }}`}} in pod {{`{{ $labels.namespace }}`}}/{{`{{ $labels.pod }}`}} has restarted {{`{{ $value }}`}} times in the last 10 minutes.
+              VALUE = {{`{{ $value }}`}}
+              LABELS = {{`{{ $labels }}`}}
           |||,
         },
       },
