@@ -3,6 +3,7 @@ domainFilters:
   - "int.imdevinc.com"
 sources:
   - gateway-httproute
+policy: sync
 provider:
   name: pihole
 env:
