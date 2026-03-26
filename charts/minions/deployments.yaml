@@ -327,6 +327,9 @@ spec:
             # INTERNAL_API_TOKEN (shared with orchestrator)
             - secretRef:
                 name: minions-internal-api
+            # Used for oauth role mapping
+            - configMapRef:
+                name: discord-bot-config
           resources:
             requests:
               cpu: 50m
