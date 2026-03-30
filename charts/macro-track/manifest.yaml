@@ -26,6 +26,8 @@ spec:
           envFrom:
             - secretRef:
                 name: credentials
+            - configMapRef:
+                name: macro-track-config
           ports:
             - containerPort: 8080
               name: http

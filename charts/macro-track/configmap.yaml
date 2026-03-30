@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: macro-track-config
+data:
+  OPENAI_COMPATIBLE_BASE_URL: https://openrouter.ai/api/v1
+  OPENAI_COMPATIBLE_MODEL: openai/gpt-4o-mini
+
+

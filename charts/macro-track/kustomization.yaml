@@ -4,6 +4,7 @@ namespace: macro-track
 resources:
   - manifest.yaml
   - sealed.yaml
+  - configmap.yaml
 images:
   - name: ghcr.io/imdevinc/macro-track-server
-    newTag: 1.3.0
+    newTag: 1.4.0
