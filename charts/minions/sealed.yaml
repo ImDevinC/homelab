@@ -17,21 +17,6 @@ spec:
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  name: minions-llm-keys
-  namespace: minions
-spec:
-  encryptedData:
-    OPENROUTER_API_KEY: AgASaNz9iyG7KC1b+sfySCk1v+1GSG8V5RTurM5em1sriqS7d6sEUI39zhv6NMseHLmu1vOpIR5LYuTyurCuptK3SMGMMQj58vsXrohJThZ2qpQiLgVkg4EU59F0aaWGBxQ1UqbhWq0DuGDJVzvNUN/yeboSEMYBjQNKYdfI5DalQe/VElfGfDTxrY/LNt/D7MnuByMiOSAdAWbm5ijj1U3voLFyiDjnMP6frYE9W4VojmmVXNcuqkNqEqDGp6zkZ/Nz7OoPj/OT9T+qS/ZSIRrcMI0YTIP6SZCkZibeKeO8YNdaF38o5e4mp/SS4IS1XrB9TEppGN//1y4j0/yobo21KS2/PGYD8LEI9cOMB3/L3ShJ3n4bQ75BEEYLeG9m7ZN2QzJIBygO94wlIFzQQm+j4gJZiXl6Z5VbR6gmnNCEY/PxgWM22oO9MB+X82uC1HIIhM12bNa80EbEIxQroNI9GBbtaKGsZpURq5PbTXx/xh5yi8VPBLCkmeoPilWULD3mYRBIYoYc3ZCYFL4fVKUGGJ1URv7DSKDQMn+AGZcLtHxdOzYQpOQzU90rfinupYBEo0/llUOgpuOC2UdLVsCDN3l7RGupmK2w8XP8/XpVJUB6QKeJAXARiTB3SQnTR3K/wL/NQ64SH7H9LAykkVZO2MYlMR6hmgmSwKnsuH1Rm7T18Mf7WElglogky8umePlY70nfImyFHhJU+PKtaOWpxeT40zoNkLseMoa9fEs8j44GCJHMkEu/qYV6SNecd4EmSBy6EO5/2rL4+dNQEkYLygIutAHR02XB
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/part-of: minions
-      name: minions-llm-keys
-      namespace: minions
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
   name: minions-github-app
   namespace: minions
 spec:
@@ -90,3 +75,19 @@ spec:
         app.kubernetes.io/part-of: minions
       name: minions-internal-api
       namespace: minions
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: minions-llm-keys
+  namespace: minions
+spec:
+  encryptedData:
+    DEVBOX_OPENROUTER_API_KEY: AgCtDWhbYPDkvJUMl285F8Xd5U5XVNf6YXUlEfRpSievINwBCiulF5LoGZ3S+Df99hCwqyImEIoPeDlP51qbwMmN1xrMKt1FTM6sPDnTT37C1x+1/4Y4h/ymyLwzVx7lkulfLseoNzYZud1rfE0h7buA3sq85WUb85zfNmBB/+KZiH4kawdHUJ3VHymyuc48IKK2M+QqTtKBhCdt/+u2uuq0QhsWMQlnpNaEBCy4UWazx+QUaxB4p+oBS9UmS6pGjgE/IcdrzEdb8S4Wpopqw6Q3MDt6sslvJkWsVX9biLsp0soTIsYfrml309VXPrVdA9XCimvT545yPJ/9s4yHK6hQbAN5lpeVF6ZkBKsANNGm7O9WJ9lCNd2Cq4M/uaToVKM3di1l71mwtsoYG4k/FPnOn/VnQUqBPhBVaDpbiYbtdgaqABoyWbX+fo9yyJnO8ZfNl+DcDdaO0CNHYKS/Kp3BfNxic8WuXhtVHLWOfo+lmgji+pisfmExAk2aZXG4Mck+/VevcCpVMDBIXY0QAnXR0MwTZ3xb3qLzYFQ+QGYFBQGQTyPPrmpGgyUWWuKclSoylsQr4JW/wupMrTDLeoBmZ7Z1ZDscEv+1QA8VOFQbAfoe5mHyD0VrXuUh/cfzq3+UVem6NQqrk5ClWosMyQh/yj/0VQb9VsIxXawf5FqZkwMu2XYrSXHt1pYNvHDGC9TmOx0bgQeR6NzTdETw+Gq0yz4/WH42MdtKByYBlqFggOpuHmUiUrPJd3VT+wTR+D62M8+xLIGuAEW7VRAVZldXQh6WLan2QEVr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/part-of: minions
+      name: minions-llm-keys
+      namespace: minions
+    type: Opaque
