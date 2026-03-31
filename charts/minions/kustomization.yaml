@@ -8,6 +8,7 @@ resources:
   - rbac.yaml
   - configmap.yaml
   - namespace.yaml
+  - pvc.yaml
 images:
   - name: ghcr.io/imdevinc/minions/orchestrator
     newTag: v1.17.1
