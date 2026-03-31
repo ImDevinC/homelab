@@ -110,8 +110,6 @@ data:
       service: http://dnd-proxy.dnd-proxy:8080
     - hostname: lego.imdevinc.com
       service: http://legoai.legoai:8080
-    - hostname: files.imdevinc.com
-      service: http://rustypaste.rustypaste:8000
     - hostname: umami.imdevinc.com
       service: http://umami.umami:3000
     - hostname: macrotrack.imdevinc.com
