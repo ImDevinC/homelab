@@ -15,4 +15,4 @@ images:
   - name: ghcr.io/imdevinc/minions/discord-bot
     newTag: bot-v1.9.2
   - name: ghcr.io/imdevinc/minions/control-panel
-    newTag: panel-v1.10.0
+    newTag: panel-v1.10.1
