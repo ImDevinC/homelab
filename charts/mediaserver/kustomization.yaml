@@ -40,7 +40,7 @@ images:
   - name: mrcas/kapowarr
     newTag: v1.2.0
   - name: ajslater/codex
-    newTag: 1.9.21
+    newTag: 1.9.24
   - name: tannermiddleton/recommendarr:latest
     newTag: v1.4.4
   - name: ghcr.io/flaresolverr/flaresolverr
