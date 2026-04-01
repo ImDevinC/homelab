@@ -36,7 +36,7 @@ images:
   - name: docker.io/linuxserver/transmission
     newTag: 2021.11.18
   - name: docker.io/linuxserver/prowlarr
-    newTag: 2.3.2-develop
+    newTag: 2.3.5-develop
   - name: mrcas/kapowarr
     newTag: v1.2.0
   - name: ajslater/codex
