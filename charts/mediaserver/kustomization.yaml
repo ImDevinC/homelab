@@ -38,7 +38,7 @@ images:
   - name: docker.io/linuxserver/prowlarr
     newTag: 2.3.2-develop
   - name: mrcas/kapowarr
-    newTag: v1.2.0
+    newTag: v1.3.1
   - name: ajslater/codex
     newTag: 1.9.21
   - name: tannermiddleton/recommendarr:latest
