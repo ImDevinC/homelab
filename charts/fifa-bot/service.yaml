@@ -4,10 +4,10 @@ metadata:
   name: fifa-bot
 spec:
   ports:
-  - name: http
-    port: 8080
-    protocol: TCP
-    targetPort: http
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: http
   selector:
     app.kubernetes.io/name: fifa-bot
   type: ClusterIP
