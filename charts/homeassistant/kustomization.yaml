@@ -16,6 +16,6 @@ images:
   - name: ghcr.io/home-assistant/home-assistant
     newTag: 2026.3.4
   - name: docker.io/zwavejs/zwave-js-ui
-    newTag: 11.12.0
+    newTag: 11.15.1
   - name: ghcr.io/esphome/esphome
     newTag: 2026.3.1
