@@ -114,5 +114,7 @@ data:
       service: http://umami.umami:3000
     - hostname: macrotrack.imdevinc.com
       service: http://macro-track.macro-track:8080
+    - hostname: chat.imdevinc.com
+      service: http://synapse.matrix.svc.cluser.local:8008
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
