@@ -8,3 +8,15 @@ spec:
     sourceRange:
       - 192.168.1.0/24
       - 10.0.0.0/8
+---
+# Middleware for cloudflared traffic: sets X-Forwarded-Proto to https
+# since all cloudflared traffic comes through Cloudflare's TLS termination
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: cloudflared-headers
+  namespace: traefik
+spec:
+  headers:
+    customRequestHeaders:
+      X-Forwarded-Proto: "https"

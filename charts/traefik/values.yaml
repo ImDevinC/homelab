@@ -59,6 +59,8 @@ ports:
       default: true
     exposedPort: 8090
     protocol: TCP
+    middlewares:
+      - traefik-cloudflared-headers@kubernetescrd
 experimental:
   plugins:
     traefik-oidc-auth:
