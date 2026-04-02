@@ -1,0 +1,151 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: element-config
+  namespace: matrix
+  labels:
+    app.kubernetes.io/name: element
+    app.kubernetes.io/component: web-client
+data:
+  config.json: |
+    {
+      "default_server_config": {
+        "m.homeserver": {
+          "base_url": "https://chat.imdevinc.com",
+          "server_name": "imdevinc.com"
+        },
+        "m.identity_server": {
+          "base_url": "https://vector.im"
+        }
+      },
+      "brand": "Element",
+      "integrations_ui_url": "https://scalar.vector.im/",
+      "integrations_rest_url": "https://scalar.vector.im/api",
+      "integrations_widgets_urls": [
+        "https://scalar.vector.im/_matrix/integrations/v1",
+        "https://scalar.vector.im/api",
+        "https://scalar-staging.vector.im/_matrix/integrations/v1",
+        "https://scalar-staging.vector.im/api",
+        "https://scalar-staging.riot.im/scalar/api"
+      ],
+      "bug_report_endpoint_url": "https://element.io/bugreports/submit",
+      "showLabsSettings": true,
+      "features": {},
+      "default_country_code": "US",
+      "default_theme": "dark",
+      "room_directory": {
+        "servers": ["imdevinc.com", "matrix.org"]
+      },
+      "enable_presence_by_hs_url": {
+        "https://chat.imdevinc.com": true
+      },
+      "setting_defaults": {
+        "breadcrumbs": true
+      }
+    }
+  # Nginx config template to listen on 8080 instead of 80
+  default.conf.template: |
+    server {
+        listen 8080;
+        server_name localhost;
+
+        root /app;
+        index index.html;
+
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+
+        location /config.json {
+            alias /app/config.json;
+        }
+    }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: element
+  namespace: matrix
+  labels:
+    app.kubernetes.io/name: element
+    app.kubernetes.io/component: web-client
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: element
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: element
+  namespace: matrix
+  labels:
+    app.kubernetes.io/name: element
+    app.kubernetes.io/component: web-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: element
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: element
+        app.kubernetes.io/component: web-client
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101
+        fsGroup: 101
+      containers:
+        - name: element
+          image: vectorim/element-web:latest
+          ports:
+            - containerPort: 8080
+              name: http
+          volumeMounts:
+            - name: element-config
+              mountPath: /app/config.json
+              subPath: config.json
+              readOnly: true
+            - name: element-config
+              mountPath: /etc/nginx/templates/default.conf.template
+              subPath: default.conf.template
+              readOnly: true
+            - name: nginx-cache
+              mountPath: /var/cache/nginx
+            - name: nginx-run
+              mountPath: /var/run
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "10m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 5
+      volumes:
+        - name: element-config
+          configMap:
+            name: element-config
+        - name: nginx-cache
+          emptyDir: {}
+        - name: nginx-run
+          emptyDir: {}

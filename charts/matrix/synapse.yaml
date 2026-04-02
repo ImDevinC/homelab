@@ -1,0 +1,198 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: synapse-data
+  namespace: matrix
+  labels:
+    app.kubernetes.io/name: synapse
+    app.kubernetes.io/component: homeserver
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: synapse
+  namespace: matrix
+  labels:
+    app.kubernetes.io/name: synapse
+    app.kubernetes.io/component: homeserver
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8008
+      targetPort: 8008
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: synapse
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: synapse
+  namespace: matrix
+  labels:
+    app.kubernetes.io/name: synapse
+    app.kubernetes.io/component: homeserver
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate  # Required for RWO PVC
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: synapse
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: synapse
+        app.kubernetes.io/component: homeserver
+    spec:
+      securityContext:
+        runAsUser: 991
+        runAsGroup: 991
+        fsGroup: 991
+      initContainers:
+        # Generate signing key and render config with secrets
+        - name: init-config
+          image: matrixdotorg/synapse:latest
+          command:
+            - python
+            - -c
+            - |
+              import os
+              import re
+
+              # Generate signing key if it doesn't exist
+              key_path = '/data/imdevinc.com.signing.key'
+              if not os.path.exists(key_path):
+                  print("Generating signing key...")
+                  from signedjson.key import generate_signing_key, write_signing_keys
+                  with open(key_path, 'w') as f:
+                      write_signing_keys(f, [generate_signing_key('a')])
+                  print("Signing key generated.")
+
+              # Copy log config
+              with open('/config/log.config', 'r') as f:
+                  log_config = f.read()
+              with open('/data/imdevinc.com.log.config', 'w') as f:
+                  f.write(log_config)
+
+              # Render homeserver.yaml with env vars
+              with open('/config/homeserver.yaml', 'r') as f:
+                  config = f.read()
+
+              # Replace ${VAR} patterns with env values
+              def replace_env(match):
+                  var_name = match.group(1)
+                  return os.environ.get(var_name, match.group(0))
+
+              config = re.sub(r'\$\{(\w+)\}', replace_env, config)
+
+              with open('/data/homeserver.yaml', 'w') as f:
+                  f.write(config)
+
+              print("Config rendered successfully.")
+          env:
+            # PostgreSQL connection
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-secrets
+                  key: postgres-host
+            - name: POSTGRES_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-secrets
+                  key: postgres-port
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-secrets
+                  key: postgres-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-secrets
+                  key: postgres-password
+            - name: POSTGRES_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-secrets
+                  key: postgres-database
+            # Synapse secrets
+            - name: REGISTRATION_SHARED_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-secrets
+                  key: registration-shared-secret
+            - name: MACAROON_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-secrets
+                  key: macaroon-secret-key
+            - name: FORM_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-secrets
+                  key: form-secret
+            # OIDC (Pocket ID)
+            - name: OIDC_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-secrets
+                  key: oidc-client-id
+            - name: OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-secrets
+                  key: oidc-client-secret
+          volumeMounts:
+            - name: synapse-data
+              mountPath: /data
+            - name: synapse-config
+              mountPath: /config
+      containers:
+        - name: synapse
+          image: matrixdotorg/synapse:latest
+          ports:
+            - containerPort: 8008
+              name: http
+          env:
+            - name: SYNAPSE_CONFIG_PATH
+              value: /data/homeserver.yaml
+          volumeMounts:
+            - name: synapse-data
+              mountPath: /data
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "200m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8008
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8008
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+      volumes:
+        - name: synapse-data
+          persistentVolumeClaim:
+            claimName: synapse-data
+        - name: synapse-config
+          configMap:
+            name: synapse-config
