@@ -29,6 +29,15 @@ gateway:
         - name: wildcard-tls
       forwardedHeaders:
         insecure: true
+    # Dedicated listener for cloudflared traffic (no HTTPS redirect)
+    cloudflared:
+      hostname: "*.imdevinc.com"
+      port: 8080
+      protocol: HTTP
+      namespacePolicy:
+        from: All
+      forwardedHeaders:
+        insecure: true
 service:
   spec:
     externalTrafficPolicy: Local
@@ -43,6 +52,13 @@ ports:
         entryPoint:
           scheme: https
           to: websecure
+  # Dedicated entrypoint for cloudflared traffic (no redirects)
+  cloudflared:
+    port: 8080
+    expose:
+      default: true
+    exposedPort: 8080
+    protocol: TCP
 experimental:
   plugins:
     traefik-oidc-auth:
