@@ -115,12 +115,6 @@ data:
     - hostname: macrotrack.imdevinc.com
       service: http://macro-track.macro-track:8080
     - hostname: chat.imdevinc.com
-      path: /_matrix/*
-      service: http://synapse.matrix.svc.cluser.local:8008
-    - hostname: chat.imdevinc.com
-      path: /_synapse/*
-      service: http://synapse.matrix.svc.cluser.local:8008
-    - hostname: chat.imdevinc.com
-      service: http://element.matrix.svc.cluster.local:80
+      service: http://traefik.traefik.svc.cluster.local:80
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
