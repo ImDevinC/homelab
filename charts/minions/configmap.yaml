@@ -121,3 +121,15 @@ data:
   DISCORD_ALLOWED_GUILD_ID: "568637341296623619" # gnomebytes
   DISCORD_ALLOWED_ROLE_ID: "1486028462933278800" # developer
   OPENROUTER_CLARIFICATION_MODEL: "anthropic/claude-sonnet-4"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: matrix-bot-config
+  namespace: minions
+  labels:
+    app.kubernetes.io/part-of: minions
+data:
+  OPENROUTER_CLARIFICATION_MODEL: "anthropic/claude-sonnet-4"
+  # MATRIX_ALLOWED_ROOMS: "!roomid:matrix.org" # comma-separated, leave empty to allow all rooms
