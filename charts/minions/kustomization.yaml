@@ -11,10 +11,10 @@ resources:
   - pvc.yaml
 images:
   - name: ghcr.io/imdevinc/minions/orchestrator
-    newTag: v1.18.3
+    newTag: v1.19.0
   - name: ghcr.io/imdevinc/minions/discord-bot
     newTag: bot-v1.9.2
   - name: ghcr.io/imdevinc/minions/control-panel
     newTag: panel-v1.10.1
   - name: ghcr.io/imdevinc/minions/matrix-bot
-    newTag: bot-v1.0.0
+    newTag: bot-v1.1.0
