@@ -32,7 +32,7 @@ gateway:
     # Dedicated listener for cloudflared traffic (no HTTPS redirect)
     cloudflared:
       hostname: "*.imdevinc.com"
-      port: 8080
+      port: 8090
       protocol: HTTP
       namespacePolicy:
         from: All
@@ -54,10 +54,10 @@ ports:
           to: websecure
   # Dedicated entrypoint for cloudflared traffic (no redirects)
   cloudflared:
-    port: 8080
+    port: 8090
     expose:
       default: true
-    exposedPort: 8080
+    exposedPort: 8090
     protocol: TCP
 experimental:
   plugins:
