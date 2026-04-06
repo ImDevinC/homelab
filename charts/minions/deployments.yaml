@@ -333,8 +333,8 @@ spec:
             - secretRef:
                 name: minions-internal-api
             # Used for oauth role mapping
-            - configMapRef:
-                name: discord-bot-config
+            - secretRef:
+                name: oidc-config
           resources:
             requests:
               cpu: 50m
