@@ -5,8 +5,9 @@ helmCharts:
     releaseName: pocket-id
     namespace: pocket-id
     repo: https://anza-labs.github.io/charts
-    version: 1.7.6
+    version: 2.0.2
     valuesFile: values.yaml
 namespace: pocket-id
 resources:
   - httproute.yaml
+  - sealed.yaml

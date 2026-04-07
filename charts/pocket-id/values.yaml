@@ -1,6 +1,8 @@
 updateStrategy:
   rollingUpdate:
     maxUnavailable: null
+secret:
+  create: false
 pocketID:
   resources:
     requests:
