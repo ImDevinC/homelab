@@ -129,6 +129,7 @@ metadata:
     gethomepage.dev/group: Management
     gethomepage.dev/icon: victoriametrics.png
     gethomepage.dev/name: VictoriaMetrics
+    gethomepage.dev/pod-selector: app=victoria-metrics
 spec:
   parentRefs:
     - name: traefik-gateway

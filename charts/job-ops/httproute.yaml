@@ -6,7 +6,7 @@ metadata:
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Homelab
-    gethomepage.dev/icon: briefcase.png
+    gethomepage.dev/icon: mdi-email-search
     gethomepage.dev/name: JobOps
     gethomepage.dev/description: AI-powered job search pipeline
 spec:

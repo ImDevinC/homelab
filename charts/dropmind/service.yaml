@@ -19,7 +19,7 @@ metadata:
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Homelab
-    gethomepage.dev/icon: bitcoin.png
+    gethomepage.dev/icon: mdi-file-multiple
     gethomepage.dev/name: Dropmind
   name: dropmind
 spec:
