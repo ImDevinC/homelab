@@ -19,4 +19,4 @@ images:
   - name: ghcr.io/imdevinc/minions/matrix-bot
     newTag: bot-v1.2.2
   - name: ghcr.io/imdevinc/minions/github-webhook
-    newTag: webhook-v1.0.0
+    newTag: webhook-v1.0.1
