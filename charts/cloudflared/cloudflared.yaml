@@ -116,5 +116,7 @@ data:
       service: http://macro-track.macro-track:8080
     - hostname: chat.imdevinc.com
       service: http://traefik.traefik.svc.cluster.local:8090
+    - hostname: minions.imdevinc.com
+      service: http://github-webhook.minions.svc.cluster.local:8080
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
