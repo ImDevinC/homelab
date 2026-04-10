@@ -106,8 +106,6 @@ data:
       service: http://couchdb-svc-couchdb.couchdb:5984
     - hostname: wallabag.imdevinc.com
       service: http://wallabag.wallabag:80
-    - hostname: dnd-proxy.imdevinc.com
-      service: http://dnd-proxy.dnd-proxy:8080
     - hostname: lego.imdevinc.com
       service: http://legoai.legoai:8080
     - hostname: umami.imdevinc.com
