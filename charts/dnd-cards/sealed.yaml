@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: dnd-cards
+  namespace: dnd-cards
+spec:
+  encryptedData:
+    OPENROUTER_API_KEY: AgAFctaggkeaxvpDKPbz+iiXKrJgy8deZAg4W46+IybbRgVjgy7rPNHrZDv/UkYZ55Aiapaqs2r23kkI/Nv2e11HjN2dZytQoOjuY53ExOshpZz4ba+LSkr47/qoVTxfK05TAy/cQemlJbOLkj/6ki+A+yh8pxJb1PUWf3TbiRLwqWB8AGY/fkeYyJgPsHgZv/octe9GVeHZeZcxjRqC8sUy9nK4vXKIJJuGsnH+REZyjioH+tkwFs3+xItVgUgHRceo/Q4Zig/eGgBRFqfcPWwH7oURv+ZvMUV/cW65cLAVTcTfbUnL3bWI8rO+lDcIlUsUDH+l8mCwGgCRvCZDoGQJsMG6rPC48fxQXXc319/h4qpLkt2hr6UVJqKyo8LchJkyTUMRWPjikTnb+rIcsaZBcPA6TKqsFcUqityMMRPB8h3X+ZB8W2BPqOAIgHht2bFyuREOT04cMjt9oB7OeN0t/thmCWWgEQifmNR6yqE/GVsbGg1FNP8fNthrCMYL5nyrBdH1kd8PJRgnzhIwlaKCGGP8u0Da4TUndHVcl3HqLpWMVucUXP9KGNt/2kPElTpl2tE2wQuuOzSZdr+v1HYJK75p2NOflLhKrdOeDMjuLWu2UVZEnC2A2nmMyRFOF62/RLLg3snyRHNuNpOl2pphcxV/Mn8onQqPLNhxKRe6mXun/MiWb241UEJIK5H6vnsJLo/SoCrDX6rHsmeYDBj9jzI7rBzM7HHjTx98mMxv4FflYUK7UDXXgioJsbzFuxz2PHkqVA0Qi7aEsYoc8tqRUbYZi5Rw5AGd
+  template:
+    metadata:
+      name: dnd-cards
+      namespace: dnd-cards
