@@ -7,4 +7,4 @@ resources:
   - service.yaml
 images:
   - name: ghcr.io/imdevinc/dnd-cards
-    newTag: 0.1.1
+    newTag: 0.1.0
