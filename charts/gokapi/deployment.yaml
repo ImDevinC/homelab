@@ -24,6 +24,8 @@ spec:
           env:
             - name: GOKAPI_PORT
               value: "53842"
+            - name: GOKAPI_USE_CLOUDFLARE
+              value: "true"
 
           ports:
             - containerPort: 53842
@@ -43,7 +45,7 @@ spec:
               path: /
               port: 53842
               scheme: HTTP
-            initialDelaySeconds: 60
+            initialDelaySeconds: 5
             periodSeconds: 5
             timeoutSeconds: 3
             successThreshold: 1
@@ -54,7 +56,7 @@ spec:
               path: /
               port: 53842
               scheme: HTTP
-            initialDelaySeconds: 30
+            initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 3
             successThreshold: 1
@@ -65,7 +67,7 @@ spec:
               path: /
               port: 53842
               scheme: HTTP
-            initialDelaySeconds: 30
+            initialDelaySeconds: 5
             periodSeconds: 5
             timeoutSeconds: 3
             successThreshold: 1
