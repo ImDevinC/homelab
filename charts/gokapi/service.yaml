@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gokapi
+  labels:
+    app: gokapi
+spec:
+  type: LoadBalancer
+  selector:
+    app: gokapi
+  ports:
+    - port: 53842
+      targetPort: 53842
+      protocol: TCP
+      name: http

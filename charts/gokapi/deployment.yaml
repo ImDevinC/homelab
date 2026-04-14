@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gokapi
+  labels:
+    app: gokapi
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate # has issues with two pods at once
+  selector:
+    matchLabels:
+      app: gokapi
+  template:
+    metadata:
+      labels:
+        app: gokapi
+    spec:
+      containers:
+        - name: gokapi
+          image: f0rc3/gokapi
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 53842
+              name: http
+              protocol: TCP
+
+          volumeMounts:
+            - name: gokapi
+              mountPath: /app/data
+              subPath: data
+            - name: gokapi
+              mountPath: /app/config
+              subPath: config
+
+          startupProbe:
+            httpGet:
+              path: /
+              port: 53842
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 5
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 60
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 53842
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 53842
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+
+      volumes:
+        - name: gokapi
+          persistentVolumeClaim:
+            claimName: gokapi
