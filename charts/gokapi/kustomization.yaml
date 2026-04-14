@@ -6,7 +6,6 @@ resources:
   - deployment.yaml
   - pvc.yaml
   - service.yaml
-  - httproute.yaml
 images:
   - name: gokapi
     newName: f0rc3/gokapi
