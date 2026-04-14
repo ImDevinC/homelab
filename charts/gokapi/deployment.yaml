@@ -21,6 +21,10 @@ spec:
           image: f0rc3/gokapi
           imagePullPolicy: IfNotPresent
 
+          env:
+            - name: PORT
+              value: "53842"
+
           ports:
             - containerPort: 53842
               name: http
