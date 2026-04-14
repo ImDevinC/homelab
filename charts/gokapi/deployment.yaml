@@ -22,7 +22,7 @@ spec:
           imagePullPolicy: IfNotPresent
 
           env:
-            - name: PORT
+            - name: GOKAPI_PORT
               value: "53842"
 
           ports:
