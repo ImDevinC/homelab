@@ -31,11 +31,6 @@ spec:
               value: /usr/bin/python3
             - name: DATA_DIR
               value: /app/data
-          envFrom:
-            - configMapRef:
-                name: job-ops
-            - secretRef:
-                name: job-ops-secret
           ports:
             - containerPort: 3001
               protocol: TCP
