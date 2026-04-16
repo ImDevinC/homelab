@@ -1,5 +1,7 @@
 additionalArguments:
   - "--api.insecure"
+image:
+  tag: "v3.6.13"
 logs:
   general:
     format: json
