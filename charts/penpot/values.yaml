@@ -1,0 +1,26 @@
+config:
+  flags: enable-oidc-registration disable-registration disable-login-with-password disable-email-verification enable-login-with-oidc
+  publicUri: https://penpot.int.imdevinc.com
+  existingSecret: penpot
+  secretKeys:
+    apiSecretKey: apiSecretKey
+  telemetryEnabled: false
+  postgresql:
+    host: postgres.postgres.svc.cluster.local
+    database: penpot
+    existingSecret: penpot
+    secretKeys:
+      usernameKey: postgresqlUsername
+      passwordKey: postgresqlPassword
+  redis:
+    host: redis-master.redis.svc.cluster.local
+  providers:
+    oidc:
+      enabled: true
+      baseURI: https://login.int.imdevinc.com
+      scopes: "openid profile email"
+      roles: ""
+    existingSecret: penpot
+    secretKeys:
+      oidcClientIDKey: oidcClientID
+      oidcClientSecretKey: oidcClientSecret
