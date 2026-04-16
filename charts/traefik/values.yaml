@@ -3,7 +3,7 @@ additionalArguments:
 logs:
   general:
     format: json
-    level: INFO
+    level: DEBUG
 providers:
   kubernetesIngress:
     enabled: false
