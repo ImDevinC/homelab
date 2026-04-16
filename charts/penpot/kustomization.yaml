@@ -11,4 +11,4 @@ namespace: penpot
 resources:
   - namespace.yaml
   - sealed.yaml
-#  - httproute.yaml
+  - httproute.yaml

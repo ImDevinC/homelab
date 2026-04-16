@@ -13,3 +13,6 @@ images:
     newTag: 0.1.1
 resources:
   - sealedsecrets.yaml
+replicas:
+  - name: eero-metrics
+    count: 0

@@ -8,3 +8,6 @@ resources:
 images:
   - name: ghcr.io/imdevinc/dropmind
     newTag: 0.1.1
+replicas:
+  - name: dropmind
+    count: 0

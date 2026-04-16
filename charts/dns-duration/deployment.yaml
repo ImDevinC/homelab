@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: dns-duration
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: dns-duration
@@ -29,4 +29,3 @@ spec:
               value: "1"
             - name: LOOKUP_HOSTNAME
               value: "imdevinc.com"
-

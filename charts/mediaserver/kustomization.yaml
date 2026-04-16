@@ -45,3 +45,12 @@ images:
     newTag: v1.4.4
   - name: ghcr.io/flaresolverr/flaresolverr
     newTag: v3.4.6
+replicas:
+  - name: codex
+    count: 0
+  - name: flaresolverr
+    count: 0
+  - name: kapowarr
+    count: 0
+  - name: recommendarr
+    count: 0

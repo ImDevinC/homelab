@@ -5,7 +5,7 @@ metadata:
   labels:
     app: gokapi
 spec:
-  replicas: 1
+  replicas: 0
   strategy:
     type: Recreate # has issues with two pods at once
   selector:
