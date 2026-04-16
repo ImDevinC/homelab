@@ -15,4 +15,3 @@ helmCharts:
 namespace: traefik
 resources:
   - middleware.yaml
-  - tlsstore.yaml

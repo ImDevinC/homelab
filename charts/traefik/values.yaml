@@ -27,7 +27,6 @@ gateway:
       protocol: HTTPS
       certificateRefs:
         - name: wildcard-tls
-          namespace: traefik
       forwardedHeaders:
         insecure: true
     # Dedicated listener for cloudflared traffic (no HTTPS redirect)
