@@ -9,7 +9,7 @@ spec:
     - name: http
       port: 8080
       protocol: TCP
-      targetPort: 80
+      targetPort: 8080
   selector:
     service: spellcards
 ---
@@ -69,7 +69,7 @@ spec:
           image: ghcr.io/imdevinc/spellcards
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 80
+            - containerPort: 8080
               protocol: TCP
           resources:
             requests:
