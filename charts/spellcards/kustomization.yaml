@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: spellcards
 resources:
   - namespace.yaml
-  - sealed.yaml
   - service.yaml
 images:
   - name: ghcr.io/imdevinc/spellcards
