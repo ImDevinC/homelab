@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dnd-cards
+  name: spellcards
   namespace: argo-cd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: dnd-cards
+    namespace: spellcards
   project: default
   source:
-    path: charts/dnd-cards
+    path: charts/spellcards
     repoURL: https://github.com/imdevinc/homelab.git
     targetRevision: HEAD
   syncPolicy:
