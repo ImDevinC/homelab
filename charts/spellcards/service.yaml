@@ -63,7 +63,7 @@ spec:
         service: spellcards
     spec:
       securityContext:
-        fsGroup: 1000
+        fsGroup: 101
       containers:
         - name: spellcards
           image: ghcr.io/imdevinc/spellcards
@@ -76,6 +76,6 @@ spec:
               cpu: 10m
               memory: 256Mi
           securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
+            runAsUser: 101
+            runAsGroup: 101
       restartPolicy: Always
