@@ -17,6 +17,6 @@ images:
   - name: ghcr.io/imdevinc/minions/control-panel
     newTag: panel-v1.12.0
   - name: ghcr.io/imdevinc/minions/matrix-bot
-    newTag: bot-v1.3.0
+    newTag: bot-v1.3.1
   - name: ghcr.io/imdevinc/minions/github-webhook
     newTag: webhook-v1.0.1

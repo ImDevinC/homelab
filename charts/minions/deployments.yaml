@@ -426,6 +426,8 @@ spec:
               containerPort: 8081
               protocol: TCP
           env:
+            - name: LOG_LEVEL
+              value: "debug"
             - name: PORT
               value: "8081"
             # Orchestrator API endpoint
@@ -494,7 +496,6 @@ spec:
       targetPort: http
       protocol: TCP
 ---
-
 ---
 # GitHub Webhook Deployment
 # Receives GitHub PR comment webhooks and spawns follow-up minions
