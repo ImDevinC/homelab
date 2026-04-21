@@ -93,7 +93,7 @@ spec:
               value: "http://orchestrator.minions.svc.cluster.local:8080"
             # Default model for minion creation (when client doesn't specify)
             - name: DEFAULT_MODEL
-              value: "github-copilot/claude-opus-4.5"
+              value: "opencode/claude-opus-4.6"
             - name: MINION_AUTH_PVC_NAME
               value: minion-auth
           envFrom:
