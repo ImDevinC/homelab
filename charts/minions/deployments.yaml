@@ -77,8 +77,6 @@ spec:
               containerPort: 8080
               protocol: TCP
           env:
-            - name: PORT
-              value: "8080"
             # Discord bot webhook for notifications
             - name: DISCORD_BOT_WEBHOOK_URL
               value: "http://discord-bot.minions.svc.cluster.local:8081/webhook"
@@ -91,9 +89,6 @@ spec:
             # Orchestrator URL for pod callbacks
             - name: ORCHESTRATOR_URL
               value: "http://orchestrator.minions.svc.cluster.local:8080"
-            # Default model for minion creation (when client doesn't specify)
-            - name: DEFAULT_MODEL
-              value: "opencode/claude-opus-4.6"
             - name: MINION_AUTH_PVC_NAME
               value: minion-auth
           envFrom:
@@ -109,6 +104,8 @@ spec:
             # GITHUB_APP_ID, GITHUB_APP_PRIVATE_KEY
             - secretRef:
                 name: minions-github-app
+            - configMapRef:
+                name: orchestrator-config
           resources:
             requests:
               cpu: 100m
