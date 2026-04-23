@@ -207,4 +207,4 @@ metadata:
     app.kubernetes.io/part-of: minions
 data:
   PORT: "8080"
-  DEFAULT_MODEL: "opencode/claude-opus-4-6"
+  DEFAULT_MODEL: "opencode/gpt-5.3-codex"
