@@ -169,9 +169,9 @@ metadata:
 data:
   DISCORD_ALLOWED_GUILD_ID: "568637341296623619" # gnomebytes
   DISCORD_ALLOWED_ROLE_ID: "1486028462933278800" # developer
-  OPENROUTER_CLARIFICATION_MODEL: "google/gemini-3-flash-preview"
   CONTROL_PANEL_URL: "http://minions.int.imdevinc.com"
-
+  CLARIFICATION_MODEL: "opencode/gemini-3-flash"
+  OPENAI_BASE_URL: "https://opencode.ai/zen"
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -181,8 +181,9 @@ metadata:
   labels:
     app.kubernetes.io/part-of: minions
 data:
-  OPENROUTER_CLARIFICATION_MODEL: "google/gemini-3-flash-preview"
+  CLARIFICATION_MODEL: "opencode/gemini-3-flash"
   CONTROL_PANEL_URL: "http://minions.int.imdevinc.com"
+  OPENAI_BASE_URL: "https://opencode.ai/zen"
 ---
 apiVersion: v1
 kind: ConfigMap

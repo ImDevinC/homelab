@@ -13,10 +13,10 @@ images:
   - name: ghcr.io/imdevinc/minions/orchestrator
     newTag: v1.23.5
   - name: ghcr.io/imdevinc/minions/discord-bot
-    newTag: bot-v1.10.0
+    newTag: bot-v1.11.0
   - name: ghcr.io/imdevinc/minions/control-panel
     newTag: panel-v1.12.0
   - name: ghcr.io/imdevinc/minions/matrix-bot
-    newTag: bot-v1.3.1
+    newTag: bot-v1.4.0
   - name: ghcr.io/imdevinc/minions/github-webhook
     newTag: webhook-v1.0.1
