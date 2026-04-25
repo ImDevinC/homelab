@@ -170,7 +170,7 @@ data:
   DISCORD_ALLOWED_GUILD_ID: "568637341296623619" # gnomebytes
   DISCORD_ALLOWED_ROLE_ID: "1486028462933278800" # developer
   CONTROL_PANEL_URL: "http://minions.int.imdevinc.com"
-  CLARIFICATION_MODEL: "opencode/big-pickle"
+  CLARIFICATION_MODEL: "big-pickle"
   OPENAI_BASE_URL: "https://opencode.ai/zen"
 ---
 apiVersion: v1
@@ -181,7 +181,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: minions
 data:
-  CLARIFICATION_MODEL: "opencode/big-pickle"
+  CLARIFICATION_MODEL: "big-pickle"
   CONTROL_PANEL_URL: "http://minions.int.imdevinc.com"
   OPENAI_BASE_URL: "https://opencode.ai/zen"
 ---
