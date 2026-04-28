@@ -13,4 +13,4 @@ images:
     newTag: v0.20.1@sha256:878a9a6149096509bfe904d2e9ef7f908e2fdd567e47517763e8f78d046e16e5
 replicas:
   - name: comfyui
-    count: 1
+    count: 0
