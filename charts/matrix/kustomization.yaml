@@ -21,4 +21,4 @@ images:
   - name: matrixdotorg/synapse
     newTag: v1.150.0
   - name: vectorim/element-web
-    newTag: v1.12.13
+    newTag: v1.12.17
