@@ -10,6 +10,6 @@ resources:
   - sealed.yaml
 images:
   - name: ghcr.io/imdevinc/atlas/backend
-    newTag: v1.1.0
+    newTag: v1.2.0
   - name: ghcr.io/imdevinc/atlas/frontend
-    newTag: v1.4.0
+    newTag: v1.4.1
