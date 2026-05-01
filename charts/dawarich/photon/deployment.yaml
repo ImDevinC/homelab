@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: photon
+  namespace: dawarich
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: photon
+  namespace: dawarich
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: photon
+  template:
+    metadata:
+      labels:
+        app: photon
+    spec:
+      containers:
+        - name: photon
+          image: ghcr.io/rtuszik/photon-docker:2.2.0
+          ports:
+            - containerPort: 2322
+          volumeMounts:
+            - name: photon-data
+              mountPath: /photon/data
+          envFrom:
+            - configMapRef:
+                name: photon-config
+      volumes:
+        - name: photon-data
+          persistentVolumeClaim:
+            claimName: photon

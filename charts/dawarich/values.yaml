@@ -5,6 +5,7 @@ env:
   timeZone: "America/Los_Angeles"
   distanceUnit: mi
   railsEnv: production
+  photonApiHost: photon:2322
 
 dawarich:
   hosts:

@@ -11,3 +11,7 @@ namespace: dawarich
 resources:
   - httproute.yaml
   - sealed.yaml
+  - photon
+images:
+  - name: ghcr.io/rtuszik/photon-docker
+    newTag: 2.2.0

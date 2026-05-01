@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: photon-config
+data:
+  UPDATE_STRATEGY: "PARALLEL"
+  UPDATE_INTERVAL: "30d"
+  REGION: "planet"
+  LOG_LEVEL: "INFO"
+  PHOTO_LISTEN_IP: "0.0.0.0"
+  FORCE_UPDATE: "FALSE"
+  DOWNLOAD_MAX_RETRIES: "3"
+  INITIAL_DOWNLOAD: "TRUE"
+  BASE_URL: "https://r2.koalasec.org/public"
+  SKIP_MD5_CHECK: "FALSE"
+  SKIP_SPACE_CHECK: "FALSE"
+  PUID: "9011"
+  PGID: "9011"
