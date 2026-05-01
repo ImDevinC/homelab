@@ -5,7 +5,7 @@ helmCharts:
     releaseName: penpot
     namespace: penpot
     repo: https://helm.penpot.app
-    version: 0.38.0
+    version: 0.40.0
     valuesFile: values.yaml
 namespace: penpot
 resources:
