@@ -198,6 +198,7 @@ data:
     imdevinc/minions
     imdevinc/fifa-bot
     imdevinc/mythic-forge
+    imdevinc/atlas
 ---
 apiVersion: v1
 kind: ConfigMap
