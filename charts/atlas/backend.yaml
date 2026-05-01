@@ -1,0 +1,111 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atlas-backend
+  namespace: atlas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: atlas-backend
+  template:
+    metadata:
+      labels:
+        app: atlas-backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/imdevinc/atlas/backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: LISTEN_ADDR
+              value: ":8080"
+            - name: APP_BASE_URL
+              value: "https://atlas.int.imdevinc.com"
+            - name: SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: atlas-secrets
+                  key: session-secret
+            - name: OIDC_ISSUER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: atlas-secrets
+                  key: oidc-issuer-url
+            - name: OIDC_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: atlas-secrets
+                  key: oidc-client-id
+            - name: OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: atlas-secrets
+                  key: oidc-client-secret
+            - name: SQLITE_PATH
+              value: "/data/atlas.db"
+            - name: AI_BASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: atlas-secrets
+                  key: ai-base-url
+                  optional: true
+            - name: AI_MODEL
+              valueFrom:
+                secretKeyRef:
+                  name: atlas-secrets
+                  key: ai-model
+                  optional: true
+            - name: AI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: atlas-secrets
+                  key: ai-api-key
+                  optional: true
+            - name: AI_WRITE_MAX_ROWS
+              value: "100"
+            - name: PUSHOVER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: atlas-secrets
+                  key: pushover-token
+                  optional: true
+            - name: PUSHOVER_USER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: atlas-secrets
+                  key: pushover-user-key
+                  optional: true
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8080
+            initialDelaySeconds: 2
+            periodSeconds: 5
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: atlas-db-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: atlas-backend
+  namespace: atlas
+spec:
+  selector:
+    app: atlas-backend
+  ports:
+    - port: 8080
+      targetPort: 8080
