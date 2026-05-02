@@ -5,7 +5,7 @@ oidc:
   enabled: true
   providerName: "Sign in with Pocket ID"
   issuer: "https://login.int.imdevinc.com"
-  redirectUri: "https://dawarich.int.imdevinc.com/users/auth/pocketid/callback"
+  redirectUri: "https://dawarich.int.imdevinc.com/users/auth/openid_connect/callback"
   clientId:
     existingSecret: oidc-creds
     existingSecretKeyName: clientId
