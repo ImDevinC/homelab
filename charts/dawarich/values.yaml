@@ -1,6 +1,18 @@
 keybase:
   existingSecret: dawarich-creds
 
+oidc:
+  enabled: true
+  providerName: "Sign in with Pocket ID"
+  issuer: "https://login.int.imdevinc.com"
+  redirectUri: "https://dawarich.int.imdevinc.com/users/auth/pocketid/callback"
+  clientId:
+    existingSecret: oidc-credentials
+    existingSecretKeyName: clientId
+  clientSecret:
+    existingSecret: oidc-credentials
+    existingSecretKeyName: clientSecret
+
 env:
   timeZone: "America/Los_Angeles"
   distanceUnit: mi

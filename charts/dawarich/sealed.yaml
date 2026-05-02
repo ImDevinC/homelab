@@ -16,3 +16,18 @@ spec:
       name: dawarich-creds
       namespace: dawarich
     type: Opaque
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: oidc-creds
+  namespace: dawarich
+spec:
+  encryptedData:
+    clientId: AgBQ6CxXcksGFFi9m2/DS1ciyPcIdlJ+Pz/uc0oVdT8+jti0zl6w97diCadGGkvz1JQuZVFxQu6qtjc1C23Lv5wKQlZaKC1i7T17GAe+otZuLQg7DbZHsw1ApAEjuI8M3JeROggrrS7P+YARJc0QAxXcH3cdMByG5HZrm3/elLwUSK5UZR5BJnG840yTTa4Hgtdxn+dXMm/6103WMuxZWwTZOxobehrsPaU4KNJRQXFd7bVGmMyDs6FSiwmEXdlKczyh81lMenXrtz+4RvYce7y2aCIKCg13Vojfr6WGsYG5PQxsHJ/39FYS/rqta1M+l8pE93btgzCWedGHapjUJiZzTgJmz1SSi75Tl89ZZqSmRnrW9nl7YYZajvsQ9SiKv40B3xLqBu3qU8/tT7EOgxOrj3XebZRs6uqovDg4nkgTery11KLsm8bTpqjUTks1DrH5udRtm9cO79dBMS7bUwLP3XhqQiGSAPu9p2b2th2emqza4sULRk9mc0FmwLgWu/v7/UNjVBUwkJ/a3sh2WFPWJ1WRvWcC1GVTwKcatn7NzXV4Mi0IfpJEp9kainVlliJzaG6Yta5lcjVXYDj0Yz0qTMquHUbb8nao8bQBTvgfWbs/GINb0YtkASbBp2pWiI76B+Xtw6Krd5lacqeFMuNlaN5hu6jYng75i86a0FOrm1n9hzs925KyOSQ1/Qfe/YczmouRvQKH2tSm/4yzwIWhf5wVSLDMEPoM4HWL2gtzvWeFUoI=
+    clientSecret: AgBqAenc0jIpM+OpDJCvmaM8jiME9yrMH6DVTlHNs9+ubT/kMe7+5y92vQgW6bN5AzMt0TAH78jhFkxX4YxauEVBITF9kev7wlFevr/hoIcGbUHPFyC99YrdHI/cOhAl3EePiMUqqWX6KZU8YC99PmHdUPMvGtoHXuvBM2aDKes+OEckj5+JNHd+w4d30NvASZ4FNIbP0lXmB9RIPe1ZRkNvJDLxGrBoafZrfRqomgZIbKFpTNlCXMa/MoTqPo2xrdBCpr2S2R0uTIIej9qBJUcgDvuPs8fsi0/Q2V5EOTDzcuSYYBM6l9YeEHipUdWV6CZ3cjsoVufjXwuZje//1JeF/MQeBGf15Ec801NXv0JGuoblcqfLr70uLRb85kk8vVG9+MJfBSUVMlraOGQ1/vAbw+U4frw/cStwZoHsy/dY9oqHeqaoUBZXYHvRN5/kJBDHHjKn/v5+9BagkSdJjNY5vWGcafMsuap3N9Vs8fgnUKwFtHxNOcZA2pWTT4mYCu7RvgiRVk/IqZnkyN51u9cgCdUHGW0Or3Dh0tV+3mw/Y/EkWaeo3KKfYFxMBWRDA552HdTi2ChaJZ8566rW7DHQZdUWXHgunDbX0GCyS7qwCVmpMfv60ZYJp7OVaXjEl09FxqyDDoMKUuZPWgimHdE5OkwrtYYBu9H4sf/cRFKsEpoGL8A7gzAYULzAFtFpBG5rlbuI0Ryyb/11upwC4F2dgBRLX4T8YzbwuwYegj+3dA==
+  template:
+    metadata:
+      name: oidc-creds
+      namespace: dawarich
+
