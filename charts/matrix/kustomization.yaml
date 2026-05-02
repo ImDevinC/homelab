@@ -19,6 +19,6 @@ labels:
 
 images:
   - name: matrixdotorg/synapse
-    newTag: v1.150.0
+    newTag: v1.152.0
   - name: vectorim/element-web
     newTag: v1.12.13
