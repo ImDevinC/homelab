@@ -7,10 +7,10 @@ oidc:
   issuer: "https://login.int.imdevinc.com"
   redirectUri: "https://dawarich.int.imdevinc.com/users/auth/pocketid/callback"
   clientId:
-    existingSecret: oidc-credentials
+    existingSecret: oidc-creds
     existingSecretKeyName: clientId
   clientSecret:
-    existingSecret: oidc-credentials
+    existingSecret: oidc-creds
     existingSecretKeyName: clientSecret
 
 env:
