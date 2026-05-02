@@ -2,7 +2,7 @@ keybase:
   existingSecret: dawarich-creds
 
 oidc:
-  enabled: true
+  enabled: false
   providerName: "Sign in with Pocket ID"
   issuer: "https://login.int.imdevinc.com"
   redirectUri: "https://dawarich.int.imdevinc.com/users/auth/openid_connect/callback"
