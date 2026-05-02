@@ -24,7 +24,7 @@ images:
   - name: docker.io/linuxserver/tautulli
     newTag: 2.17.0
   - name: docker.io/linuxserver/radarr
-    newTag: 6.0.4
+    newTag: 6.1.1
   - name: ghcr.io/onedr0p/exportarr
     newTag: v2.3.0
   - name: docker.io/linuxserver/plex
