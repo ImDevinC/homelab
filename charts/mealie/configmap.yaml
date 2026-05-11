@@ -12,5 +12,5 @@ data:
   OIDC_SIGNUP_ENABLED: "True"
   OIDC_CONFIGURATION_URL: "https://login.int.imdevinc.com/.well-known/openid-configuration"
   OIDC_PROVIDER_NAME: "PocketID"
-  OIDC_AUTO_REDIRECT: "True"
+  OIDC_AUTO_REDIRECT: "False"
   OIDC_REMEMBER_ME: "True"
