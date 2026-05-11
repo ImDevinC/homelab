@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mealie-config
+data:
+  ALLOW_SIGNUP: "False"
+  PUID: "1000"
+  GUID: "1000"
+  TZ: "America/Los_Angeles"
+  BASE_URL: "https://mealie.int.imdevinc.com"
+  OIDC_AUTH_ENABLED: "True"
+  OIDC_SIGNUP_ENABLED: "True"
+  OIDC_CONFIGURATION_URL: "https://login.int.imdevinc.com/.well-known/openid-configuration"
+  OIDC_PROVIDER_NAME: "PocketID"
+  OIDC_AUTO_REDIRECT: "True"
+  OIDC_REMEMBER_ME: "True"
