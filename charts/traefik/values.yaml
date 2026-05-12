@@ -92,21 +92,22 @@ resources:
     memory: 256Mi
 priorityClassName: critical
 deployment:
-  initContainers:
-    - name: plugin-checkout
-      image: alpine/git:v2.52.0
-      command:
-        [
-          "git",
-          "clone",
-          "--branch",
-          "v0.0.1",
-          "https://github.com/imdevinc/traefik-k8s-secret-header.git",
-          "/plugin-storage/plugins/traefik-k8s-secret-header",
-        ]
-      volumeMounts:
-        - name: plugin-storage
-          mountPath: /plugin-storage
+  # Annoying solution, but we do this manually into  the PVC... I hate it
+  #initContainers:
+  #  - name: plugin-checkout
+  #    image: alpine/git:v2.52.0
+  #    command:
+  #      [
+  #        "git",
+  #        "clone",
+  #        "--branch",
+  #        "v0.0.1",
+  #        "https://github.com/imdevinc/traefik-k8s-secret-header.git",
+  #        "/plugin-storage/plugins/traefik-k8s-secret-header",
+  #      ]
+  #    volumeMounts:
+  #      - name: plugin-storage
+  #        mountPath: /plugin-storage
   additionalVolumes:
     - name: plugin-storage
       persistentVolumeClaim:
