@@ -65,6 +65,13 @@ ports:
       middlewares:
         - traefik-cloudflared-headers@kubernetescrd
 experimental:
+  localPlugins:
+    k8s-secret-header:
+      moduleName: github.com/imdevinc/traefik-k8s-secret-header
+      mountPath: /plugins-local/src/github.com/imdevinc/traefik-k8s-secret-header
+      type: localPath
+      volumeName: plugin-storage
+      subPath: plugins/traefik-k8s-secret-header
   plugins:
     traefik-oidc-auth:
       moduleName: "github.com/sevensolutions/traefik-oidc-auth"
@@ -84,3 +91,7 @@ resources:
     cpu: 20m
     memory: 256Mi
 priorityClassName: critical
+deployment:
+  additionalVolumes:
+    - name: plugin-storage
+      persistentVolumeClaim: plugin-storage-pvc
