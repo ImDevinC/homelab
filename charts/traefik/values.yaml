@@ -92,6 +92,18 @@ resources:
     memory: 256Mi
 priorityClassName: critical
 deployment:
+  initContainers:
+    - name: plugin-checkout
+      image: alpine/git:v2.52.0
+      command:
+        [
+          "clone",
+          "https://github.com/ImDevinC/traefik-k8s-secret-header.git",
+          "/plugin-storage/traefik-k8s-secret-header",
+        ]
+      volumeMounts:
+        - name: plugin-storage
+          mountPath: /plugin-storage
   additionalVolumes:
     - name: plugin-storage
       persistentVolumeClaim:
