@@ -97,6 +97,7 @@ deployment:
       image: alpine/git:v2.52.0
       command:
         [
+          "git",
           "clone",
           "--branch",
           "v0.0.1",
