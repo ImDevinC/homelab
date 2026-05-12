@@ -98,6 +98,8 @@ deployment:
       command:
         [
           "clone",
+          "--branch",
+          "v0.0.1",
           "https://github.com/ImDevinC/traefik-k8s-secret-header.git",
           "/plugin-storage/traefik-k8s-secret-header",
         ]
