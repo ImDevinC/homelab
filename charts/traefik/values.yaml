@@ -94,4 +94,5 @@ priorityClassName: critical
 deployment:
   additionalVolumes:
     - name: plugin-storage
-      persistentVolumeClaim: plugin-storage-pvc
+      persistentVolumeClaim:
+        claimName: plugin-storage
