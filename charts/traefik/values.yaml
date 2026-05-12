@@ -93,6 +93,9 @@ resources:
 priorityClassName: critical
 deployment:
   initContainers:
+    - name: volume-permissions
+      image: busybox:latest
+      command: ["sh", "-c", "mkdir -p /plugin-storage; chmod -R -v 600 /plugin-storage"]
     - name: plugin-checkout
       image: alpine/git:v2.52.0
       command:
