@@ -101,7 +101,7 @@ deployment:
           "clone",
           "--branch",
           "v0.0.1",
-          "https://github.com/ImDevinC/traefik-k8s-secret-header.git",
+          "https://github.com/imdevinc/traefik-k8s-secret-header.git",
           "/plugin-storage/plugins/traefik-k8s-secret-header",
         ]
       volumeMounts:
