@@ -96,7 +96,7 @@ deployment:
     - name: volume-permissions
       image: busybox:latest
       #command: ["sh", "-c", "mkdir -p /plugin-storage; chmod -R -v 600 /plugin-storage"]
-      command: ["sh", "-c", "whoami && ls -la /plugin-storage"]
+      command: ["sh", "-c", "ls -la /plugin-storage"]
       volumeMounts:
         - name: plugin-storage
           mountPath: /plugin-storage
