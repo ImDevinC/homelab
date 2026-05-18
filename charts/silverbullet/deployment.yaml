@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: silverbullet
+  namespace: silverbullet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: silverbullet
+  template:
+    metadata:
+      labels:
+        app: silverbullet
+    spec:
+      containers:
+        - name: silverbullet
+          image: ghcr.io/silverbulletmd/silverbullet
+          envFrom:
+            - secretRef:
+                name: silverbullet-creds
+          ports:
+            - containerPort: 3000
+              name: http
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 10m
+          volumeMounts:
+            - name: silverbullet-data
+              mountPath: /space
+      volumes:
+        - name: silverbullet-data
+          persistentVolumeClaim:
+            claimName: silverbullet-data

@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: silverbullet-creds
+  namespace: silverbullet
+spec:
+  encryptedData:
+    SB_USER: AgCQsiLPYqGvTDhvppzvR4nOjgIX3GUYEqGRvSNyvoSkoRfUG1Ozi9WcHQ5WNfbrgOOJ5IG+tuX4GlOCiDh1l3pwnSaviQcdZApDfhdNSRMJxMV4rOqKrH16EH2eTyUig2v0nufGJLCKJ8Y9u02oUiicXYZnd0h4ed6PAtRKeMm+5AqasfQAlsG1cEsq5a0DiisJmXuwjDceh1pGTCnQgpM7YMXE/S99sX3wtCu0FuudCgbFVpR3+pE7z2S6I+UAQsi1ag6rCaa0LZTZEYjXq37h5pnd5Egf+Vn1mj7G11FbcRFYmv49wYyMAP6WX6QC14CM8ByiMcGF74PkEpFFTlObY3bje4NP6ZSULJoEv5BvzyFgj9RaFTEPv47NWDPvZ7aZa5MygwTEYsVFwtBdXwrlkSr63EEav4qq4buft5I90pPTVXglxdoCNZb85Kus8qP0pRBC4i8eH8CY+4FVSDGHFd3sp73RZMNgt/cUnuE7m7SVue+oFbOI/LH/cWLMXJDnsk/nIYJJyN0+detp8gwmtQQXXq05xSZTvLLOVLj0NKGLkeK2oD3Gf9XtSEt7Q1OMUyFzLXgVEzbseBeNqvWPlRssfTocI8F01/zPLniXW7EsfqSnkdyCjMMvB6WLnxHtwP0XTQqzvA47TSKof4JDHJQerYfuAjcOS+5k5WrsMrU0/Yd2BEXYLBjbAdMWLN/dQC5EYS85uhKW3mODaa5ydLa3kj+cUT155wVkWg==
+  template:
+    metadata:
+      name: silverbullet-creds
+      namespace: silverbullet
