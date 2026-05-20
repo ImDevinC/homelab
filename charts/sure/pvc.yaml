@@ -4,6 +4,8 @@ metadata:
   name: sure
   labels:
     app: sure
+  annotations:
+    k8up.io/backup: 'true'
 spec:
   accessModes:
     - ReadWriteOnce
