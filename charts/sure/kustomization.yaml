@@ -8,6 +8,7 @@ resources:
   - pvc.yaml
   - service.yaml
   - sealed.yaml
+  - schedule.yaml
 images:
   - name: ghcr.io/we-promise/sure
     newTag: stable
