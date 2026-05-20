@@ -41,6 +41,8 @@ gateway:
       forwardedHeaders:
         insecure: true
 service:
+  annotations:
+    metallb.io/allow-shared-ip: main-entry
   spec:
     externalTrafficPolicy: Local
 ports:
