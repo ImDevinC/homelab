@@ -6,6 +6,11 @@ metrics:
 k8up:
   skipWithoutAnnotation: true
   envVars:
+    - name: BACKUP_GLOBALREPOPASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: password
+          key: repo-pass
     - name: BACKUP_GLOBALSECRETACCESSKEY
       valueFrom:
         secretKeyRef:

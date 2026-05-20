@@ -12,3 +12,16 @@ spec:
     metadata:
       name: s3-credentials
       namespace: k8up
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: password
+  namespace: k8up
+spec:
+  encryptedData:
+    repo-pass: AgBj2dip462TU0dbLMk8xaundFm476SYfuQvJKNqe7g6m9g4GHEWKJguF9e3dXbg9belJ50W817mVJxKljgxlnDRheuha6RwgG4SGjznOsVdGwQWgfLYlpKYFVJD9mhHIKM7jL7mBs2qFwhcQ6dCN9HctDjvYcNvvF1851MDhjagPJRWmzHqVaPOMnmYA8kJ6eSWxy2TJcJRQfl6EJ6NTUZtzlKT13JyY+PheZGCD1dAkEaCPtEJLCSTXKY9uxQTtMZZvzWTy0gIbJZvLtjNL0qiq0sCzFRBUNNyR3GMMPidFjP9h4aQP+red8oDDZet4hI7rvQwnhVyw/f6y9npDyKx8eYpOdVvmJCcf50KW6aOkkQPaHoDseQUND5Wxy4x212++5cg1GMOO9KGq1WDjcqjnXqY6E5QGpUPFdRmHUKmh6IYEVwhaM133imRH22TXVAnY8SxC2XlPsFIcmNzVD2ZG1Wx6Z6G0CY+Xd+v138/MfuX5TZrziuaRvZ4k6e9fkiNcvloFKdjmU0jCnigdNRMEBoG7QMfMngfP/nAHlMy+VliYSsIZ9BWKFJJXe/AiXsj+z5g7V8oEbnJPqRRb20fUoRgKo2XQr29YjYFOWiwTrtnmtCaHkGDK//nUIbIBIxvyXPNSrz0wWBxK0ylWEGjfHQFPz5J5w0Wkx1MQO3FySvvzm65ibvotCXd1A2zRYE+TdXIWOFLyQCvm4gULqKkYcB1GRlSOR6mSw==
+  template:
+    metadata:
+      name: password
+      namespace: k8up
