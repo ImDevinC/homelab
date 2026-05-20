@@ -1,0 +1,10 @@
+apiVersion: k8up.io/v1
+kind: Schedule
+metadata:
+  name: backup
+  namespace: sure
+spec:
+  backup:
+    schedule: '0 0 * * *'
+    failedJobsHistoryLimit: 2
+    successfulJobsHistoryLimit: 2
