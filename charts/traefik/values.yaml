@@ -11,6 +11,7 @@ providers:
     enabled: false
   kubernetesGateway:
     enabled: true
+    experimentalChannel: true
 gateway:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-traefik
