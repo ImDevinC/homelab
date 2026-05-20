@@ -4,6 +4,7 @@ metrics:
   prometheusRule:
     enabled: true
 k8up:
+  skipWithoutAnnotation: true
   envVars:
     - name: BACKUP_GLOBALSECRETACCESSKEY
       valueFrom:
