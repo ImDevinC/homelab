@@ -5,11 +5,12 @@ helmCharts:
     releaseName: k8up
     namespace: k8up
     repo: https://k8up-io.github.io/k8up
-    version: 4.8.6
+    version: 4.9.0
     valuesFile: values.yaml
 namespace: k8up
 resources:
+
   - namespace.yaml
   - ./crds
   - sealed.yaml
-#  - schedule.yaml
+  - schedule.yaml

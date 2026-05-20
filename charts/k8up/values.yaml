@@ -3,3 +3,17 @@ metrics:
     enabled: true
   prometheusRule:
     enabled: true
+k8up:
+  envVars:
+    - name: BACKUP_GLOBALSECRETACCESSKEY
+      valueFrom:
+        secretKeyRef:
+          name: s3-credentials
+          key: accessKeySecret
+    - name: BACKUP_GLOBALACCESSKEYID
+      valueFrom:
+        secretKeyRef:
+          name: s3-credentials
+          key: accessKeyId
+    - name: BACKUP_GLOBALS3BUCKET
+      value: imdevinc-homelab-backups

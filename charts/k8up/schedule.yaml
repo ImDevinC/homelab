@@ -3,15 +3,6 @@ kind: Schedule
 metadata:
   name: scheduled-backup
 spec:
-  backend:
-    s3:
-      bucket: imdevinc-homelab-backups
-      accessKeyIDSecretRef:
-        name: s3-credentials
-        key: accessKeyId
-      secretAccessKeySecretRef:
-        name: s3-credentials
-        key: accessKeySecret
   backup:
     schedule: 0 0 * * *
     failedJobsHistoryLimit: 2
