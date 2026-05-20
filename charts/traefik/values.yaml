@@ -40,6 +40,11 @@ gateway:
         from: All
       forwardedHeaders:
         insecure: true
+    ssh:
+      port: 22
+      protocol: TCP
+      namespacePolicy:
+        from: All
 service:
   annotations:
     metallb.io/allow-shared-ip: main-entry
@@ -66,6 +71,12 @@ ports:
     http:
       middlewares:
         - traefik-cloudflared-headers@kubernetescrd
+  ports:
+    port: 22
+    expose:
+      default: true
+    exposedPort: 22
+    protocol: TCP
 experimental:
   localPlugins:
     k8s-secret-header:

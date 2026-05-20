@@ -26,10 +26,14 @@ gitea:
 
 service:
   http:
+    annotations:
+      metallb.io/allow-shared-ip: forgejo
     type: ClusterIP
     port: 3000
   ssh:
-    type: LoadBalancer
+    annotations:
+      metallb.io/allow-shared-ip: forgejo
+    type: ClusterIP
     port: 22
 
 persistence:
