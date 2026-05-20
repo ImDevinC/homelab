@@ -12,3 +12,4 @@ resources:
   - admin-sealed.yaml
   - oauth-sealed.yaml
   - namespace.yaml
+  - tcproute.yaml

@@ -43,7 +43,7 @@ gateway:
         insecure: true
     ssh:
       port: 2222
-      protocol: HTTP
+      protocol: TCP
       namespacePolicy:
         from: All
 service:
