@@ -22,4 +22,4 @@ k8up:
           name: s3-credentials
           key: accessKeyId
     - name: BACKUP_GLOBALS3BUCKET
-      value: imdevinc-homelab-backups
+      value: /imdevinc-homelab-backups
