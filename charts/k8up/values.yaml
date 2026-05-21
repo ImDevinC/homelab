@@ -3,9 +3,13 @@ metrics:
     enabled: true
   prometheusRule:
     enabled: true
+  serviceMonitor:
+    enabled: true
 k8up:
   skipWithoutAnnotation: true
   envVars:
+    - name: BACKUP_PROMURL
+      value: http://prometheus-operated.monitoring:9090
     - name: BACKUP_GLOBALREPOPASSWORD
       valueFrom:
         secretKeyRef:
