@@ -5,6 +5,8 @@ resources:
   - namespace.yaml
   - sealed.yaml
   - service.yaml
+  - pvc.yaml
+  - schedule.yaml
 images:
   - name: thewilqq/btc-tracker
     newTag: v2026.03.08
