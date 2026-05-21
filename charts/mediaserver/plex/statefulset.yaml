@@ -16,6 +16,10 @@ spec:
     metadata:
       labels:
         app: plex
+      annotations:
+        k8up.io/backupcommand: >-
+          sh -c 'tar -czf - "/config/Library/Application Support/Plex Media Server/" | cat'
+        k8up.io/file-extension: .tar.gz
     spec:
       volumes:
         - name: mediaserver-volume

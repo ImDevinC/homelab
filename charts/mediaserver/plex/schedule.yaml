@@ -1,0 +1,15 @@
+apiVersion: k8up.io/v1
+kind: Schedule
+metadata:
+  name: backup
+spec:
+  backup:
+    schedule: '@daily-random'
+    failedJobsHistoryLimit: 2
+    successfulJobsHistoryLimit: 2
+  check:
+    schedule: '@daily-random'
+  prune:
+    schedule: '@daily-random'
+    retention:
+      keepLast: 2
