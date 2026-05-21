@@ -2,6 +2,9 @@ image:
   rootless: true
 
 gitea:
+  podAnnotations:
+    k8up.io/backupcommand: forgejo dump -f -
+    k8up.io/file-extension: .zip
   config:
     openid:
       ENABLE_OPENID_SIGNUP: false

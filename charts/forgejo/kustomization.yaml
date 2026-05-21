@@ -13,3 +13,4 @@ resources:
   - oauth-sealed.yaml
   - namespace.yaml
   - tcproute.yaml
+  - schedule.yaml
