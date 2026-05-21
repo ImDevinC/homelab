@@ -8,6 +8,7 @@ resources:
   - pvc.yaml
   - sealed.yaml
   - service.yaml
+  - schedule.yaml
 images:
   - name: ghcr.io/silverbulletmd/silverbullet
     newTag: 2.8.0
