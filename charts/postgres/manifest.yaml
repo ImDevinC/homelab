@@ -58,6 +58,9 @@ spec:
       labels:
         app.kubernetes.io/name: postgres
         app.kubernetes.io/instance: postgres
+      annotations:
+        k8up.io/backupcommand: sh -c 'PGUSER="$POSTGRES_USER" PGPASSWORD="$POSTGRES_PASSWORD" pg_dumpall --clean'
+        k8up.io/file-extension: .sql
     spec:
       serviceAccountName: postgres
       priorityClassName: important
@@ -77,6 +80,11 @@ spec:
                 secretKeyRef:
                   name: postgres-creds
                   key: pgpass
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-creds
+                  key: pguser
           ports:
             - name: http
               containerPort: 5432
@@ -91,5 +99,3 @@ spec:
         - name: creds
           secret:
             secretName: postgres-creds
----
-
