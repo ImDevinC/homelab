@@ -3,6 +3,8 @@ clusterSize: 1
 persistentVolume:
   enabled: true
   storageClass: hostpath-csi
+  annotations:
+    k8up.io/backup: 'true'
 resources:
   requests:
     cpu: 20m

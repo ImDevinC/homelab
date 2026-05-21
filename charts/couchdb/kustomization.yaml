@@ -10,3 +10,4 @@ helmCharts:
 namespace: couchdb
 resources:
   - kubeseal.yaml
+  - schedule.yaml
