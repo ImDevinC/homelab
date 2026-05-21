@@ -3,6 +3,7 @@ clusterSize: 1
 persistentVolume:
   enabled: true
   storageClass: hostpath-csi
+  existingClaims:
   annotations:
     k8up.io/backup: 'true'
 resources:
