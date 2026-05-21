@@ -4,6 +4,12 @@ metadata:
   name: backup
 spec:
   backup:
-    schedule: '0 0 * * *'
+    schedule: '@daily-random'
     failedJobsHistoryLimit: 2
     successfulJobsHistoryLimit: 2
+  check:
+    schedule: '@daily-random'
+  prune:
+    schedule: '@daily-random'
+    retention:
+      keepLast: 2
