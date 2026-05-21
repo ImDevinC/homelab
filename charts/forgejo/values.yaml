@@ -6,6 +6,15 @@ gitea:
     openid:
       ENABLE_OPENID_SIGNUP: false
       ENABLE_OPENID_SIGNIN: false
+    queue:
+      TYPE: redis
+      CONN_STR: redis://redis.redis:6379/0
+    cache:
+      ADAPTER: redis
+      HOST: redis://redis.redis:6379/1
+    session:
+      PROVIDER: redis
+      PROVIDER_CONFIG: redis://redis.redis:6379/2
     oauth2_client:
       ENABLE_AUTO_REGISTRATION: true
       USERNAME: preferred_username
