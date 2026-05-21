@@ -18,22 +18,6 @@ spec:
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  name: stream-notifier
-  namespace: argo-cd
-spec:
-  encryptedData:
-    type: AgAv2/F4Ufcc6bvjLz5B53tx4efxvc3scLpqFpNJ5HHDH7SA5HFWQg/MuRZNbju8IJL4tptkr5Rtv2D08wSFSGWFPGzxNw8+3KMfZfb3c39ieJKgHLi4Av+2ebA/iQcJeWlv56yIw/qeNGaxC0RokIC9fDUhR5D7ZlTQTsxCAka9KH4sI96lI3zQzP4KOasFbKmnINnBMbaVZv5dLdkJgsDgepKYXxgAuYOVAGD7/1D41vZDxKA0zbbyb7KP9mBQItN7qj0SWsBR9k6dkv/M7KvCv/tnpiLP/EpuQE73Be2ktPNSeJESMIqq37T/odW5YTSiHJiqkKoc/22HzuY3njc6FYIGMO1XGg2mgarzlY8aSf2jLef59hPph7nWQttbRRJyZ3AQNDQ82YNuoR3a6H5p06Zd5bzI5RmZH5Z5UKjKCKZYeuGf5QU4aIUvmh7tDtE8py4McHr+nzH0vC4qiV+j88PhQeF93GT8NIZF9WD+PHocxSf/TQU8ZjNsGemEucgsyMKA9i1lO5z+gOrpR1zLmV9/Y0iFk4ZiHZvX0x0qcknuWCkybnfwuUmam/fI+GEP96MLYWZOvjwpwT9GDLulOQe4zFQUYbJh7GsxkGhNrhLi9KbmSw182E18TTxZRlhQYnxHOzyHohpA2S+3QIcfg45Nw+m1qQhED0brxKLI1IgDFesS8aW2mhuUph8ptCpVMng=
-    url: AgB0cc7QTs0yADy9wdqQ2Xnvk68N5vV6hlKJjlMfKLCvmIKFBURxlCJlcMbzMUHpPP/KT8XUvIJbE+a+/7iOT8YdI8pO1j0UXlCZsYnX8WkS3XYA3OqIxky4DT9m1VRBXlsAhsDWOPd9J4FttZDTAR2+XM+tMSvbviyAaY9WlKMNbYSq4ZPBuT7lB1uuIq2yt0l24qZFpp6GUElnYPVg9romzErgOJ1Me9HpbpbqAe+vLo7RhMLXRy7GFTcgwjYHclwyAu+axnkb86EABnaBWQvjgGLZ+XNmkD8GtyZuArIOMJQNfamT1zF4gtdUG8NTfwkhCWYqyLMnvJNBev6M6JNYPf+ORCVEonqMJEOJwD0BrdhyrMfEigcSuIIIritOyCR3ETnQKKEsJKovKfDF4PLnUkim8Teeac+zJ5U+hzJmRJ9DtGTGRR9E8grchkWoy8HRNUmuHIfCJj+xuczXl92ulzqkMcV2RZthMjb+A+Ggsfaj42HXXuTRBLIc8PYunlj6zokdTAZNT/74yzL6CkhtG8/zbdu0jFTEk2dJqy2attceNXZKgEBiYuovIIOTXbMLwGWvjRkBLdGSnz4vSxSG3GqiO2ltK7T7WCP7LJpkL5UlUnBTEXwIfw35WufgOuMLZa/pgkUCJYS3CwenkETch2IE4rYwDJdy8ycpYORQx7qYP+FPTDyBdyMHgfwGq+YT8OZQfkLrE0bzlDV6QAcZqYft9ahexg0mIDA9oWFoO6e/7dQ3eJI=
-  template:
-    metadata:
-      name: stream-notifier
-      namespace: argo-cd
-      labels:
-        argocd.argoproj.io/secret-type: repository
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
   name: argocd-notifications-secret
   namespace: argo-cd
 spec:
