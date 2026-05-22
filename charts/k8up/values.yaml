@@ -9,7 +9,8 @@ k8up:
   skipWithoutAnnotation: true
   envVars:
     - name: BACKUP_PROMURL
-      value: http://prometheus-operated.monitoring:9090
+      #value: http://prometheus-operated.monitoring:9090
+      value: ''
     - name: BACKUP_GLOBALREPOPASSWORD
       valueFrom:
         secretKeyRef:
