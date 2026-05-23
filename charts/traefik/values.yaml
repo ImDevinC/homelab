@@ -5,7 +5,7 @@ image:
 logs:
   general:
     format: json
-    level: DEBUG
+    level: INFO
 providers:
   kubernetesIngress:
     enabled: false
