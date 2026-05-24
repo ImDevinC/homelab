@@ -6,6 +6,9 @@ resources:
   - kubeseal.yaml
   - service.yaml
   - statefulset.yaml
+  - insights.yaml
 images:
   - name: redis
     newTag: 8.6.2
+  - name: redis/redisinsight
+    newTag: 3.4.2

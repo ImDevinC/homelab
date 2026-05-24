@@ -1,0 +1,112 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: redisinsight
+  name: redisinsight
+spec:
+  ports:
+  - name: http
+    port: 5540
+    protocol: TCP
+    targetPort: 5540
+  selector:
+    service: redisinsight
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: redisinsight
+spec:
+  hostnames:
+  - redisinsight.int.imdevinc.com
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: traefik-gateway
+    namespace: traefik
+  rules:
+  - backendRefs:
+    - group: ""
+      kind: Service
+      name: redisinsight
+      namespace: redis
+      port: 5540
+      weight: 1
+    matches:
+    - path:
+        type: PathPrefix
+        value: /
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: redisinsight
+    service: redisinsight
+  name: redisinsight
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redisinsight
+      service: redisinsight
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: redisinsight
+        service: redisinsight
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+      - env:
+        - name: RI_REDIS_HOST
+          value: redis-master.redis
+        envFrom:
+        - secretRef:
+            name: insights
+        image: redis/redisinsight:latest
+        imagePullPolicy: IfNotPresent
+        name: redisinsight
+        ports:
+        - containerPort: 5540
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /data
+          name: data
+      restartPolicy: Always
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: insights-data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: insights-data
+  labels:
+    service: redisinsight
+  namespace: redis
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: insights
+  namespace: redis
+spec:
+  encryptedData:
+    RI_ENCRYPTION_KEY: AgAIqI3V4A7Za3vom1hQoYFJrpwR0x900WU/jkC/QgqtiQBWBz599M3uVIBb1wAIFtxb9c/sL/hTmwJeAMPtZn9A3EUbnVtKG4PZ6qwSa/HrxKYCS116S27PucOgqFFQQiauRIp+3wdhMiw+cHGzUgzWuy7J0F3pv4LI2KBl2JaeHovdpuDCVX6ytYMSKfYVQmHC4X42Sesm3OIxGWRx3jQEDgzsGlcdvRhmWx1/kgeG6SW2v1pugjGp8nRHeqaUacSiPtWx9ySYzkmfvzgui+9igzMx/4smID0MPLL8Jl6aPv6bsRUEXUpw4Qenqr0Gc5iV5WXGE8kpHM13ks6SCLLARWcX+cFrtmm7+gKbj+XksRq+ZlIEHQ9pyl8VK5I8OqCQUv5IitA9bc6nwCGyQs6Pg95meR5jNst+Z1qfdmo6sxqqJU4Ie5B1yGjC1wqn8oR9oq+MDs3EOv/Px/GVhARlWEtJJ7/JiRp+J5T4ddgMRXbLzodyU0mG+9QWPEuPlYts8UNPvi/XAsp4pd7aCSR8Fvx7Z/JcfrBC4Q4mzXPOoUspom88IG+qwMVGuQvyYh6LF2O/0ZsDlWQdDKZ4dWwaWT90I+Sxt3WFqgORI0Efbkyaa6e8WIyC+uiLrxjEB93UyD1j6HY2Z443xwPWsNtR58TqTy1H1Ym3SMPYYOBr+cPHyNj0Blnp3aDBgtWxeE0/EfDP7gGSnAd95vQc0tsTqr7rNGxtcASpD0A2/k5Qbb9D3MYco59lRkWeZw==
+  template:
+    metadata:
+      name: insights
+      namespace: redis
