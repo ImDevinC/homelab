@@ -110,3 +110,35 @@ spec:
     metadata:
       name: insights
       namespace: redis
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: insight-oidc
+spec:
+  plugin:
+    traefik-oidc-auth:
+      Provider:
+        ClientId: urn:k8s:secret:insight-oidc:CLIENT_ID
+        ClientSecret: urn:k8s:secret:insight-oidc:CLIENT_SECRET
+        TokenValidation: IdToken
+        Url: https://login.int.imdevinc.com
+      Scopes:
+        - openid
+        - profile
+        - email
+      Secret: PMYZT3D2J4da20RsSIMMZaArKI6d3pxt
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: insight-oidc
+  namespace: redis
+spec:
+  encryptedData:
+    CLIENT_ID: AgCC65t2kCQ4hNbIq3SPu4bCqBTo+5xHwVaYcBvOV4RELu01BUdqhK9eJLHF+ILZEpG0lWO8jQesmt45iGZCHdojQjbOm09GnGq1gW3IkUolyifRBXBr8cyMd6yoSUXfW3nlIpGtEvCtX52OD9YRYJRCWKQ0ATPwTHK8cfs14fz7p2qDHExuLFHjhZ0O1SPuqPPOUJDaPCbOB4ROk26GiwRJgOsId6xFi/9KYZATOS+722V43uke8xbx6j8BwEbEEjx9pra59uGS/mxMbrg/8UTqqpJ6aBlURcYLW5chMZeCKRN2h/dgTqjh6zRyscUOsGEkJ11w+7nBVn6NjPYH2CGqLEMWgY2H/SvIjQZ62UchZLeRrbnapM7aZ0QJKktQSUTyJGhDwD39u2HjpkNoc9dGVKZZ1gYCHBdc+jV64EXJTNHEidyDBeLpOa1hCty9ktfxvC2kJ6WNwJ6WfVIbPH7hlWbPw+gcTc1Y1R0NGUZTA9thAJBQ+wZwL4NB2cwrGgzo6bf9E/O8FLfG6eNJBMVew+3m2aV4WzlT1KS3jHDKqgl1f5XQBbBWleekVFXpQkEmEVVm4UFHs5PcEil8Qa8cDjXuxZP6SuI+nwMbMoDcMf4h/CGX7DAGNTw+1Ra41swPAho6UC+nsBzE9H1Z6vKp0A7X4AMAJzL2YC8FIqM8nNSnC96LOQ9DGTxIK2XmVHd1Pp1+rZXAlFZjgsPtsC+E9nY1YygfG9sJztIYh2AWL5yeSJI=
+    CLIENT_SECRET: AgCABIbOZMk0b3XHm+RWvzFQSWrUSkymGGH6Qq+zBPiBOzyBe7rFypNlXgw91EgCqs/sK2ChY6hepL00OshdV1AY8U4jDMk9BBv80TN4LYuQTQAlqOiXcvxGmqNb+3FHzn+WsmUJs6vyIrlcc3chHu1620Zag3jDdPB37I3Ns6qwcOpTys2NDKroBNm+lckUMGQBRKDk9an6wrgMrHx+S08E+SlwrOaAxZQ4XUxtFwel+Srph5NjrOd3nJI+5+8bQXhGJm/wCc2/NQZN+HGq6LmnMA3qQMhJXUw9pQ+NyfST/2lIjwJ8ok7mN6D72BzQkUqW01ak3/R4ujh2FbYUoRlQM7ANpAHdY2qyF3PpOvYg81YiN+oUxWG3/6T1n6xyso6S4OuA6ogyzQEv7bW7KPqJX3keR2GCM1CIp07nY32sJqN3q02c88J/H88a/62jbeprDMxiG8ZNeCWkEauB6OF0r8UGX/Wk3Lvhx8/Mp8PMlLjwvdBCs8yKV/LA8EFuR0eOuqiPfAVLpLL0zZwgA/JeHEZq/xQrm29v24QoNOnC1Y/b/VicOIYAYmdvtVSUA58ztFvrmeqMTB7lBKIXN3rSGN/gvTNzLyDNVlHbw2wAfsn20XHKu86x7bfpMt5cbX5YTm62FquZ5LNYBJXfXcVBuqN3dFvA6rBIv+wIOg1rBcquqkbWvjmRTLhGlG+9eSC/Y2UZwTOFnJd/NwIe/i0jp1FfiGFd0e+zsPJ7VxEZUQ==
+  template:
+    metadata:
+      name: insight-oidc
+      namespace: redis
