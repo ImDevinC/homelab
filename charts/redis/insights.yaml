@@ -37,7 +37,7 @@ spec:
       - extensionRef:
             group: traefik.io
             kind: Middleware
-            name: stash-oidc
+            name: insight-oidc
         type: ExtensionRef
     matches:
     - path:
