@@ -33,6 +33,12 @@ spec:
       namespace: redis
       port: 5540
       weight: 1
+    filters:
+      - extensionRef:
+            group: traefik.io
+            kind: Middleware
+            name: stash-oidc
+        type: ExtensionRef
     matches:
     - path:
         type: PathPrefix
