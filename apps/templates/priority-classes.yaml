@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/imdevinc/homelab.git
+    repoURL: git@git.int.imdevinc.com:ImDevinC/homelab.git
     targetRevision: HEAD
     path: charts/priority-classes
   destination:

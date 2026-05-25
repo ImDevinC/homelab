@@ -14,7 +14,7 @@ spec:
   project: default
   source:
     path: charts/nvidia-devices
-    repoURL: https://github.com/imdevinc/homelab.git
+    repoURL: git@git.int.imdevinc.com:ImDevinC/homelab.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
