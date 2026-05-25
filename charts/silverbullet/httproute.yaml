@@ -21,7 +21,7 @@ spec:
           port: 3000
     - matches:
         - path:
-            type: PathRegexp
+            type: RegularExpression
             value: ^\./client/.*
       backendRefs:
         - name: silverbullet
