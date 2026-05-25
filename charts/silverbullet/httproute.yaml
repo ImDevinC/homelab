@@ -14,7 +14,7 @@ spec:
   rules:
     - matches:
         - path:
-            type: Path
+            type: Exact
             value: /service_worker.js
       backendRefs:
         - name: silverbullet
