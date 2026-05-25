@@ -16,7 +16,7 @@ spec:
       containers:
         - name: silverbullet
           image: ghcr.io/silverbulletmd/silverbullet
-          args: ["--user", "\${SB_USER}"]
+          args: ["--user", "\\${SB_USER}"]
           envFrom:
             - secretRef:
                 name: silverbullet-creds
