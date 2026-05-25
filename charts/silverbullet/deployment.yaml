@@ -16,9 +16,9 @@ spec:
       containers:
         - name: silverbullet
           image: ghcr.io/silverbulletmd/silverbullet
-          #envFrom:
-          #  - secretRef:
-          #      name: silverbullet-creds
+          envFrom:
+            - secretRef:
+                name: silverbullet-creds
           ports:
             - containerPort: 3000
               name: http
