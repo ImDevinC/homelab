@@ -19,3 +19,41 @@ spec:
       backendRefs:
         - name: silverbullet
           port: 3000
+      filters:
+        - extensionRef:
+              group: traefik.io
+              kind: Middleware
+              name: oidc
+          type: ExtensionRef
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: oidc
+spec:
+  plugin:
+    traefik-oidc-auth:
+      Provider:
+        ClientId: urn:k8s:secret:oidc:client-id
+        ClientSecret: urn:k8s:secret:oidc:client-secret
+        TokenValidation: IdToken
+        Url: https://login.int.imdevinc.com
+      Scopes:
+        - openid
+        - profile
+        - email
+      Secret: PMYZT3D2J4da20RsSIMMZaArKI6d3pxt
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: oidc
+  namespace: silverbullet
+spec:
+  encryptedData:
+    client-id: AgBt92nW3/FFDDJjJr5naMl+ydWBBi2sniTSRky5aagcSm7jH7Tm8EZGQ19O/mCXs7zu9saNphLDzsDVvazhK3PWPuEvpDVPLJxsOhKwFQogiNi8eTDdmccYWqInpiWu1IIEnI/UAK5csVNKaU/GDlwdylRBUdw8FKeD935q0sc3I4rL95oZWpVTNI9lBfce2U0i/OuQ6Suw4qg/Eyschv2ObUpP/Ulb8ILptrhfId5wg9VX5I2LHMj3hKa7jPQ9MwGCqF2+CvJHUpZzpGbBC/5iX2PQsIvXV9Y4pP/J3clorpTkVygusT7fXh0fwRdMXJaU4q+bPhPkK92ZJcIt4wvZT/A0pkC7YufR+DFovwxNbEREjpNJ2mFKFZh3B8i6HiDjxWjFvYps3uKyOKeHzRa6FIRYD8HHcle16BdV33UGRSMFL834SwoAi2trI6bc03bZKfP9uiH47jEIWRBme6HOQinroVFJs6uvtgwh74W60xZ5onBQ7Z9/KoqzeifIVQvFv/lDcJP/hE5B7DZbBw4srteCythlM8AZMiElG41jQ+fG7k1Kw26YwFrTbJ0HsntTxDdEQaUX0RviraRepzOE3UhQtvC5cmF62ix32UXbXQib7N9FBLXiaDTVwrzS/X74sVkJFVZxOG9QhP1u+900zTPzzOWlHAUEDvveMPPwagC3Jswkw6yFAmh/PutPSmhbS6yKeKe+qsOjfPvN/Fojc0Si22Lqc5N7gR0VMog3JFMerBI=
+    client-secret: AgA1PPrpzacKzWXn8wwMRz9mPRjcJWNQkPZ1MWHNDG+J81/GU6iwRLERvesLjLZow+MdvVJTJJj0Y9XrwyDGCXwC5QPOtNGAZeZKN/mC5Z0uqXT2kd0LAZ4X4HEM/88Fzvu9kckU3iCOn7hURTFJdwunIMa1ejti4H2nQyD3v5NNRFRDR6jPcwFf8pRIag8VxiNNKrVOXPTxM8RXRkLbrR8cjXPFPlXVwSh7PnCn29otlSV1rJYoXcLrSCYBwc6+1YHoqFcGtLQ1wJHqde+dPc550z38AbpHAQOUL6Un7kSGTgjwUg6TpLWamMR0cu3gXyj4UlPWIw2xt+YZcFlznmB9nXsbAIxF9Gm7HUIEk6h3P2gRjEgngG+Yt+PZSn1ckAVCUnzw2t4WHFksEvNBUhBgdmEGZLur7Vi8PjZ81ZJivNU05GPd8o2Cfh4Xnn5Vpmby3tDUy+GZwcQZG3PQOKNNN/TkerzXNkgMOKyXIwwyngHxl0OneUVyfOBCNuxZhgV0AHquDjshteolP4Hu1uXFCntdpGVYLlYMS97rH1xDiJbTPEuc2+rMPe5SQ5cXbmLKBtVLBAxU2THlRUdxDqXHy2tGbhuX82ZWrrnGPrbYgxg1QnfOdCfcZpyB4bYME12OSzaL2CjzTsd3pRDPeHck0S6b+0gP8dA/gzcJE7EBGXqAvEZZfa/RmpP2IEISnodGqOm5w/0clOWZRhzvbUSKbirOB6l3gs10qp/u8cDFFw==
+  template:
+    metadata:
+      name: oidc
+      namespace: silverbullet
