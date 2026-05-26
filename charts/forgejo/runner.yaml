@@ -126,8 +126,6 @@ spec:
               value: /certs/client
             - name: DOCKER_TLS_VERIFY
               value: '1'
-            - name: DOCKER_CONFIG
-              value: /docker-config
           resources:
             limits:
               cpu: '1'
@@ -141,7 +139,7 @@ spec:
             - name: docker-certs
               mountPath: /certs
             - name: docker-config
-              mountPath: /docker-config
+              mountPath: /data/.docker
             - name: runner-data
               mountPath: /data
             - name: tmp
