@@ -138,8 +138,6 @@ spec:
           volumeMounts:
             - name: docker-certs
               mountPath: /certs
-            - name: docker-config
-              mountPath: /data/.docker
             - name: runner-data
               mountPath: /data
             - name: tmp
@@ -156,6 +154,17 @@ spec:
               type: RuntimeDefault
         - name: daemon
           image: docker.io/docker:29.5.2-dind
+          command:
+            - /bin/sh
+            - -lc
+          args:
+            - |
+              dockerd-entrypoint.sh dockerd >/proc/1/fd/1 2>&1 &
+              until docker info >/dev/null 2>&1; do
+                sleep 1
+              done
+              docker pull ghcr.io/catthehacker/ubuntu:runner-latest
+              wait
           env:
             - name: DOCKER_TLS_CERTDIR
               value: /certs
@@ -173,6 +182,8 @@ spec:
           volumeMounts:
             - name: docker-certs
               mountPath: /certs
+            - name: docker-config
+              mountPath: /root/.docker
       volumes:
         - name: docker-certs
           emptyDir: {}
