@@ -126,6 +126,8 @@ spec:
               value: /certs/client
             - name: DOCKER_TLS_VERIFY
               value: '1'
+            - name: DOCKER_CONFIG
+              value: /docker-config
           resources:
             limits:
               cpu: '1'
@@ -138,6 +140,8 @@ spec:
           volumeMounts:
             - name: docker-certs
               mountPath: /certs
+            - name: docker-config
+              mountPath: /docker-config
             - name: runner-data
               mountPath: /data
             - name: tmp
@@ -174,6 +178,12 @@ spec:
       volumes:
         - name: docker-certs
           emptyDir: {}
+        - name: docker-config
+          secret:
+            secretName: image-pull-secret
+            items:
+              - key: .dockerconfigjson
+                path: config.json
         - name: runner-data
           emptyDir: {}
         - name: tmp
