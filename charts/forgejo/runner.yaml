@@ -114,6 +114,10 @@ spec:
             - -c
           args:
             - |
+              while [ ! -f /cache-state/ready ]; do
+                echo 'waiting for image cache warmup...'
+                sleep 1
+              done
               while ! nc -z localhost 2376 </dev/null ; do
                 echo 'waiting for docker daemon...' ;
                 sleep 5 ;
@@ -140,6 +144,8 @@ spec:
               mountPath: /certs
             - name: runner-data
               mountPath: /data
+            - name: cache-state
+              mountPath: /cache-state
             - name: tmp
               mountPath: /tmp
           securityContext:
@@ -154,17 +160,6 @@ spec:
               type: RuntimeDefault
         - name: daemon
           image: docker.io/docker:29.5.2-dind
-          command:
-            - /bin/sh
-            - -lc
-          args:
-            - |
-              dockerd-entrypoint.sh dockerd >/proc/1/fd/1 2>&1 &
-              until docker info >/dev/null 2>&1; do
-                sleep 1
-              done
-              docker pull ghcr.io/catthehacker/ubuntu:runner-latest
-              wait
           env:
             - name: DOCKER_TLS_CERTDIR
               value: /certs
@@ -182,8 +177,41 @@ spec:
           volumeMounts:
             - name: docker-certs
               mountPath: /certs
+        - name: image-cache
+          image: docker.io/docker:29.5.2-dind
+          command:
+            - /bin/sh
+            - -lc
+          args:
+            - |
+              until docker info >/dev/null 2>&1; do
+                sleep 1
+              done
+              docker pull ghcr.io/catthehacker/ubuntu:runner-latest
+              touch /cache-state/ready
+          env:
+            - name: DOCKER_HOST
+              value: tcp://localhost:2376
+            - name: DOCKER_TLS_VERIFY
+              value: '1'
+            - name: DOCKER_CERT_PATH
+              value: /certs/client
+          resources:
+            limits:
+              cpu: '1'
+              ephemeral-storage: 3Gi
+              memory: 4Gi
+            requests:
+              cpu: 100m
+              ephemeral-storage: '0'
+              memory: 64Mi
+          volumeMounts:
+            - name: docker-certs
+              mountPath: /certs
             - name: docker-config
               mountPath: /root/.docker
+            - name: cache-state
+              mountPath: /cache-state
       volumes:
         - name: docker-certs
           emptyDir: {}
@@ -193,6 +221,8 @@ spec:
             items:
               - key: .dockerconfigjson
                 path: config.json
+        - name: cache-state
+          emptyDir: {}
         - name: runner-data
           emptyDir: {}
         - name: tmp
