@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: charts/cloudflared
-    repoURL: git@github.com:ImDevinC/homelab.git
+    repoURL: git@git.int.imdevinc.com:ImDevinC/homelab.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
