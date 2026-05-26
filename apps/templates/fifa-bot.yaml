@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: charts/fifa-bot
-    repoURL: git@git.int.imdevinc.com:ImDevinC/homelab.git
+    repoURL: ssh://git@git.int.imdevinc.com:2222/imdevinc/homelab.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
