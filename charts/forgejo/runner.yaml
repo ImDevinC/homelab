@@ -1,0 +1,178 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: runner-secret
+  namespace: forgejo
+spec:
+  encryptedData:
+    runner-uuid: AgCK2p005NXRS12c0xSRjHrHasrWXudcmTK12Kp81POD7UUpFcTZV80kE2y0rXBulP2mvCVmStZm1gnQtXTzZLr5aGTOuSFYg08M6bDg6mBXViSUoHNmVnCYB0BuOJAyZxwK5C8ZRMWouZ1r9h+5IOcGxSQ+ClDowKyySXkV5burMTI/rPUQBzRRgTrcQNQCeOdxhmljwZn/R7CLhKKOnpnuwzMLpNADVE9TxNBHABJtDTLyQ64v3fnmSTHcQJ2cWMA5+UKfkWu0PScxEgOnVyBx7jSbp6H7HbNiSCzPetavmP60BEMSEOtQUbkJq+4sI/dXniAQ11w3Jzirb3kr1E7mnF8JgW5AvLgBstz/zk+vdDj7OyGhw+ibPFB3UcYl+21aHkfLTEZB1o5EE5DRI19WIAtQWbZKOyVcZEFizCs5X/+/6YjLqDXgr5dAeWtPeqvb0wd5+yQxF9jdyk7o+TD5ImFw90Zm6z8aCe3SUcp+tuI6s5JMPau0QmYwCmZXaKLmSxL9HTLVLsZVBo70Jap3Ys17g9W1xaDXx0vGETt7kJdvQKpXatCCy+LFmKIU69tcuD2la1JsW3dQG8AXtbMuv/u2UmgCxLXKPKHB/HSs+hocleBtZbSKFF6vdYGTwXTPjpkWokTwlwcW1F5DFm0cOl/U85ZupD50V1KTEcUYYkUbttlz4eyMBdzSPVL+jKgWpoIJ9dTqWTpKnJufskAnH7AbtOs7e5MXURa++ZdsA4ahkUQ=
+    token: AgCG4pNJW4deamiN/ADKIiuLGFYcMhvq0YA9AaFwoEDeVwOdoxLg9pL/8qXycr6fWAOREJKxdEd9PTXUB624jDZIhU/rO6o/D1mI9W3BrP7RBXw72bXC+Gil2LlfwWUF6m32Z88YpJcg1GfpqS3wBSqr612bHce71CiRi0M0NwgqnezZ+jshxI75xHWwsATVQJEqXp26zypqxgqR1mi3C2rxaxV/rqIO/kpOfvOOvKenN3kOwis8mpk95VPGYz5H+ZUmOwAB9ujb1PeUrr0AFVDTtK8B0ccNoR7GUOoSALNzU0KV1GffleP+cVXa7j3gdm6jay4Hz2LM/n+gpbLPT+NVRinGlxhsZG3JNR3aVvsuwLSGRiCUlAVmOlZ7AHIPhCnTh0rIH/0KtvREblAfcdhdTgBfpQg/pzPSTT+b3VFOPjbMWcwRCE7TLHCB+fXDFjvXFkNe73rchA2v0hEST5YypNwrTKFD+s2q5ChJYO7rK/tfjf7voL3BjJlV2iwp+j17g21NYZE/8cojC81L1K/VBRRv3WQ+J4MQSgSJuodZjwQ4g09aVhwsBM94GxxeSF1bfB059r1boLpPNlExSroGw9GnVrXs93pgEVIcVnUUJJINdN1Nsbooeqz7QnHrrw6NzMlUhrSIsZOQiNd9vfQzGxu4JKvtuXI0+UKZ2o0vyY5Eq2UlaxluHTVfHKAiYgK/aEHRUP/xNSUoSmLm1WQIgpuS+FrQjd0aiRWd4l3LT9/r8bl2NRvK
+  template:
+    metadata:
+      name: runner-secret
+      namespace: forgejo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forgejo-runner
+  labels:
+    app: forgejo-runner
+    app.kubernetes.io/component: forgejo-runner
+    app.kubernetes.io/instance: forgejo-runner
+    app.kubernetes.io/managed-by: Kustomize
+    app.kubernetes.io/name: forgejo-runner
+  annotations:
+    argocd.argoproj.io/sync-wave: '1'
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: forgejo-runner
+  template:
+    metadata:
+      name: forgejo-runner
+      labels:
+        app: forgejo-runner
+        app.kubernetes.io/component: forgejo-runner
+        app.kubernetes.io/instance: forgejo-runner
+        app.kubernetes.io/managed-by: Kustomize
+        app.kubernetes.io/name: forgejo-runner
+    spec:
+      automountServiceAccountToken: false
+      restartPolicy: Always
+      initContainers:
+        - name: runner-init
+          image: code.forgejo.org/forgejo/runner:12.10.1
+          command:
+            - /bin/bash
+            - -c
+          args:
+            - |
+              cat > /data/config.yml << EOF
+              log:
+                level: info
+
+              runner:
+                file: /data/.runner
+                capacity: 1
+                envs:
+                  DOCKER_HOST: tcp://localhost:2376
+                  DOCKER_TLS_VERIFY: "1"
+                  DOCKER_CERT_PATH: /certs/client
+                options: -v /certs/client:/certs/client
+                valid_volumes:
+                  - /certs/client
+
+              server:
+                connections:
+                  forgejo:
+                    url: http://forgejo-http.forgejo.svc.cluster.local:3000
+                    uuid: "${RUNNER_UUID}"
+                    token: "${RUNNER_TOKEN}"
+              EOF
+          env:
+            - name: RUNNER_UUID
+              valueFrom:
+                secretKeyRef:
+                  name: runner-secret
+                  key: runner-uuid
+            - name: RUNNER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: runner-secret
+                  key: token
+          resources:
+            limits:
+              cpu: '0.5'
+              ephemeral-storage: 100Mi
+              memory: 64Mi
+            requests:
+              cpu: 100m
+              ephemeral-storage: '0'
+              memory: 64Mi
+          volumeMounts:
+            - name: runner-data
+              mountPath: /data
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault
+      containers:
+        - name: runner
+          image: code.forgejo.org/forgejo/runner:12.10.1
+          command:
+            - /bin/bash
+            - -c
+          args:
+            - |
+              while ! nc -z localhost 2376 </dev/null ; do
+                echo 'waiting for docker daemon...' ;
+                sleep 5 ;
+                done ;
+              forgejo-runner --config /data/config.yml daemon
+          env:
+            - name: DOCKER_HOST
+              value: tcp://localhost:2376
+            - name: DOCKER_CERT_PATH
+              value: /certs/client
+            - name: DOCKER_TLS_VERIFY
+              value: '1'
+          resources:
+            limits:
+              cpu: '1'
+              ephemeral-storage: 3Gi
+              memory: 4Gi
+            requests:
+              cpu: 100m
+              ephemeral-storage: '0'
+              memory: 64Mi
+          volumeMounts:
+            - name: docker-certs
+              mountPath: /certs
+            - name: runner-data
+              mountPath: /data
+            - name: tmp
+              mountPath: /tmp
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault
+        - name: daemon
+          image: docker.io/docker:29.5.2-dind
+          env:
+            - name: DOCKER_TLS_CERTDIR
+              value: /certs
+          resources:
+            limits:
+              cpu: '1'
+              ephemeral-storage: 3Gi
+              memory: 4Gi
+            requests:
+              cpu: 100m
+              ephemeral-storage: '0'
+              memory: 64Mi
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: docker-certs
+              mountPath: /certs
+      volumes:
+        - name: docker-certs
+          emptyDir: {}
+        - name: runner-data
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
