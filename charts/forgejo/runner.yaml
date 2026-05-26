@@ -189,6 +189,7 @@ spec:
               done
               docker pull ghcr.io/catthehacker/ubuntu:runner-latest
               touch /cache-state/ready
+              tail -f /dev/null
           env:
             - name: DOCKER_HOST
               value: tcp://localhost:2376
