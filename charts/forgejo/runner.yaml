@@ -59,7 +59,7 @@ spec:
                 labels:
                   - ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:runner-latest
                 envs:
-                  DOCKER_HOST: tcp://localhost:2376
+                  DOCKER_HOST: tcp://${POD_IP}:2376
                   DOCKER_TLS_VERIFY: "1"
                   DOCKER_CERT_PATH: /certs/client
 
@@ -76,6 +76,10 @@ spec:
                     token: "${RUNNER_TOKEN}"
               EOF
           env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
             - name: RUNNER_UUID
               valueFrom:
                 secretKeyRef:
