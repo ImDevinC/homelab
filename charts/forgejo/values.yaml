@@ -35,6 +35,8 @@ gitea:
       provider: "openidConnect"
       autoDiscoverUrl: "https://login.int.imdevinc.com/.well-known/openid-configuration"
       existingSecret: forgejo-oauth
+      groupClaimName: "groups"
+      adminGroup: "global_admin"
 
 service:
   http:
