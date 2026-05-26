@@ -5,3 +5,7 @@ resources:
   - config.yaml
   - job.yaml
   - secrets.yaml
+images:
+  - name: ghcr.io/imdevinc/pmm
+    newName: imdevinc/pmm
+    newTag: latest
