@@ -21,7 +21,7 @@ gitea:
     oauth2_client:
       ENABLE_AUTO_REGISTRATION: true
       USERNAME: preferred_username
-      OPENID_CONNECT_SCOPES: email profile openid
+      OPENID_CONNECT_SCOPES: email profile openid groups
     server:
       DOMAIN: git.int.imdevinc.com
       ROOT_URL: https://git.int.imdevinc.com/
