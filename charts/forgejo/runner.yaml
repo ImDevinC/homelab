@@ -56,6 +56,8 @@ spec:
               runner:
                 file: /data/.runner
                 capacity: 1
+                labels:
+                  - ubuntu-latest:docker://node:20-bookworm
                 envs:
                   DOCKER_HOST: tcp://localhost:2376
                   DOCKER_TLS_VERIFY: "1"
