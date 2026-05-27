@@ -3,6 +3,7 @@ kind: CronJob
 metadata:
   name: pmm-missing
 spec:
+  suspend: true
   schedule: "0 1 * * *" # Every day at 1am
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
