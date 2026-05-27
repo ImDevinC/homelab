@@ -5,7 +5,7 @@ metadata:
 data:
   config.yaml: |
     settings:
-      custom_repo: https://github.com/ImDevinC/plex-meta-manager-configs
+      custom_repo: https://git.int.imdevinc.com/ImDevinC/plex-meta-manager-configs
       asset_directory: /assets
       asset_folders: true
       asset_depth: 0
