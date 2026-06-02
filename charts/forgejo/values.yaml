@@ -1,6 +1,11 @@
 image:
   rootless: true
 
+signing:
+  enabled: true
+  ssh:
+    existingSecret: forgejo-ssh
+
 gitea:
   podAnnotations:
     k8up.io/backupcommand: forgejo dump -f -
