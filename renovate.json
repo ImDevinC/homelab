@@ -1,7 +1,8 @@
 {
-  "username": "renovate",
+  "username": "imdevinc",
   "gitAuthor": "Renovate Bot <renovate+app@imdevinc.com>",
   "onboarding": false,
+  "platform": "forgejo",
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
   "extends": [
