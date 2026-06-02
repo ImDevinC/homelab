@@ -4,7 +4,7 @@ image:
 signing:
   enabled: true
   ssh:
-    existingSecret: forgejo-ssh
+    existingSecret: forgejo-ssh-key
 
 gitea:
   podAnnotations:
