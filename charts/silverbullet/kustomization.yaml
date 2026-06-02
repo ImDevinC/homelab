@@ -11,4 +11,4 @@ resources:
   - schedule.yaml
 images:
   - name: ghcr.io/silverbulletmd/silverbullet
-    newTag: 2.8.0
+    newTag: 2.8.1
