@@ -194,6 +194,7 @@ spec:
                 sleep 1
               done
               docker pull ghcr.io/catthehacker/ubuntu:runner-latest
+              docker pull ghcr.io/renovatebot/renovate:latest
               touch /cache-state/ready
               tail -f /dev/null
           env:
