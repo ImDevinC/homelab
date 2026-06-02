@@ -19,5 +19,5 @@ images:
   - name: docker.io/docker
     newTag: 29.5.2-dind
   - name: code.forgejo.org/forgejo/runner
-    newTag: 12.10.1
+    newTag: 12.10.2
 
