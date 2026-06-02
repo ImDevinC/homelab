@@ -1,6 +1,7 @@
 {
   "username": "imdevinc",
   "gitAuthor": "Renovate Bot <renovate+app@imdevinc.com>",
+  "endpoint": "https://git.int.imdevinc.com/api/v1/",
   "onboarding": false,
   "platform": "forgejo",
   "prConcurrentLimit": 0,
