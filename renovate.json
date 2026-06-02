@@ -1,8 +1,7 @@
 {
   "username": "renovate",
-  "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
+  "gitAuthor": "Renovate Bot <renovate+app@imdevinc.com>",
   "onboarding": false,
-  "platform": "github",
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
   "extends": [
