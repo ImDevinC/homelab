@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shelfmark
+  labels:
+    app: shelfmark
+    app.kubernetes.io/name: shelfmark
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shelfmark
+      app.kubernetes.io/name: shelfmark
+  template:
+    metadata:
+      labels:
+        app: shelfmark
+        app.kubernetes.io/name: shelfmark
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: shelfmark
+          image: ghcr.io/calibrain/shelfmark:1.3.0
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          ports:
+            - name: http
+              containerPort: 8084
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: "/downloads"
+              subPath: "downloads"
+            - name: mediaserver-volume
+              mountPath: "/books"
+              subPath: "media/books"
+            - name: mediaserver-volume
+              mountPath: "/config"
+              subPath: "config/shelfmark"
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: HIDE_LOCAL_AUTH
+              value: "true"
+            - name: DISABLE_LOCAL_AUTH
+              value: "true"
+            - name: OIDC_AUTO_REDIRECT
+              value: "true"
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
