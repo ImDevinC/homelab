@@ -13,4 +13,4 @@ resources:
   - httproute.yaml
 images:
   - name: ollama/ollama
-    newTag: 0.22.1
+    newTag: 0.30.0
