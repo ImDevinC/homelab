@@ -47,7 +47,6 @@ metadata:
   name: pmm-repo
 data:
   SERVER_TYPE: forgejo
-  FORGEJO_URL: https://git.int.imdevinc.com
   FORGEJO_OWNER: imdevinc
   FORGEJO_REPO: plex-meta-manager-configs
 ---
