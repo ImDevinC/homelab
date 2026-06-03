@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookorbit
+  labels:
+    app: bookorbit
+    app.kubernetes.io/name: bookorbit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookorbit
+      app.kubernetes.io/name: bookorbit
+  template:
+    metadata:
+      labels:
+        app: bookorbit
+        app.kubernetes.io/name: bookorbit
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: bookorbit
+          image: ghcr.io/bookorbit/bookorbit:1.8.0
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: "/books"
+              subPath: "media/books"
+            - name: mediaserver-volume
+              mountPath: "/data"
+              subPath: "config/bookorbit"
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: OIDC_ALLOW_LOCAL_ISSUERS
+              value: "true"
+            - name: LOG_LEVEL
+              value: "info"
+            - name: APP_URL
+              value: "https://bookorbit.int.imdevinc.com"
+          envFrom:
+            - secretRef:
+                name: bookorbit-creds
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media

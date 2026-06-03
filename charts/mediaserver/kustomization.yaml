@@ -17,6 +17,7 @@ resources:
   - recommendarr
   - flaresolverr
   - shelfmark
+  - bookorbit
 images:
   - name: thomst08/requestrr
     newTag: v2.1.9
@@ -48,6 +49,8 @@ images:
     newTag: v3.5.0
   - name: ghcr.io/calibrain/shelfmark
     newTag: 1.3.0
+  - name: ghcr.io/bookorbit/bookorbit
+    newTag: 1.8.0
 replicas:
   - name: codex
     count: 0
