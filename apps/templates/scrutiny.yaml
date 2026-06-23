@@ -17,7 +17,7 @@ spec:
   project: default
   source:
     path: charts/scrutiny
-    repoURL: ssh://git@git.int.imdevinc.com:2222/imdevinc/homelab.git
+    repoURL: ssh://git@git.int.imdevinc.com:2222/devin/homelab.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
