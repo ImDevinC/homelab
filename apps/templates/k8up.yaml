@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: charts/k8up
-    repoURL: ssh://git@git.int.imdevinc.com:2222/devin/homelab.git
+    repoURL: https://github.com/imdevinc/homelab.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:

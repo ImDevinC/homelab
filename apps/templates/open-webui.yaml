@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: charts/open-webui
-    repoURL: ssh://git@git.int.imdevinc.com:2222/devin/homelab.git
+    repoURL: git@github.com:ImDevinC/homelab.git
     targetRevision: HEAD
   syncPolicy:
     automated:
