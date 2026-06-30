@@ -5,7 +5,7 @@ metadata:
 data:
   config.yaml: |
     settings:
-      custom_repo: https://git.int.imdevinc.com/devin/plex-meta-manager-configs/raw/branch/main
+      custom_repo: https://github.com/ImDevinC/plex-meta-manager-configs
       asset_directory: /assets
       asset_folders: true
       asset_depth: 0
@@ -65,12 +65,12 @@ data:
     libraries:
       Movies:
         metadata_files:
-          - repo: /config/movies.yml
+          - repo: /main/config/movies.yml
         collection_files:
           - default: franchise
             template_variables:
               minimum_items: 3
-          - repo: /config/movie-collections.yml
+          - repo: /main/config/movie-collections.yml
         operations:
           delete_collections:
             managed: true
@@ -83,10 +83,10 @@ data:
             sync_tags: false
       TV Shows:
         metadata_files:
-          - repo: /config/tv.yml
+          - repo: /main/config/tv.yml
       Anime:
         metadata_files:
-          - repo: /config/anime.yml
+          - repo: /main/config/anime.yml
     radarr:
       url: http://radarr.mediaserver:7878
       token: <<RADARR_TOKEN>>
@@ -103,4 +103,4 @@ data:
       plex_path: None
       monitor_existing: false
     playlist_files:
-      - repo: /config/playlist.yaml
+      - repo: /main/config/playlist.yaml

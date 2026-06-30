@@ -46,9 +46,8 @@ kind: ConfigMap
 metadata:
   name: pmm-repo
 data:
-  SERVER_TYPE: forgejo
-  FORGEJO_OWNER: imdevinc
-  FORGEJO_REPO: plex-meta-manager-configs
+  GITHUB_REPO: plex-meta-manager-configs
+  GITHUB_OWNER: ImDevinC
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
