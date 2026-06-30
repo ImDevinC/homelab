@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manyfold
+  labels:
+    app.kubernetes.io/name: manyfold
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: manyfold
+      app.kubernetes.io/name: manyfold
+  template:
+    metadata:
+      labels:
+        app: manyfold
+        app.kubernetes.io/name: manyfold
+    spec:
+      containers:
+        - name: manyfold
+          image: manyfold3d/manyfold
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: DATABASE_URL
+              value: sqlite3:/data/manyfold.sqlite3
+            - name: REDIS_URL
+              value: redis://redis-master.redis:6379
+          envFrom:
+            - secretRef:
+                name: manyfold-secrets
+          ports:
+            - containerPort: 3214
+          volumeMounts:
+            - mountPath: /data
+              name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: data

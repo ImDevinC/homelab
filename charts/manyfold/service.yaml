@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: manyfold
+  labels:
+    app: manyfold
+spec:
+  selector:
+    app: manyfold
+  ports:
+    - name: http
+      protocol: TCP
+      port: 3214
+      targetPort: 3214

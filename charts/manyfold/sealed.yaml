@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: manyfold-secrets
+  namespace: manyfold
+spec:
+  encryptedData:
+    SECRET_KEY_BASE: AgBJf4Y6+ewXlM8UdgpgiyIw7iZoNAbTI6mNH9IXL/n5oV2DhEHIervVyGFM7VxhF/fALIwlKgZtEZsKQvDqUtoGTsiOqNiATxuxtycKOhsoCJqNUEKP4XOH6jGdAq9K6GU+DdMRRbC2Mg2wshLJRBlSvYDcAfdZNXlmTRvOay5VDkIPFDWQQdb4LOxrFYBcDaOaoATJD0oq053hzswcnU4+hFTdPT1QpLIxfQh7n6OQJLm7fsGxypuW3qwwo+XUNm1X3uICB/kIVAgcnrtEpTejUUllnxMjlmmbB0m91N9eoeJ0F3FBVYUIqiB02iB6oSqu0H0qitohGjkgBffQxb7rYXgx3GSVZH6X12G+0aSuQDkHMAl8qlqqF4fxOfVrqV7Fzp6TSy7zLAhiFGSxqLDoQcxAtEA2vsw1gsJpxYYkDmViu7Bf3WN9wKKUzODFnj0rp0XhTstOb6eZyEJG5Pg85iUoYjD9FvmLJ4GcL7vK3WtNifsTEqRTsFzH6xwDmmC42OPfN8015lkKTVnvN8bSe4QeEV9zRO5NT49Mml++TB9+ZnqprGJ7Qc84664mjDNxE5LZ6ytulW4zLWwiqo/15sJs+YNzWcGtJFVT3etiSmpDLYLWsgziB7wdsCceoOkpmftqTNdloQ/fHzxi281Kt8Fh3BeA2TGQJ4dCoft5ZXGxwW8BFfn1PSMKfXZq7NVYB6BigrYHRVqf1+H3QAo+EnahullGxs+BJvQ8MjMdgg==
+  template:
+    metadata:
+      name: manyfold-secrets
+      namespace: manyfold
