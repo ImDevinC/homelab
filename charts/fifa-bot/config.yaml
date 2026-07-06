@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+data:
+  config.yaml: |
+    competition_id: "17" # Optional: filter by competition
+    slack_webhook_url: "" # Will come from environment
+    redis:
+      address: redis-master.redis:6379
+    skip_events: # Event types to suppress; uses go-fifa constant names
+      - MatchPaused
+      - MatchResumed
+      - GoalAttempt
+      - Offside
+      - CornerKick
+      - FreeKickPost
+      - ShotBlocked
+      - Foul
+      - CoinToss
+      - Unknown3
+      - ThrowIn
+      - Clearance
+      - Unknown2
+      - HitCrossbar
+      - FoulUnknown
+      - GoalieSaved
+      - Pending
+      - DroppedBall
+      - Assist

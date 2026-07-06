@@ -14,14 +14,8 @@ spec:
     spec:
       containers:
         - env:
-            - name: ENABLE_PROFILING
-              value: "true"
-            - name: REDIS_ADDRESS
-              value: redis-master.redis:6379
-            - name: REDIS_DB
-              value: "0"
-            - name: COMPETITION_ID
-              value: "17"
+            - name: CONFIG_FILE
+              value: /app/config.yaml
             - name: SLACK_WEBHOOK_URL
               valueFrom:
                 secretKeyRef:
@@ -36,4 +30,12 @@ spec:
             - containerPort: 8080
               name: http
               protocol: TCP
+          volumeMounts:
+            - name: config
+              mountPath: /app/config.yaml
+              subPath: config.yaml
       restartPolicy: Always
+      volumes:
+        - name: config
+          configMap:
+            name: config
