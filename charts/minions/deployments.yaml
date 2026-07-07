@@ -174,7 +174,7 @@ metadata:
     app.kubernetes.io/component: bot
     app.kubernetes.io/part-of: minions
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: discord-bot
@@ -396,7 +396,7 @@ metadata:
     app.kubernetes.io/component: bot
     app.kubernetes.io/part-of: minions
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app.kubernetes.io/name: matrix-bot
