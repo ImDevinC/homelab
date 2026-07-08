@@ -1,3 +1,4 @@
+replicaCount: 0
 image:
   rootless: true
 

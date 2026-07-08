@@ -23,9 +23,9 @@ metadata:
     app.kubernetes.io/managed-by: Kustomize
     app.kubernetes.io/name: forgejo-runner
   annotations:
-    argocd.argoproj.io/sync-wave: '1'
+    argocd.argoproj.io/sync-wave: "1"
 spec:
-  replicas: 2
+  replicas: 0
   selector:
     matchLabels:
       app: forgejo-runner
@@ -92,12 +92,12 @@ spec:
                   key: token
           resources:
             limits:
-              cpu: '0.5'
+              cpu: "0.5"
               ephemeral-storage: 100Mi
               memory: 64Mi
             requests:
               cpu: 100m
-              ephemeral-storage: '0'
+              ephemeral-storage: "0"
               memory: 64Mi
           volumeMounts:
             - name: runner-data
@@ -135,15 +135,15 @@ spec:
             - name: DOCKER_CERT_PATH
               value: /certs/client
             - name: DOCKER_TLS_VERIFY
-              value: '1'
+              value: "1"
           resources:
             limits:
-              cpu: '1'
+              cpu: "1"
               ephemeral-storage: 3Gi
               memory: 4Gi
             requests:
               cpu: 100m
-              ephemeral-storage: '0'
+              ephemeral-storage: "0"
               memory: 64Mi
           volumeMounts:
             - name: docker-certs
@@ -171,12 +171,12 @@ spec:
               value: /certs
           resources:
             limits:
-              cpu: '1'
+              cpu: "1"
               ephemeral-storage: 3Gi
               memory: 4Gi
             requests:
               cpu: 100m
-              ephemeral-storage: '0'
+              ephemeral-storage: "0"
               memory: 64Mi
           securityContext:
             privileged: true
@@ -201,17 +201,17 @@ spec:
             - name: DOCKER_HOST
               value: tcp://localhost:2376
             - name: DOCKER_TLS_VERIFY
-              value: '1'
+              value: "1"
             - name: DOCKER_CERT_PATH
               value: /certs/client
           resources:
             limits:
-              cpu: '1'
+              cpu: "1"
               ephemeral-storage: 3Gi
               memory: 4Gi
             requests:
               cpu: 100m
-              ephemeral-storage: '0'
+              ephemeral-storage: "0"
               memory: 64Mi
           volumeMounts:
             - name: docker-certs
