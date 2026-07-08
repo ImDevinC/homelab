@@ -1,23 +1,23 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-helmCharts:
-  - name: forgejo
-    releaseName: forgejo
-    namespace: forgejo
-    repo: oci://code.forgejo.org/forgejo-helm
-    version: 17.1.0
-    valuesFile: values.yaml
-namespace: forgejo
-resources:
-  - admin-sealed.yaml
-  - oauth-sealed.yaml
-  - namespace.yaml
-  - tcproute.yaml
-  - schedule.yaml
-  - runner.yaml
-  - ssh-sealed.yaml
-images:
-  - name: docker.io/docker
-    newTag: 29.5.2-dind
-  - name: code.forgejo.org/forgejo/runner
-    newTag: 12.10.2
+#apiVersion: kustomize.config.k8s.io/v1beta1
+#kind: Kustomization
+#helmCharts:
+#  - name: forgejo
+#    releaseName: forgejo
+#    namespace: forgejo
+#    repo: oci://code.forgejo.org/forgejo-helm
+#    version: 17.1.0
+#    valuesFile: values.yaml
+#namespace: forgejo
+#resources:
+#  - admin-sealed.yaml
+#  - oauth-sealed.yaml
+#  - namespace.yaml
+#  - tcproute.yaml
+#  - schedule.yaml
+#  - runner.yaml
+#  - ssh-sealed.yaml
+#images:
+#  - name: docker.io/docker
+#    newTag: 29.5.2-dind
+#  - name: code.forgejo.org/forgejo/runner
+#    newTag: 12.10.2
