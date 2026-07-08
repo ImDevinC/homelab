@@ -1,5 +1,5 @@
-#apiVersion: kustomize.config.k8s.io/v1beta1
-#kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 #helmCharts:
 #  - name: forgejo
 #    releaseName: forgejo
@@ -7,7 +7,7 @@
 #    repo: oci://code.forgejo.org/forgejo-helm
 #    version: 17.1.0
 #    valuesFile: values.yaml
-#namespace: forgejo
+namespace: forgejo
 #resources:
 #  - admin-sealed.yaml
 #  - oauth-sealed.yaml
