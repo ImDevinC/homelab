@@ -102,21 +102,15 @@ data:
     # The first rule proxies traffic to the httpbin sample Service defined in app.yaml
     - hostname: homeassistant.imdevinc.com
       service: http://homeassistant-home-assistant.homeassistant:8123
-    - hostname: couchdb.imdevinc.com
-      service: http://couchdb-svc-couchdb.couchdb:5984
     - hostname: wallabag.imdevinc.com
       service: http://wallabag.wallabag:80
-    - hostname: lego.imdevinc.com
-      service: http://legoai.legoai:8080
     - hostname: umami.imdevinc.com
       service: http://umami.umami:3000
     - hostname: macrotrack.imdevinc.com
       service: http://macro-track.macro-track:8080
-    - hostname: chat.imdevinc.com
-      service: http://traefik.traefik.svc.cluster.local:8090
     - hostname: minions.imdevinc.com
       service: http://github-webhook.minions.svc.cluster.local:8080
-    - hostname: files.imdevinc.com
-      service: http://gokapi.gokapi.svc.cluster.local:53842
+    - hostname: live-comic.imdevinc.com
+      service: http://live-comic.live-comic.svc.cluster.local:8080
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
