@@ -8,4 +8,4 @@ spec:
   cluster:
     name: postgres
   extensions:
-    - name: pgvector
+    - name: vector
