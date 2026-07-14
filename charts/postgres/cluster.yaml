@@ -1,0 +1,48 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+  namespace: postgres
+spec:
+  instances: 1
+  bootstrap:
+    initdb:
+      import:
+        type: monolith
+        databases:
+          - "*"
+        roles:
+          - "*"
+        source:
+          externalCluster: legacy
+  storage:
+    size: 50Gi
+  imageName: ghcr.io/cloudnative-pg/postgresql:18-standard-trixie
+
+  postgresql:
+    shared_preload_libraries:
+      - "vchord.so"
+
+    extensions:
+      - name: vchord
+        image:
+          reference: ghcr.io/tensorchord/vchord-scratch:pg18-v1.1.1
+        dynamic_library_path:
+          - /usr/lib/postgresql/18/lib
+        extension_control_path:
+          - /usr/share/postgresql/18/
+      - name: postgis
+        image:
+          reference: ghcr.io/cloudnative-pg/postgis-extension:3.6.2-18-trixie
+        ld_library_path:
+          - system
+
+  externalClusters:
+    - name: legacy
+      connectionParameters:
+        host: postgres.postgres.svc.cluster.local
+        user: postgres
+        dbname: postgres
+      password:
+        name: postgres-creds
+        key: pgpass
