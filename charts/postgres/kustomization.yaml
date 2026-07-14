@@ -1,19 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-helmCharts:
-  - name: prometheus-postgres-exporter
-    releaseName: prometheus-postgres-exporter
-    namespace: postgres
-    repo: https://prometheus-community.github.io/helm-charts
-    version: 8.0.0
-    valuesFile: values.yaml
 namespace: postgres
 resources:
   - databases/
   - cluster.yaml
-  - manifest.yaml
-  - sealed.yaml
-  - schedule.yaml
-images:
-  - name: ghcr.io/joeyates/postgis_pgvector
-    newTag: 17-3.5-v0.8.0
