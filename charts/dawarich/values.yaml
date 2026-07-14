@@ -35,7 +35,7 @@ sidekiq:
 
 postgresql:
   enabled: false
-  host: postgres.postgres
+  host: postgres-rw.postgres.svc.cluster.local
   port: 5432
   auth:
     existingSecret: dawarich-creds
