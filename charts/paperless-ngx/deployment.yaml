@@ -29,7 +29,7 @@ spec:
             - name: PAPERLESS_REDIS
               value: redis://redis-master.redis:6379
             - name: PAPERLESS_DBHOST
-              value: postgres.postgres
+              value: postgres-rw.postgres.svc.cluster.local
             - name: USERMAP_UID
               value: "1000"
             - name: USERMAP_GID
