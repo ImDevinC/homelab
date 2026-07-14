@@ -9,6 +9,7 @@ helmCharts:
     valuesFile: values.yaml
 namespace: dawarich
 resources:
+  - database.yaml
   - httproute.yaml
   - sealed.yaml
   - photon
