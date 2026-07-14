@@ -9,6 +9,7 @@ helmCharts:
     valuesFile: values.yaml
 namespace: postgres
 resources:
+  - databases/
   - cluster.yaml
   - manifest.yaml
   - sealed.yaml

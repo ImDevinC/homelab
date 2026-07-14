@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: postgres
+resources:
+  - immich.yaml
+  - bookorbit.yaml
+  - database.yaml
+  - dawarich.yaml
+  - mcphub.yaml
+  - minions.yaml
+  - paperless.yaml
+  - sure.yaml
+  - umami.yaml
