@@ -15,5 +15,7 @@ spec:
     repoURL: https://github.com/imdevinc/homelab.git
     targetRevision: HEAD
   syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
     automated:
       prune: true
