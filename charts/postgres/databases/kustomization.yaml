@@ -4,7 +4,6 @@ namespace: postgres
 resources:
   - immich.yaml
   - bookorbit.yaml
-  - database.yaml
   - dawarich.yaml
   - mcphub.yaml
   - minions.yaml
