@@ -1,0 +1,9 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: minions
+spec:
+  name: minions
+  owner: minions
+  cluster:
+    name: postgres
