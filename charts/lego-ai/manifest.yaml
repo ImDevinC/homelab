@@ -20,9 +20,11 @@ spec:
           name: legoai
           env:
             - name: LEGOAI_IMAGE_MODEL
-              value: dall-e-3
+              value: "google/gemini-3.1-flash-lite-image"
             - name: LEGOAI_CHAT_MODEL
-              value: gpt-4o
+              value: "google/gemini-3.1-flash-lite-image"
+            - name: LEGOAI_OPENAI_BASE_URL
+              value: "https://openrouter.ai/api/v1/"
           ports:
             - containerPort: 8080
               name: http
