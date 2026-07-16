@@ -2,7 +2,7 @@
   prometheusRules+:: {
     groups+: [
       {
-        name: 'redis.rules',
+        name: 'k8up.rules',
         rules: [
           {
             record: 'redis_memory_fragmentation_ratio',
