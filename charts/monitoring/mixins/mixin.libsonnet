@@ -12,5 +12,4 @@
 (import 'sealed-secrets/mixin.libsonnet') +
 (import 'speedtest/mixin.libsonnet') +
 (import 'traefik/mixin.libsonnet') +
-(import 'cloudflared/mixin.libsonnet') +
-(import 'k8up/mixin.libsonnet')
+(import 'cloudflared/mixin.libsonnet')
