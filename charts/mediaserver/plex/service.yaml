@@ -6,7 +6,6 @@ metadata:
   labels:
     app: plex
 spec:
-  clusterIP: None
   ports:
     - port: 32400
       targetPort: 32400
