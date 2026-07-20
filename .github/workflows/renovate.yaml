@@ -2,7 +2,8 @@ name: Renovate
 
 on:
   workflow_dispatch:
-  push:
+  pull_request_target:
+    types: [edited]
     branches:
       - 'renovate/**'
   schedule:
