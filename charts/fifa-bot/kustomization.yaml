@@ -6,6 +6,9 @@ resources:
   - sealed.yaml
   - service.yaml
   - httproute.yaml
+replicas:
+  - name: fifa-bot
+    count: 0
 namespace: fifa-bot
 images:
   - name: ghcr.io/imdevinc/fifa-bot
