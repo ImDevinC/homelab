@@ -2,10 +2,9 @@ additionalArguments:
   - "--api.insecure"
 image:
   tag: "v3.6.13"
-logs:
-  general:
-    format: json
-    level: INFO
+log:
+  format: json
+  level: INFO
 providers:
   kubernetesIngress:
     enabled: false
