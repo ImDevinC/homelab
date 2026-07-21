@@ -199,6 +199,7 @@ data:
     imdevinc/fifa-bot
     imdevinc/mythic-forge
     imdevinc/atlas
+    imdevinc/pr-queue
 ---
 apiVersion: v1
 kind: ConfigMap
