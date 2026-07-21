@@ -6,8 +6,6 @@ data:
   queue.yaml: |
     organization: imdevinc
 
-    repositories:
-      - imdevinc/fifa-bot
-      - imdevinc/pr-queue
+    repositories: []
 
     ignored_authors: []
