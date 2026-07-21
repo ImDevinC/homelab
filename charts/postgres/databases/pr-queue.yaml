@@ -1,12 +1,12 @@
-apiVersion: postgresql.cnpg.io/v1
-kind: Database
-metadata:
-  name: pr-queue
-spec:
-  name: pr-queue
-  owner: pr-queue
-  cluster:
-    name: postgres
+#apiVersion: postgresql.cnpg.io/v1
+#kind: Database
+#metadata:
+#  name: pr-queue
+#spec:
+#  name: pr-queue
+#  owner: pr-queue
+#  cluster:
+#    name: postgres
 ---
 apiVersion: postgresql.cnpg.io/v1
 kind: DatabaseRole
