@@ -1,0 +1,40 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: pr-queue
+spec:
+  name: pr-queue
+  owner: pr-queue
+  cluster:
+    name: postgres
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: DatabaseRole
+metadata:
+  name: pr-queue
+spec:
+  cluster:
+    name: postgres
+  name: pr-queue
+  login: true
+  superuser: false
+  databaseRoleReclaimPolicy: delete
+  passwordSecret:
+    name: pr-queue-database-password
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: pr-queue-database-password
+  namespace: postgres
+spec:
+  encryptedData:
+    password: AgBoP09rB4rZ/Tue5GnTaMinuahhehMPG09Lp0Dzz4EzzB/7g+N8rvjKyTEKpEM4nyuK+mjsouzND0pujPtnnOE0qKlKuIkXX/8YeMWIDkW+kfuRNDbfebhoFgEZ4HCytTQquHP8SiVxEcQWv86EWkYzwvcQCQuoup9V9KEJVyzJicCGhSboRjaD3CsI1Qx+7vyGBJNNoSzCZyPFEss8sclZkBRoIzMAAxBwGs5wlE7PCETsJS12LQfJE5nt0HhNAB9AzkpPh1UxYfeNj6l4WJqXn+O6niP1FZUJvgHSUy9g9XM7rDs8Q5eJ0TUO7I13diCsnan0hy00HxELBhqxv/O9Tx++ZqEXfk/VvX2zPYPKiDruMbnSzAFD/1mPIBzBkLE+8oGV4XlaFrDPgRnBhAE/ThUVG+efmEoQJ/A9W2xgRRZh66PS3+ofZt9TzxRhzTcvyBn21RQX9upVLtjFlBCG4YzwAOUly/xwLBg+cxIOXTrksRgqUmNYHIr0jPTEHX/2KQIdGPLdXad6NBbZHOtHt4et4WRLpvRxCWp/bF6mKoTDyNlw9ObF3lrxgknyvYAKwq04OT74ycIGfbmi8AFevJhgChVmBfjJJbqdAUECooO0SCgTpSn7u0pB8m3ZzukVADMjA1ZQ0ROxWMQOhCio0xyWswX0K33hsm/25qKf1jE3XfMw7yoIKE2WiKywRUDgV25Xlc4LY2xGM12RBQUYjs8GO9mQPDdMko2UDkNpV1/QDEFzYSltLIKELWJI7Yn6+C2yqUUoaeoKGDopehlW
+    username: AgAr0S1n8/XRfWhu5gkBDOvxFVyHfBKtLYMbxB1FnYAii8/Z4Ug5M59MARbRFBYA5HSO/CWW+Oj1GXoDyG2IvdOqal4KUiUsRzrLCA1vTxSykvmE9Nj9R91LJRF06dlf1uE+BoSlxZ1OP0LipXd0Qq/X9WXC75B4tu5cWdFa8/ULECZZsuuaTI2HH8/WhKW11azq33tYDCsBBMECr3ceF/kdMscP4IYTTw4ZiWX5ciJrFmkClb7B9n1Chy3U3WEyfIzrwL1Mlz2kVZhqIE8Ev+W88uM22HZcesRVkgfAqXKUQv/vN7qQJcZXe24kPD3vaC4hzDaQIF4OhL9iM1zz4DAJP48JlkMTG8yUXecCwawyHUc8ppZd+zj0JNoueELcxlf4LWdDMCaQa7wqZxFRmmrT6cb7f5MJdWcF4ZBQ68LYCN0AWBQZ7ZqmtwO5FnHa1bqZqfVaS8MkBL3q8wKJ0E2tsamNo7/ASbNxBa1AGAUCo67uyMTQJmHzOK2sIdBKPDXXL4wDAzQRTWe4xSnsiiZSbhtyoOI/JlxyhZ85YOvDdNth1D6L7NVEhK155cxa+FJKzgJcJkExSpgnUfZY5pqywVwWzL6H6l51MKDwCrr+Rx8WxdSxOTLgZLCZcZnTZao0fU8IfKGjdGVyUCdDg3J1L10EwUki1mGVG9mqO/iI+6jp+sD0BrAh9uHGWCH/dFAh9HPSN6gMtQ==
+  template:
+    metadata:
+      labels:
+        cnpg.io/reload: "true"
+      name: pr-queue-database-password
+      namespace: postgres
+    type: kubernetes.io/basic-auth

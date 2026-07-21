@@ -10,3 +10,4 @@ resources:
   - paperless.yaml
   - sure.yaml
   - umami.yaml
+  - pr-queue.yaml
