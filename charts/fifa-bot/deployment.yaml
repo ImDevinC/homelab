@@ -14,8 +14,6 @@ spec:
     spec:
       containers:
         - env:
-            - name: SENTRY_DSN
-              value: https://28366be412ca9a9c14cafc902f55d890@o4504167699382272.ingest.us.sentry.io/4511771177254912
             - name: CONFIG_FILE
               value: /app/config.yaml
             - name: SLACK_WEBHOOK_URL

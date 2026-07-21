@@ -5,6 +5,7 @@ metadata:
 data:
   config.yaml: |
     # competition_id: "17" # Optional: filter by competition
+    sentry_dsn: https://28366be412ca9a9c14cafc902f55d890@o4504167699382272.ingest.us.sentry.io/4511771177254912
     slack_webhook_url: "" # Will come from environment
     redis:
       address: redis-master.redis:6379
