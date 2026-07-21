@@ -4,7 +4,7 @@ metadata:
   name: config
 data:
   config.yaml: |
-    competition_id: "17" # Optional: filter by competition
+    # competition_id: "17" # Optional: filter by competition
     slack_webhook_url: "" # Will come from environment
     redis:
       address: redis-master.redis:6379
