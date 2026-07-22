@@ -8,7 +8,7 @@ resources:
   - service.yaml
 replicas:
   - name: pr-queue
-    count: 1
+    count: 0
 namespace: pr-queue
 images:
   - name: ghcr.io/imdevinc/pr-queue
