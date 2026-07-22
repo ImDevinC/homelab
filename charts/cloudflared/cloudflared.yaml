@@ -114,8 +114,6 @@ data:
       service: http://macro-track.macro-track:8080
     - hostname: minions.imdevinc.com
       service: http://github-webhook.minions.svc.cluster.local:8080
-    - hostname: pr-queue.imdevinc.com
-      service: http://pr-queue.pr-queue.svc.cluster.local:3000
     - hostname: prs.imdevinc.com
       service: http://pr-queue.pr-queue.svc.cluster.local:3000
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
