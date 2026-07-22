@@ -5,12 +5,13 @@ on:
   pull_request_target:
     types: [edited]
     branches:
-      - 'renovate/**'
+      - "main"
   schedule:
     - cron: "0 0 * * *"
 
 jobs:
   renovate:
+    if: startsWith(github.event.pull_request.head.ref, 'renovate/')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
