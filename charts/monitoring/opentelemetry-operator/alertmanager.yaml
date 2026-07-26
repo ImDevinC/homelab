@@ -24,64 +24,64 @@ metadata:
   name: config
 spec:
   inhibitRules:
-  - equal:
-      - namespace
-      - alertname
-    sourceMatch:
-      - name: severity
-        value: critical
-    targetMatch:
-      - name: severity
-        matchType: =~
-        value: warning|info
-  - equal:
-      - namespace
-      - alertname
-    sourceMatch:
-      - name: severity
-        value: warning
-    targetMatch:
-      - name: severity
-        value: info
-  - equal:
-      - namespace
-    sourceMatch:
-      - name: alertname
-        value: InfoInhibitor
-    targetMatch:
-      - name: severity
-        value: info
+    - equal:
+        - namespace
+        - alertname
+      sourceMatch:
+        - name: severity
+          value: critical
+      targetMatch:
+        - name: severity
+          matchType: =~
+          value: warning|info
+    - equal:
+        - namespace
+        - alertname
+      sourceMatch:
+        - name: severity
+          value: warning
+      targetMatch:
+        - name: severity
+          value: info
+    - equal:
+        - namespace
+      sourceMatch:
+        - name: alertname
+          value: InfoInhibitor
+      targetMatch:
+        - name: severity
+          value: info
   receivers:
-  - name: "null"
-  - name: pushover
-    pushoverConfigs:
-      - sendResolved: true
-        userKey:
-          name: alertmanager-creds
-          key: PUSHOVER_USER_KEY
-        token:
-          name: alertmanager-creds
-          key: PUSHOVER_TOKEN
-        priority: '{{ if eq .Status "firing" }}1{{ else }}0{{ end }}'
+    - name: "null"
+    - name: pushover
+      pushoverConfigs:
+        - sendResolved: true
+          userKey:
+            name: alertmanager-creds
+            key: PUSHOVER_USER_KEY
+          token:
+            name: alertmanager-creds
+            key: PUSHOVER_TOKEN
+          priority: '{{ if eq .Status "firing" }}1{{ else }}0{{ end }}'
 
   route:
     groupBy:
-    - namespace
+      - namespace
     groupInterval: 5m
     groupWait: 30s
     receiver: pushover
     repeatInterval: 12h
     routes:
-    - matchers:
-      - name: alertname
-        matchType: =~
-        value: InfoInhibitor|Watchdog|etcdMembersDown|etcdInsufficientMembers|KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|etcdHighCommitDurations|KubernetesCronjobSuspended|SenseEnergyMissing
-      receiver: "null"
-    - matchers: # These jobs also run on the desktop, and we don't want to alert there
-      - name: job
-        matchType: =~
-        value: node-exporter|nvidia-smi
-      receiver: "null"
+      - matchers:
+          - name: alertname
+            matchType: =~
+            value: InfoInhibitor|Watchdog|etcdMembersDown|etcdInsufficientMembers|KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|etcdHighCommitDurations|KubernetesCronjobSuspended|SenseEnergyMissing|KubernetesNodeOutOfPodCapacity
+        receiver: "null"
+      - matchers: # These jobs also run on the desktop, and we don't want to alert there
+          - name: job
+            matchType: =~
+            value: node-exporter|nvidia-smi
+        receiver: "null"
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -94,21 +94,21 @@ metadata:
     gethomepage.dev/name: AlertManager
 spec:
   parentRefs:
-  - name: traefik-gateway
-    namespace: traefik
-    group: gateway.networking.k8s.io
-    kind: Gateway
+    - name: traefik-gateway
+      namespace: traefik
+      group: gateway.networking.k8s.io
+      kind: Gateway
   hostnames:
-  - alertmanager.int.imdevinc.com
+    - alertmanager.int.imdevinc.com
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /
-    backendRefs:
-    - name: alertmanager-operated
-      namespace: monitoring
-      port: 9093
-      group: ''
-      kind: Service
-      weight: 1
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: alertmanager-operated
+          namespace: monitoring
+          port: 9093
+          group: ""
+          kind: Service
+          weight: 1
