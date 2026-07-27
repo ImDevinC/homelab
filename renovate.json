@@ -3,6 +3,7 @@
   "extends": [
     "github>imdevinc/imdevinc"
   ],
+  "minimumReleaseAge": null,
   "repositories": [
     "ImDevinC/homelab"
   ]
