@@ -90,7 +90,9 @@ spec:
             - name: ORCHESTRATOR_URL
               value: "http://orchestrator.minions.svc.cluster.local:8080"
             - name: MINION_AUTH_PVC_NAME
-              value: minion-auth
+              value: "minion-auth"
+            - name: MINION_LOGS_PVC_NAME
+              value: "minion-logs"
           envFrom:
             # DATABASE_URL
             - secretRef:
