@@ -3,16 +3,13 @@
   "extends": [
     "github>imdevinc/imdevinc"
   ],
-  "minimumReleaseAge": null,
   "repositories": [
     "ImDevinC/homelab"
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": ["*"],
-      "automerge": false,
-      "priority": 100
+      "matchPackageNames": ["*"],
+      "automerge": false
     }
-  ],
-  "automerge": false
+  ]
 }
