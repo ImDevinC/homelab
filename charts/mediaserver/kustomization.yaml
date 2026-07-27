@@ -26,7 +26,7 @@ images:
   - name: docker.io/linuxserver/tautulli
     newTag: 2.17.1
   - name: docker.io/linuxserver/radarr
-    newTag: 6.1.1
+    newTag: 6.2.1
   - name: ghcr.io/onedr0p/exportarr
     newTag: v2.3.0
   - name: docker.io/linuxserver/plex
@@ -38,7 +38,7 @@ images:
   - name: docker.io/linuxserver/transmission
     newTag: 2021.11.18
   - name: docker.io/linuxserver/prowlarr
-    newTag: 2.5.0-develop
+    newTag: 2.5.1-develop
   - name: mrcas/kapowarr
     newTag: v1.3.1
   - name: ajslater/codex
