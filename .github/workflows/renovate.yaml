@@ -6,6 +6,8 @@ on:
     types: [edited]
     branches:
       - "main"
+  issues:
+    types: [edited]
   schedule:
     - cron: "0 0 1 * *"
 
@@ -14,6 +16,7 @@ jobs:
     if: >
       github.event_name == 'schedule' ||
       github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'issues' ||
       startsWith(github.event.pull_request.head.ref, 'renovate/')
     runs-on: ubuntu-latest
     steps:
