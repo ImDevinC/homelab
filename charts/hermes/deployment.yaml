@@ -1,0 +1,134 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hermes-agent
+  labels:
+    app.kubernetes.io/name: hermes-agent
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hermes-agent
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hermes-agent
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+        runAsGroup: 1000
+        runAsNonRoot: false
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: bootstrap-config
+          image: "nousresearch/hermes-agent"
+          imagePullPolicy: IfNotPresent
+          command:
+            - /bin/sh
+            - -ec
+          args:
+            - |
+              set -eu
+              mkdir -p "/opt/data/home"
+              if [ -f "/bootstrap/config.yaml" ]; then
+                if [ "true" = "true" ] || [ ! -f "/opt/data/config.yaml" ]; then
+                  cp "/bootstrap/config.yaml" "/opt/data/config.yaml"
+                fi
+              fi
+              if [ -f "/bootstrap/SOUL.md" ]; then
+                if [ "true" = "true" ] || [ ! -f "/opt/data/SOUL.md" ]; then
+                  cp "/bootstrap/SOUL.md" "/opt/data/SOUL.md"
+                fi
+              fi
+          env:
+            - name: HERMES_HOME
+              value: "/opt/data"
+          volumeMounts:
+            - name: data
+              mountPath: /opt/data
+            - name: bootstrap
+              mountPath: /bootstrap
+              readOnly: true
+            - name: tmp
+              mountPath: /tmp
+          securityContext:
+            allowPrivilegeEscalation: true
+            readOnlyRootFilesystem: false
+            runAsNonRoot: false
+            seccompProfile:
+              type: RuntimeDefault
+      containers:
+        - name: hermes-agent
+          image: "nousresearch/hermes-agent"
+          imagePullPolicy: IfNotPresent
+          args:
+            - gateway
+            - run
+          workingDir: /opt/hermes
+          env:
+            - name: HERMES_HOME
+              value: "/opt/data"
+            - name: HOME
+              value: "/opt/data/home"
+            - name: HERMES_HUMAN_DELAY_MAX_MS
+              value: "2500"
+            - name: HERMES_HUMAN_DELAY_MIN_MS
+              value: "800"
+            - name: HERMES_HUMAN_DELAY_MODE
+              value: "off"
+            - name: IMAGE_TOOLS_DEBUG
+              value: "false"
+            - name: MOA_TOOLS_DEBUG
+              value: "false"
+            - name: VISION_TOOLS_DEBUG
+              value: "false"
+            - name: WEB_TOOLS_DEBUG
+              value: "false"
+            - name: HERMES_UID
+              value: "1000"
+            - name: HERMES_GID
+              value: "1000"
+          envFrom:
+            - secretRef:
+                name: hermes-secrets
+          resources:
+            limits:
+              cpu: "2"
+              memory: 4Gi
+            requests:
+              cpu: 500m
+              memory: 1Gi
+          securityContext:
+            allowPrivilegeEscalation: true
+            readOnlyRootFilesystem: false
+            runAsNonRoot: false
+            seccompProfile:
+              type: RuntimeDefault
+          volumeMounts:
+            - name: data
+              mountPath: /opt/data
+            - name: tmp
+              mountPath: /tmp
+            - name: dshm
+              mountPath: /dev/shm
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: hermes-agent-data
+        - name: bootstrap
+          configMap:
+            name: hermes-agent-config
+        - name: tmp
+          emptyDir: {}
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: "1Gi"
+      terminationGracePeriodSeconds: 120

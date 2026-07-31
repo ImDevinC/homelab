@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: hermes
+resources:
+  - configmap.yaml
+  - deployment.yaml
+  - namespace.yaml
+  - pvc.yaml
+  - serviceaccount.yaml
+  - sealed.yaml
+images:
+  - name: nousresearch/hermes-agent
+    newTag: v2026.7.30

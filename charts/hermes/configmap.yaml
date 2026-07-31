@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hermes-agent-config
+  labels:
+    app.kubernetes.io/name: hermes-agent
+data:
+  config.yaml: |
+    agent:
+      gateway_timeout: 1800
+      max_turns: 90
+      restart_drain_timeout: 60
+      tool_use_enforcement: auto
+    browser:
+      allow_private_urls: false
+      command_timeout: 30
+      inactivity_timeout: 120
+    compression:
+      enabled: true
+      protect_last_n: 20
+      target_ratio: 0.2
+      threshold: 0.5
+    display:
+      interim_assistant_messages: true
+      tool_progress: all
+    model:
+      default: big-pickle
+      provider: opencode-zen
+    security:
+      redact_secrets: true
+      tirith_enabled: true
+      tirith_fail_open: true
+    terminal:
+      backend: local
+      cwd: .
+      timeout: 180
