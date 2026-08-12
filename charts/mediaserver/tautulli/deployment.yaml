@@ -37,6 +37,8 @@ spec:
               value: "1000"
             - name: PUID
               value: "1000"
+            - name: TAUTULLI_SYSTEM_ANALYTICS
+              value: "0"
           image: "docker.io/linuxserver/tautulli:2.16.0"
           imagePullPolicy: IfNotPresent
           readinessProbe:
