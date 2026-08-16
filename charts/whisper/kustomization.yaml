@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: whisper
+resources:
+  - namespace.yaml
+  - whisper.yaml
+  - piper.yaml
+images:
+  - name: rhasspy/wyoming-whisper
+    newTag: 3.5.0
+  - name: rhasspy/wyoming-piper
+    newTag: 2.4.2
