@@ -200,6 +200,7 @@ data:
     imdevinc/mythic-forge
     imdevinc/atlas
     imdevinc/pr-queue
+    imdevinc/city-council-review
 ---
 apiVersion: v1
 kind: ConfigMap
