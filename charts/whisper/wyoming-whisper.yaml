@@ -1,52 +1,28 @@
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: whisper
-spec:
-  hostnames:
-    - whisper.int.imdevinc.com
-  parentRefs:
-    - group: gateway.networking.k8s.io
-      kind: Gateway
-      name: traefik-gateway
-      namespace: traefik
-  rules:
-    - backendRefs:
-        - group: ""
-          kind: Service
-          name: whisper
-          namespace: whisper
-          port: 9000
-          weight: 1
-      matches:
-        - path:
-            type: PathPrefix
-            value: /
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: whisper
+  name: wyoming-whisper
   labels:
-    app: whisper
+    app: wyoming-whisper
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: whisper
+      app: wyoming-whisper
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: whisper
+        app: wyoming-whisper
     spec:
       containers:
-        - image: hwdsl2/whisper-server
+        - image: rhasspy/wyoming-whisper:2.2.0
           imagePullPolicy: IfNotPresent
           name: whisper
+          args: ["--model", "tiny-int8", "--language", "en"]
           ports:
-            - containerPort: 9000
+            - containerPort: 10300
               name: http
               protocol: TCP
           volumeMounts:
@@ -60,30 +36,30 @@ spec:
       volumes:
         - name: data-hp
           persistentVolumeClaim:
-            claimName: whisper-server-data
+            claimName: whisper-data-hp
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: whisper
+  name: wyoming-whisper
   labels:
-    app: whisper
+    app: wyoming-whisper
 spec:
   selector:
-    app: whisper
+    app: wyoming-whisper
   type: ClusterIP
   ports:
     - name: http
-      port: 9000
+      port: 10300
       protocol: TCP
-      targetPort: 9000
+      targetPort: 10300
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: whisper-server-data
+  name: whisper-data-hp
   labels:
-    app: whisper
+    app: wyoming-whisper
 spec:
   accessModes:
     - ReadWriteOnce
