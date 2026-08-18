@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: whisper-creds
+  namespace: whisper
+spec:
+  encryptedData:
+    bearer-token: AgApimOqTXoyR5UbtoKedRI0/j7ZcVtn4mUl82stKrV7FzofibWKXgGj3XUjOZpVIrWwkZ7bsnCr661SENcMYEG+JhaRvbLSfMeK+UX6XnY6rwpVLabgKybdlZhUuTnZyONuvnSnBOxB9r3QRe0XjYX/AnsYi/+HguB9KlFLADc07Suwb6LAw7cXV0CAD/wAxDhuGYYVXszOL/yAuQBvlab/TbpBTZclvgeZg3cLHHIHk7PrURw7gezuxCfDphSMDtWsqferBlqDqQqjwf+tLWOA2yJBGDfZiPsropFtqK6PYXkgOk04AVA57xvmfxikDdX8mNBx3C2OUmduYWFqwVfNuCABpori9XJCRrw5LgHnGa1zvWk5z1DAXv2jY5nnX+nHsKOomdCyMqOShNy9ICsoYtxFzDhlJJRyuIgC04/WNv8MPLLXeHMp7ww8Z1LYwf+xDTdmSyWWyQT7PwizWv9L7CVu1FK0a095im8PbACZsN0beEYC91h1fvNkCPPRNwboJPWrpp2KXJlSfEzGI4ynmpty43RkV+CmSe8kgFig+zrTyG8sl2FZajTuoYC5TgJUn0q206dztvEYfC62ReTHeHVUx66gmT+M4xXnepOcYhkPPhHjaSjFXTgOyaV05gbenAxshYYogI53pMDqrOVOzq2FhljWXjmYNj75GPHGZ2kG7h0EO8FVMwkyvyETLHJ/RQyUI1dbe/xdDTxv4ZmT25XQZDQ02iE3SO+3
+  template:
+    metadata:
+      name: whisper-creds
+      namespace: whisper

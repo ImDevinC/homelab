@@ -48,6 +48,17 @@ spec:
           env:
             - name: WHISPER_PORT
               value: "9000"
+            - name: WHISPER_MODEL
+              value: "large-v3-turbo"
+            - name: WHISPER_DIARIZATION
+              value: "true"
+            - name: WHISPER_DEVICE
+              value: "cuda"
+            - name: WHISPER_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: whisper-creds
+                  key: bearer-token
           ports:
             - containerPort: 9000
               name: http

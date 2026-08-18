@@ -6,6 +6,7 @@ resources:
   - whisper.yaml
   - piper.yaml
   - wyoming-whisper.yaml
+  - sealed.yaml
 images:
   - name: rhasspy/wyoming-whisper
     newTag: 3.5.0
