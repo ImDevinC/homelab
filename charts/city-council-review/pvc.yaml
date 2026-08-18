@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: city-council-review-output
+  namespace: city-council-review
+  labels:
+    app.kubernetes.io/name: city-council-review
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+

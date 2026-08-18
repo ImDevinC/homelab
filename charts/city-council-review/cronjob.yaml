@@ -1,0 +1,46 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: city-council-review
+  namespace: city-council-review
+  labels:
+    app.kubernetes.io/name: city-council-review
+spec:
+  schedule: "0 9 * * 3"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 300
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      activeDeadlineSeconds: 10800
+      template:
+        spec:
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            runAsGroup: 65532
+            fsGroup: 65532
+          restartPolicy: OnFailure
+          containers:
+            - name: city-council-review
+              image: ghcr.io/imdevinc/city-council-review:latest
+              imagePullPolicy: IfNotPresent
+              args: ["--output", "/data/output"]
+              envFrom:
+                - configMapRef:
+                    name: city-council-review-env
+                - secretRef:
+                    name: city-council-review-secrets
+              resources:
+                requests:
+                  cpu: 500m
+                  memory: 512Mi
+              volumeMounts:
+                - name: output
+                  mountPath: /data
+          volumes:
+            - name: output
+              persistentVolumeClaim:
+                claimName: city-council-review-output

@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: city-council-review-secrets
+  namespace: city-council-review
+spec:
+  encryptedData:
+    WHISPER_API_KEY: AgB6RGIBcd6BxxYV7bnyNaMUyfXnqmB4q2DKpG71BogEFTuqr9wPQ7KcYJfLbswTsdHGuB5xilUDj22y0yEJiMH9Gvk8vtA19TtiACcPC/PR5xDRS1MIh1up988T7hKu4VQjJD8386dG4z4nYqyro4P7MxlRKm0SEVonzy6m8PRmFeSclIi0TFY7SC/HHw1ZVIGT2M1eERNg9oPUCvDUBrmj9YsYQ9SxxymNSlY4gUWoxFA46PIBbwHfuv7qulSp5bvot7SyK6qFbHfUJYdqv4i7yP/Q2V+7aJNaWv0fTMW+6No6sl9KC1JLSLm2d7HN+ksJ1XPW63g83sDcfQ/oJTk6YHLATHTmFHGgsdDlORxqVsG0OuZEVseWWFvlfDskYH4sbiMiS0HK4kfGMSxgyyVaUinSb2eYvtBPh4MK7pcxzewq4Lh0sPdt26trMvZjV2lUU9NEo9SHoivNlsW9HKPPyH2Aj91iBpR1CDkjiYAQvDB+BXi3XRWALliTSOccbRT9b20Jzf/0S+vG4teNqOtR0l8giNvPvTTmQyynKGXb4KjOMQXRE1BAEz5QIQYgFERrpn78vG65SrJ0oyyUVfczoZI7cagC21O5E2oTlIp1ouBYrkyO7M8NN2azDTJQuDc7PCyZ6SAVM0GUrg2ECFK+Bvx3HR8ubIM5b1XoJlbpIju8Oj1OA+Xsw6SAgtWAHFNEZzQvd+7sMJHf+ShrAuJFBEEsnY3IWUCTYTEo
+  template:
+    metadata:
+      name: city-council-review-secrets
+      namespace: city-council-review

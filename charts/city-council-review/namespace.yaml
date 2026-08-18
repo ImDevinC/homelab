@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: city-council-review
+  labels:
+    app.kubernetes.io/name: city-council-review
+

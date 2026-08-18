@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - configmap.yaml
+  - cronjob.yaml
+  - namespace.yaml
+  - pvc.yaml
+  - sealed.yaml
+namespace: city-council-review
+images:
+  - name: ghcr.io/imdevinc/city-council-review
+    newTag: 0.0.1
