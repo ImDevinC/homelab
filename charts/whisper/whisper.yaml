@@ -45,6 +45,9 @@ spec:
         - image: hwdsl2/whisper-server
           imagePullPolicy: IfNotPresent
           name: whisper
+          env:
+            - name: WHISPER_PORT
+              value: "9000"
           ports:
             - containerPort: 9000
               name: http
