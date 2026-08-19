@@ -3,6 +3,7 @@
   "extends": [
     "github>imdevinc/imdevinc"
   ],
+  "gitAuthor": "Devin Collins <3997333+ImDevinC@users.noreply.github.com>",
   "repositories": [
     "ImDevinC/homelab"
   ],
