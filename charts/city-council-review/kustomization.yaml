@@ -9,4 +9,4 @@ resources:
 namespace: city-council-review
 images:
   - name: ghcr.io/imdevinc/city-council-review
-    newTag: 0.0.6
+    newTag: 0.0.8
