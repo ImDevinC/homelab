@@ -201,6 +201,7 @@ data:
     imdevinc/atlas
     imdevinc/pr-queue
     imdevinc/city-council-review
+    imdevinc/city-council-site
 ---
 apiVersion: v1
 kind: ConfigMap
