@@ -14,4 +14,4 @@ resources:
   - photon
 images:
   - name: ghcr.io/rtuszik/photon-docker
-    newTag: 2.2.0
+    newTag: 2.4.0

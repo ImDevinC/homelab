@@ -9,7 +9,7 @@ resources:
   - sealed.yaml
 images:
   - name: rhasspy/wyoming-whisper
-    newTag: 3.5.0
+    newTag: 3.6.0
   - name: rhasspy/wyoming-piper
     newTag: 2.4.2
   - name: hwdsl2/whisper-server
