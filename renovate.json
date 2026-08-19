@@ -3,8 +3,11 @@
   "extends": [
     "github>imdevinc/imdevinc"
   ],
-  "repositories": [
-    "ImDevinC/homelab"
+  "ignoreDeps": [
+    "ghcr.io/imdevinc/city-council-review",
+    "ghcr.io/imdevinc/macro-track-server",
+    "ghcr.io/imdevinc/minions/orchestrator",
+    "ghcr.io/imdevinc/spellcards"
   ],
   "packageRules": [
     {
