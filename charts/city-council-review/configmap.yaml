@@ -4,6 +4,6 @@ metadata:
   name: city-council-review-env
   namespace: city-council-review
 data:
-  WHISPER_URL: "http://whisper.whisper.svc.cluster.local:9000/v1"
-  OPENAI_BASE_URL: "http://ollama.ollama.svc.cluster.local:11434/v1"
+  WHISPER_URL: "http://whisper.whisper.svc.cluster.local:9000"
+  OPENAI_BASE_URL: "http://ollama.ollama.svc.cluster.local:11434"
   OPENAI_MODEL: "gemma3:12b"
