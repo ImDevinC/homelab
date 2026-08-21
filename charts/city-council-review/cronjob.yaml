@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: city-council-review
 spec:
-  schedule: "0 9 * * 3"
+  schedule: "0 9 * * *"
   #  suspend: true
   concurrencyPolicy: Forbid
   startingDeadlineSeconds: 300
