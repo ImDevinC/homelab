@@ -82,6 +82,14 @@ spec:
             matchType: =~
             value: node-exporter|nvidia-smi
         receiver: "null"
+      - matchers: # city-council-review takes a long time
+          - name: alertname
+            matchType: =
+            value: KubernetesCronjobTooLong
+          - name: cronjob
+            matchType: =
+            value: city-council-review
+        receiver: "null"
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
