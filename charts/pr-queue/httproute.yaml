@@ -1,0 +1,41 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: pr-queue
+  namespace: pr-queue
+spec:
+  hostnames:
+    - prs.imdevinc.com
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: traefik-gateway
+      namespace: traefik
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /github/webhook
+      backendRefs:
+        - name: pr-queue
+          port: 3000
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /slack/events
+      backendRefs:
+        - name: pr-queue
+          port: 3000
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: pr-queue
+          port: 3000
+      filters:
+        - extensionRef:
+            group: traefik.io
+            kind: Middleware
+            name: oidc
+          type: ExtensionRef

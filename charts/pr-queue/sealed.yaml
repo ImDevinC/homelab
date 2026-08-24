@@ -16,3 +16,17 @@ spec:
     metadata:
       name: pr-queue
       namespace: pr-queue
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: oidc
+  namespace: pr-queue
+spec:
+  encryptedData:
+    client-id: AgAih60qu5VmFXTlxgkRll7SvBwN4SKn8zTfuLMAP9YWzmWLg96V/QEcRJlPDqOS9U9MJhTAZa/uKri4F+/VEnAV4YeXWaP1V/TVvxntCp+vylbsSddLuMmZIw/5FNDQ5nvJaX2TQh7kD/isO0svPvNo0oF4XnukKVfGDbX2YDrJSp+X7Ncne4eiMSCHIuzgqzzl4T8ffnwbA8ZH2avvG53cFrQUiEwq0uyqrRuFlKTnTWcqVRQ9BocHHdT/AZcXV0xeNxvbpRnXJaVd/xNJ3zNd3wenWOn+s8BlYSERTaqjdOdqHBJOdlADjJwKhR4OZMPGXNV/yNDbXkeNjBNKqM3oi4232fcfdwTTL4/MVKZfVNdY/gPdJ+2M6JuJ5tWHzQZae8dDExDLpMwkQNfXZeknGYVUvtdCc9u5IVlbhzrT45yufDhPJvcbwjf6e1xxru2Jg4sZmtq0ivgK07lV1k2jJznAUgbN8n9PMfphBc/xTzVfmZIG5NSAuhuyK66nY2F074w3b16VCJ9I+y93Cw7SuHrS5OoF9QtqSo4lpIc3hO3FguEkz/4kOW8/Sk1+MEuXCeZTULGsPAia+xg2uwPEKlQj0FoLRTx+Rx4STByFeIDSO5367MN4yF0AxsvIeBON0Xu58a4MF4t4o36Xp+nJ6RrY5qulOsBEKBMbE5QodYx3wYRG/dAxs+HjXMpalwdouWJRIktHuo7vjBM8p7Id5fVANNXaA34MO6Om8fqISWUV6L4=
+    client-secret: AgBDAmE7cUg4gKiMDVQWX+RBpYMtZAt+0qhoaCWfjXdWOeloWA6YkNRDr9P2GN0rU5kna5Eso7VWG8J+P2Q8+43AP2NbKJOQp/qjrqB9bZSX4qbbFu9QOaveSIjOe9bcH2oFv8hWP9UUjsXtigIyv0d4Wj7QvrSvGkeaguoNPenTXxA/5zq/5GxRkZ45npm4By5PDcWde5jZHk9O3wPz9K35vHxsnT4jOOEqihlTfnhn4MBvmNdr4yQey6oaOrvkdXMwnwomAHJD/M3wnFsIt5/3rhLUAgqF0KwVViCz8IGnNc7mIa3jz0xZWKNE6cxlcsRLxWmhy7b4hhQRSSKW46COUt52bM/q1jojqF9irw55mQqfh9qsQMDkBvCJ2KHe7Lsz8OwCOUu/560SfHT+Dm3ZTqzeTrBmbpOkU/9ZPWCBPaCMkvYxDmN8/nVbYu3/ie/ufyXuxO5DqSgjAqetF3yK55HmWRjsCcU+BT6U9n2JI1z83MbayCDgADdrz6+k7IO7hDyd48Ls1g8pXplajcjkGaVRU9GAvDGm44I1voZ8cRvwl1BiyNT0EWWhbAmXh5EDtxMc/GGrZD7gaGfZ6eOIrRydEKVZQCrHghSKSMNCJNHC+uEOEqIwdItJN1aefYo8S1rYZlV7WNwtP7swuaD8MDTrxPpy0Yie9X6qDZluZpD/Fx2K0bWTnrXiGrfUHObqs80R8OEPbeISuqEW+G+h5ayxZ7mhfQZSNh0VdeAcHw==
+  template:
+    metadata:
+      name: oidc
+      namespace: pr-queue

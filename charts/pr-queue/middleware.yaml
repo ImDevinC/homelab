@@ -1,0 +1,18 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: oidc
+  namespace: pr-queue
+spec:
+  plugin:
+    traefik-oidc-auth:
+      Provider:
+        ClientId: urn:k8s:secret:oidc:client-id
+        ClientSecret: urn:k8s:secret:oidc:client-secret
+        TokenValidation: IdToken
+        Url: https://login.int.imdevinc.com
+      Scopes:
+        - openid
+        - profile
+        - email
+      Secret: PMYZT3D2J4da20RsSIMMZaArKI6d3pxt

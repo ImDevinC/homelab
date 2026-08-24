@@ -6,6 +6,8 @@ resources:
   - deployment.yaml
   - sealed.yaml
   - service.yaml
+  - middleware.yaml
+  - httproute.yaml
 replicas:
   - name: pr-queue
     count: 1
