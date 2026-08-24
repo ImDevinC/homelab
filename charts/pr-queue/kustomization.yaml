@@ -14,4 +14,4 @@ replicas:
 namespace: pr-queue
 images:
   - name: ghcr.io/imdevinc/pr-queue
-    newTag: 0.0.13
+    newTag: 0.0.15
