@@ -55,6 +55,8 @@ spec:
               value: "true"
             - name: OIDC_AUTO_REDIRECT
               value: "true"
+            - name: "MAX_CONCURRENT_DOWNLOADS"
+              value: "1"
       volumes:
         - name: mediaserver-volume
           hostPath:
