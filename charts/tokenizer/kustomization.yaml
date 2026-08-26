@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: tokenizer
+resources:
+  - namespace.yaml
+  - service.yaml
+images:
+  - name: ghcr.io/imdevinc/tokenizer
+    newTag: main
