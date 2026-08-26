@@ -6,4 +6,4 @@ resources:
   - service.yaml
 images:
   - name: ghcr.io/imdevinc/tokenizer
-    newTag: main
+    newTag: 0.0.2
