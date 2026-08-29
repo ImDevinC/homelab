@@ -60,6 +60,8 @@ spec:
               value: "true"
             - name: PAPERLESS_REDIRECT_LOGIN_TO_SSO
               value: "true"
+            - name: PAPERLESS_ENABLE_COMPRESSION
+              value: "false"
           envFrom:
             - secretRef:
                 name: paperless-db-creds
