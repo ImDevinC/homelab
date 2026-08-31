@@ -9,4 +9,4 @@ resources:
   - httproute.yaml
 images:
   - name: gjames8/readr
-    newTag: latest
+    newTag: 2.1.0
