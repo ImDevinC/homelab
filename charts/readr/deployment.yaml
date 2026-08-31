@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: readr
+  namespace: readr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: readr
+  template:
+    metadata:
+      labels:
+        app: readr
+    spec:
+      containers:
+        - name: readr
+          image: gjames8/readr
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 10m
+          volumeMounts:
+            - name: readr-data
+              mountPath: /app/data
+      volumes:
+        - name: readr-data
+          persistentVolumeClaim:
+            claimName: readr-data
