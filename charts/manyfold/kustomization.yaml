@@ -10,4 +10,4 @@ resources:
   - deployment.yaml
 images:
   - name: manyfold3d/manyfold
-    newTag: 0.147.2
+    newTag: 0.148.0

@@ -10,4 +10,4 @@ resources:
   - sealed.yaml
 images:
   - name: nousresearch/hermes-agent
-    newTag: v2026.8.18
+    newTag: v2026.8.31
