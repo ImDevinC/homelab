@@ -5,7 +5,7 @@ helmCharts:
     releaseName: openweb-ui
     namespace: open-webui
     repo: https://helm.openwebui.com
-    version: 16.0.0
+    version: 16.3.0
     valuesFile: values.yaml
 namespace: open-webui
 resources:

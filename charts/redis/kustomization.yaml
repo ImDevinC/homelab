@@ -9,6 +9,6 @@ resources:
   - insights.yaml
 images:
   - name: redis
-    newTag: 8.10.0
+    newTag: 8.10.1
   - name: redis/redisinsight
     newTag: 3.8.0
