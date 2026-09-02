@@ -2077,6 +2077,13 @@ spec:
               value: "3"
             - name: MONITORING_NAMESPACE
               value: ""
+            # Skip the OpenShift APIServer CR lookup (config.openshift.io doesn't
+            # exist on vanilla k8s); every TLS handshake otherwise triggers a 404
+            # discovery call that trips KubernetesApiClientErrors.
+            - name: TLS_MIN_VERSION_OVERRIDE
+              value: "VersionTLS13"
+            - name: TLS_CIPHERS_OVERRIDE
+              value: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256"
           volumeMounts:
           - mountPath: /tmp/k8s-webhook-server/serving-certs
             name: apiservice-cert
