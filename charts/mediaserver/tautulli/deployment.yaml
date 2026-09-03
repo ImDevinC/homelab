@@ -16,6 +16,10 @@ spec:
       labels:
         app: tautulli
         app.kubernetes.io/name: tautulli
+      annotations:
+        k8up.io/backupcommand: >-
+          sh -c 'tar -czf - "/config/backups/" | cat'
+        k8up.io/file-extension: .tar.gz
     spec:
       initContainers:
         - name: config-tautulli

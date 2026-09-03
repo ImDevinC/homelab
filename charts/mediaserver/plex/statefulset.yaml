@@ -37,6 +37,8 @@ spec:
               value: "all"
             - name: NVIDIA_DRIVER_CAPABILITIES
               value: "compute,video,utility"
+            - name: LD_LIBRARY_PATH
+              value: "/usr/lib:/lib"
           image: "docker.io/linuxserver/plex:1.43.0"
           imagePullPolicy: IfNotPresent
           startupProbe:
