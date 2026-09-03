@@ -4,6 +4,7 @@ data:
     [General]
     http_root = /tautulli
     launch_browser = 0
+    verbose_logs = 0
   init-tautulli.sh: |
     #!/bin/sh
     echo "### Initializing config"
