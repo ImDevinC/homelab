@@ -47,6 +47,30 @@ spec:
                   cp "/bootstrap/SOUL.md" "/opt/data/SOUL.md"
                 fi
               fi
+              # Bootstrap the kanban worker profiles (researcher, builder, reviewer).
+              # Each profile is a separate HERMES_HOME under /opt/data/profiles/<name>/;
+              # the dispatcher spawns them with `hermes -p <name> chat -q <prompt>`.
+              for p in researcher builder reviewer; do
+                profile_dir="/opt/data/profiles/$p"
+                mkdir -p "$profile_dir"
+                # Standard profile subdirectories (mirrors `hermes profile create`).
+                for sub in memories sessions skills skins logs plans workspace cron home; do
+                  mkdir -p "$profile_dir/$sub"
+                done
+                for f in config.yaml SOUL.md profile.yaml .env; do
+                  if [ -f "/bootstrap/profiles/$p/$f" ]; then
+                    cp "/bootstrap/profiles/$p/$f" "$profile_dir/$f"
+                  fi
+                done
+                # Seed bundled skills (including the sdlc-review skill the kanban
+                # dispatcher force-loads for review tasks). Same sync the image's
+                # stage2 hook runs for the default profile.
+                if [ -d "/opt/hermes/skills" ]; then
+                  HERMES_HOME="$profile_dir" /opt/hermes/.venv/bin/python -c \
+                    "from tools.skills_sync import sync_skills; sync_skills(quiet=True)" \
+                    || echo "Warning: skills sync failed for profile $p; continuing"
+                fi
+              done
           env:
             - name: HERMES_HOME
               value: "/opt/data"
