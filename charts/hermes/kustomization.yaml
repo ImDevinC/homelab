@@ -4,8 +4,10 @@ namespace: hermes
 resources:
   - configmap.yaml
   - deployment.yaml
+  - httproute.yaml
   - namespace.yaml
   - pvc.yaml
+  - service.yaml
   - serviceaccount.yaml
   - sealed.yaml
 images:
