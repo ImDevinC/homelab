@@ -105,7 +105,7 @@ data:
 
   profiles-researcher-config.yaml: |
     model:
-      default: big-pickle
+      default: deepseek-v4-flash
       provider: opencode-zen
     # Kanban workers are spawned as CLI sessions (`hermes -p <name> chat -q`), so the
     # `cli` platform_toolsets entry controls what tools they get. The `kanban` toolset
@@ -156,7 +156,7 @@ data:
 
   profiles-builder-config.yaml: |
     model:
-      default: big-pickle
+      default: deepseek-v4-flash
       provider: opencode-zen
     platform_toolsets:
       cli:
@@ -209,7 +209,7 @@ data:
 
   profiles-reviewer-config.yaml: |
     model:
-      default: big-pickle
+      default: deepseek-v4-flash
       provider: opencode-zen
     platform_toolsets:
       cli:
@@ -258,4 +258,3 @@ data:
     # Per-profile secrets for this Hermes profile.
     # API keys and tokens set here override the shell environment.
     # Behavioral settings belong in config.yaml, not here.
-
