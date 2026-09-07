@@ -31,16 +31,8 @@ data:
     model:
       default: big-pickle
       provider: opencode-zen
-    # Web dashboard authentication. The dashboard container binds to 0.0.0.0 so
-    # Traefik can reach it, which engages the dashboard auth gate; the
-    # username/password provider is configured here. Only the scrypt password
-    # hash is stored at rest (no plaintext). To rotate the password, regenerate
-    # the hash and replace it:
-    #   python -c "from plugins.dashboard_auth.basic import hash_password; print(hash_password('<pw>'))"
-    dashboard:
-      basic_auth:
-        username: admin
-        password_hash: "scrypt$16384$8$1$rV4jbjLwff7jf0Kr99dvmA==$C520bQXvdJFhJbF+lqYaJ9GKs1Mo23j7OhHrGIsQIdo="
+    # Web dashboard authentication is configured via the HERMES_DASHBOARD_BASIC_AUTH_*
+    # env vars from the hermes-secrets SealedSecret (no credentials live here).
     security:
       redact_secrets: true
       tirith_enabled: true
@@ -111,7 +103,7 @@ data:
   # inherited from the gateway pod environment, so no per-profile secrets are needed.
   # ---------------------------------------------------------------------------
 
-  profiles/researcher/config.yaml: |
+  profiles-researcher-config.yaml: |
     model:
       default: big-pickle
       provider: opencode-zen
@@ -131,13 +123,13 @@ data:
       cwd: .
       timeout: 180
 
-  profiles/researcher/profile.yaml: |
+  profiles-researcher-profile.yaml: |
     # Profile metadata read by the kanban decomposer to route tasks to the best-fit
     # specialist. Managed via `hermes profile describe`; committed here as bootstrap.
     description: "Research agent — reads source code and external docs, performs web research, and writes findings and summaries."
     description_auto: false
 
-  profiles/researcher/SOUL.md: |
+  profiles-researcher-SOUL.md: |
     # Researcher Agent
 
     You are the research agent on the homelab kanban board. You are spawned by the
@@ -157,12 +149,12 @@ data:
       on long operations, and finish with `kanban_complete(summary=..., metadata={...})`.
     - If you need human input or hit a real blocker, `kanban_block(reason=...)` and stop.
 
-  profiles/researcher/.env: |
+  profiles-researcher-.env: |
     # Per-profile secrets for this Hermes profile.
     # API keys and tokens set here override the shell environment.
     # Behavioral settings belong in config.yaml, not here.
 
-  profiles/builder/config.yaml: |
+  profiles-builder-config.yaml: |
     model:
       default: big-pickle
       provider: opencode-zen
@@ -180,11 +172,11 @@ data:
       cwd: .
       timeout: 180
 
-  profiles/builder/profile.yaml: |
+  profiles-builder-profile.yaml: |
     description: "Builder agent — implements features and fixes in code repositories: writes code, runs tests, and commits changes."
     description_auto: false
 
-  profiles/builder/SOUL.md: |
+  profiles-builder-SOUL.md: |
     # Builder Agent
 
     You are the builder agent on the homelab kanban board. You are spawned by the
@@ -210,12 +202,12 @@ data:
       `residual_risk`.
     - Never place secrets, tokens, or raw PII in summaries or metadata.
 
-  profiles/builder/.env: |
+  profiles-builder-.env: |
     # Per-profile secrets for this Hermes profile.
     # API keys and tokens set here override the shell environment.
     # Behavioral settings belong in config.yaml, not here.
 
-  profiles/reviewer/config.yaml: |
+  profiles-reviewer-config.yaml: |
     model:
       default: big-pickle
       provider: opencode-zen
@@ -232,11 +224,11 @@ data:
       cwd: .
       timeout: 180
 
-  profiles/reviewer/profile.yaml: |
+  profiles-reviewer-profile.yaml: |
     description: "Reviewer agent — reviews code changes and task handoffs for correctness, security, and acceptance criteria; approves or requests changes."
     description_auto: false
 
-  profiles/reviewer/SOUL.md: |
+  profiles-reviewer-SOUL.md: |
     # Reviewer Agent
 
     You are the reviewer agent on the homelab kanban board. You are spawned by the
@@ -262,7 +254,7 @@ data:
       with one of the tools above.
     - Review is not a block: do not use `kanban_block` for normal review feedback.
 
-  profiles/reviewer/.env: |
+  profiles-reviewer-.env: |
     # Per-profile secrets for this Hermes profile.
     # API keys and tokens set here override the shell environment.
     # Behavioral settings belong in config.yaml, not here.
