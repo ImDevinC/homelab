@@ -121,13 +121,25 @@ spec:
               value: "1000"
             - name: HERMES_GID
               value: "1000"
+            # Run the web dashboard as a supervised s6 service in this same
+            # container (the documented HERMES_DASHBOARD=1 pattern) instead of a
+            # separate sidecar container. The dashboard binds 0.0.0.0:9119 so
+            # Traefik can reach it via the hermes-dashboard Service; the
+            # non-loopback bind engages the auth gate, satisfied by the
+            # HERMES_DASHBOARD_BASIC_AUTH_* vars from the hermes-secrets secret.
+            - name: HERMES_DASHBOARD
+              value: "1"
+            - name: HERMES_DASHBOARD_HOST
+              value: "0.0.0.0"
+            - name: HERMES_DASHBOARD_PORT
+              value: "9119"
           envFrom:
             - secretRef:
                 name: hermes-secrets
           resources:
             limits:
               cpu: "2"
-              memory: 4Gi
+              memory: 5Gi
             requests:
               cpu: 500m
               memory: 1Gi
@@ -144,57 +156,6 @@ spec:
               mountPath: /tmp
             - name: dshm
               mountPath: /dev/shm
-        # The Hermes web dashboard serves the kanban board (and the rest of the
-        # management UI) on port 9119. It shares the same HERMES_HOME (/opt/data)
-        # as the gateway, so it reads/writes the same config.yaml and the same
-        # per-board SQLite DB (~/.hermes/kanban.db) as the embedded dispatcher.
-        # Bound to 0.0.0.0 so Traefik can reach it; the non-loopback bind engages
-        # the dashboard auth gate, which is satisfied by the `dashboard.basic_auth`
-        # block in config.yaml (committed as a scrypt password hash, no plaintext).
-        - name: hermes-dashboard
-          image: "nousresearch/hermes-agent"
-          imagePullPolicy: IfNotPresent
-          args:
-            - dashboard
-            - --host
-            - 0.0.0.0
-            - --port
-            - "9119"
-            - --no-open
-            # The image ships the prebuilt web UI (hermes_cli/web_dist); skip
-            # the runtime npm build so the sidecar starts fast without node.
-            - --skip-build
-          workingDir: /opt/hermes
-          env:
-            - name: HERMES_HOME
-              value: "/opt/data"
-            - name: HOME
-              value: "/opt/data/home"
-            - name: HERMES_UID
-              value: "1000"
-            - name: HERMES_GID
-              value: "1000"
-          envFrom:
-            - secretRef:
-                name: hermes-secrets
-          resources:
-            limits:
-              cpu: "1"
-              memory: 1Gi
-            requests:
-              cpu: 100m
-              memory: 256Mi
-          securityContext:
-            allowPrivilegeEscalation: true
-            readOnlyRootFilesystem: false
-            runAsNonRoot: false
-            seccompProfile:
-              type: RuntimeDefault
-          volumeMounts:
-            - name: data
-              mountPath: /opt/data
-            - name: tmp
-              mountPath: /tmp
       volumes:
         - name: data
           persistentVolumeClaim:
