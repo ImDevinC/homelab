@@ -18,7 +18,7 @@ spec:
   source:
     path: charts/scrutiny
     repoURL: https://github.com/imdevinc/homelab.git
-    targetRevision: HEAD
+    targetRevision: main
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

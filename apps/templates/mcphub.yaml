@@ -13,7 +13,7 @@ spec:
   source:
     path: charts/mcphub
     repoURL: https://github.com/imdevinc/homelab.git
-    targetRevision: HEAD
+    targetRevision: main
   syncPolicy:
     automated:
       prune: true

@@ -13,7 +13,7 @@ spec:
   source:
     path: charts/cloudflared
     repoURL: git@github.com:ImDevinC/homelab.git
-    targetRevision: HEAD
+    targetRevision: main
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

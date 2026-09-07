@@ -13,7 +13,7 @@ spec:
   source:
     path: charts/macro-track
     repoURL: git@github.com:ImDevinC/homelab.git
-    targetRevision: HEAD
+    targetRevision: main
   syncPolicy:
     automated:
       prune: true

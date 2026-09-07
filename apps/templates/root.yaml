@@ -13,7 +13,7 @@ spec:
   source:
     path: apps/
     repoURL: https://github.com/ImDevinC/homelab.git
-    targetRevision: HEAD
+    targetRevision: main
   syncPolicy:
     automated:
       prune: true

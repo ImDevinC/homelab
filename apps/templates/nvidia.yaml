@@ -15,7 +15,7 @@ spec:
   source:
     path: charts/nvidia-devices
     repoURL: https://github.com/imdevinc/homelab.git
-    targetRevision: HEAD
+    targetRevision: main
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

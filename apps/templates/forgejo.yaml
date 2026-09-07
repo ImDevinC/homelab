@@ -13,7 +13,7 @@
 #  source:
 #    path: charts/forgejo
 #    repoURL: git@github.com:ImDevinC/homelab.git
-#    targetRevision: HEAD
+#    targetRevision: main
 #  syncPolicy:
 #    automated:
 #      prune: true
