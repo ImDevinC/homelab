@@ -47,7 +47,7 @@ spec:
                   cp "/bootstrap/SOUL.md" "/opt/data/SOUL.md"
                 fi
               fi
-# Bootstrap the kanban worker profiles (researcher, builder, reviewer).
+                # Bootstrap the kanban worker profiles (researcher, builder, reviewer).
                 # Each profile is a separate HERMES_HOME under /opt/data/profiles/<name>/;
                 # the dispatcher spawns them with `hermes -p <name> chat -q <prompt>`.
                 # ConfigMap keys cannot contain '/', so the bootstrap files are
