@@ -31,6 +31,16 @@ data:
     model:
       default: big-pickle
       provider: opencode-zen
+    # Web dashboard authentication. The dashboard container binds to 0.0.0.0 so
+    # Traefik can reach it, which engages the dashboard auth gate; the
+    # username/password provider is configured here. Only the scrypt password
+    # hash is stored at rest (no plaintext). To rotate the password, regenerate
+    # the hash and replace it:
+    #   python -c "from plugins.dashboard_auth.basic import hash_password; print(hash_password('<pw>'))"
+    dashboard:
+      basic_auth:
+        username: admin
+        password_hash: "scrypt$16384$8$1$rV4jbjLwff7jf0Kr99dvmA==$C520bQXvdJFhJbF+lqYaJ9GKs1Mo23j7OhHrGIsQIdo="
     security:
       redact_secrets: true
       tirith_enabled: true
