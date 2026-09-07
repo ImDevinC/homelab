@@ -29,7 +29,7 @@ data:
       interim_assistant_messages: true
       tool_progress: all
     model:
-      default: big-pickle
+      default: deepseek-v4-flash
       provider: opencode-zen
     # Web dashboard authentication is configured via the HERMES_DASHBOARD_BASIC_AUTH_*
     # env vars from the hermes-secrets SealedSecret (no credentials live here).
@@ -258,3 +258,4 @@ data:
     # Per-profile secrets for this Hermes profile.
     # API keys and tokens set here override the shell environment.
     # Behavioral settings belong in config.yaml, not here.
+
