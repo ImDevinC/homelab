@@ -170,6 +170,10 @@ spec:
               value: "/opt/data"
             - name: HOME
               value: "/opt/data/home"
+            - name: HERMES_UID
+              value: "1000"
+            - name: HERMES_GID
+              value: "1000"
           envFrom:
             - secretRef:
                 name: hermes-secrets
