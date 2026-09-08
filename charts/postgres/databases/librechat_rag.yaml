@@ -1,7 +1,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Database
 metadata:
-  name: librechat_rag
+  name: librechat-rag
 spec:
   name: librechat_rag
   owner: librechat_rag
@@ -14,7 +14,7 @@ spec:
 apiVersion: postgresql.cnpg.io/v1
 kind: DatabaseRole
 metadata:
-  name: librechat_rag
+  name: librechat-rag
 spec:
   cluster:
     name: postgres
