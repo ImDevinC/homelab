@@ -14,8 +14,8 @@ resources:
   - zwave.yaml
 images:
   - name: ghcr.io/home-assistant/home-assistant
-    newTag: 2026.8.3
+    newTag: 2026.9.1
   - name: docker.io/zwavejs/zwave-js-ui
-    newTag: 11.22.3
+    newTag: 11.23.0
   - name: ghcr.io/esphome/esphome
     newTag: 2026.8.2

@@ -48,9 +48,9 @@ images:
   - name: ghcr.io/flaresolverr/flaresolverr
     newTag: v3.5.0
   - name: ghcr.io/calibrain/shelfmark
-    newTag: v1.3.13
+    newTag: v1.3.15
   - name: ghcr.io/bookorbit/bookorbit
-    newTag: 2.8.1
+    newTag: 2.9.0
 replicas:
   - name: codex
     count: 0

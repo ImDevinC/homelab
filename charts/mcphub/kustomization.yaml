@@ -10,4 +10,4 @@ resources:
   - service.yaml
 images:
   - name: samanhappy/mcphub
-    newTag: 1.0.33
+    newTag: 1.0.35
