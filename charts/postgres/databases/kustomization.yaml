@@ -11,3 +11,4 @@ resources:
   - sure.yaml
   - umami.yaml
   - pr-queue.yaml
+  - librechat_rag.yaml

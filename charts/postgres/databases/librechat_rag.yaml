@@ -1,0 +1,43 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: librechat_rag
+spec:
+  name: librechat_rag
+  owner: librechat_rag
+  cluster:
+    name: postgres
+  extensions:
+    - name: vector
+      ensure: present
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: DatabaseRole
+metadata:
+  name: librechat_rag
+spec:
+  cluster:
+    name: postgres
+  name: librechat_rag
+  login: true
+  superuser: false
+  databaseRoleReclaimPolicy: delete
+  passwordSecret:
+    name: librechat-rag-database-password
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: librechat-rag-database-password
+  namespace: postgres
+spec:
+  encryptedData:
+    password: AgDT9ZFRiuT5Iy7ffGcCBBv+JHrd+ht1SHZyy5a5O8YYknOkPGnpOOnSl7f3pkCR+yOVfaVSJbYeCcm/KmW+zUFELrRXPCE1YEdTeOwKmwdr4Fj+XtRQri5ZdS3v9Z5wUEzyG4g+N4KndF7azXt6pIOworBI7gKLZ7uSFL6qcdBGIf2xqEIfYaDqzru/ME6pqpODYAJOkGGXcLmGe2bd9ojtAnAgyJzA4qpraKRr5TVx8vcapmQCdj/G6ujTgD6kPhW3a7aUbB9je0tQ1FU9BFfGr8ywhYoD3Tzf8eV+Er7oSofSVh5MYLM+med1FxbaBzkM3K0OLkyl8VhP5vJtQGyWJwv/kMYP57MSTUdyeJ7KxQ5XEUquzoN1qO8pD6Iyqsv3YOxfKUAPOOD4rcDIoDwQ9cE/Ty/YyxHZTC8tnHNhTKc9G+QTFUnfUjWcSZFV0CSq8hz17CfmKPocl2k8rwr8RYEfrI/tG5kfr/K3hIbjyTV6qeptCutZMEwS6dgPVG99U0rhImzdHFEGSSSFYOsH74tVGgWRMiIH3YeNQv2LIS/Eun0Fj2+IlrzvnwABg60nR0GKO9QEd4R+lRRmHXy3MEoBE43gNVTa8uyP3cqpLNAthk/adsd8T90a9ovetN3lxZ7NLZmDfwEVhf3GZH1fnZ1Cvw+EHS/ddUjJAMKN92oH72emxtqirDTEn9eGsb2dtZ52KrWneBegFoEtOFnoyG6DL43cOY8FmFctNoBeH2nRA6/FKQjjyCsNJK7YqMU=
+    username: AgBnLwGq6MW3uglDce4yXVeTUtq7GjTxdzrdTsAEv0+cWOz2EcCYCEu1csN4mIxy/cYVrONI2tmxeb3OBQ/ZoY2LrQgDGd8RH3iKQKs00sUr0Pk53OpwFLSdLQ4m9FN0sYq6wkrqufaDhTLBLjQanhQtq9ZlWPON7eJu9f9f+5syMSv2edSyvzWAWr2TIfvGAUmJnN5Iat/mtZn5VPycMWyClc5h2yyiO3sSkpuq4l0+2La9mX8eyjr0TqzozSuYN/4YXfFtLMlFLXRdFZWkCmgaMWuO2ORWxRarraZB4PXqxugQsty3xAdDb/h2LD/s9AmsTxZtPXqLAXPob1lANw5x7ANsKw0/zceM2wz3MPjnrfcuB8XUd7VtH6o+8iP+t8kdekXlAYQOTodVLkOs8NOCVTTzN/xHmakujohpopXN4o+8ni03rbd41hhThgGTH7aFk1p6y+1rs1x8zJifsanc0rfq7hUMwoBWdiWU4rnhBGjCc83/8zKXq6bHu2vkPO6otN7h+PXKCzuUNPxvDC9zm/mwKI8fQ8Htr9rndHgpUh4dqQRs9vCUV8g5rf3FfcOsoZTCFJas17Ol4lN/Jk55ku9gR5CifNMAOoGONqN9bpsy/ncIA2uS19KX3gZj9FUd2wRaTDgwmTVVqeehTaZdWSv0HYbhR/1gC4CQH3Cvkliz07fIZNrMVDOcfb2TeC0USKIOCUy+Ta7wNOvi
+  template:
+    metadata:
+      labels:
+        cnpg.io/reload: "true"
+      name: librechat-rag-database-password
+      namespace: postgres
+    type: kubernetes.io/basic-auth
