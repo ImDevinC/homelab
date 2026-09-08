@@ -195,15 +195,7 @@ metadata:
     app.kubernetes.io/part-of: minions
 data:
   approved-repos.txt: |
-    imdevinc/minions
-    imdevinc/fifa-bot
-    imdevinc/mythic-forge
-    imdevinc/atlas
-    imdevinc/pr-queue
-    imdevinc/city-council-review
-    imdevinc/city-council-site
-    imdevinc/pd-slack
-    imdevinc/go-westmarches-games
+    imdevinc/*
 ---
 apiVersion: v1
 kind: ConfigMap
