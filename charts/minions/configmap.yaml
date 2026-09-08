@@ -203,6 +203,7 @@ data:
     imdevinc/city-council-review
     imdevinc/city-council-site
     imdevinc/pd-slack
+    imdevinc/go-westmarches-games
 ---
 apiVersion: v1
 kind: ConfigMap
