@@ -8,4 +8,5 @@ resources:
   - sealed.yaml
 images:
   - name: mongo
-    newTag: 8.0.29
+    newTag: 8.3.8
+
