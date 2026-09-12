@@ -4,7 +4,7 @@ metadata:
   name: readr
   namespace: readr
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: readr
