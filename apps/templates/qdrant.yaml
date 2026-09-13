@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: qdrant
+  project: default
+  source:
+    chart: qdrant
+    repoURL: https://qdrant.github.io/qdrant-helm
+    targetRevision: 1.19.1
+  syncPolicy:
+    automated:
+      prune: true
