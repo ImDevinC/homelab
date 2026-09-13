@@ -1,0 +1,37 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: lorekeeper
+spec:
+  name: lorekeeper
+  owner: lorekeeper
+  cluster:
+    name: postgres
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: DatabaseRole
+metadata:
+  name: lorekeeper
+spec:
+  cluster:
+    name: postgres
+  name: lorekeeper
+  login: true
+  superuser: false
+  databaseRoleReclaimPolicy: delete
+  passwordSecret:
+    name: lorekeeper-database-password
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: lorekeeper-database-password
+  namespace: postgres
+spec:
+  encryptedData:
+    password: AgC63FDamC/7aOdQZ/hi5n5NK0Dj9iRDm7JiWT4cjTSP8eI4TeGA/snyccdhTuD1Hw8ZNXRM5dOKjFu9haIefpP4g7a0cfnIHJVvQKFZEclFrCFQBEYKc625AQ9zwwNUCJw89FkW7o5ppn9JOgZNzvMcc/ZJiCRIw+ldVeUNoAqnIvvsbVSNAGFhe6AdZYkZusAN7PwEk6YVRWl+ADoINkwZYpSJNxqxI/E4GDRzVs2kPjYbfi+JBi9/ZlbV+WrhxQS4dY7cvqtJsEIBSnSj5HmBSGXmmTEeg++8+GZ52v1I4j5VNqisMlY9T4Fgu2PXSmFPr2iArsT4KNlhm3dsmiBGb/Fgvi4ITBOsqxG6K8D7HFTkDurvf922wKbOdpGKBZ6/o5vd/b11n0X7h7gHyioBFktTjX/C8JIBwTnSLEDb/zvAx/jrYah1Ik2Uvq2o8P/GuRfPvTYG9rHoYuQCKXpMfcf8ew78GXKX9IQL+Pn+NzGNicWspge+KnHM/ev/w4UD8jPAw9Nr6PDY4hUJLsW0hQP+uBgKGxZ6JDjRtblkhHJc2MiguFwqSqLQdZLfMiV0B1o/Iz7KfglgWbzGE54jBlta4WCeoajBZtAuZXOYKY7Kap8vhz0wURe0i1g6x4Zo95da6TCEusdw2eZth94qvpGMQXk2rAXQ0esL9ibZwV4mr3B3FYEDOSmDLTh+pJ6amch9fSwohaGwqEQF0v3M8c8=
+    username: AgAFx8UVdQLeYRLcj7BYXBS5X+c6xczc1Sm0NDGkhpAs+aYyA9M6aLMATQMU5H3bvrIu8zIVCMgtDJtQ4Lf5edE7Bs1xfDUTPO11CUOtLtkZjtnQBbrZUxSOchbAsp39CD54aYyVGlHDbqkJJFACty56LOwN5f4l4r9p+ufZVnCrHqcNWK9isI/JIJUyCFMh655bI1VUJ8SXFwdHmBtTrzhm5nfuXw8Iy6wovfxOy9XoSiFC9v9YUc9FN14MR6mwt5y6IjMtPHcAcD4LTRuLdbNPGJ1IQqy42b4P50jX1WdeU0m725w4OQLkw+tRSCPUWMRWWH6aK6t+H6OG7/P1MN7rfy3wyDeDhXPvEX87/7UnfZIxOQ93P8mHalZr6+ISLtlXrGeZ8ZH7jSFH1qsnV2s9NjeIMtnf76dPUVrTGYt4t+FLUJSKRhXr+7iGsrgcqu2Is3Bgq5aDMKssZyOE8KbBpRWWxmCOSqyq0HuqOCj3N/yxMfAKGlW3zcHktbxcN5Mg0Tl1k+EcbDkjzArApiMRHin8Qtfk9x0x6PDVPzwa5Bksvx6pqreGm3mKSHhOZ8slg4E3QnHxAPKMq/iRn7fqwXfX2nRbkBOv+YsIDu1TfFlhyczTUb1yImM3lYnyYSWsobwmvGlkYHoDx/VlO2SQEKleWpUBYoBssypyxZqbmwSVhwiwMoxff4SNiZ4wobp0oD2yAaAFCqlJ
+  template:
+    metadata:
+      name: lorekeeper-database-password
+      namespace: postgres
