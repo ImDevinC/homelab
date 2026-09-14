@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: discord-config
+  namespace: lorekeeper
+data:
+  LOREKEEPER_BASE_URL: "http://lorekeeper.lorekeeper.svc.cluster.local:8080"
+
+  DISCORD_CHANNEL_IDS: "1545064140932907008"
+  DISCORD_ALLOWED_ROLE_IDS: ""
+  DISCORD_THREAD_RESPONSES: "true"
+  DISCORD_THREAD_MESSAGE_LIMIT: "30"
+
+  LOG_LEVEL: "info"
+

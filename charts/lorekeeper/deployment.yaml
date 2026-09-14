@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lorekeeper
+  namespace: lorekeeper
+  labels:
+    app: lorekeeper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lorekeeper
+  template:
+    metadata:
+      labels:
+        app: lorekeeper
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        fsGroup: 65532
+      initContainers:
+        - name: migrate
+          image: ghcr.io/imdevinc/thf-lore/server
+          imagePullPolicy: IfNotPresent
+          command: ["/usr/local/bin/migrate"]
+          envFrom:
+            - configMapRef:
+                name: lorekeeper-config
+            - secretRef:
+                name: lorekeeper-secret
+          securityContext:
+            runAsNonRoot: true
+      containers:
+        - name: lorekeeper
+          image: ghcr.io/imdevinc/thf-lore/server
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: lorekeeper-config
+            - secretRef:
+                name: lorekeeper-secret
+          livenessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /api/v1/ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          volumeMounts:
+            - name: data
+              mountPath: /data/documents
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: lorekeeper-data

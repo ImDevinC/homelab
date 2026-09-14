@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - configmap.yaml
+  - configmap-discord.yaml
+  - deployment.yaml
+  - deployment-discord.yaml
+  - namespace.yaml
+  - pvc.yaml
+  - service.yaml
+  - sealed.yaml
+namespace: lorekeeper
+images:
+  - name: ghcr.io/imdevinc/thf-lore/server
+    newTag: v1.4.0
+  - name: ghcr.io/imdevinc/thf-lore/discord-bot
+    newTag: bot-v1.4.0

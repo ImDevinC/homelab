@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discord-bot
+  namespace: lorekeeper
+  labels:
+    app: discord-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discord-bot
+  template:
+    metadata:
+      labels:
+        app: discord-bot
+    spec:
+      securityContext:
+        runAsNonRoot: true
+      containers:
+        - name: discord-bot
+          image: ghcr.io/imdevinc/thf-lore/discord-bot
+          command: ["discord-bot"]
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: discord-config
+            - secretRef:
+                name: discord-secret
+
