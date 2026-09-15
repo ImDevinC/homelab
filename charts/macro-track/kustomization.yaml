@@ -8,3 +8,6 @@ resources:
 images:
   - name: ghcr.io/imdevinc/macro-track-server
     newTag: 1.5.0
+replicas:
+  - name: macro-track
+    count: 0

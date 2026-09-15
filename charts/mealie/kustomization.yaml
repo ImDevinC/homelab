@@ -12,3 +12,6 @@ resources:
 images:
   - name: ghcr.io/mealie-recipes/mealie
     newTag: v3.25.1
+replicas:
+  - name: mealie
+    count: 0

@@ -8,7 +8,7 @@ resources:
   - httproute.yaml
 replicas:
   - name: fifa-bot
-    count: 1
+    count: 0
 namespace: fifa-bot
 images:
   - name: ghcr.io/imdevinc/fifa-bot

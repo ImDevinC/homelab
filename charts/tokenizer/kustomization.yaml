@@ -7,3 +7,6 @@ resources:
 images:
   - name: ghcr.io/imdevinc/tokenizer
     newTag: 0.0.3
+replicas:
+  - name: tokenizer
+    count: 0
