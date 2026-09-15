@@ -24,8 +24,9 @@ spec:
           command:
             [
               "/usr/local/bin/reindex",
-              "-document",
-              "ebf2fc6c-45e4-4ea1-84fd-680760b13287",
+              "-all"
+#              "-document",
+#              "ebf2fc6c-45e4-4ea1-84fd-680760b13287",
             ]
           envFrom:
             - configMapRef:
