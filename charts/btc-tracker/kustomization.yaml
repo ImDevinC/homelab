@@ -10,3 +10,6 @@ resources:
 images:
   - name: thewilqq/btc-tracker
     newTag: v2026.03.08
+replicas:
+  - name: thewilqq/btc-tracker
+    count: 0
