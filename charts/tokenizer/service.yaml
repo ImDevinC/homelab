@@ -21,7 +21,6 @@ metadata:
     service: tokenizer
   name: tokenizer
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: tokenizer
