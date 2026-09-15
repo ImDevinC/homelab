@@ -64,5 +64,3 @@ replicas:
     count: 0
   - name: shelfmark
     count: 0
-  - name: whisparr
-    count: 0
