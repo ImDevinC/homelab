@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: keda
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mediaserver
+  project: default
+  sources:
+    - chart: keda
+      repoURL: https://kedacore.github.io/charts
+      targetRevision: 2.20.2
+    - chart: keda-add-ons-http
+      repoURL: https://kedacore.github.io/charts
+      targetRevision: 0.15.0
+  syncPolicy:
+    automated:
+      prune: true
