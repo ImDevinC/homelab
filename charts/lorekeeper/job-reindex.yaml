@@ -19,14 +19,9 @@ spec:
         fsGroup: 65532
       containers:
         - name: reindex
-          image: ghcr.io/imdevinc/thf-lore/server:v1.6.5
+          image: ghcr.io/imdevinc/thf-lore/server:v1.6.6
           imagePullPolicy: IfNotPresent
-          command:
-            [
-              "/usr/local/bin/reindex",
-              "-document",
-              "ebf2fc6c-45e4-4ea1-84fd-680760b13287",
-            ]
+          command: ["/usr/local/bin/reindex"]
           envFrom:
             - configMapRef:
                 name: lorekeeper-config
