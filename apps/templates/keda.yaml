@@ -18,5 +18,7 @@ spec:
       repoURL: https://kedacore.github.io/charts
       targetRevision: 0.15.0
   syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
     automated:
       prune: true
