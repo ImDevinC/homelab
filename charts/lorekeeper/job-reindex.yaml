@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: lorekeeper-reindex
+  namespace: lorekeeper
+  labels:
+    app: lorekeeper
+spec:
+  ttlSecondsAfterFinished: 86400
+  backoffLimit: 2
+  template:
+    metadata:
+      labels:
+        app: lorekeeper
+    spec:
+      restartPolicy: OnFailure
+      securityContext:
+        runAsNonRoot: true
+        fsGroup: 65532
+      containers:
+        - name: reindex
+          image: ghcr.io/imdevinc/thf-lore/server
+          imagePullPolicy: IfNotPresent
+          command: ["/usr/local/bin/reindex"]
+          envFrom:
+            - configMapRef:
+                name: lorekeeper-config
+            - secretRef:
+                name: lorekeeper-secret
+          securityContext:
+            runAsNonRoot: true
+          volumeMounts:
+            - name: data
+              mountPath: /data/documents
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: lorekeeper-data
+

@@ -20,6 +20,7 @@ data:
   # --- LLM ---
   LLM_BASE_URL: "https://openrouter.ai/api/v1"
   LLM_MODEL: "deepseek/deepseek-v4-flash"
+  ENTITY_EXTRACTION_MODEL: "deepseek/deepseek-v4-flash"
 
   # --- Embeddings ---
   EMBEDDING_BASE_URL: "https://openrouter.ai/api/v1"
@@ -36,6 +37,8 @@ data:
   # --- Chunking ---
   CHUNK_TARGET_TOKENS: "500"
   CHUNK_OVERLAP_TOKENS: "75"
+  CHUNK_CHILD_TARGET_TOKENS: "200"
+  CHUNK_CHILD_OVERLAP_TOKENS: "50"
 
   # --- Retrieval ---
   RETRIEVAL_MIN_SCORE: "0.18"
