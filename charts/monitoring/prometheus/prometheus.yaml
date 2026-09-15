@@ -10,7 +10,9 @@ spec:
   ruleNamespaceSelector: {}
   probeSelector: {}
   scrapeConfigSelector: {}
+  serviceMonitorSelector: {}
   serviceMonitorNamespaceSelector: {}
+  podMonitorSelector: {}
   podMonitorNamespaceSelector: {}
   externalUrl: https://prometheus.int.imdevinc.com
   retention: 30d
