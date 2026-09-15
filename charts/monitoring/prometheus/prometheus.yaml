@@ -10,6 +10,8 @@ spec:
   ruleNamespaceSelector: {}
   probeSelector: {}
   scrapeConfigSelector: {}
+  serviceMonitorNamespaceSelector: {}
+  podMonitorNamespaceSelector: {}
   externalUrl: https://prometheus.int.imdevinc.com
   retention: 30d
   remoteWrite:
