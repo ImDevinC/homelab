@@ -60,3 +60,11 @@ replicas:
     count: 0
   - name: recommendarr
     count: 0
+  - name: bookorbit
+    count: 0
+  - name: jellyin
+    count: 0
+  - name: shelfmark
+    count: 0
+  - name: whisparr
+    count: 0

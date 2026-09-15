@@ -14,3 +14,10 @@ images:
     newTag: 2.4.3
   - name: hwdsl2/whisper-server
     newTag: cuda
+replicas:
+  - name: piper
+    count: 0
+  - name: whisper
+    count: 0
+  - name: wyoming-whisper
+    count: 0
