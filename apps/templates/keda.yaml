@@ -17,6 +17,10 @@ spec:
     - chart: keda-add-ons-http
       repoURL: https://kedacore.github.io/charts
       targetRevision: 0.15.0
+      helm:
+        values: |
+          scaler.replicas: 1
+
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
