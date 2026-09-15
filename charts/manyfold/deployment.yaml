@@ -5,7 +5,6 @@ metadata:
   labels:
     app.kubernetes.io/name: manyfold
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: manyfold

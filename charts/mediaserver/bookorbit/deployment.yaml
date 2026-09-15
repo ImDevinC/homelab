@@ -6,7 +6,6 @@ metadata:
     app: bookorbit
     app.kubernetes.io/name: bookorbit
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: bookorbit
