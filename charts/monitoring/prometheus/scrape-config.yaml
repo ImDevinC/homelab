@@ -1,0 +1,29 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: host-scrape-configs
+  namespace: monitoring
+spec:
+  staticConfigs:
+    - targets:
+        - "archlinux:9100"
+        - "pi.hole:9100"
+      labels:
+        job: node-exporter
+    - targets:
+        - "archlinux:9835"
+      labels:
+        job: nvidia-smi
+    - targets:
+        - "pi.hole:9110"
+      labels:
+        job: rpi
+    - targets:
+        - "pi.hole:9191"
+      labels:
+        job: fail2ban
+    - targets:
+        - "pi.hole:6060"
+        - "pi.hole:60601"
+      labels:
+        job: crowdsec

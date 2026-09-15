@@ -77,12 +77,12 @@ spec:
             matchType: =~
             value: InfoInhibitor|Watchdog|etcdMembersDown|etcdInsufficientMembers|KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|etcdHighCommitDurations|KubernetesCronjobSuspended|SenseEnergyMissing|KubernetesNodeOutOfPodCapacity|KubernetesHpaMetricsUnavailability
         receiver: "null"
-      - matchers: # These jobs also run on the desktop, and we don't want to alert there
+      - matchers:
           - name: job
             matchType: =~
             value: node-exporter|nvidia-smi
         receiver: "null"
-      - matchers: # city-council-review takes a long time
+      - matchers:
           - name: alertname
             matchType: =
             value: KubernetesCronjobTooLong

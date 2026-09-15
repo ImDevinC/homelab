@@ -77,9 +77,9 @@ Recording rules run at intervals, so wait for at least one evaluation cycle:
 
 If something goes wrong:
 
-1. [ ] Remove remoteWrite from opentelemetry-operator/prometheus-operated.yaml:
+1. [ ] Remove remoteWrite from prometheus/prometheus.yaml:
    ```bash
-   git checkout HEAD -- opentelemetry-operator/prometheus-operated.yaml
+   git checkout HEAD -- prometheus/prometheus.yaml
    ```
 
 2. [ ] Revert Grafana datasource:

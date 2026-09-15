@@ -4,10 +4,12 @@ metadata:
   name: prometheus
 spec:
   serviceAccountName: prometheus
-  enableRemoteWriteReceiver: true
+  externalLabels:
+    cluster: k8s
   ruleSelector: {}
   ruleNamespaceSelector: {}
-  probeSelector: {} # We don't use probes, but instead of having to supply a whole config, we enable this
+  probeSelector: {}
+  scrapeConfigSelector: {}
   externalUrl: https://prometheus.int.imdevinc.com
   retention: 30d
   remoteWrite:
@@ -118,4 +120,3 @@ subjects:
 - kind: ServiceAccount
   name: prometheus
   namespace: monitoring
----

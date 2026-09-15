@@ -279,7 +279,7 @@ spec:
       k8s-app: kubelet
   endpoints:
   - port: https-metrics
-    scheme: https    
+    scheme: https
     tlsConfig:
       caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
       insecureSkipVerify: true
@@ -303,7 +303,7 @@ spec:
     interval: 10s
     honorLabels: true
     honorTimestamps: true
-    trackTimestampsStaleness: true    
+    trackTimestampsStaleness: true
     tlsConfig:
       caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
       insecureSkipVerify: true
@@ -353,7 +353,7 @@ spec:
     scheme: https
     path: /metrics/probes
     honorLabels: true
-    honorTimestamps: true    
+    honorTimestamps: true
     tlsConfig:
       caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
       insecureSkipVerify: true
