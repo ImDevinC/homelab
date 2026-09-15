@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: silverbullet
+spec:
+  target:
+    service: silverbullet
+    port: 3000
+  rules:
+    - hosts:
+        - notes.int.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000

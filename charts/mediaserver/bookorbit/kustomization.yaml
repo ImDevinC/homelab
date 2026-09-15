@@ -5,3 +5,5 @@ resources:
   - httproute.yaml
   - service.yaml
   - sealed.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml

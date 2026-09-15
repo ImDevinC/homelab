@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: readr
+spec:
+  target:
+    service: readr
+    port: 8080
+  rules:
+    - hosts:
+        - readr.int.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000

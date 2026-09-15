@@ -107,11 +107,11 @@ data:
     - hostname: wallabag.imdevinc.com
       service: http://wallabag.wallabag:80
     - hostname: lego.imdevinc.com
-      service: http://legoai.legoai:8080
+      service: http://keda-add-ons-http-interceptor-proxy.keda.svc.cluster.local:8080
     - hostname: umami.imdevinc.com
       service: http://umami.umami:3000
     - hostname: macrotrack.imdevinc.com
-      service: http://macro-track.macro-track:8080
+      service: http://keda-add-ons-http-interceptor-proxy.keda.svc.cluster.local:8080
     - hostname: minions.imdevinc.com
       service: http://github-webhook.minions.svc.cluster.local:8080
     - hostname: prs.imdevinc.com

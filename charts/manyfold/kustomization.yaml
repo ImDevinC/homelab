@@ -8,9 +8,8 @@ resources:
   - service.yaml
   - pvc.yaml
   - deployment.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml
 images:
   - name: manyfold3d/manyfold
     newTag: 0.149.0
-replicas:
-  - name: manyfold
-    count: 0

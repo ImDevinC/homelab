@@ -4,3 +4,5 @@ resources:
   - deployment.yaml
   - httproute.yaml
   - service.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml

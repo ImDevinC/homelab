@@ -7,9 +7,8 @@ resources:
   - service.yaml
   - pvc.yaml
   - schedule.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml
 images:
   - name: thewilqq/btc-tracker
     newTag: v2026.03.08
-replicas:
-  - name: btc-tracker
-    count: 0

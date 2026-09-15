@@ -7,6 +7,8 @@ resources:
   - piper.yaml
   - wyoming-whisper.yaml
   - sealed.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml
 images:
   - name: rhasspy/wyoming-whisper
     newTag: 3.7.0
@@ -14,10 +16,3 @@ images:
     newTag: 2.4.3
   - name: hwdsl2/whisper-server
     newTag: cuda
-replicas:
-  - name: piper
-    count: 0
-  - name: whisper
-    count: 0
-  - name: wyoming-whisper
-    count: 0

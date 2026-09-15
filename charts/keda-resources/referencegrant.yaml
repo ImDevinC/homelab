@@ -1,0 +1,35 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: ReferenceGrant
+metadata:
+  name: allow-interceptor-routes
+  namespace: keda
+spec:
+  from:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: btc-tracker
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: manyfold
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: mealie
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: paperless
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: readr
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: silverbullet
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: mediaserver
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: whisper
+  to:
+    - group: ""
+      kind: Service
+      name: keda-add-ons-http-interceptor-proxy

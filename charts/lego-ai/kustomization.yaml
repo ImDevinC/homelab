@@ -3,9 +3,8 @@ kind: Kustomization
 namespace: legoai
 resources:
   - manifest.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml
 images:
   - name: ghcr.io/imdevinc/lego-ai
     newTag: 0.1.5
-replicas:
-  - name: legoai
-    count: 0

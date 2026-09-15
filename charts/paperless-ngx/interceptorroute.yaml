@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: paperless
+spec:
+  target:
+    service: paperless
+    port: 8000
+  rules:
+    - hosts:
+        - paperless.int.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000

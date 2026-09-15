@@ -9,9 +9,8 @@ resources:
   - pvc.yaml
   - sealed.yaml
   - service.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml
 images:
   - name: ghcr.io/mealie-recipes/mealie
     newTag: v3.25.1
-replicas:
-  - name: mealie
-    count: 0

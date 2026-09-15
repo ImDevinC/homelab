@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: whisper
+spec:
+  target:
+    service: whisper
+    port: 9000
+  rules:
+    - hosts:
+        - whisper.int.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000

@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: legoai
+spec:
+  target:
+    service: legoai
+    port: 8080
+  rules:
+    - hosts:
+        - lego.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000

@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: macro-track
+spec:
+  target:
+    service: macro-track
+    port: 8080
+  rules:
+    - hosts:
+        - macrotrack.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000

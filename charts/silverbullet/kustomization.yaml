@@ -9,9 +9,8 @@ resources:
   - sealed.yaml
   - service.yaml
   - schedule.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml
 images:
   - name: ghcr.io/silverbulletmd/silverbullet
     newTag: 2.10.0
-replicas:
-  - name: silverbullet
-    count: 0

@@ -7,9 +7,8 @@ resources:
   - deployment.yaml
   - service.yaml
   - httproute.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml
 images:
   - name: gjames8/readr
     newTag: 2.3.0
-replicas:
-  - name: readr
-    count: 0

@@ -32,12 +32,9 @@ spec:
     namespace: traefik
   rules:
   - backendRefs:
-    - group: ""
-      kind: Service
-      name: btc-tracker
-      namespace: btc-tracker
-      port: 3000
-      weight: 1
+    - name: keda-add-ons-http-interceptor-proxy
+      namespace: keda
+      port: 8080
     matches:
     - path:
         type: PathPrefix

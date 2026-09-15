@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: mealie
+spec:
+  target:
+    service: mealie
+    port: 9000
+  rules:
+    - hosts:
+        - mealie.int.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000

@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: jellyfin
+spec:
+  target:
+    service: jellyfin
+    port: 8096
+  rules:
+    - hosts:
+        - jellyfin.int.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000

@@ -10,6 +10,8 @@ helmCharts:
 namespace: mediaserver
 resources:
   - httproute.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml
 patches:
   - target:
       version: v1
@@ -17,6 +19,3 @@ patches:
       kind: Deployment
       name: jellyfin
     path: remove-volumes.yaml
-replicas:
-  - name: jellyfin
-    count: 0

@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: manyfold
+spec:
+  target:
+    service: manyfold
+    port: 3214
+  rules:
+    - hosts:
+        - manyfold.int.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000
