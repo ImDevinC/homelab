@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: tokenizer
+spec:
+  target:
+    service: tokenizer
+    port: 8080
+  rules:
+    - hosts:
+        - tokenizer.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000
