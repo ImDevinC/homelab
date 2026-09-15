@@ -19,8 +19,8 @@ spec:
       targetRevision: 0.15.0
       helm:
         values: |
-          scaler.replicas: 1
-
+          scaler:
+            replicas: 1
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
