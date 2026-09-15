@@ -1,0 +1,31 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: keda-add-ons-http-scaler
+  labels:
+    app: keda-add-ons-http-scaler
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: scaler
+      app.kubernetes.io/name: http-add-on
+  endpoints:
+    - port: metrics
+      interval: 30s
+      path: /metrics
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: keda-add-ons-http-interceptor
+  labels:
+    app: keda-add-ons-http-interceptor
+spec:
+  podMetricsEndpoints:
+    - targetPort: 2223
+      interval: 30s
+      path: /metrics
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: interceptor
+      app.kubernetes.io/name: http-add-on

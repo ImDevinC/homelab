@@ -14,6 +14,24 @@ spec:
     - chart: keda
       repoURL: https://kedacore.github.io/charts
       targetRevision: 2.20.2
+      helm:
+        values: |
+          prometheus:
+            operator:
+              enabled: true
+              port: 8080
+              serviceMonitor:
+                enabled: true
+            metricServer:
+              enabled: true
+              port: 8080
+              serviceMonitor:
+                enabled: true
+            webhooks:
+              enabled: true
+              port: 8080
+              serviceMonitor:
+                enabled: true
     - chart: keda-add-ons-http
       repoURL: https://kedacore.github.io/charts
       targetRevision: 0.15.0
