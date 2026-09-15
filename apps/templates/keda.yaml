@@ -10,24 +10,24 @@ spec:
     server: https://kubernetes.default.svc
     namespace: keda
   project: default
-sources:
-  - chart: keda
-    repoURL: https://kedacore.github.io/charts
-    targetRevision: 2.20.2
-  - chart: keda-add-ons-http
-    repoURL: https://kedacore.github.io/charts
-    targetRevision: 0.15.0
-    helm:
-      values: |
-        scaler:
-          replicas: 1
-        interceptor:
-          replicas:
-            min: 1
-            max: 1
-  - repoURL: https://github.com/imdevinc/homelab.git
-    targetRevision: main
-    path: charts/keda-resources
+  sources:
+    - chart: keda
+      repoURL: https://kedacore.github.io/charts
+      targetRevision: 2.20.2
+    - chart: keda-add-ons-http
+      repoURL: https://kedacore.github.io/charts
+      targetRevision: 0.15.0
+      helm:
+        values: |
+          scaler:
+            replicas: 1
+          interceptor:
+            replicas:
+              min: 1
+              max: 1
+    - repoURL: https://github.com/imdevinc/homelab.git
+      targetRevision: main
+      path: charts/keda-resources
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
