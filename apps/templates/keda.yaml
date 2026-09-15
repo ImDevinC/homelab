@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: mediaserver
+    namespace: keda
   project: default
   sources:
     - chart: keda

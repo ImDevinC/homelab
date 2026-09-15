@@ -17,3 +17,6 @@ patches:
       kind: Deployment
       name: jellyfin
     path: remove-volumes.yaml
+replicas:
+  - name: jellyfin
+    count: 0
