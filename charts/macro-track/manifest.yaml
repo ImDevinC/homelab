@@ -10,7 +10,6 @@ metadata:
   labels:
     app: macro-track
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: macro-track

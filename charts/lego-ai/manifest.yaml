@@ -5,7 +5,6 @@ metadata:
   labels:
     app: legoai
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: legoai

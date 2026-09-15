@@ -48,7 +48,6 @@ metadata:
     service: btc-tracker
   name: btc-tracker
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: btc-tracker

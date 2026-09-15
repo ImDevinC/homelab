@@ -27,7 +27,6 @@ metadata:
   labels:
     app: whisper
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: whisper
