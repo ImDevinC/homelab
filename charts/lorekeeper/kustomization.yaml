@@ -9,9 +9,10 @@ resources:
   - pvc.yaml
   - service.yaml
   - sealed.yaml
+  - httproute.yaml
 namespace: lorekeeper
 images:
   - name: ghcr.io/imdevinc/thf-lore/server
-    newTag: v1.9.0
+    newTag: v1.10.0
   - name: ghcr.io/imdevinc/thf-lore/discord-bot
     newTag: bot-v1.8.0
