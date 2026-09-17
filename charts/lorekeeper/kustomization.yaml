@@ -13,6 +13,6 @@ resources:
 namespace: lorekeeper
 images:
   - name: ghcr.io/imdevinc/thf-lore/server
-    newTag: v1.11.0
+    newTag: v1.11.1
   - name: ghcr.io/imdevinc/thf-lore/discord-bot
     newTag: bot-v1.9.0
