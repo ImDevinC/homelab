@@ -168,7 +168,7 @@ metadata:
     app.kubernetes.io/part-of: minions
 data:
   DISCORD_ALLOWED_GUILD_ID: "568637341296623619" # gnomebytes
-  DISCORD_ALLOWED_ROLE_ID: "1486028462933278800" # developer
+  DISCORD_ALLOWED_ROLE_ID: "578025259316281355" # Owner
   CONTROL_PANEL_URL: "http://minions.int.imdevinc.com"
   CLARIFICATION_MODEL: "deepseek/deepseek-v4.1-flash"
   OPENAI_BASE_URL: "https://openrouter.ai/api"
