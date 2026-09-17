@@ -25,6 +25,8 @@ spec:
         - name: mediaserver-volume
           hostPath:
             path: /mnt/media
+        - name: transcode
+          emptyDir: {}
       hostNetwork: true
       containers:
         - name: plex
@@ -79,6 +81,8 @@ spec:
             - mountPath: /anime
               name: mediaserver-volume
               subPath: media/anime
+            - name: transcode
+              mountPath: /transcode
           resources:
             requests:
               cpu: "500m"
