@@ -3,8 +3,10 @@ kind: Kustomization
 namespace: dnd-proxy
 resources:
   - deployment.yaml
+  - interceptorroute.yaml
   - namespace.yaml
   - service.yaml
+  - scaledobject.yaml
 images:
   - name: ghcr.io/imdevinc/dnd-proxy
     newTag: 0.0.5
