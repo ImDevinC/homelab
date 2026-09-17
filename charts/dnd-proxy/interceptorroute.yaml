@@ -1,0 +1,15 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: dnd-proxy
+spec:
+  target:
+    service: dnd-proxy
+    port: 8080
+  rules:
+    - hosts:
+        - dnd.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000
+

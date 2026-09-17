@@ -29,7 +29,11 @@ spec:
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
       namespace: whisper
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: dnd-proxy
   to:
     - group: ""
       kind: Service
       name: keda-add-ons-http-interceptor-proxy
+
