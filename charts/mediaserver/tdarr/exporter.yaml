@@ -25,7 +25,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: TDARR_URL
-              value: http://tdarr.mediaserver.svc.cluster.local
+              value: http://tdarr.mediaserver.svc.cluster.local:8265
           resources:
             requests:
               cpu: 250m
