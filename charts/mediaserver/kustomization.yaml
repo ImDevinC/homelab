@@ -53,9 +53,9 @@ images:
   - name: ghcr.io/bookorbit/bookorbit
     newTag: 2.9.0
   - name: ghcr.io/haveagitgat/tdarr
-    newTag: 2.50.01
+    newTag: 2.87.01
   - name: ghcr.io/haveagitgat/tdarr_node
-    newTag: 2.50.02
+    newTag: 2.87.01
 replicas:
   - name: codex
     count: 0
