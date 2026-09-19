@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: tdarr
+  labels:
+    app: tdarr
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tdarr
+  serviceName: tdarr
+  template:
+    metadata:
+      labels:
+        app: tdarr
+    spec:
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
+        - name: transcode
+          emptyDir: {}
+      containers:
+        - name: tdarr
+          image: ghcr.io/haveagitgat/tdarr:2.87.01
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: TZ
+              value: America/Los_Angeles
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: UMASK_SET
+              value: "002"
+            - name: serverPort
+              value: "8266"
+            - name: webUIPort
+              value: "8265"
+            - name: internalNode
+              value: "false"
+            - name: inContainer
+              value: "true"
+            - name: ffmpegVersion
+              value: "7"
+            - name: nodeName
+              value: MyInternalNode
+            - name: auth
+              value: "false"
+            - name: openBrowser
+              value: "true"
+            - name: maxLogSizeMB
+              value: "10"
+            - name: cronPluginUpdate
+              value: ""
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: all
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: all
+          ports:
+            - name: webui
+              containerPort: 8265
+              protocol: TCP
+            - name: server
+              containerPort: 8266
+              protocol: TCP
+          startupProbe:
+            httpGet:
+              path: /
+              port: 8265
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 60 # 5 minutes
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8265
+            periodSeconds: 30
+            failureThreshold: 3
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: /app/server
+              subPath: config/tdarr/server
+            - name: mediaserver-volume
+              mountPath: /app/configs
+              subPath: config/tdarr/configs
+            - name: mediaserver-volume
+              mountPath: /app/logs
+              subPath: config/tdarr/logs
+            - name: mediaserver-volume
+              mountPath: /media
+              subPath: media
+            - name: transcode
+              mountPath: /temp
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              nvidia.com/gpu: 1

@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tdarr-node
+  labels:
+    app: tdarr-node
+    app.kubernetes.io/name: tdarr-node
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: tdarr-node
+      app.kubernetes.io/name: tdarr-node
+  template:
+    metadata:
+      labels:
+        app: tdarr-node
+        app.kubernetes.io/name: tdarr-node
+    spec:
+      volumes:
+        - name: mediaserver-volume
+          hostPath:
+            path: /mnt/media
+        - name: transcode
+          emptyDir: {}
+      containers:
+        - name: tdarr-node
+          image: ghcr.io/haveagitgat/tdarr_node:2.87.01
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: TZ
+              value: America/Los_Angeles
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: UMASK_SET
+              value: "002"
+            - name: serverPort
+              value: "8266"
+            - name: serverURL
+              value: http://tdarr.mediaserver.svc.cluster.local:8266
+            - name: inContainer
+              value: "true"
+            - name: ffmpegVersion
+              value: "7"
+            - name: nodeType
+              value: mapped
+            - name: priority
+              value: "-1"
+            - name: cronPluginUpdate
+              value: ""
+            - name: apiKey
+              value: ""
+            - name: maxLogSizeMB
+              value: "10"
+            - name: pollInterval
+              value: "2000"
+            - name: startPaused
+              value: "false"
+            - name: transcodegpuWorkers
+              value: "1"
+            - name: transcodecpuWorkers
+              value: "2"
+            - name: healthcheckgpuWorkers
+              value: "1"
+            - name: healthcheckcpuWorkers
+              value: "1"
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: all
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: all
+          volumeMounts:
+            - name: mediaserver-volume
+              mountPath: /app/configs
+              subPath: config/tdarr-node/configs
+            - name: mediaserver-volume
+              mountPath: /app/logs
+              subPath: config/tdarr-node/logs
+            - name: mediaserver-volume
+              mountPath: /media
+              subPath: media
+            - name: transcode
+              mountPath: /temp
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              nvidia.com/gpu: 1
