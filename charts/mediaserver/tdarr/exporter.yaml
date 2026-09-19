@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tdarr-exporter
+  labels:
+    app: tdarr-exporter
+    app.kubernetes.io/name: tdarr-exporter
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: tdarr-exporter
+      app.kubernetes.io/name: tdarr-exporter
+  template:
+    metadata:
+      labels:
+        app: tdarr-exporter
+        app.kubernetes.io/name: tdarr-exporter
+    spec:
+      containers:
+        - name: tdarr-exporter
+          image: homeylab/tdarr-exporter:3.0.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: TDARR_URL
+              value: http://tdarr.mediaserver.svc.cluster.local
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: tdarr-exporter
+    app.kubernetes.io/name: tdarr-exporter
+  name: tdarr-exporter
+spec:
+  ports:
+    - name: metrics
+      port: 9090
+      protocol: TCP
+      targetPort: 9090
+  selector:
+    app.kubernetes.io/name: tdarr-exporter
+  type: ClusterIP
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: tdarr
+  labels:
+    app: tdarr
+spec:
+  selector:
+    matchLabels:
+      app: tdarr
+  endpoints:
+    - port: metrics
+      interval: 1m
+      scrapeTimeout: 15s
+      path: /metrics
