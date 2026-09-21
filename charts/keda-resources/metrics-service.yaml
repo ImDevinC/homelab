@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: keda-add-ons-http-interceptor-metrics
+  labels:
+    app: keda-add-ons-http-interceptor
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/component: interceptor
+    app.kubernetes.io/name: http-add-on
+  ports:
+    - name: metrics
+      port: 2223
+      targetPort: 2223
+      protocol: TCP

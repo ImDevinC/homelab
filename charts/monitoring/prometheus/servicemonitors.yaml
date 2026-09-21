@@ -5,7 +5,7 @@ metadata:
   name: grafana
 spec:
   endpoints:
-  - port: grafana-http
+  - port: grafana
     scrapeTimeout: 30s
     honorLabels: true
     path: /metrics
@@ -53,7 +53,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      operated-alertedmanager: "true"
+      operated-alertmanager: "true"
   endpoints:
   - port: web
     enableHttp2: true

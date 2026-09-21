@@ -57,7 +57,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: tdarr
+      app.kubernetes.io/name: tdarr-exporter
   endpoints:
     - port: metrics
       interval: 1m
