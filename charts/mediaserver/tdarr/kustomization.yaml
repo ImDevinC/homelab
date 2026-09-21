@@ -6,7 +6,7 @@ resources:
   - deployment.yaml
   - service.yaml
   - httproute.yaml
-#  - exporter.yaml
+  - exporter.yaml
 images:
   - name: homeylab/tdarr-exporter
     newName: ghcr.io/imdevinc/tdarr-exporter
