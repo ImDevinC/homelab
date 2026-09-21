@@ -10,4 +10,4 @@ resources:
 images:
   - name: homeylab/tdarr-exporter
     newName: ghcr.io/imdevinc/tdarr-exporter
-    newTag: 4.0.0
+    newTag: 4.0.1
