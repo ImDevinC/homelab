@@ -9,5 +9,4 @@ resources:
   - exporter.yaml
 images:
   - name: homeylab/tdarr-exporter
-    newName: ghcr.io/imdevinc/tdarr-exporter
-    newTag: 4.0.1
+    newTag: 3.1.0
