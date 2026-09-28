@@ -58,10 +58,3 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 5
             failureThreshold: 3
-          volumeMounts:
-            - name: data
-              mountPath: /data/documents
-      volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: lorekeeper-data
