@@ -10,9 +10,6 @@ data:
   POSTGRES_USER: "lorekeeper"
   POSTGRES_DB: "lorekeeper"
 
-  # --- Qdrant ---
-  QDRANT_URL: "http://qdrant.qdrant.svc.cluster.local:6333"
-
   # --- Storage (local backend for K8s PVC) ---
   STORAGE_BACKEND: "local"
   STORAGE_LOCAL_PATH: "/data/documents"
@@ -20,15 +17,8 @@ data:
   # --- LLM ---
   LLM_BASE_URL: "https://openrouter.ai/api/v1"
   LLM_MODEL: "deepseek/deepseek-v4-flash"
-  ENTITY_EXTRACTION_MODEL: "deepseek/deepseek-v4-flash"
-  ENTITY_EXTRACTION_MAX_TOKENS: "65536"
   TITLE_MODEL: "deepseek/deepseek-v4-flash"
   TITLE_MAX_TOKENS: "200"
-
-  # --- Embeddings ---
-  EMBEDDING_BASE_URL: "https://openrouter.ai/api/v1"
-  EMBEDDING_MODEL: "openai/text-embedding-3-small"
-  EMBEDDING_DIMENSIONS: "1536"
 
   # --- Server ---
   LOREKEEPER_PORT: "8080"
@@ -36,15 +26,7 @@ data:
   LOREKEEPER_DEFAULT_CAMPAIGN_SLUG: "thf"
   LOREKEEPER_CORS_ORIGINS: ""
   LOREKEEPER_MAX_UPLOAD_MB: "20"
-  LOREKEEPER_MODE: "tool"
   LOREKEEPER_REQUEST_TIMEOUT: "0"
-
-  # --- Chunking ---
-  CHUNK_TARGET_TOKENS: "500"
-  CHUNK_OVERLAP_TOKENS: "75"
-
-  # --- Retrieval ---
-  RETRIEVAL_MIN_SCORE: "0.18"
 
   # --- Logging ---
   LOG_LEVEL: "info"
