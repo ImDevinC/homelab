@@ -63,11 +63,11 @@ spec:
             - name: transcodegpuWorkers
               value: "1"
             - name: transcodecpuWorkers
-              value: "2"
+              value: "1"
             - name: healthcheckgpuWorkers
-              value: "1"
+              value: "0"
             - name: healthcheckcpuWorkers
-              value: "1"
+              value: "0"
             - name: NVIDIA_DRIVER_CAPABILITIES
               value: all
             - name: NVIDIA_VISIBLE_DEVICES
