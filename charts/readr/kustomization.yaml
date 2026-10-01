@@ -11,4 +11,4 @@ resources:
   - scaledobject.yaml
 images:
   - name: gjames8/readr
-    newTag: 2.3.0
+    newTag: 3.0.0
