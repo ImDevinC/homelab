@@ -13,4 +13,4 @@ resources:
   - scaledobject.yaml
 images:
   - name: ghcr.io/silverbulletmd/silverbullet
-    newTag: 2.10.0
+    newTag: 2.11.1
