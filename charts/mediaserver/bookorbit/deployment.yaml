@@ -40,6 +40,9 @@ spec:
             - name: mediaserver-volume
               mountPath: "/data"
               subPath: "config/bookorbit"
+            - name: mediaserver-volume
+              mountPath: "/downloads"
+              subPath: "downloads"
           env:
             - name: PGID
               value: "1000"
