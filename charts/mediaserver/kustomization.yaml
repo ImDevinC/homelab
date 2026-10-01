@@ -51,7 +51,7 @@ images:
   - name: ghcr.io/calibrain/shelfmark
     newTag: v1.4.0
   - name: ghcr.io/bookorbit/bookorbit
-    newTag: 2.10.0
+    newTag: 3.2.0
   - name: ghcr.io/haveagitgat/tdarr
     newTag: 2.92.01
   - name: ghcr.io/haveagitgat/tdarr_node
