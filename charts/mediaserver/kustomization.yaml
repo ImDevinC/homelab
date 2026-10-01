@@ -65,7 +65,3 @@ replicas:
     count: 0
   - name: recommendarr
     count: 0
-  - name: bookorbit
-    count: 0
-  - name: shelfmark
-    count: 0
