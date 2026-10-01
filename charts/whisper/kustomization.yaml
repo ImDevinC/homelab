@@ -11,8 +11,8 @@ resources:
   - scaledobject.yaml
 images:
   - name: rhasspy/wyoming-whisper
-    newTag: 3.7.0
+    newTag: 3.8.1
   - name: rhasspy/wyoming-piper
-    newTag: 2.4.3
+    newTag: 2.5.2
   - name: hwdsl2/whisper-server
     newTag: cuda
