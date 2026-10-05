@@ -8,4 +8,4 @@ resources:
   - scaledobject.yaml
 images:
   - name: ghcr.io/imdevinc/tokenizer
-    newTag: 0.0.3
+    newTag: 0.1.1
