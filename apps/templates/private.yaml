@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: /apps
-    repoURL: https://github.com/ImDevinC/homelab-private.git
+    repoURL: git@github.com:ImDevinC/homelab-private.git
     targetRevision: main
   syncPolicy:
     automated:
