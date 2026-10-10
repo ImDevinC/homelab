@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: private-apps
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: default
+  source:
+    path: /apps
+    repoURL: https://github.com/ImDevinC/homelab-private.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+  ignoreDifferences:
+    - group: "argoproj.io"
+      kind: "Application"
+      jqPathExpressions:
+        - '.metadata.finalizers[] | select(startswith("pre-delete-finalizer.argocd.argoproj.io"))'
+        - '.metadata.finalizers[] | select(startswith("post-delete-finalizer.argocd.argoproj.io"))'
