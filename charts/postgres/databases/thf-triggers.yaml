@@ -17,7 +17,6 @@ spec:
     name: postgres
   name: thf-triggers
   login: true
-  superuser: false
   databaseRoleReclaimPolicy: delete
   passwordSecret:
     name: thf-triggers-database-password
