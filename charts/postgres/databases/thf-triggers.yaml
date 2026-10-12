@@ -1,0 +1,37 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: thf-triggers
+spec:
+  name: thf-triggers
+  owner: thf-triggers
+  cluster:
+    name: postgres
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: DatabaseRole
+metadata:
+  name: thf-triggers
+spec:
+  cluster:
+    name: postgres
+  name: thf-triggers
+  login: true
+  superuser: false
+  databaseRoleReclaimPolicy: delete
+  passwordSecret:
+    name: thf-triggers-database-password
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: thf-triggers-database-password
+  namespace: postgres
+spec:
+  encryptedData:
+    password: AgB/c/KZh6rQOhcetAJoitfp2f77+zqGfmzyXIdsHSi1Gq/NqN36udT/10HukfRs5tUBKUMc8JMg3raaBy2DIR3Ece1hca3rE/xc49AsgX7vFLThMlj/AjTUZG2/DZIMWqKL7Q46poq08nFXbtALdgVxDNCVzzUCyjRwxWarLYyue1qQcEHn2dQf+8E/m8oablYdsGbOK0IdXQH5tHP3r2V9y4yNrVDNKGCBfaiptxkfPjMTYeD7KaygHX8R0ymBn/mz1Oc8GOfDTfJmG3hEpYO39ep5wqeVxCPlwbhjLOgV1FkBO5Gl+05P5tfa+MuA3Y1GBZ7XyZgx0qifKDrkvE0pEFkEQNcGqxQkIelBdbBJPIG4pn/0OxH1zBSPVCyKjzGDomxjRKlaFDVb808W8f3+IPcR+GgsV8PB0aEoc9mTdXW26wW1ec4Jr3fkFKJsj1DUEdK1fi6cCEZE9KUCp41fcQiyRoYxUhucnY7gmNb2PGSzQklDyOPmneYzOPwrZFen18jYR/IBXZ/cRZLv3eBbm9OYyqXujWbRH90PwgnnJOLGgMBvlF6pEYYp7CdSUOmVyRvqfiwjbz9piMqtTHlpy5wZ6U/aYyXxXOyxi69bHEM1ShKTNusmix9zI93HzkLSXFrQnz7JTkQ45B8NVW0s5+dJ4ltpl3KPkGd+w4dt8pUGErzFkGhWIy8jW1BpwHFHleGZluaMxApeD+MXxCZFU+0atZQ3bzGfly+HbUh0ugABqNPsW/paP2Fp9jkPGiwJVMzdXk7WI9KKEwkXA/uL
+    username: AgA2fg6hLYwcv/Yea9LQaEhA2DYoWW1gzPgla0CcD/Z8vsRHZi9ivZXY6TQA1q5XPfaB3kT31u3zU17hBNE0CvAO7r7P29gxYKVk5aFnqGmR1lGNrfhXPAjyRTxltQYbPCIsq3aHQGG5ucpqd10R+UnRySQOUDHQryAbmK3GspmB/4TogzlRo2bvOW3naI2yE0/JlS7Ys+0xmTbxvINlF1kyzyCNEdO1053SIOnugLZtvKpvBXNIJN9e8weDFObCWxESnxQi9OrmmERt1FQskKV9VUS9PHYwzMtT4316XKqRL7YFShanpTnUNJXzoIUbS3Q9v+zOM/9ilE6a10Ffsm3POmUnvo+O/DhUTUunr//7cYFPSxNSNi7fBjLqIXabHEt++vPGyh0AdmQa8EyscLgkmqmH71PEGzxJQz14Q5Rm3v96/BGbwPRRuC/c6xw0Dp6fziY0NLjl4yZmuvLeQPMCiJ8HwSBgW61clGKZ3sRfwTmCBictI7A2fX7agUr8n0kKgXTLSWU8lcA0xVEGq2RwAWYFKAvGKo6DUlCDp7idhT01nm4wnKHTcyRhXT1Fj8gl5ycgj1l9F1DRU3gcDEiaUhVyp+o4X8FZHdQrP6b8K4zOUgeFw/YJ4llSL9A25ltDSvftno8DuZGmnSWvphTyP9A2f7Ea1gpCeR3OoQ8tFdY0VcbK2t0hbEhPzkIXz+7osOcG4ZeoNG8kFRk=
+  template:
+    metadata:
+      name: thf-triggers-database-password
+      namespace: postgres
