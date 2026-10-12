@@ -12,3 +12,4 @@ resources:
   - umami.yaml
   - pr-queue.yaml
   - lorekeeper.yaml
+  - thf-triggers.yaml
