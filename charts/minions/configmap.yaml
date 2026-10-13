@@ -206,4 +206,4 @@ metadata:
     app.kubernetes.io/part-of: minions
 data:
   PORT: "8080"
-  DEFAULT_MODEL: "openrouter/deepseek/deepseek-v4.1-flash"
+  DEFAULT_MODEL: "openrouter/openai/gpt-6-luna"
