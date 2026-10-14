@@ -29,7 +29,7 @@ wakapi_config:
     timeout_sec: 30
     port: 3000
     base_path: /
-    public_url: https://wakapi.int.imdevinc.com
+    public_url: https://wakapi.imdevinc.com
     tls_cert_path: ""
     tls_key_path: ""
   app:
@@ -53,20 +53,19 @@ wakapi_config:
     data_retention_months: -1
     max_inactive_months: 12
   db:
-    host: ""
-    port: ""
+    host: postgres-rw.postgres.svc.cluster.local
+    port: "5432"
     socket: ""
-    user: ""
+    user: wakapi
     password: ""
-    name: /data/wakapi_db.db
-    dialect: sqlite3
+    name: wakapi
+    dialect: postgres
     charset: utf8mb4
     max_conn: 10
     ssl: false
   security:
     disable_local_auth: false
-    # Replace these placeholders before use; do not commit actual credentials here.
-    password_salt: REPLACE_WITH_RANDOM_PASSWORD_SALT
+    password_salt: ""
     insecure_cookies: false
     cookie_max_age: 172800
     allow_signup: true
@@ -82,8 +81,8 @@ wakapi_config:
     password_reset_max_rate: 5/1h
     oidc:
       name: Pocket ID
-      client_id: REPLACE_WITH_POCKET_ID_CLIENT_ID
-      client_secret: REPLACE_WITH_POCKET_ID_CLIENT_SECRET
+      client_id: ""
+      client_secret: ""
       endpoint: https://login.int.imdevinc.com/.well-known/openid-configuration
   mail:
     enabled: false
@@ -93,7 +92,7 @@ wakapi_config:
       host: ""
       port: ""
       username: ""
-      password: REPLACE_WITH_SMTP_PASSWORD
+      password: ""
       tls: true
       skip_verify: false
   sentry:

@@ -122,5 +122,7 @@ data:
       service: http://keda-add-ons-http-interceptor-proxy.keda.svc.cluster.local:8080
     - hostname: thf-triggers.imdevinc.com
       service: http://thf-triggers.thf-triggers.svc.cluster.local:8080
+    - hostname: wakapi.imdevinc.com
+      service: http://wakapi.wakapi.svc.cluster.local:80
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404

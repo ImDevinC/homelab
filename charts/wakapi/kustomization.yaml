@@ -9,7 +9,31 @@ helmCharts:
     valuesFile: values.yaml
 namespace: wakapi
 resources:
-  - httproute.yaml
+  - secret.yaml
 images:
   - name: ghcr.io/muety/wakapi
     newTag: 2.18.1
+patches:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: wakapi
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/envFrom/-
+        value:
+          secretRef:
+            name: wakapi-secrets
+  - target:
+      version: v1
+      kind: Service
+      name: wakapi
+    patch: |-
+      - op: add
+        path: /metadata/annotations
+        value:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Homelab
+          gethomepage.dev/icon: wakapi.png
+          gethomepage.dev/name: Wakapi
