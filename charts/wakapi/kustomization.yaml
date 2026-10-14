@@ -8,5 +8,5 @@ resources:
   - pvc.yaml
   - sealed.yaml
 images:
-  - name: gchr.io/muety/wakapi
+  - name: ghcr.io/muety/wakapi
     newTag: 2.18.1
