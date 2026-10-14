@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+helmCharts:
+  - name: wakapi
+    releaseName: wakapi
+    namespace: wakapi
+    repo: https://ricristian.github.io/wakapi-helm-chart/
+    version: 1.0.37
+    valuesFile: values.yaml
+namespace: wakapi
+resources:
+  - httproute.yaml
+images:
+  - name: ghcr.io/muety/wakapi
+    newTag: 2.18.1
