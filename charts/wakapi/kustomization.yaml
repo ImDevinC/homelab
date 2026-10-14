@@ -7,3 +7,6 @@ resources:
   - service.yaml
   - pvc.yaml
   - secret.yaml
+images:
+  - name: gchr.io/muety/wakapi
+    newTag: 2.18.1
