@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wakapi
+  labels:
+    app.kubernetes.io/name: wakapi
+    app.kubernetes.io/instance: wakapi
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: wakapi
+      app.kubernetes.io/instance: wakapi
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: wakapi
+        app.kubernetes.io/instance: wakapi
+    spec:
+      containers:
+        - name: wakapi
+          image: ghcr.io/muety/wakapi:2.18.1
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: wakapi-config
+            - secretRef:
+                name: wakapi-secrets
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: wakapi
