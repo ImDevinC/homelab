@@ -13,3 +13,4 @@ resources:
   - pr-queue.yaml
   - lorekeeper.yaml
   - thf-triggers.yaml
+  - wakapi.yaml

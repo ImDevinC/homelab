@@ -1,0 +1,36 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: wakapi
+spec:
+  name: wakapi
+  owner: wakapi
+  cluster:
+    name: postgres
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: DatabaseRole
+metadata:
+  name: wakapi
+spec:
+  cluster:
+    name: postgres
+  name: wakapi
+  login: true
+  databaseRoleReclaimPolicy: delete
+  passwordSecret:
+    name: wakapi-database-password
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: wakapi-database-password
+  namespace: postgres
+spec:
+  encryptedData:
+    password: AgCgrMRxTn0rrmOY3Wa0TzyGofNh1caMKz5Z8tU9vrjD3eu5q0/wbH0qnPQUJWLvlIdMOcU1GFDMwwILpUN9cWyRBL9+oUgZAA4BOWs3ELSRvE6p4aOQemYjc/KmGJfU3M2j2lQPk7D5d8na/M61HuCFFLQ3CZ0WVSMG4TgOlx+usNcXQkvt70YdyRZEBuNN21nzbj8rC54HvBEnEJzcI1xgVjolNQp50MzpW5uwzKUq49XWHEaxjEdN91BbZ7inorfncNeDQ7GUiQVXyMFZT+33Qgr9ayQet5zZANL3hYmfV8EfkaCH8eZYsITp52pjR4jCtFv3UV3/I/f1sPTHGyrylVL2iy8COgJGwoJuDlw3XpjI942jQQRqgOKuLrSfRJEXKIg6pwDSJY/HpY+znlQKM4Vg1t2LfTAuU8LyddPWFN1WToGXTjDXu1r3Y04GWXWCBIa8n/cc4BUPhL/8SN/U0ASiRZB+L8yOISvNFmqCgqT8RbLiYpbojlUvrgc0Pd8htwa/adgdSpZ5rTvcYNiGze2X9WJaAhp1QCKZ/a77qg9zja99CGtdk3/S50aFLhcPPc2zQQ07SWOnoq8MkME3eSj9z5u0Vl8K01DJJJ2DC3PiZdE5uVD1WdaMkg+ypggAH+9MOZtj0e83s1exAfrezB1gvVZPtbh9xFWkaQLHlG0h7YKn3cAjJopcBas8qRz6xSsdPWYptOnIxqKuR+XYdLivPC2GDw==
+    username: AgAUB4h7sldXudTa5bnwmFzUVVhVLV5QUm8re+nKVOmh91NkYJPwGzexnpRtKpsSI+CgDUGQUwWbT/uisFxMOacezwjp9vMMGgi959TjY3i0d8onXAcM5mtEQq+HbsL1862Lf9WohC9ZE1KcFMqU99Rm/PRdIM3NVBxlg5F9lYipI8mMGFjKNVulhZ1qgPvMB2ltOTJkJQN6U0CBULvs04TpWhuxj8wyUhG812aaeW5K67PiR5DvidsQtHAEZ5QMCUg0UJGax24oIrlzxJoUelJ3wmhauvfbK05KqbfNyy9QazOT0k001he6ji2LaE5x+HZjpfn0hGV81U2musR8NSqBskn9tlZx9SgrspWbiM3bFcckuXYYprQ1ECHSvzdZSGV0MTeE6C63z6JjeiF3x8L01+3RbN7h5V9sDj4fSa5frhEBPiXmrX15021meGODPam7naRxeWt8z7AU5sqHUPxF9xC6CgeSKWS/gNwO5gafvGx4N3C7OJg/zMgj/MkI9jbkdLDi5nsyuMpILxDGlcG+ny+Z7+ZLuVzORT3YQ/tTvZmydJaH8YO2i2BgE3Se4iFpJi7hdUwF2LUfUbJ5/xK5QceYwBYimqjYFKDWIhdSsSb7LbwoIJQ4IVqpg8EU1u4uVrGc+Q5z6MAsVhkDoFK/VHaBe4vADVRJzHPl4nj+9leZwmZsmYj0g4Rd7Wpi5RTWalOWKVw=
+  template:
+    metadata:
+      name: wakapi-database-password
+      namespace: postgres
