@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wakapi-config
+data:
+  WAKAPI_SUPPORT_CONTACT: ""
+  WAKAPI_LISTEN_IPV4: 0.0.0.0
+  WAKAPI_LISTEN_IPV6: ""
+  WAKAPI_PORT: "3000"
+  WAKAPI_PUBLIC_URL: https://wakapi.imdevinc.com
+  WAKAPI_INSECURE_COOKIES: "false"
+  WAKAPI_DB_HOST: postgres-rw.postgres.svc.cluster.local
+  WAKAPI_DB_PORT: "5432"
+  WAKAPI_DB_USER: wakapi
+  WAKAPI_DB_NAME: wakapi
+  WAKAPI_DB_TYPE: postgres
+  WAKAPI_OIDC_PROVIDERS_0_NAME: PocketID
+  WAKAPI_OIDC_PROVIDERS_0_ENDPOINT: https://login.int.imdevinc.com
+  WAKAPI_DISABLE_LOCAL_AUTH: "true"
