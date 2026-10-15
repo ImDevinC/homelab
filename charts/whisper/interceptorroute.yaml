@@ -12,3 +12,5 @@ spec:
   scalingMetric:
     concurrency:
       targetValue: 10000
+  timeouts:
+    responseHeader: 20m
