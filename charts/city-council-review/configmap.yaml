@@ -8,4 +8,4 @@ data:
   OPENAI_BASE_URL: "http://ollama.ollama.svc.cluster.local:11434"
   OPENAI_MODEL: "gemma3:12b"
   SITE_REPO: "ImDevinC/city-council-site"
-  WHISPER_STARTUP_TIMEOUT: "60s"
+  WHISPER_STARTUP_TIMEOUT: "60"
