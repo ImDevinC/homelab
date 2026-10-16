@@ -4,7 +4,7 @@ namespace: mediaserver
 resources:
   - codex
   - kapowarr
-  - overseerr
+  - seerr
   - plex
   - plex-off-deck
   - prowlarr
@@ -32,8 +32,8 @@ images:
     newTag: v2.3.0
   - name: docker.io/linuxserver/plex
     newTag: 1.43.4
-  - name: docker.io/linuxserver/overseerr
-    newTag: 1.35.0
+  - name: ghcr.io/seerr-team/seerr
+    newTag: v3.5.0
   - name: docker.io/linuxserver/sonarr
     newTag: 4.0.20
   - name: docker.io/linuxserver/transmission

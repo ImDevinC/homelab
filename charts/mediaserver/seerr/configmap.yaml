@@ -5,7 +5,7 @@ data:
       "vapidPrivate": "",
       "vapidPublic": "",
       "main": {
-        "applicationTitle": "Overseerr",
+        "applicationTitle": "seerr",
         "applicationUrl": "",
         "csrfProtection": false,
         "cacheImages": false,
@@ -48,7 +48,7 @@ data:
           "ignoreTls": false,
           "requireTls": false,
           "allowSelfSigned": false,
-          "senderName": "Overseerr"
+          "senderName": "seerr"
           }
         },
         "discord": {
@@ -149,13 +149,13 @@ data:
         }
       }
       }
-  init-overseerr.sh: |
+  init-seerr.sh: |
     #!/bin/sh
     echo "### Initializing config"
-    if [ ! -f /overseerr-config/settings.json ]; then
-      cp -n /init-overseerr/settings.json /overseerr-config/settings.json
+    if [ ! -f /seerr-config/settings.json ]; then
+      cp -n /init-seerr/settings.json /seerr-config/settings.json
       echo "### No configuration found, intialized with default settings ###"
     fi
 kind: ConfigMap
 metadata:
-  name: init-overseerr-cm
+  name: init-seerr-cm

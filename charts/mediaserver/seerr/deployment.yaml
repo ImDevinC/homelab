@@ -2,43 +2,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: overseerr
+  name: seerr
   labels:
-    app: overseerr
-    app.kubernetes.io/name: overseerr
+    app: seerr
+    app.kubernetes.io/name: seerr
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: overseerr
-      app.kubernetes.io/name: overseerr
+      app: seerr
+      app.kubernetes.io/name: seerr
   template:
     metadata:
       labels:
-        app: overseerr
-        app.kubernetes.io/name: overseerr
+        app: seerr
+        app.kubernetes.io/name: seerr
     spec:
       initContainers:
-        - name: config-overseerr
+        - name: config-seerr
           image: docker.io/busybox:stable
-          command: ["/init-overseerr/init-overseerr.sh"]
+          command: ["/init-seerr/init-seerr.sh"]
           volumeMounts:
-            - mountPath: /init-overseerr
-              name: init-files-overseerr
+            - mountPath: /init-seerr
+              name: init-files-seerr
             - name: mediaserver-volume
-              mountPath: /overseerr-config
-              subPath: "config/overseerr"
+              mountPath: /seerr-config
+              subPath: "config/seerr"
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
       containers:
-        - name: overseerr
+        - name: seerr
           env:
             - name: PGID
               value: "1000"
             - name: PUID
               value: "1000"
-          image: "docker.io/linuxserver/overseerr:1.34.0"
+          image: "ghcr.io/seerr-team/seerr"
           imagePullPolicy: IfNotPresent
           readinessProbe:
             tcpSocket:
@@ -50,18 +50,18 @@ spec:
               cpu: 100m
               memory: 256Mi
           ports:
-            - name: overseerr-port
+            - name: seerr-port
               containerPort: 5055
               protocol: TCP
           volumeMounts:
             - name: mediaserver-volume
               mountPath: /config
-              subPath: "config/overseerr"
+              subPath: "config/seerr"
       volumes:
         - name: mediaserver-volume
           hostPath:
             path: /mnt/media
-        - name: init-files-overseerr
+        - name: init-files-seerr
           configMap:
             defaultMode: 493
-            name: init-overseerr-cm
+            name: init-seerr-cm
