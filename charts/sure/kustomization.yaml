@@ -11,4 +11,4 @@ resources:
   - schedule.yaml
 images:
   - name: ghcr.io/we-promise/sure
-    newTag: stable
+    newTag: 0.7.5-hotfix.2
