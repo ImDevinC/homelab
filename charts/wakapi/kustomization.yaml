@@ -9,4 +9,4 @@ resources:
   - sealed.yaml
 images:
   - name: ghcr.io/muety/wakapi
-    newTag: 2.18.1
+    newTag: 2.18.2
