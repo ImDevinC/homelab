@@ -53,7 +53,7 @@ images:
   - name: ghcr.io/bookorbit/bookorbit
     newTag: 3.5.0
   - name: ghcr.io/haveagitgat/tdarr
-    newTag: 2.96.01
+    newTag: 3.01.00
   - name: ghcr.io/haveagitgat/tdarr_node
     newTag: 3.01.00
 replicas:
