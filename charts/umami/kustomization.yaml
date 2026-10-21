@@ -6,4 +6,4 @@ resources:
   - sealed.yaml
 images:
   - name: ghcr.io/umami-software/umami
-    newTag: postgresql-v2.19.0
+    newTag: postgresql-v2.20.2
