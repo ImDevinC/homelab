@@ -55,7 +55,7 @@ images:
   - name: ghcr.io/haveagitgat/tdarr
     newTag: 2.96.01
   - name: ghcr.io/haveagitgat/tdarr_node
-    newTag: 2.96.01
+    newTag: 3.01.00
 replicas:
   - name: codex
     count: 0
