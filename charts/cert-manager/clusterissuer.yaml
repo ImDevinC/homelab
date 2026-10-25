@@ -1,26 +1,6 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt
-spec:
-  acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: me@imdevinc.com
-    privateKeySecretRef:
-      name: letsencrypt
-    solvers:
-    - dns01:
-        cloudflare:
-          apiTokenSecretRef:
-            name: cloudflare-token
-            key: apiToken
-      selector:
-        dnsZones:
-          - imdevinc.com
----
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
   name: letsencrypt-traefik
 spec:
   acme:
