@@ -9,14 +9,14 @@ spec:
     privateKeySecretRef:
       name: letsencrypt
     solvers:
-    - http01:
-        ingress:
-          class: nginx
     - dns01:
         cloudflare:
           apiTokenSecretRef:
             name: cloudflare-token
             key: apiToken
+      selector:
+        dnsZones:
+          - imdevinc.com
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -35,3 +35,6 @@ spec:
           apiTokenSecretRef:
             key: apiToken
             name: cloudflare-token
+      selector:
+        dnsZones:
+          - imdevinc.com
