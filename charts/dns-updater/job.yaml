@@ -34,9 +34,9 @@ kind: ConfigMap
 metadata:
   name: dns-updater
 data:
-  int.env: |
+  vpn.env: |
     ZONE_ID=858d89547f2d1be1b3cd765677d080a5
-    ADDRESS=int.imdevinc.com
-    RECORD=int.imdevinc.com
+    ADDRESS=vpn.imdevinc.com
+    RECORD=vpn.imdevinc.com
     TYPE=cloudflare
     CLOUDFLARE_API_TOKEN=
