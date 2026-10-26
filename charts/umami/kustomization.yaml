@@ -6,4 +6,4 @@ resources:
   - sealed.yaml
 images:
   - name: ghcr.io/umami-software/umami
-    newTag: 3.4.0
+    newTag: 3.4.1
