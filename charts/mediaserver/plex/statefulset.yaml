@@ -83,6 +83,9 @@ spec:
               subPath: media/anime
             - name: transcode
               mountPath: /transcode
+            - mountPath: /other
+              name: mediaserver-volume
+              subPath: media/misc/tech
           resources:
             requests:
               cpu: "500m"
