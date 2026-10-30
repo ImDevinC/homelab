@@ -22,9 +22,9 @@ jobs:
       - name: renovate
         uses: renovatebot/github-action@v46.3.10
         with:
-          configurationFile: ${{ github.workspace }}/renovate.json
           token: ${{ secrets.RENOVATE_TOKEN }}
         env:
+          RENOVATE_REPOSITORIES: ${{ github.repository }}
           LOG_LEVEL: "debug"
           RENOVATE_DETECT_HOST_RULES_FROM_ENV: "true"
           RENOVATE_DOCKER_GHCR_IO_USERNAME: ${{ secrets.GHCR_USERNAME }}

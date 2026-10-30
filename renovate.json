@@ -4,9 +4,6 @@
     "github>imdevinc/imdevinc"
   ],
   "gitAuthor": "Devin Collins <3997333+ImDevinC@users.noreply.github.com>",
-  "repositories": [
-    "ImDevinC/homelab"
-  ],
   "ignoreDeps": [
     "ghcr.io/imdevinc/city-council-review",
     "ghcr.io/imdevinc/macro-track-server",
