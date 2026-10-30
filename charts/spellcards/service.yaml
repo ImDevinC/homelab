@@ -51,7 +51,6 @@ metadata:
     service: spellcards
   name: spellcards
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: spellcards

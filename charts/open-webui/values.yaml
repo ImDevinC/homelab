@@ -1,6 +1,4 @@
 clusterDomain: int.imdevinc.com
-#podLabels:
-#  app.kubernetes.io/name: openwebui
 resources:
   requests:
     cpu: 10m
