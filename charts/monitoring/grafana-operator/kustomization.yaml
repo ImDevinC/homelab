@@ -12,5 +12,3 @@ resources:
   - grafana-dashboard-urls.yaml
   - grafana-datasource.yaml
   - grafana.yaml
-  - interceptorroute.yaml
-  - scaledobject.yaml

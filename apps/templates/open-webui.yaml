@@ -9,12 +9,21 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: open-webui
+  ignoreDifferences:
+    - group: apps
+      kind: StatefulSet
+      name: openweb-ui-open-webui
+      namespace: open-webui
+      jsonPointers:
+        - /spec/replicas
   project: default
   source:
     path: charts/open-webui
     repoURL: git@github.com:ImDevinC/homelab.git
     targetRevision: main
   syncPolicy:
+    syncOptions:
+      - RespectIgnoreDifferences=true
     automated:
       prune: true
       
