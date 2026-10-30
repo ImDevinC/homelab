@@ -39,11 +39,11 @@ images:
   - name: docker.io/linuxserver/transmission
     newTag: 2021.11.18
   - name: docker.io/linuxserver/prowlarr
-    newTag: 2.6.6-develop
+    newTag: 2.7.0-develop
   - name: mrcas/kapowarr
     newTag: v1.3.2
   - name: ajslater/codex
-    newTag: 2.5.6
+    newTag: 2.5.7
   - name: tannermiddleton/recommendarr:latest
     newTag: v1.4.4
   - name: ghcr.io/flaresolverr/flaresolverr
@@ -51,11 +51,11 @@ images:
   - name: ghcr.io/calibrain/shelfmark
     newTag: v1.5.1
   - name: ghcr.io/bookorbit/bookorbit
-    newTag: 3.5.0
+    newTag: 3.6.0
   - name: ghcr.io/haveagitgat/tdarr
-    newTag: 3.03.00
+    newTag: 3.04.00
   - name: ghcr.io/haveagitgat/tdarr_node
-    newTag: 3.03.00
+    newTag: 3.04.00
 replicas:
   - name: codex
     count: 0
