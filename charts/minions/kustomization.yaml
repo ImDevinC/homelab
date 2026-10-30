@@ -3,8 +3,10 @@ kind: Kustomization
 namespace: minions
 resources:
   - deployments.yaml
+  - interceptorroute.yaml
   - sealed.yaml
   - httproute.yaml
+  - scaledobject.yaml
   - rbac.yaml
   - configmap.yaml
   - namespace.yaml

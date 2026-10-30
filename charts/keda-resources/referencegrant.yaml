@@ -32,8 +32,22 @@ spec:
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
       namespace: dnd-proxy
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: minions
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: monitoring
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: open-webui
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: spellcards
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: whoami
   to:
     - group: ""
       kind: Service
       name: keda-add-ons-http-interceptor-proxy
-

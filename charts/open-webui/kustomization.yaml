@@ -10,5 +10,7 @@ helmCharts:
 namespace: open-webui
 resources:
   - httproute.yaml
+  - interceptorroute.yaml
   - pvc.yaml
+  - scaledobject.yaml
   - sealed.yaml

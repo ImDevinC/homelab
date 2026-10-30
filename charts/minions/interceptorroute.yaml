@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: control-panel
+spec:
+  target:
+    service: control-panel
+    port: 3000
+  rules:
+    - hosts:
+        - minions.int.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000
