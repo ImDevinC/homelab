@@ -4,6 +4,8 @@ namespace: spellcards
 resources:
   - namespace.yaml
   - service.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml
 images:
   - name: ghcr.io/imdevinc/spellcards
     newTag: 0.2.0

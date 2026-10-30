@@ -1,0 +1,14 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: open-webui
+spec:
+  target:
+    service: openweb-ui-open-webui
+    port: 80
+  rules:
+    - hosts:
+        - chatgpt.int.imdevinc.com
+  scalingMetric:
+    concurrency:
+      targetValue: 10000
