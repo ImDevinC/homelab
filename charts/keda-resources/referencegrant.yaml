@@ -37,9 +37,6 @@ spec:
       namespace: minions
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
-      namespace: monitoring
-    - group: gateway.networking.k8s.io
-      kind: HTTPRoute
       namespace: open-webui
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
