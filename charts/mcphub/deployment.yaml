@@ -24,6 +24,8 @@ spec:
           env:
             - name: MCPHUB_SETTING_PATH
               value: /app/data/mcp_settings.json
+            - name: MCPHUB_SETTINGS_SYNC
+              value: upsert
           envFrom:
             - secretRef:
                 name: secrets
