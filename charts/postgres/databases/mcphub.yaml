@@ -7,3 +7,6 @@ spec:
   owner: mcphub
   cluster:
     name: postgres
+  extensions:
+    - name: vector
+      ensure: present
