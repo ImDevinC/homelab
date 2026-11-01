@@ -49,7 +49,7 @@ images:
   - name: ghcr.io/flaresolverr/flaresolverr
     newTag: v3.5.2
   - name: ghcr.io/calibrain/shelfmark
-    newTag: v1.5.1
+    newTag: v1.6.0
   - name: ghcr.io/bookorbit/bookorbit
     newTag: 3.6.0
   - name: ghcr.io/haveagitgat/tdarr
