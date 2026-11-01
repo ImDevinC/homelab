@@ -23,6 +23,7 @@ data:
   LOREKEEPER_CORS_ORIGINS: ""
   LOREKEEPER_MAX_UPLOAD_MB: "20"
   LOREKEEPER_REQUEST_TIMEOUT: "0"
+  LOREKEEPER_TIMEZONE: "America/Los_Angeles"
 
   # --- Logging ---
   LOG_LEVEL: "info"
