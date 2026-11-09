@@ -43,19 +43,19 @@ images:
   - name: mrcas/kapowarr
     newTag: v1.3.2
   - name: ajslater/codex
-    newTag: 2.5.7
+    newTag: 2.6.0
   - name: tannermiddleton/recommendarr:latest
     newTag: v1.4.4
   - name: ghcr.io/flaresolverr/flaresolverr
     newTag: v3.5.2
   - name: ghcr.io/calibrain/shelfmark
-    newTag: v1.6.0
+    newTag: v1.6.2
   - name: ghcr.io/bookorbit/bookorbit
-    newTag: 3.6.0
+    newTag: 3.7.0
   - name: ghcr.io/haveagitgat/tdarr
-    newTag: 3.04.00
+    newTag: 3.06.00
   - name: ghcr.io/haveagitgat/tdarr_node
-    newTag: 3.04.00
+    newTag: 3.06.00
 replicas:
   - name: codex
     count: 0
