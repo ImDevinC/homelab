@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gift-tracker
+  labels:
+    app: gift-tracker
+spec:
+  selector:
+    matchLabels:
+      app: gift-tracker
+  template:
+    metadata:
+      labels:
+        app: gift-tracker
+    spec:
+      containers:
+        - name: gift-tracker
+          image: ghcr.io/imdevinc/gift-tracker
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              memory: 128Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault

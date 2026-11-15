@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gift-tracker
+  labels:
+    app: gift-tracker
+spec:
+  type: ClusterIP
+  selector:
+    app: gift-tracker
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: http
