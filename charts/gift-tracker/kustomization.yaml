@@ -10,4 +10,4 @@ resources:
   - scaledobject.yaml
 images:
   - name: ghcr.io/imdevinc/gift-tracker
-    newTag: 0.1.0
+    newTag: 0.2.0
