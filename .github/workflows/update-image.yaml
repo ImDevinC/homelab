@@ -1,0 +1,56 @@
+name: Update Homelab Image
+
+on:
+  workflow_call:
+    inputs:
+      chart:
+        description: Path to the chart in the homelab repository
+        required: true
+        type: string
+      imageName:
+        description: Image name in the kustomization images array
+        required: true
+        type: string
+      newTag:
+        description: New image tag
+        required: true
+        type: string
+    secrets:
+      HOMELAB_TOKEN:
+        description: Token with contents write access to ImDevinC/homelab
+        required: true
+
+jobs:
+  update-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout homelab
+        uses: actions/checkout@v7
+        with:
+          repository: ImDevinC/homelab
+          ref: main
+          token: ${{ secrets.HOMELAB_TOKEN }}
+
+      - name: Install yq
+        run: |
+          sudo curl -fsSL -o /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.54.3/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Update image tag
+        env:
+          CHART: ${{ inputs.chart }}
+          IMAGE_NAME: ${{ inputs.imageName }}
+          NEW_TAG: ${{ inputs.newTag }}
+        run: yq -i '(.images[] | select(.name == strenv(IMAGE_NAME)).newTag) = strenv(NEW_TAG)' "$CHART/kustomization.yaml"
+
+      - name: Commit and push to main
+        env:
+          CHART: ${{ inputs.chart }}
+          IMAGE_NAME: ${{ inputs.imageName }}
+          NEW_TAG: ${{ inputs.newTag }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add "$CHART/kustomization.yaml"
+          git commit -m "Update $IMAGE_NAME image to $NEW_TAG"
+          git push origin HEAD:main
