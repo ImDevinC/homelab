@@ -8,7 +8,7 @@ spec:
     port: 8080
   rules:
     - hosts:
-        - gifts.int.imdevinc.com
+        - gifts.imdevinc.com
   scalingMetric:
     concurrency:
       targetValue: 10000
