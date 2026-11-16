@@ -41,7 +41,7 @@ jobs:
           CHART: ${{ inputs.chart }}
           IMAGE_NAME: ${{ inputs.imageName }}
           NEW_TAG: ${{ inputs.newTag }}
-        run: yq -i '(.images[] | select(.name == strenv(IMAGE_NAME)).newTag) = strenv(NEW_TAG)' "$CHART/kustomization.yaml"
+        run: yq -i '(.images[] | select(.name == strenv(IMAGE_NAME)).newTag) = strenv(NEW_TAG)' "charts/$CHART/kustomization.yaml"
 
       - name: Commit and push to main
         env:
