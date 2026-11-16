@@ -15,6 +15,11 @@ on:
         description: New image tag
         required: true
         type: string
+      kustomizePath:
+        description: Path to kustomization.yaml file, defaults to kustomization.yaml
+        required: false
+        type: string
+        default: kustomization.yaml
     secrets:
       HOMELAB_TOKEN:
         description: Token with contents write access to ImDevinC/homelab
@@ -41,16 +46,18 @@ jobs:
           CHART: ${{ inputs.chart }}
           IMAGE_NAME: ${{ inputs.imageName }}
           NEW_TAG: ${{ inputs.newTag }}
-        run: yq -i '(.images[] | select(.name == strenv(IMAGE_NAME)).newTag) = strenv(NEW_TAG)' "charts/$CHART/kustomization.yaml"
+          KUSTOMIZE_PATH: ${{ inputs.kustomizePath }}
+        run: yq -i '(.images[] | select(.name == strenv(IMAGE_NAME)).newTag) = strenv(NEW_TAG)' "charts/$CHART/$KUSTOMIZE_PATH"
 
       - name: Commit and push to main
         env:
           CHART: ${{ inputs.chart }}
           IMAGE_NAME: ${{ inputs.imageName }}
           NEW_TAG: ${{ inputs.newTag }}
+          KUSTOMIZE_PATH: ${{ inputs.kustomizePath }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add "charts/$CHART/kustomization.yaml"
+          git add "charts/$CHART/$KUSTOMIZE_PATH"
           git commit -m "Update $IMAGE_NAME image to $NEW_TAG"
           git push origin HEAD:main
