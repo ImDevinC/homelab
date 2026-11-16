@@ -51,6 +51,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add "$CHART/kustomization.yaml"
+          git add "charts/$CHART/kustomization.yaml"
           git commit -m "Update $IMAGE_NAME image to $NEW_TAG"
           git push origin HEAD:main
