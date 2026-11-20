@@ -1,0 +1,42 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: DatabaseRole
+metadata:
+  name: awaybound
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+spec:
+  cluster:
+    name: postgres
+  name: awaybound
+  login: true
+  superuser: false
+  databaseRoleReclaimPolicy: retain
+  passwordSecret:
+    name: awaybound-database-password
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: awaybound
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  name: awaybound
+  owner: awaybound
+  databaseReclaimPolicy: retain
+  cluster:
+    name: postgres
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: awaybound-database-password
+  namespace: postgres
+spec:
+  encryptedData:
+    password: AgBo2Ex3NS26MC+uNjpI+3E9YNQdilpPF0/XbrAKh9Y69f/bnSaJBQpxbguIoBUjaOqTZ54QWCyhxmqBl8SaXwOJuWw/qLAsyj6IGalhrztEHAQKVkQx5729uHTnivtQ7Zns8pgbOFLgjiIsi40LuKD/mV3WHGsCUMC+T/bg96cfZgkw6IfmBl2/yTgSHiZ1ePWDiO14q3D1D/PfSNKTJX06Bm+gxsb0+KYhPpFaD62Ku/j3EkAWW5h90qEwbLj0Kx+ThR4D//O9UWdPXfnr7iGPPfSfk06q33i+NmI6byGzhH32YuYgxqLezYB40XsqOy42dNeoQU6ccfspZSAnWMzngNFjwMBXzF35XxLpm6bEocKYmQ1sqRBks2Y+KcfbYuKLEJHFkeBtzUiTnxz6ptiABFHWmF6VjMNqPlOOmkKIK1NDrQGHjwDJ7R/gnshtoF4pMLNUgH2/Z3nyFDOLOb4Di1IevVkgPhku4XZTmwb0DIsdBu6rO1wHElShguWwNmbd2VYyejSTQ8TqvNSUeV9cMsTojO3Ue8VW/PwOhxg8S26A0h/sEY9eI7dvl4dddJRh2wj4ApdrdNueM4H44WKX8Y7n9kpeHodRsEPbCW5WRrW8gdocAGiwWvel8wBCq1vWIZOM6DAk7edV8j7PPes4sLgMKd9QnbSjc7kt0lbEvkeCaPUpPd2KK36Vsem2t5kjV6brVzfibzmqezoIGNWV2+6KYGRY
+    username: AgB3ywlP9EZGJ3FRH5Iy8VtUcZccPvk6+4AzNVKV1KKe0ubhO+FjWVbAtWi33kA1nRd7Cqj2lQkbUTD9NoT/l/NgWpMvxLUt1EzXqtX4N4+eahrCs9UKaygdm8kbknezKiA/aJtjfSVMquNNyE/pzsErLyzVPdywdhFvR0xFSHsjziJ/h7gsxvMjYBDQ2pKfdKq06hnOSiM8yg+7UFcfwlDXgMxYi/LSrBV4FYPrBXt3M/RnTFTMoxORtGHM2OzZX+6QnP3vkF4TJ9YPpsJ9Hpl9MepeDgZT+lKf1rtYDggiii3LnV2llCvS3z5i+whpYw3CInjryGHJvy2qWkMZEfBIJAZwWnKHvoxvfTi1FnhvlYEzVoTjCyl7Q/p4sMnGcQ4QWnOWSf9JuNqQN2uwOSKEhjN80g9jUQf3t9T9hn+FHxeLlUSno24m/dwfTiiI87JgYqmvHMUgkqbShWze4YOvPaGNeHU8Q4Ed4BTGxywzaVvFtVhOEV8reK/s4rNXl9CnN+bB82ps+9gJMGL1ZPEkfOWuMx6EFiFeOoWK5jgJmivI/QpCptXRoofWC2PuHXlfHWhhNGhrNeCeOPRYSEM/TTp6yX+YXOZGMJ6Oc/CbN6I4aFi53gZNZp0AYva7Y26oe0bRvYzio3uZDtD38Ix+2WHMkNkORoznMvnNu3xz2TKbPF1y1i7choYTXbgd3XQ27rhHmB/Mpvw=
+  template:
+    metadata:
+      name: awaybound-database-password
+      namespace: postgres
