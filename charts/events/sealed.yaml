@@ -1,0 +1,14 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: events-config
+  namespace: events
+spec:
+  encryptedData:
+    DATABASE_URL: AgA22aGRciPf2hc7ARhBQfjj4zN/u63sEGx4CZGweIUFwOHodeUmnu/weTGKekLgg46+RWlYDpLl25Jg6icJ44mr7ILj9F5LpkC4h/RCsTlzAYbRR/XrlN1EJv5RL3766IYPbdbH9AZ4Cqj+o6lZiPs9Uhx1i/gL3yhU9g8kpAJsuUo6hRL+V+uljJcwFoKRkaeFY9ta7Bm/whWAi7Yp62adLKY0KgSK6ONzGz/K3MdcC9kTWOmVCsvUveQ3iQGOdeReoyG5ScFQwBfg+mh1Kn01eD+46U7e70lPgW4FcCOZWwvGCn8QexKq2Fqabdi/VVu7TtthEHgPQVmEo1fU/4bIK7Tnn+8dJrH5mJgIKg6cJotFt/Kv8AxoN5DKhJObSlxbDfjKd0gqKnv3V05ykfScmRGlc+sNsQEqagtGb1MGOCbUr7e5iJOIGS55f8Eq03q4SyKE3k5zyGI6kekB3bk74Q+1xwfdnsbQopQ9hW/0wQPGR9PCeXj55s0cmhHiFPXOuwgxgR9nkyFuVQXnkxFx6ybDFulBscsdqeETjvaujhHAlEmfbggQzjqK5nz8I9fp/iabbHYDO09WDr0OfgPF0BAVc+kdMVK15IREQ7TdZIkwQRrCSQ0ZK7/BrMCutf7vFDexWst/2OpdbH9iJckFuv5FovaULnMr9ZhVvR18TnNR+Ej8DAcylo2gY2x4E5LhyaKIMpT95CtFDjPwef0tf06CIEUAiwtSDeKngJyK9ezjdtX4nw55Y8VXitmsQfTH9f0yTkMn051h1ko8fDbKqe7If0mwdNZPZblqxXNLQXoJRFR/CQKK3oNxA7qA/8J0CEzBOIL8uU607ziIpt63wog3Ze9VWtxgi0U=
+  template:
+    metadata:
+      name: events-config
+      namespace: events
+    type: Opaque
