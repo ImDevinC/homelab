@@ -1,0 +1,37 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: events
+spec:
+  name: events
+  owner: events
+  cluster:
+    name: postgres
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: DatabaseRole
+metadata:
+  name: events
+spec:
+  cluster:
+    name: postgres
+  name: events
+  login: true
+  superuser: false
+  databaseRoleReclaimPolicy: delete
+  passwordSecret:
+    name: events-database-password
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: events-database-password
+  namespace: postgres
+spec:
+  encryptedData:
+    password: AgDZFfS2T+Fkkl0m43Hx0FApV5BhEBBplVMK0P9uDneExhNP1TVDBnSbzP9QutUuwDrspaqUAqRoV8EA5cP4gld8JGGwq4guw+5K8jnOUIYj9sOYnNrPrI5OkMzdPSDRaDTO5RHt0JbO2f6jed0+Ppl0+yS7wlC+KCgIZrljdfk/nqXX2uLy0jp6Q3p8HjOOZcW5O7MJZ3gNLisa3V9AMYa/8YUe6tq6a8kM3WlR0lF67LaiOFIwalaqGMu5kou9eDQAlA8u3TgXCTXq2FFxWfDfGQw7mPybzZ7hx3PcKmXlZmxY3DlUbXU2KB+mJGMygPfk2SzbXYlXB4andmOh2ubVZ7eyS4JzdHkMtE/Qghh6c9lxmGRyj0ou+9SIWNrAI1/F4ZSTa7Vqoxa9ILQJ2aopodaoC5fnipKPt95X+QjUf6VxyK7yFF1nEmz2Pb5ye7xGizPnlhOKJfTspEVmPSqdFXy83lh0Rhn17wWqMI14kbgXLBngN2WT1u3hvBCX0bWxG5dOXn0S8CyWEjLptfr105mBDS3KjKXrMedZ1TCSR4i272D2WHyGxwGRvJiDgrmqciTIPFksuxeKRGEGkMIS0ZjNAje6/q5dltYxCG29o7gaJIsh5ZDm9E/PBpkd/t8E2LvFUo19V4THx3LcbhUA2AnHHGRQtio5mY97n6Uy73BdhROusjryrG9BHyaFO6ff26FlxIUQ0mJkrfSaMLFlpe767DAP
+    username: AgC1vxwbZXF+mZwIlwcFSRi9psBwJ+wMs95cIvbcv6rqB3dl8U1dSQQahlOlvKgxHTrRmiHbcKssOgcSUEgfa7SrXO3u5CXHVEPcNmv6uIkxpxg3rubNeZgqs8paumbZ61wjn77YEhHUSqFHr08DMhDHXky2Ldw7K4rrM3P/iB8kxWIkA+lwXspeUXYJEaIMuJ+MJO6+hbOdYOxL6vH78HEOCWDg+r5MMjD7bAhro4khseBh0R1/D5WfeW7XftOVIRGhN0NQlqFjO9jORStDLfga9FVYGN+9gQuaj1SozmfoNuLklvWOA75nWfSiGXeVlaO3OQjBHIfHJBU/QZccQfQngovJXF65cTjhNE2S5EcE4MKjDhrNg/ywQAkvrivNUKEQ1DQElMkDPdPnMbGo7p+XbM8UKsJBCV3bCD0PTCbmV74k3yqvKRNxalDzQoTR4u3WEfSwrIecwa9SV4WwkmfkA8nIUt8npAnfrOoAsMzLtH5F2FHg58neCTR8KP3WGVj3pHVbZZb3rCXBYMfUgerSlHGkBQ774ujN5I9UQ/DQH44R3PnkGJy7YeXDP09/YuPQZJjD0cRBHP0sJAIwrAR0FavOuLkoiM+23EZ3aD75bH+Sn6Rtt4BvEKJZObi7GwUviJS0jysczCBy62e/z0q8sTjQe6AzH7fc1YFMjFgK4ZCiIh1MxFfXJly/QJ3MJqr4OjJlSYM=
+  template:
+    metadata:
+      name: events-database-password
+      namespace: postgres
