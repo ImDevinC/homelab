@@ -47,6 +47,9 @@ spec:
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
       namespace: whoami
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: events
   to:
     - group: ""
       kind: Service
