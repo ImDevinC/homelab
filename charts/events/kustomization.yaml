@@ -11,4 +11,4 @@ resources:
   - sealed.yaml
 images:
   - name: ghcr.io/imdevinc/events
-    newTag: 0.0.3
+    newTag: 0.1.0
