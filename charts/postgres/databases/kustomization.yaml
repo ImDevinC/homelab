@@ -16,3 +16,4 @@ resources:
   - thf-triggers-dev.yaml
   - wakapi.yaml
   - events.yaml
+  - awaybound.yaml
